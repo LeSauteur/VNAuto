@@ -1,0 +1,2139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель - VN-MASTERS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        /* :root переменные для цветов */
+        :root {
+            /* Основные цвета */
+            --primary-color: rgb(230, 10, 15);
+            --primary-dark: #c00a0f;
+            --secondary-color: rgb(240, 130, 100);
+            
+            /* Оттенки серого */
+            --gray-90: rgb(110, 110, 110);
+            --gray-80: rgb(158, 158, 158);
+            --gray-60: rgb(200, 200, 200);
+            --gray-40: rgb(218, 218, 218);
+            --gray-20: rgb(236, 236, 236);
+            
+            /* Черные оттенки с прозрачностью */
+            --black-70: rgba(0, 0, 0, 0.7);
+            --black-50: rgba(0, 0, 0, 0.5);
+            --black-30: rgba(0, 0, 0, 0.3);
+            --black-20: rgba(0, 0, 0, 0.2);
+            --black-10: rgba(0, 0, 0, 0.1);
+            
+            /* Общие переменные */
+            --container-width: 1200px;
+            --border-radius: 8px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        /* Сброс стилей */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Общие стили */
+        body {
+            font-family: 'Open Sans', Arial, sans-serif;
+            color: var(--gray-90);
+            background-color: #f8f9fa;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Шапка сайта */
+        .header {
+            background-color: white;
+            border-bottom: 1px solid var(--gray-40);
+            padding: 15px 0;
+            position: relative;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary-color);
+        }
+        
+        .top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .logo-banner {
+            display: block;
+            max-height: 60px;
+            width: auto;
+            transition: var(--transition);
+            border-radius: var(--border-radius);
+        }
+        
+        .logo-banner:hover {
+            transform: translateY(-2px);
+        }
+        
+        .admin-info {
+            text-align: right;
+        }
+        
+        .admin-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .admin-role {
+            font-size: 14px;
+            color: var(--gray-80);
+        }
+        
+        /* Основной контент */
+        .main-content {
+            flex: 1;
+            padding: 30px 0;
+        }
+        
+        /* Секция логина */
+        .login-section {
+            max-width: 400px;
+            margin: 100px auto;
+            background: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .login-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .login-title {
+            color: var(--primary-color);
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .login-subtitle {
+            color: var(--gray-80);
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--gray-90);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--gray-40);
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(230, 10, 15, 0.1);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(230, 10, 15, 0.3);
+        }
+        
+        .btn-block {
+            width: 100%;
+        }
+        
+        .alert {
+            padding: 12px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .alert-error {
+            background: rgba(220, 53, 69, 0.1);
+            border: 1px solid rgba(220, 53, 69, 0.2);
+            color: #dc3545;
+        }
+        
+        .alert-success {
+            background: rgba(40, 167, 69, 0.1);
+            border: 1px solid rgba(40, 167, 69, 0.2);
+            color: #28a745;
+        }
+        
+        /* Админ-панель */
+        .admin-panel {
+            display: none;
+        }
+        
+        .admin-nav {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-tab {
+            padding: 12px 24px;
+            background: var(--gray-20);
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray-90);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .nav-tab.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .nav-tab:hover:not(.active) {
+            background: var(--gray-40);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .section {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        .section-title {
+            color: var(--primary-color);
+            font-size: 24px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--gray-40);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: var(--primary-color);
+        }
+        
+        /* Стили для таблиц */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        table th {
+            background: var(--gray-20);
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--gray-90);
+            border-bottom: 2px solid var(--gray-40);
+        }
+        
+        table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--gray-40);
+        }
+        
+        table tr:hover {
+            background: var(--gray-20);
+        }
+        
+        .add-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .add-btn:hover {
+            background: var(--primary-dark);
+        }
+        
+        .remove-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .remove-btn:hover {
+            background: #c82333;
+        }
+        
+        .edit-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-right: 5px;
+        }
+        
+        .edit-btn:hover {
+            background: #0056b3;
+        }
+        
+        .totals {
+            background: var(--gray-20);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-top: 20px;
+        }
+        
+        .totals h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .totals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .summary {
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            background: white;
+        }
+        
+        .summary p {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .print-btn, .reset-btn, .save-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            margin: 10px 5px;
+            transition: all 0.3s;
+        }
+        
+        .print-btn {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .print-btn:hover {
+            background: var(--primary-dark);
+        }
+        
+        .reset-btn {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .reset-btn:hover {
+            background: #5a6268;
+        }
+        
+        .save-btn {
+            background: #28a745;
+            color: white;
+        }
+        
+        .save-btn:hover {
+            background: #218838;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-row-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row, .form-row-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Фильтры для отчетов */
+        .filters {
+            background: var(--gray-20);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+        }
+        
+        .filter-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: flex-end;
+        }
+        
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        /* Статистика */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--primary-color);
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 10px 0;
+        }
+        
+        .stat-label {
+            color: var(--gray-80);
+            font-size: 0.9rem;
+        }
+        
+        /* Подвал сайта */
+        footer {
+            background: white;
+            color: var(--gray-90);
+            padding: 30px 0 20px 0;
+            border-top: 1px solid var(--gray-40);
+            margin-top: auto;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .copyright {
+            font-size: 14px;
+            color: var(--gray-80);
+        }
+        
+        .logout-btn {
+            background: transparent;
+            color: var(--gray-80);
+            border: 1px solid var(--gray-40);
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .logout-btn:hover {
+            background: var(--gray-20);
+            color: var(--primary-color);
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .top-row {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .admin-info {
+                text-align: center;
+            }
+            
+            .nav-tabs {
+                flex-direction: column;
+            }
+            
+            .nav-tab {
+                text-align: center;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            table {
+                font-size: 14px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .filter-row {
+                flex-direction: column;
+            }
+            
+            .filter-group {
+                min-width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .login-section {
+                margin: 50px auto;
+                padding: 30px 20px;
+            }
+            
+            .totals-grid, .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container">
+            <div class="top-row">
+                <div class="logo-section">
+                    <a href="index.html" class="logo-banner-link">
+                        <img src="https://via.placeholder.com/250x60/1a3e6f/ffffff?text=VN-MASTERS+Админ" 
+                             alt="VN-MASTERS Админ-панель" class="logo-banner">
+                    </a>
+                </div>
+                <div class="admin-info">
+                    <div class="admin-name" id="adminName">Администратор</div>
+                    <div class="admin-role">Автосервис VN-MASTERS</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Секция входа -->
+            <section class="login-section" id="loginSection">
+                <div class="login-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h2 class="login-title">Доступ к админ-панели</h2>
+                <p class="login-subtitle">Введите пароль для входа в систему</p>
+                
+                <div class="alert alert-error" id="loginError">
+                    <i class="fas fa-exclamation-circle"></i> Неверный пароль
+                </div>
+                
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="password" class="form-label">Пароль</label>
+                        <input type="password" id="password" class="form-input" placeholder="Введите пароль" required>
+                    </div>
+                    <button type="submit" class="btn btn-block">Войти в систему</button>
+                </form>
+            </section>
+
+            <!-- Админ-панель -->
+            <section class="admin-panel" id="adminPanel">
+                <!-- Навигация -->
+                <div class="admin-nav">
+                    <div class="nav-tabs">
+                        <button class="nav-tab active" data-tab="calculator">Калькулятор дохода</button>
+                        <button class="nav-tab" data-tab="work-order">Заказ-наряд</button>
+                        <button class="nav-tab" data-tab="reports">Отчеты</button>
+                    </div>
+                </div>
+
+                <!-- Калькулятор дохода -->
+                <div class="tab-content active" id="calculator">
+                    <div class="section">
+                        <h2 class="section-title">Калькулятор дохода за сегодня</h2>
+                        
+                        <div class="form-group">
+                            <label for="calcDate" class="form-label">Дата расчета</label>
+                            <input type="date" id="calcDate" class="form-input" value="">
+                        </div>
+
+                        <h3 style="margin: 25px 0 15px 0; color: var(--primary-color);">
+                            <i class="fas fa-wrench"></i> Работы
+                        </h3>
+                        <button type="button" class="add-btn" onclick="addWorkRowCalculator()">
+                            <i class="fas fa-plus"></i> Добавить работу
+                        </button>
+                        <table id="workTableCalculator">
+                            <thead>
+                                <tr>
+                                    <th>Наименование</th>
+                                    <th>Доход (руб)</th>
+                                    <th>Расходы (руб)</th>
+                                    <th>Чистая прибыль</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Work rows will be added here -->
+                            </tbody>
+                        </table>
+                        
+                        <h3 style="margin: 25px 0 15px 0; color: var(--primary-color);">
+                            <i class="fas fa-box"></i> Материалы
+                        </h3>
+                        <button type="button" class="add-btn" onclick="addMaterialRowCalculator()">
+                            <i class="fas fa-plus"></i> Добавить материал
+                        </button>
+                        <table id="materialTableCalculator">
+                            <thead>
+                                <tr>
+                                    <th>Наименование</th>
+                                    <th>Себестоимость (руб)</th>
+                                    <th>Наценка (руб)</th>
+                                    <th>Чистая прибыль</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Material rows will be added here -->
+                            </tbody>
+                        </table>
+                        
+                        <div class="totals">
+                            <h3>ИТОГО за сегодня</h3>
+                            <div class="totals-grid">
+                                <div class="summary">
+                                    <p>Общий доход: <span id="totalIncome">0</span> ₽</p>
+                                </div>
+                                <div class="summary">
+                                    <p>Общие расходы: <span id="totalExpenses">0</span> ₽</p>
+                                </div>
+                                <div class="summary">
+                                    <p style="color: var(--primary-color);">Чистая прибыль: <span id="totalProfit">0</span> ₽</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 30px;">
+                            <button type="button" class="print-btn" onclick="printCalculator()">
+                                <i class="fas fa-print"></i> Печать отчета
+                            </button>
+                            <button type="button" class="reset-btn" onclick="resetCalculator()">
+                                <i class="fas fa-redo"></i> Сбросить
+                            </button>
+                            <button type="button" class="save-btn" onclick="saveCalculator()">
+                                <i class="fas fa-save"></i> Сохранить
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Заказ-наряд -->
+                <div class="tab-content" id="work-order">
+                    <div class="section">
+                        <h2 class="section-title">Заказ-наряд</h2>
+                        <p>Форма для оформления заказ-наряда на ремонт или обслуживание</p>
+                        
+                        <!-- Форма заказ-наряда -->
+                        <div class="alert alert-success" id="workOrderSuccess" style="display: none;">
+                            <i class="fas fa-check-circle"></i> Заказ-наряд сохранен успешно!
+                        </div>
+                        
+                        <form id="workOrderForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="orderNumber" class="form-label">Номер заказа</label>
+                                    <input type="text" id="orderNumber" class="form-input" value="ЗН-" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="orderDate" class="form-label">Дата заказа</label>
+                                    <input type="date" id="orderDate" class="form-input" value="">
+                                </div>
+                            </div>
+                            
+                            <h3 style="margin: 25px 0 15px 0; color: var(--primary-color);">
+                                <i class="fas fa-user"></i> Информация о клиенте
+                            </h3>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="clientName" class="form-label">ФИО клиента *</label>
+                                    <input type="text" id="clientName" class="form-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="clientPhone" class="form-label">Телефон *</label>
+                                    <input type="tel" id="clientPhone" class="form-input" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="clientCar" class="form-label">Автомобиль *</label>
+                                    <input type="text" id="clientCar" class="form-input" required placeholder="Марка, модель">
+                                </div>
+                                <div class="form-group">
+                                    <label for="carYear" class="form-label">Год выпуска</label>
+                                    <input type="number" id="carYear" class="form-input" min="1990" max="2025">
+                                </div>
+                                <div class="form-group">
+                                    <label for="carVin" class="form-label">VIN номер</label>
+                                    <input type="text" id="carVin" class="form-input">
+                                </div>
+                            </div>
+                            
+                            <h3 style="margin: 25px 0 15px 0; color: var(--primary-color);">
+                                <i class="fas fa-tools"></i> Работы и материалы
+                            </h3>
+                            
+                            <div class="form-group">
+                                <label for="workDescription" class="form-label">Описание работ</label>
+                                <textarea id="workDescription" class="form-input" rows="3" placeholder="Опишите выполненные работы..."></textarea>
+                            </div>
+                            
+                            <div class="form-row-3">
+                                <div class="form-group">
+                                    <label for="workHours" class="form-label">Нормо-часы</label>
+                                    <input type="number" id="workHours" class="form-input" value="0" min="0" step="0.5">
+                                </div>
+                                <div class="form-group">
+                                    <label for="hourlyRate" class="form-label">Ставка за час (руб)</label>
+                                    <input type="number" id="hourlyRate" class="form-input" value="1500" min="0">
+                                </div>
+                                <div class="form-group">
+                                    <label for="materialsCost" class="form-label">Стоимость материалов (руб)</label>
+                                    <input type="number" id="materialsCost" class="form-input" value="0" min="0">
+                                </div>
+                            </div>
+                            
+                            <div class="totals">
+                                <h3>Расчет стоимости</h3>
+                                <div class="totals-grid">
+                                    <div class="summary">
+                                        <p>Стоимость работ: <span id="workCost">0</span> ₽</p>
+                                    </div>
+                                    <div class="summary">
+                                        <p>Стоимость материалов: <span id="materialsTotal">0</span> ₽</p>
+                                    </div>
+                                    <div class="summary">
+                                        <p style="color: var(--primary-color);">Итого к оплате: <span id="orderTotal">0</span> ₽</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="orderNotes" class="form-label">Примечания</label>
+                                <textarea id="orderNotes" class="form-input" rows="2" placeholder="Дополнительные заметки..."></textarea>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="orderStatus" class="form-label">Статус заказа</label>
+                                    <select id="orderStatus" class="form-input">
+                                        <option value="new">Новый</option>
+                                        <option value="in_progress">В работе</option>
+                                        <option value="completed">Завершен</option>
+                                        <option value="paid">Оплачен</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="paymentStatus" class="form-label">Статус оплаты</label>
+                                    <select id="paymentStatus" class="form-input">
+                                        <option value="pending">Ожидает оплаты</option>
+                                        <option value="partial">Частично оплачен</option>
+                                        <option value="paid">Оплачен полностью</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div style="text-align: center; margin-top: 30px;">
+                                <button type="button" class="print-btn" onclick="printWorkOrder()">
+                                    <i class="fas fa-print"></i> Печать
+                                </button>
+                                <button type="button" class="reset-btn" onclick="resetWorkOrder()">
+                                    <i class="fas fa-redo"></i> Сбросить
+                                </button>
+                                <button type="button" class="save-btn" onclick="saveWorkOrder()">
+                                    <i class="fas fa-save"></i> Сохранить заказ
+                                </button>
+                            </div>
+                        </form>
+                        
+                        <h3 style="margin: 40px 0 15px 0; color: var(--primary-color);">
+                            <i class="fas fa-list"></i> Сохраненные заказ-наряды
+                        </h3>
+                        
+                        <div class="filters">
+                            <div class="filter-row">
+                                <div class="filter-group">
+                                    <label class="form-label">Статус</label>
+                                    <select id="filterStatus" class="form-input" onchange="filterWorkOrders()">
+                                        <option value="all">Все статусы</option>
+                                        <option value="new">Новые</option>
+                                        <option value="in_progress">В работе</option>
+                                        <option value="completed">Завершенные</option>
+                                    </select>
+                                </div>
+                                <div class="filter-group">
+                                    <label class="form-label">Период</label>
+                                    <select id="filterPeriod" class="form-input" onchange="filterWorkOrders()">
+                                        <option value="all">За все время</option>
+                                        <option value="today">Сегодня</option>
+                                        <option value="week">Эта неделя</option>
+                                        <option value="month">Этот месяц</option>
+                                    </select>
+                                </div>
+                                <div class="filter-group">
+                                    <button type="button" class="btn" onclick="exportWorkOrders()">
+                                        <i class="fas fa-download"></i> Экспорт
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <table id="workOrdersTable">
+                            <thead>
+                                <tr>
+                                    <th>№</th>
+                                    <th>Дата</th>
+                                    <th>Клиент</th>
+                                    <th>Автомобиль</th>
+                                    <th>Сумма</th>
+                                    <th>Статус</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Work orders will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Отчеты -->
+                <div class="tab-content" id="reports">
+                    <div class="section">
+                        <h2 class="section-title">Отчеты и аналитика</h2>
+                        <p>Статистика и аналитические отчеты по работе автосервиса</p>
+                        
+                        <div class="filters">
+                            <div class="filter-row">
+                                <div class="filter-group">
+                                    <label class="form-label">Тип отчета</label>
+                                    <select id="reportType" class="form-input" onchange="generateReport()">
+                                        <option value="daily">Ежедневный</option>
+                                        <option value="weekly">Еженедельный</option>
+                                        <option value="monthly">Ежемесячный</option>
+                                        <option value="custom">Произвольный период</option>
+                                    </select>
+                                </div>
+                                <div class="filter-group">
+                                    <label class="form-label" id="dateRangeLabel">Дата</label>
+                                    <input type="date" id="reportDate" class="form-input" value="" onchange="generateReport()">
+                                </div>
+                                <div class="filter-group">
+                                    <label class="form-label" style="visibility: hidden;">Действия</label>
+                                    <button type="button" class="btn btn-block" onclick="printReport()">
+                                        <i class="fas fa-print"></i> Печать отчета
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-label">Выручка</div>
+                                <div class="stat-value" id="revenueTotal">0 ₽</div>
+                                <div class="stat-label">за период</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-label">Заказы</div>
+                                <div class="stat-value" id="ordersCount">0</div>
+                                <div class="stat-label">завершено</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-label">Средний чек</div>
+                                <div class="stat-value" id="averageOrder">0 ₽</div>
+                                <div class="stat-label">за период</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-label">Маржинальность</div>
+                                <div class="stat-value" id="profitMargin">0%</div>
+                                <div class="stat-label">чистая прибыль</div>
+                            </div>
+                        </div>
+                        
+                        <h3 style="margin: 25px 0 15px 0; color: var(--primary-color);">
+                            <i class="fas fa-chart-bar"></i> Динамика по дням
+                        </h3>
+                        
+                        <div style="background: var(--gray-20); padding: 20px; border-radius: var(--border-radius); text-align: center;">
+                            <canvas id="revenueChart" style="max-height: 300px;"></canvas>
+                        </div>
+                        
+                        <h3 style="margin: 25px 0 15px 0; color: var(--primary-color);">
+                            <i class="fas fa-table"></i> Детализация заказов
+                        </h3>
+                        
+                        <table id="reportTable">
+                            <thead>
+                                <tr>
+                                    <th>Дата</th>
+                                    <th>№ Заказа</th>
+                                    <th>Клиент</th>
+                                    <th>Услуги</th>
+                                    <th>Материалы</th>
+                                    <th>Итого</th>
+                                    <th>Прибыль</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Report rows will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Подвал сайта -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="copyright">
+                    <p>&copy; 2025 Автосервис "VN-MASTERS". Админ-панель.</p>
+                </div>
+                <button class="logout-btn" id="logoutBtn" style="display: none;">
+                    <i class="fas fa-sign-out-alt"></i> Выйти
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Конфигурация
+        const ADMIN_PASSWORD = "admin123"; // Пароль можно поменять
+        const STORAGE_KEY = "vn_masters_admin_auth";
+        const WORK_ORDERS_KEY = "vn_masters_work_orders";
+        const CALCULATOR_DATA_KEY = "vn_masters_calculator_data";
+        
+        // Элементы
+        const loginSection = document.getElementById('loginSection');
+        const adminPanel = document.getElementById('adminPanel');
+        const loginForm = document.getElementById('loginForm');
+        const loginError = document.getElementById('loginError');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const navTabs = document.querySelectorAll('.nav-tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        const calcDate = document.getElementById('calcDate');
+        
+        // Переменные для калькулятора
+        let workCalcCounter = 1;
+        let materialCalcCounter = 1;
+        
+        // Переменные для заказ-нарядов
+        let workOrders = [];
+        let currentWorkOrderId = null;
+        
+        // Переменные для отчетов
+        let revenueChart = null;
+        
+        // Инициализация при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            // Установка текущей даты
+            const today = new Date().toISOString().split('T')[0];
+            calcDate.value = today;
+            document.getElementById('orderDate').value = today;
+            document.getElementById('reportDate').value = today;
+            
+            // Генерация номера заказа
+            generateOrderNumber();
+            
+            // Проверка авторизации
+            checkAuth();
+            
+            // Инициализация калькулятора
+            loadCalculatorData();
+            
+            // Загрузка заказ-нарядов
+            loadWorkOrders();
+            
+            // Инициализация Flatpickr для дат
+            flatpickr("#orderDate", {
+                dateFormat: "Y-m-d",
+                defaultDate: today
+            });
+            
+            flatpickr("#reportDate", {
+                dateFormat: "Y-m-d",
+                defaultDate: today
+            });
+            
+            // Инициализация расчетов
+            calculateTotals();
+            calculateWorkOrderTotal();
+            
+            // Генерация отчета
+            generateReport();
+        });
+        
+        // Проверка авторизации
+        function checkAuth() {
+            const savedAuth = localStorage.getItem(STORAGE_KEY);
+            if (savedAuth === 'true') {
+                showAdminPanel();
+            } else {
+                showLoginForm();
+            }
+        }
+        
+        // Показать форму входа
+        function showLoginForm() {
+            loginSection.style.display = 'block';
+            adminPanel.style.display = 'none';
+            logoutBtn.style.display = 'none';
+        }
+        
+        // Показать админ-панель
+        function showAdminPanel() {
+            loginSection.style.display = 'none';
+            adminPanel.style.display = 'block';
+            logoutBtn.style.display = 'block';
+        }
+        
+        // Обработчик формы входа
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const password = document.getElementById('password').value;
+            
+            if (password === ADMIN_PASSWORD) {
+                localStorage.setItem(STORAGE_KEY, 'true');
+                showAdminPanel();
+                loginError.style.display = 'none';
+            } else {
+                loginError.style.display = 'block';
+            }
+        });
+        
+        // Выход из системы
+        logoutBtn.addEventListener('click', function() {
+            localStorage.removeItem(STORAGE_KEY);
+            showLoginForm();
+            loginForm.reset();
+        });
+        
+        // Переключение вкладок
+        navTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+                
+                // Убираем активный класс у всех вкладок
+                navTabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(t => t.classList.remove('active'));
+                
+                // Добавляем активный класс текущей вкладке
+                this.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+                
+                // Обновляем данные при переключении на отчеты
+                if (tabId === 'reports') {
+                    generateReport();
+                }
+            });
+        });
+        
+        // =============================
+        // КАЛЬКУЛЯТОР ДОХОДА
+        // =============================
+        
+        function addWorkRowCalculator() {
+            const table = document.getElementById('workTableCalculator').getElementsByTagName('tbody')[0];
+            const row = table.insertRow();
+            
+            row.innerHTML = `
+                <td><input type="text" class="form-input" placeholder="Наименование работы" oninput="calculateTotals()"></td>
+                <td><input type="number" class="form-input income" value="0" min="0" oninput="calculateTotals()"></td>
+                <td><input type="number" class="form-input expenses" value="0" min="0" oninput="calculateTotals()"></td>
+                <td class="profit">0</td>
+                <td>
+                    <button type="button" class="remove-btn" onclick="removeWorkRowCalculator(this)">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+            `;
+            
+            workCalcCounter++;
+            calculateTotals();
+        }
+        
+        function addMaterialRowCalculator() {
+            const table = document.getElementById('materialTableCalculator').getElementsByTagName('tbody')[0];
+            const row = table.insertRow();
+            
+            row.innerHTML = `
+                <td><input type="text" class="form-input" placeholder="Наименование материала" oninput="calculateTotals()"></td>
+                <td><input type="number" class="form-input cost" value="0" min="0" oninput="calculateTotals()"></td>
+                <td><input type="number" class="form-input markup" value="0" min="0" oninput="calculateTotals()"></td>
+                <td class="profit">0</td>
+                <td>
+                    <button type="button" class="remove-btn" onclick="removeMaterialRowCalculator(this)">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+            `;
+            
+            materialCalcCounter++;
+            calculateTotals();
+        }
+        
+        function removeWorkRowCalculator(button) {
+            const row = button.closest('tr');
+            row.parentNode.removeChild(row);
+            calculateTotals();
+        }
+        
+        function removeMaterialRowCalculator(button) {
+            const row = button.closest('tr');
+            row.parentNode.removeChild(row);
+            calculateTotals();
+        }
+        
+        function calculateTotals() {
+            // Расчет по работам
+            let totalWorkIncome = 0;
+            let totalWorkExpenses = 0;
+            let totalWorkProfit = 0;
+            
+            const workRows = document.querySelectorAll('#workTableCalculator tbody tr');
+            workRows.forEach(row => {
+                const income = parseFloat(row.querySelector('.income').value) || 0;
+                const expenses = parseFloat(row.querySelector('.expenses').value) || 0;
+                const profit = income - expenses;
+                
+                row.querySelector('.profit').textContent = profit.toFixed(0);
+                totalWorkIncome += income;
+                totalWorkExpenses += expenses;
+                totalWorkProfit += profit;
+            });
+            
+            // Расчет по материалам
+            let totalMaterialProfit = 0;
+            let totalMaterialCost = 0;
+            
+            const materialRows = document.querySelectorAll('#materialTableCalculator tbody tr');
+            materialRows.forEach(row => {
+                const cost = parseFloat(row.querySelector('.cost').value) || 0;
+                const markup = parseFloat(row.querySelector('.markup').value) || 0;
+                const profit = markup;
+                
+                row.querySelector('.profit').textContent = profit.toFixed(0);
+                totalMaterialCost += cost;
+                totalMaterialProfit += profit;
+            });
+            
+            // Общие итоги
+            const totalIncome = totalWorkIncome + totalMaterialCost + totalMaterialProfit;
+            const totalExpenses = totalWorkExpenses + totalMaterialCost;
+            const totalProfit = totalWorkProfit + totalMaterialProfit;
+            
+            // Обновление итогов
+            document.getElementById('totalIncome').textContent = totalIncome.toFixed(0);
+            document.getElementById('totalExpenses').textContent = totalExpenses.toFixed(0);
+            document.getElementById('totalProfit').textContent = totalProfit.toFixed(0);
+        }
+        
+        function saveCalculator() {
+            const calculatorData = {
+                date: document.getElementById('calcDate').value,
+                works: [],
+                materials: []
+            };
+            
+            // Сохраняем работы
+            const workRows = document.querySelectorAll('#workTableCalculator tbody tr');
+            workRows.forEach(row => {
+                calculatorData.works.push({
+                    name: row.querySelector('input[type="text"]').value,
+                    income: parseFloat(row.querySelector('.income').value) || 0,
+                    expenses: parseFloat(row.querySelector('.expenses').value) || 0
+                });
+            });
+            
+            // Сохраняем материалы
+            const materialRows = document.querySelectorAll('#materialTableCalculator tbody tr');
+            materialRows.forEach(row => {
+                calculatorData.materials.push({
+                    name: row.querySelector('input[type="text"]').value,
+                    cost: parseFloat(row.querySelector('.cost').value) || 0,
+                    markup: parseFloat(row.querySelector('.markup').value) || 0
+                });
+            });
+            
+            // Сохраняем в localStorage
+            localStorage.setItem(CALCULATOR_DATA_KEY + '_' + calculatorData.date, JSON.stringify(calculatorData));
+            
+            // Показываем сообщение
+            const alert = document.createElement('div');
+            alert.className = 'alert alert-success';
+            alert.innerHTML = '<i class="fas fa-check-circle"></i> Данные калькулятора сохранены!';
+            document.querySelector('#calculator .section').insertBefore(alert, document.querySelector('#calculator .section-title'));
+            
+            setTimeout(() => alert.remove(), 3000);
+        }
+        
+        function loadCalculatorData() {
+            const today = new Date().toISOString().split('T')[0];
+            const savedData = localStorage.getItem(CALCULATOR_DATA_KEY + '_' + today);
+            
+            if (savedData) {
+                const data = JSON.parse(savedData);
+                
+                // Загружаем работы
+                data.works.forEach(work => {
+                    addWorkRowCalculator();
+                    const rows = document.querySelectorAll('#workTableCalculator tbody tr');
+                    const lastRow = rows[rows.length - 1];
+                    
+                    lastRow.querySelector('input[type="text"]').value = work.name;
+                    lastRow.querySelector('.income').value = work.income;
+                    lastRow.querySelector('.expenses').value = work.expenses;
+                });
+                
+                // Загружаем материалы
+                data.materials.forEach(material => {
+                    addMaterialRowCalculator();
+                    const rows = document.querySelectorAll('#materialTableCalculator tbody tr');
+                    const lastRow = rows[rows.length - 1];
+                    
+                    lastRow.querySelector('input[type="text"]').value = material.name;
+                    lastRow.querySelector('.cost').value = material.cost;
+                    lastRow.querySelector('.markup').value = material.markup;
+                });
+                
+                calculateTotals();
+            } else {
+                // Добавляем пустые строки по умолчанию
+                addWorkRowCalculator();
+                addMaterialRowCalculator();
+            }
+        }
+        
+        function printCalculator() {
+            const date = document.getElementById('calcDate').value;
+            const totalIncome = document.getElementById('totalIncome').textContent;
+            const totalExpenses = document.getElementById('totalExpenses').textContent;
+            const totalProfit = document.getElementById('totalProfit').textContent;
+            
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <html>
+                    <head>
+                        <title>Отчет о доходах - VN-MASTERS</title>
+                        <style>
+                            body { font-family: Arial, sans-serif; padding: 20px; }
+                            h1, h2 { color: #e60a0f; }
+                            table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+                            th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+                            .totals { background: #f8f9fa; padding: 15px; margin: 20px 0; }
+                        </style>
+                    </head>
+                    <body>
+                        <h1>Отчет о доходах</h1>
+                        <h2>Автосервис "VN-MASTERS"</h2>
+                        <p><strong>Дата:</strong> ${date}</p>
+                        
+                        <h3>Работы</h3>
+                        <table border="1">
+                            <tr>
+                                <th>Наименование</th>
+                                <th>Доход</th>
+                                <th>Расходы</th>
+                                <th>Прибыль</th>
+                            </tr>
+                            ${getWorkRowsForPrint()}
+                        </table>
+                        
+                        <h3>Материалы</h3>
+                        <table border="1">
+                            <tr>
+                                <th>Наименование</th>
+                                <th>Себестоимость</th>
+                                <th>Наценка</th>
+                                <th>Прибыль</th>
+                            </tr>
+                            ${getMaterialRowsForPrint()}
+                        </table>
+                        
+                        <div class="totals">
+                            <h3>ИТОГО</h3>
+                            <p><strong>Общий доход:</strong> ${totalIncome} руб</p>
+                            <p><strong>Общие расходы:</strong> ${totalExpenses} руб</p>
+                            <p><strong>Чистая прибыль:</strong> ${totalProfit} руб</p>
+                        </div>
+                        
+                        <p style="margin-top: 30px; font-size: 12px; color: #666;">
+                            Сгенерировано: ${new Date().toLocaleString('ru-RU')}
+                        </p>
+                    </body>
+                </html>
+            `);
+            printWindow.document.close();
+            printWindow.print();
+        }
+        
+        function getWorkRowsForPrint() {
+            let rows = '';
+            const workRows = document.querySelectorAll('#workTableCalculator tbody tr');
+            
+            workRows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                rows += `<tr>
+                    <td>${cells[0].querySelector('input').value || ''}</td>
+                    <td>${cells[1].querySelector('input').value || 0}</td>
+                    <td>${cells[2].querySelector('input').value || 0}</td>
+                    <td>${cells[3].textContent}</td>
+                </tr>`;
+            });
+            
+            return rows;
+        }
+        
+        function getMaterialRowsForPrint() {
+            let rows = '';
+            const materialRows = document.querySelectorAll('#materialTableCalculator tbody tr');
+            
+            materialRows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                rows += `<tr>
+                    <td>${cells[0].querySelector('input').value || ''}</td>
+                    <td>${cells[1].querySelector('input').value || 0}</td>
+                    <td>${cells[2].querySelector('input').value || 0}</td>
+                    <td>${cells[3].textContent}</td>
+                </tr>`;
+            });
+            
+            return rows;
+        }
+        
+        function resetCalculator() {
+            if (confirm('Вы уверены, что хотите сбросить все данные?')) {
+                document.querySelector('#workTableCalculator tbody').innerHTML = '';
+                document.querySelector('#materialTableCalculator tbody').innerHTML = '';
+                
+                workCalcCounter = 1;
+                materialCalcCounter = 1;
+                
+                addWorkRowCalculator();
+                addMaterialRowCalculator();
+                
+                calculateTotals();
+            }
+        }
+        
+        // =============================
+        // ЗАКАЗ-НАРЯДЫ
+        // =============================
+        
+        function generateOrderNumber() {
+            const date = new Date();
+            const year = date.getFullYear().toString().slice(-2);
+            const month = (date.getMonth() + 1).toString().padStart(2, '0');
+            const day = date.getDate().toString().padStart(2, '0');
+            
+            // Генерируем случайный номер
+            const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+            
+            document.getElementById('orderNumber').value = `ЗН-${year}${month}${day}-${random}`;
+        }
+        
+        function calculateWorkOrderTotal() {
+            const workHours = parseFloat(document.getElementById('workHours').value) || 0;
+            const hourlyRate = parseFloat(document.getElementById('hourlyRate').value) || 0;
+            const materialsCost = parseFloat(document.getElementById('materialsCost').value) || 0;
+            
+            const workCost = workHours * hourlyRate;
+            const total = workCost + materialsCost;
+            
+            document.getElementById('workCost').textContent = workCost.toFixed(0);
+            document.getElementById('materialsTotal').textContent = materialsCost.toFixed(0);
+            document.getElementById('orderTotal').textContent = total.toFixed(0);
+        }
+        
+        // Добавляем обработчики для расчета стоимости
+        document.getElementById('workHours').addEventListener('input', calculateWorkOrderTotal);
+        document.getElementById('hourlyRate').addEventListener('input', calculateWorkOrderTotal);
+        document.getElementById('materialsCost').addEventListener('input', calculateWorkOrderTotal);
+        
+        function saveWorkOrder() {
+            // Собираем данные формы
+            const workOrder = {
+                id: currentWorkOrderId || Date.now().toString(),
+                orderNumber: document.getElementById('orderNumber').value,
+                orderDate: document.getElementById('orderDate').value,
+                clientName: document.getElementById('clientName').value,
+                clientPhone: document.getElementById('clientPhone').value,
+                clientCar: document.getElementById('clientCar').value,
+                carYear: document.getElementById('carYear').value,
+                carVin: document.getElementById('carVin').value,
+                workDescription: document.getElementById('workDescription').value,
+                workHours: parseFloat(document.getElementById('workHours').value) || 0,
+                hourlyRate: parseFloat(document.getElementById('hourlyRate').value) || 0,
+                materialsCost: parseFloat(document.getElementById('materialsCost').value) || 0,
+                orderNotes: document.getElementById('orderNotes').value,
+                orderStatus: document.getElementById('orderStatus').value,
+                paymentStatus: document.getElementById('paymentStatus').value,
+                workCost: parseFloat(document.getElementById('workCost').textContent) || 0,
+                orderTotal: parseFloat(document.getElementById('orderTotal').textContent) || 0,
+                createdAt: new Date().toISOString()
+            };
+            
+            // Проверяем обязательные поля
+            if (!workOrder.clientName || !workOrder.clientPhone || !workOrder.clientCar) {
+                alert('Пожалуйста, заполните обязательные поля: ФИО клиента, телефон и автомобиль');
+                return;
+            }
+            
+            // Загружаем существующие заказы
+            loadWorkOrders();
+            
+            // Обновляем или добавляем заказ
+            const index = workOrders.findIndex(order => order.id === workOrder.id);
+            if (index !== -1) {
+                workOrders[index] = workOrder;
+            } else {
+                workOrders.push(workOrder);
+            }
+            
+            // Сохраняем в localStorage
+            localStorage.setItem(WORK_ORDERS_KEY, JSON.stringify(workOrders));
+            
+            // Показываем сообщение об успехе
+            document.getElementById('workOrderSuccess').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('workOrderSuccess').style.display = 'none';
+            }, 3000);
+            
+            // Сбрасываем форму
+            resetWorkOrder();
+            
+            // Обновляем таблицу
+            filterWorkOrders();
+        }
+        
+        function loadWorkOrders() {
+            const savedOrders = localStorage.getItem(WORK_ORDERS_KEY);
+            workOrders = savedOrders ? JSON.parse(savedOrders) : [];
+        }
+        
+        function filterWorkOrders() {
+            const statusFilter = document.getElementById('filterStatus').value;
+            const periodFilter = document.getElementById('filterPeriod').value;
+            
+            let filteredOrders = [...workOrders];
+            
+            // Фильтр по статусу
+            if (statusFilter !== 'all') {
+                filteredOrders = filteredOrders.filter(order => order.orderStatus === statusFilter);
+            }
+            
+            // Фильтр по периоду
+            const now = new Date();
+            const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            
+            if (periodFilter === 'today') {
+                filteredOrders = filteredOrders.filter(order => {
+                    const orderDate = new Date(order.orderDate);
+                    return orderDate >= today;
+                });
+            } else if (periodFilter === 'week') {
+                const weekAgo = new Date(today);
+                weekAgo.setDate(weekAgo.getDate() - 7);
+                filteredOrders = filteredOrders.filter(order => {
+                    const orderDate = new Date(order.orderDate);
+                    return orderDate >= weekAgo;
+                });
+            } else if (periodFilter === 'month') {
+                const monthAgo = new Date(today);
+                monthAgo.setMonth(monthAgo.getMonth() - 1);
+                filteredOrders = filteredOrders.filter(order => {
+                    const orderDate = new Date(order.orderDate);
+                    return orderDate >= monthAgo;
+                });
+            }
+            
+            // Сортируем по дате (новые сначала)
+            filteredOrders.sort((a, b) => new Date(b.orderDate) - new Date(a.orderDate));
+            
+            // Отображаем в таблице
+            displayWorkOrders(filteredOrders);
+        }
+        
+        function displayWorkOrders(orders) {
+            const tbody = document.querySelector('#workOrdersTable tbody');
+            tbody.innerHTML = '';
+            
+            orders.forEach(order => {
+                const statusText = {
+                    'new': 'Новый',
+                    'in_progress': 'В работе',
+                    'completed': 'Завершен',
+                    'paid': 'Оплачен'
+                }[order.orderStatus] || order.orderStatus;
+                
+                const statusColor = {
+                    'new': '#dc3545',
+                    'in_progress': '#ffc107',
+                    'completed': '#28a745',
+                    'paid': '#007bff'
+                }[order.orderStatus] || '#6c757d';
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${order.orderNumber}</td>
+                    <td>${order.orderDate}</td>
+                    <td>${order.clientName}</td>
+                    <td>${order.clientCar}</td>
+                    <td>${order.orderTotal.toFixed(0)} ₽</td>
+                    <td><span style="color: ${statusColor}; font-weight: 600;">${statusText}</span></td>
+                    <td>
+                        <button class="edit-btn" onclick="editWorkOrder('${order.id}')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="remove-btn" onclick="deleteWorkOrder('${order.id}')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+        
+        function editWorkOrder(id) {
+            const order = workOrders.find(order => order.id === id);
+            if (!order) return;
+            
+            // Заполняем форму данными заказа
+            currentWorkOrderId = order.id;
+            document.getElementById('orderNumber').value = order.orderNumber;
+            document.getElementById('orderDate').value = order.orderDate;
+            document.getElementById('clientName').value = order.clientName;
+            document.getElementById('clientPhone').value = order.clientPhone;
+            document.getElementById('clientCar').value = order.clientCar;
+            document.getElementById('carYear').value = order.carYear;
+            document.getElementById('carVin').value = order.carVin;
+            document.getElementById('workDescription').value = order.workDescription;
+            document.getElementById('workHours').value = order.workHours;
+            document.getElementById('hourlyRate').value = order.hourlyRate;
+            document.getElementById('materialsCost').value = order.materialsCost;
+            document.getElementById('orderNotes').value = order.orderNotes;
+            document.getElementById('orderStatus').value = order.orderStatus;
+            document.getElementById('paymentStatus').value = order.paymentStatus;
+            
+            // Пересчитываем и обновляем итоги
+            calculateWorkOrderTotal();
+            
+            // Прокручиваем к форме
+            document.querySelector('#work-order').scrollIntoView({ behavior: 'smooth' });
+            
+            // Показываем сообщение
+            const alert = document.createElement('div');
+            alert.className = 'alert alert-success';
+            alert.innerHTML = '<i class="fas fa-info-circle"></i> Редактирование заказа. Сохраните изменения.';
+            document.querySelector('#work-order .section').insertBefore(alert, document.querySelector('#work-order .section-title'));
+            setTimeout(() => alert.remove(), 3000);
+        }
+        
+        function deleteWorkOrder(id) {
+            if (confirm('Вы уверены, что хотите удалить этот заказ-наряд?')) {
+                workOrders = workOrders.filter(order => order.id !== id);
+                localStorage.setItem(WORK_ORDERS_KEY, JSON.stringify(workOrders));
+                filterWorkOrders();
+            }
+        }
+        
+        function resetWorkOrder() {
+            currentWorkOrderId = null;
+            generateOrderNumber();
+            document.getElementById('orderDate').value = new Date().toISOString().split('T')[0];
+            document.getElementById('clientName').value = '';
+            document.getElementById('clientPhone').value = '';
+            document.getElementById('clientCar').value = '';
+            document.getElementById('carYear').value = '';
+            document.getElementById('carVin').value = '';
+            document.getElementById('workDescription').value = '';
+            document.getElementById('workHours').value = 0;
+            document.getElementById('hourlyRate').value = 1500;
+            document.getElementById('materialsCost').value = 0;
+            document.getElementById('orderNotes').value = '';
+            document.getElementById('orderStatus').value = 'new';
+            document.getElementById('paymentStatus').value = 'pending';
+            
+            calculateWorkOrderTotal();
+        }
+        
+        function printWorkOrder() {
+            const workOrder = {
+                orderNumber: document.getElementById('orderNumber').value,
+                orderDate: document.getElementById('orderDate').value,
+                clientName: document.getElementById('clientName').value,
+                clientPhone: document.getElementById('clientPhone').value,
+                clientCar: document.getElementById('clientCar').value,
+                carYear: document.getElementById('carYear').value,
+                carVin: document.getElementById('carVin').value,
+                workDescription: document.getElementById('workDescription').value,
+                workHours: document.getElementById('workHours').value,
+                hourlyRate: document.getElementById('hourlyRate').value,
+                materialsCost: document.getElementById('materialsCost').value,
+                workCost: document.getElementById('workCost').textContent,
+                orderTotal: document.getElementById('orderTotal').textContent,
+                orderNotes: document.getElementById('orderNotes').value
+            };
+            
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <html>
+                    <head>
+                        <title>Заказ-наряд - VN-MASTERS</title>
+                        <style>
+                            body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: 0 auto; }
+                            h1, h2 { color: #e60a0f; }
+                            .header { text-align: center; margin-bottom: 30px; }
+                            .info-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+                            .info-table td { padding: 10px; border: 1px solid #ddd; }
+                            .totals { background: #f8f9fa; padding: 15px; margin: 20px 0; border: 2px solid #e60a0f; }
+                            .signature { margin-top: 50px; }
+                            .signature-row { display: flex; justify-content: space-between; margin-top: 20px; }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="header">
+                            <h1>Заказ-наряд №${workOrder.orderNumber}</h1>
+                            <h2>Автосервис "VN-MASTERS"</h2>
+                            <p>Дата: ${workOrder.orderDate}</p>
+                        </div>
+                        
+                        <h3>Информация о клиенте</h3>
+                        <table class="info-table">
+                            <tr>
+                                <td width="30%"><strong>ФИО клиента:</strong></td>
+                                <td>${workOrder.clientName}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Телефон:</strong></td>
+                                <td>${workOrder.clientPhone}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Автомобиль:</strong></td>
+                                <td>${workOrder.clientCar} ${workOrder.carYear ? `(${workOrder.carYear} г.)` : ''}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>VIN номер:</strong></td>
+                                <td>${workOrder.carVin || 'не указан'}</td>
+                            </tr>
+                        </table>
+                        
+                        <h3>Выполненные работы</h3>
+                        <p>${workOrder.workDescription || 'Не указано'}</p>
+                        
+                        <div class="totals">
+                            <h3>Расчет стоимости</h3>
+                            <table class="info-table">
+                                <tr>
+                                    <td><strong>Нормо-часы:</strong></td>
+                                    <td>${workOrder.workHours}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Ставка за час:</strong></td>
+                                    <td>${workOrder.hourlyRate} руб</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Стоимость работ:</strong></td>
+                                    <td>${workOrder.workCost} руб</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Стоимость материалов:</strong></td>
+                                    <td>${workOrder.materialsCost} руб</td>
+                                </tr>
+                                <tr style="background: #e9ecef;">
+                                    <td><strong>Итого к оплате:</strong></td>
+                                    <td><strong>${workOrder.orderTotal} руб</strong></td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        <h3>Примечания</h3>
+                        <p>${workOrder.orderNotes || 'Нет примечаний'}</p>
+                        
+                        <div class="signature">
+                            <div class="signature-row">
+                                <div>
+                                    <p>Исполнитель: _________________</p>
+                                    <p>Подпись: _____________________</p>
+                                </div>
+                                <div>
+                                    <p>Клиент: _____________________</p>
+                                    <p>Подпись: _____________________</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p style="margin-top: 30px; font-size: 12px; color: #666; text-align: center;">
+                            Сгенерировано: ${new Date().toLocaleString('ru-RU')}
+                        </p>
+                    </body>
+                </html>
+            `);
+            printWindow.document.close();
+            printWindow.print();
+        }
+        
+        function exportWorkOrders() {
+            // Создаем CSV данные
+            let csv = 'Номер заказа;Дата;Клиент;Автомобиль;Сумма;Статус\n';
+            
+            workOrders.forEach(order => {
+                const statusText = {
+                    'new': 'Новый',
+                    'in_progress': 'В работе',
+                    'completed': 'Завершен',
+                    'paid': 'Оплачен'
+                }[order.orderStatus] || order.orderStatus;
+                
+                csv += `${order.orderNumber};${order.orderDate};${order.clientName};${order.clientCar};${order.orderTotal};${statusText}\n`;
+            });
+            
+            // Создаем ссылку для скачивания
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.setAttribute('href', url);
+            link.setAttribute('download', `work_orders_${new Date().toISOString().split('T')[0]}.csv`);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        // =============================
+        // ОТЧЕТЫ
+        // =============================
+        
+        function generateReport() {
+            const reportType = document.getElementById('reportType').value;
+            const reportDate = new Date(document.getElementById('reportDate').value);
+            
+            // Загружаем данные
+            loadWorkOrders();
+            
+            // Фильтруем заказы по периоду
+            let filteredOrders = [...workOrders];
+            
+            if (reportType === 'daily') {
+                const startDate = new Date(reportDate);
+                const endDate = new Date(reportDate);
+                endDate.setDate(endDate.getDate() + 1);
+                
+                filteredOrders = filteredOrders.filter(order => {
+                    const orderDate = new Date(order.orderDate);
+                    return orderDate >= startDate && orderDate < endDate;
+                });
+            } else if (reportType === 'weekly') {
+                const startDate = new Date(reportDate);
+                startDate.setDate(startDate.getDate() - startDate.getDay());
+                const endDate = new Date(startDate);
+                endDate.setDate(endDate.getDate() + 7);
+                
+                filteredOrders = filteredOrders.filter(order => {
+                    const orderDate = new Date(order.orderDate);
+                    return orderDate >= startDate && orderDate < endDate;
+                });
+            } else if (reportType === 'monthly') {
+                const startDate = new Date(reportDate.getFullYear(), reportDate.getMonth(), 1);
+                const endDate = new Date(reportDate.getFullYear(), reportDate.getMonth() + 1, 1);
+                
+                filteredOrders = filteredOrders.filter(order => {
+                    const orderDate = new Date(order.orderDate);
+                    return orderDate >= startDate && orderDate < endDate;
+                });
+            }
+            
+            // Рассчитываем статистику
+            calculateStatistics(filteredOrders);
+            
+            // Отображаем детализацию
+            displayReportDetails(filteredOrders);
+            
+            // Строим график
+            buildRevenueChart(filteredOrders);
+        }
+        
+        function calculateStatistics(orders) {
+            const revenueTotal = orders.reduce((sum, order) => sum + order.orderTotal, 0);
+            const ordersCount = orders.length;
+            const averageOrder = ordersCount > 0 ? revenueTotal / ordersCount : 0;
+            
+            // Предполагаем, что прибыль составляет 40% от выручки (можно изменить)
+            const profitTotal = revenueTotal * 0.4;
+            const profitMargin = revenueTotal > 0 ? Math.round((profitTotal / revenueTotal) * 100) : 0;
+            
+            // Обновляем статистику
+            document.getElementById('revenueTotal').textContent = revenueTotal.toFixed(0) + ' ₽';
+            document.getElementById('ordersCount').textContent = ordersCount;
+            document.getElementById('averageOrder').textContent = averageOrder.toFixed(0) + ' ₽';
+            document.getElementById('profitMargin').textContent = profitMargin + '%';
+        }
+        
+        function displayReportDetails(orders) {
+            const tbody = document.querySelector('#reportTable tbody');
+            tbody.innerHTML = '';
+            
+            // Сортируем по дате (новые сначала)
+            orders.sort((a, b) => new Date(b.orderDate) - new Date(a.orderDate));
+            
+            orders.forEach(order => {
+                // Рассчитываем прибыль (40% от суммы заказа)
+                const profit = order.orderTotal * 0.4;
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${order.orderDate}</td>
+                    <td>${order.orderNumber}</td>
+                    <td>${order.clientName}</td>
+                    <td>${order.workCost.toFixed(0)} ₽</td>
+                    <td>${order.materialsCost.toFixed(0)} ₽</td>
+                    <td>${order.orderTotal.toFixed(0)} ₽</td>
+                    <td>${profit.toFixed(0)} ₽</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+        
+        function buildRevenueChart(orders) {
+            // Группируем заказы по дате
+            const ordersByDate = {};
+            
+            orders.forEach(order => {
+                const date = order.orderDate;
+                if (!ordersByDate[date]) {
+                    ordersByDate[date] = {
+                        revenue: 0,
+                        orders: 0
+                    };
+                }
+                ordersByDate[date].revenue += order.orderTotal;
+                ordersByDate[date].orders += 1;
+            });
+            
+            // Сортируем даты
+            const sortedDates = Object.keys(ordersByDate).sort();
+            
+            // Подготавливаем данные для графика
+            const labels = sortedDates;
+            const revenueData = sortedDates.map(date => ordersByDate[date].revenue);
+            const ordersData = sortedDates.map(date => ordersByDate[date].orders);
+            
+            // Получаем контекст canvas
+            const ctx = document.getElementById('revenueChart').getContext('2d');
+            
+            // Уничтожаем предыдущий график, если он существует
+            if (revenueChart) {
+                revenueChart.destroy();
+            }
+            
+            // Создаем новый график
+            revenueChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Выручка (руб)',
+                            data: revenueData,
+                            backgroundColor: 'rgba(230, 10, 15, 0.7)',
+                            borderColor: 'rgb(230, 10, 15)',
+                            borderWidth: 1,
+                            yAxisID: 'y'
+                        },
+                        {
+                            label: 'Количество заказов',
+                            data: ordersData,
+                            type: 'line',
+                            borderColor: 'rgb(0, 123, 255)',
+                            backgroundColor: 'rgba(0, 123, 255, 0.1)',
+                            borderWidth: 2,
+                            fill: false,
+                            yAxisID: 'y1'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Дата'
+                            }
+                        },
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: 'Выручка (руб)'
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return value.toLocaleString('ru-RU') + ' ₽';
+                                }
+                            }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: 'Количество заказов'
+                            },
+                            grid: {
+                                drawOnChartArea: false,
+                            },
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label === 'Выручка (руб)') {
+                                        label += ': ' + context.parsed.y.toLocaleString('ru-RU') + ' ₽';
+                                    } else {
+                                        label += ': ' + context.parsed.y;
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        function printReport() {
+            const reportType = document.getElementById('reportType').value;
+            const reportDate = document.getElementById('reportDate').value;
+            const revenueTotal = document.getElementById('revenueTotal').textContent;
+            const ordersCount = document.getElementById('ordersCount').textContent;
+            const averageOrder = document.getElementById('averageOrder').textContent;
+            const profitMargin = document.getElementById('profitMargin').textContent;
+            
+            const reportTitle = {
+                'daily': 'Ежедневный отчет',
+                'weekly': 'Еженедельный отчет',
+                'monthly': 'Ежемесячный отчет',
+                'custom': 'Отчет за произвольный период'
+            }[reportType] || 'Отчет';
+            
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <html>
+                    <head>
+                        <title>${reportTitle} - VN-MASTERS</title>
+                        <style>
+                            body { font-family: Arial, sans-serif; padding: 20px; }
+                            h1, h2 { color: #e60a0f; }
+                            .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 20px 0; }
+                            .stat-card { border: 1px solid #ddd; padding: 15px; text-align: center; }
+                            .stat-value { font-size: 24px; font-weight: bold; color: #e60a0f; }
+                            table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+                            th, td { padding: 8px 12px; border: 1px solid #ddd; }
+                        </style>
+                    </head>
+                    <body>
+                        <h1>${reportTitle}</h1>
+                        <h2>Автосервис "VN-MASTERS"</h2>
+                        <p><strong>Период:</strong> ${reportType === 'custom' ? 'Произвольный' : reportDate}</p>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-label">Выручка</div>
+                                <div class="stat-value">${revenueTotal}</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-label">Заказы</div>
+                                <div class="stat-value">${ordersCount}</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-label">Средний чек</div>
+                                <div class="stat-value">${averageOrder}</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-label">Маржинальность</div>
+                                <div class="stat-value">${profitMargin}</div>
+                            </div>
+                        </div>
+                        
+                        <h3>Детализация заказов</h3>
+                        <table border="1">
+                            <thead>
+                                <tr>
+                                    <th>Дата</th>
+                                    <th>№ Заказа</th>
+                                    <th>Клиент</th>
+                                    <th>Услуги</th>
+                                    <th>Материалы</th>
+                                    <th>Итого</th>
+                                    <th>Прибыль</th>
+                                </tr>
+                            </thead>
+                            <tbody id="reportTableBody">
+                            </tbody>
+                        </table>
+                        
+                        <p style="margin-top: 30px; font-size: 12px; color: #666;">
+                            Сгенерировано: ${new Date().toLocaleString('ru-RU')}
+                        </p>
+                        
+                        <script>
+                            // Копируем таблицу из текущего документа
+                            const reportTable = document.querySelector('#reportTable tbody');
+                            const printTable = document.getElementById('reportTableBody');
+                            if (reportTable && printTable) {
+                                printTable.innerHTML = reportTable.innerHTML;
+                            }
+                        <\/script>
+                    </body>
+                </html>
+            `);
+            printWindow.document.close();
+            printWindow.print();
+        }
+        
+        // Автоматическое обновление отчета при изменении даты
+        document.getElementById('reportType').addEventListener('change', function() {
+            const type = this.value;
+            const dateLabel = document.getElementById('dateRangeLabel');
+            
+            if (type === 'custom') {
+                dateLabel.textContent = 'С';
+            } else {
+                dateLabel.textContent = 'Дата';
+            }
+        });
+    </script>
+</body>
+</html>
