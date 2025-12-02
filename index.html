@@ -1330,6 +1330,25 @@
                 padding: 10px;
             }
         }
+        /* Простой баннер с фото */
+.simple-banner {
+    margin: 40px 0;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.simple-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.8s ease;
+}
+
+.simple-banner:hover img {
+    transform: scale(1.03);
+}
     </style>
 </head>
 <body>
@@ -1414,7 +1433,11 @@
                     <div class="counter-label">Гарантии на работы</div>
                 </div>
             </div>
-
+            <!-- Большой промо-баннер -->
+            <section class="simple-banner">
+                <img src="https://radika1.link/2025/12/02/17646733498bdcee41fd387087.png" 
+                     alt="Баннер автосервиса VN-MASTERS">
+            </section>
             <!-- Преимущества -->
             <section class="section">
                 <h2 class="section-title">Почему выбирают нас</h2>
@@ -1477,7 +1500,7 @@
                     
                     <div class="service-card">
                         <div class="service-icon">
-                            <i class="fas fa-circle"></i>
+<i class="fa-solid fa-truck-monster"></i>
                         </div>
                         <div class="service-content">
                             <span class="badge">Популярно</span>
@@ -1562,12 +1585,27 @@
                     
                     <div class="service-card">
                         <div class="service-icon">
-                            <i class="fas fa-tire"></i>
+                            <i class="fa-solid fa-taxi"></i>
                         </div>
                         <div class="service-content">
                             <span class="badge">Новинка</span>
                             <h3>Ремонт ходовой</h3>
                             <p>Диагностика и ремонт подвески, замена амортизаторов, сайлентблоков</p>
+                            <div class="action-buttons">
+                                <a href="forms.html" class="btn">Записаться</a>
+                                <span class="price-request">от 3 000 ₽</span>
+                            </div>
+                        </div>
+                    </div>
+
+                     <div class="service-card">
+                        <div class="service-icon">
+                  <i class="fa-solid fa-car-rear"></i>
+                        </div>
+                        <div class="service-content">
+                            <span class="badge">Новинка</span>
+                            <h3>Ремонт трансмиссии</h3>
+                            <p>Аппаратная замена масла в АКПП и МКПП</p>
                             <div class="action-buttons">
                                 <a href="forms.html" class="btn">Записаться</a>
                                 <span class="price-request">от 3 000 ₽</span>
@@ -1882,7 +1920,7 @@
                     
                     <div class="part-card">
                         <div class="part-icon">
-                            <i class="fas fa-tire-rugged"></i>
+<i class="fa-solid fa-car-burst"></i>
                         </div>
                         <div class="part-content">
                             <span class="availability in-stock">В наличии</span>
