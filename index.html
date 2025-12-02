@@ -268,55 +268,75 @@
             background: var(--primary-color);
         }
         
-        /* Промо-баннер */
-        .promo-banner {
-            margin: 40px 0;
-            position: relative;
-            overflow: hidden;
-            border-radius: var(--border-radius);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .promo-banner img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            transition: transform 0.8s ease;
-        }
-        
-        .promo-banner:hover img {
-            transform: scale(1.05);
-        }
-        
-        .promo-content {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right, rgba(230, 10, 15, 0.85), rgba(0, 0, 0, 0.7));
-            display: flex;
-            align-items: center;
-            padding: 0 40px;
-            color: white;
-        }
-        
-        .promo-text {
-            max-width: 600px;
-        }
-        
-        .promo-title {
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .promo-description {
-            font-size: 18px;
-            margin-bottom: 25px;
-            line-height: 1.6;
-        }
+/* Промо-баннер */
+.promo-banner {
+    margin: 40px 0;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    min-height: 300px; /* Изменили height на min-height */
+}
+
+.promo-banner img {
+    width: 100%;
+    height: 100%; /* Изменили фиксированную высоту на 100% */
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.8s ease;
+}
+
+.promo-banner:hover img {
+    transform: scale(1.05);
+}
+
+.promo-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(230, 10, 15, 0.85), rgba(0, 0, 0, 0.7));
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    color: white;
+    z-index: 1; /* Добавили z-index */
+}
+
+/* Адаптивность для промо-баннера */
+@media (max-width: 768px) {
+    .promo-banner {
+        min-height: 250px; /* Используем min-height вместо изменения высоты img */
+    }
+    
+    .promo-content {
+        padding: 0 20px;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .promo-title {
+        font-size: 24px;
+    }
+    
+    .promo-description {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .promo-banner {
+        min-height: 200px;
+    }
+    
+    .promo-title {
+        font-size: 20px;
+    }
+}
         
         /* Баннер-ссылка */
         .banner-link {
