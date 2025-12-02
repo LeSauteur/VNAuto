@@ -14,6 +14,7 @@
             --primary-color: rgb(230, 10, 15);
             --primary-dark: #c00a0f;
             --secondary-color: rgb(240, 130, 100);
+            --accent-color: rgb(0, 136, 204);
             
             /* Оттенки серого */
             --gray-90: rgb(110, 110, 110);
@@ -201,12 +202,21 @@
         }
         
         .btn.secondary {
-            background: #0088cc;
+            background: var(--accent-color);
         }
         
         .btn.secondary:hover {
             background: #0077b3;
             box-shadow: 0 4px 8px rgba(0, 136, 204, 0.3);
+        }
+        
+        .btn.accent {
+            background: linear-gradient(135deg, var(--secondary-color), #ff6b00);
+        }
+        
+        .btn.accent:hover {
+            background: linear-gradient(135deg, #ff6b00, #ff4500);
+            box-shadow: 0 4px 8px rgba(255, 107, 0, 0.3);
         }
         
         .social-links {
@@ -258,6 +268,56 @@
             background: var(--primary-color);
         }
         
+        /* Промо-баннер */
+        .promo-banner {
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .promo-banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        
+        .promo-banner:hover img {
+            transform: scale(1.05);
+        }
+        
+        .promo-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(230, 10, 15, 0.85), rgba(0, 0, 0, 0.7));
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            color: white;
+        }
+        
+        .promo-text {
+            max-width: 600px;
+        }
+        
+        .promo-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .promo-description {
+            font-size: 18px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
         /* Баннер-ссылка */
         .banner-link {
             display: block;
@@ -278,6 +338,63 @@
         .banner-link:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(230, 10, 15, 0.4);
+        }
+        
+        /* Баннер с акцией */
+        .sale-banner {
+            background: linear-gradient(135deg, #ff9800, #ff5722);
+            color: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(255, 87, 34, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sale-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            transform: rotate(30deg);
+            z-index: 0;
+        }
+        
+        .sale-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .sale-badge {
+            display: inline-block;
+            background: white;
+            color: #ff5722;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .sale-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .sale-text {
+            font-size: 18px;
+            margin-bottom: 25px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         /* Основной контент */
@@ -487,7 +604,7 @@
         
         .part-icon {
             height: 150px;
-            background: var(--gray-20);
+            background: linear-gradient(135deg, var(--gray-20), var(--gray-40));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -608,8 +725,9 @@
             text-align: center;
             padding: 25px 20px;
             border-radius: var(--border-radius);
-            background: var(--gray-20);
+            background: linear-gradient(135deg, var(--gray-20), white);
             transition: var(--transition);
+            border: 1px solid var(--gray-40);
         }
         
         .advantage-card:hover {
@@ -942,10 +1060,104 @@
             border-top: 1px solid var(--gray-40);
         }
         
+        /* Дополнительные стили для QR-кода и юридической информации */
+        .qr-section {
+            transition: var(--transition);
+            margin-top: 25px;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--gray-20), white);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--gray-40);
+            text-align: center;
+        }
+        
+        .qr-section:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .qr-section img {
+            transition: var(--transition);
+            border-radius: 8px;
+            border: 2px solid var(--primary-color);
+        }
+        
+        .qr-section img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .legal-info {
+            background: linear-gradient(135deg, var(--gray-20), white);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            border: 1px solid var(--gray-40);
+        }
+        
+        .legal-info p {
+            margin-bottom: 8px;
+        }
+        
+        /* Анимация при появлении элементов */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        /* Стили для счетчика */
+        .counter {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .counter-item {
+            text-align: center;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            background: white;
+            box-shadow: var(--shadow);
+            min-width: 150px;
+            transition: var(--transition);
+        }
+        
+        .counter-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .counter-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .counter-label {
+            color: var(--gray-80);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
         /* Адаптивность */
         @media (max-width: 992px) {
             .welcome-title {
                 font-size: 36px;
+            }
+            
+            .promo-title {
+                font-size: 28px;
+            }
+            
+            .promo-description {
+                font-size: 16px;
             }
             
             .footer-content {
@@ -1003,6 +1215,21 @@
                 max-height: 60px;
             }
             
+            .promo-banner img {
+                height: 250px;
+            }
+            
+            .promo-content {
+                padding: 0 20px;
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+            }
+            
+            .promo-title {
+                font-size: 24px;
+            }
+            
             .welcome-title {
                 font-size: 28px;
             }
@@ -1021,6 +1248,14 @@
                 max-width: 300px;
             }
             
+            .sale-title {
+                font-size: 24px;
+            }
+            
+            .sale-text {
+                font-size: 16px;
+            }
+            
             .services-grid, .parts-grid, .gallery-grid, .advantages-grid {
                 grid-template-columns: 1fr;
             }
@@ -1035,6 +1270,19 @@
             
             .reviews-header p {
                 font-size: 16px;
+            }
+            
+            .counter {
+                gap: 15px;
+            }
+            
+            .counter-item {
+                min-width: 120px;
+                padding: 15px;
+            }
+            
+            .counter-value {
+                font-size: 28px;
             }
         }
         
@@ -1051,6 +1299,14 @@
                 max-height: 50px;
             }
             
+            .promo-banner img {
+                height: 200px;
+            }
+            
+            .promo-title {
+                font-size: 20px;
+            }
+            
             .gallery-item {
                 height: 200px;
             }
@@ -1064,44 +1320,14 @@
                     transform: translateY(calc(-100% + 350px));
                 }
             }
-        }
-         /* Дополнительные стили для QR-кода и юридической информации */
-        .qr-section {
-            transition: var(--transition);
-        }
-        
-        .qr-section:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-        }
-        
-        .qr-section img {
-            transition: var(--transition);
-        }
-        
-        .qr-section img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-        
-        .legal-info {
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: var(--border-radius);
-        }
-        
-        .legal-info p {
-            margin-bottom: 8px;
-        }
-        
-        @media (max-width: 768px) {
-            .qr-section {
-                text-align: center;
-                margin: 20px auto;
-                max-width: 300px;
+            
+            .counter {
+                gap: 10px;
             }
             
-            .legal-info {
-                margin-top: 20px;
+            .counter-item {
+                min-width: calc(50% - 20px);
+                padding: 10px;
             }
         }
     </style>
@@ -1132,7 +1358,6 @@
                     </div>
                 </div>
             </div>
-   
             
             <!-- Навигация -->
             <div class="nav-container">
@@ -1153,18 +1378,42 @@
     <!-- Основной контент -->
     <main class="main-content">
         <div class="container">
-            <!-- Приветственный баннер -->
-            <section class="welcome-banner" id="home">
-                <div class="welcome-banner-content">
-                    <h1 class="welcome-title">Профессиональный автосервис в Ростове-на-Дону</h1>
-                    <p class="welcome-text">Качественный ремонт, обслуживание и оригинальные запчасти для автомобилей всех марок. Работаем с 2010 года.</p>
-                    <div class="quick-access">
-                        <a href="#services" class="btn quick-btn">Наши услуги</a>
-                        <a href="forms.html" class="btn quick-btn">Онлайн-запись</a>
-                        <a href="#contact" class="btn quick-btn">Контакты</a>
+            <!-- Промо-баннер -->
+            <section class="promo-banner" id="home">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                     alt="Профессиональный автосервис VN-MASTERS" loading="lazy">
+                <div class="promo-content">
+                    <div class="promo-text">
+                        <h1 class="promo-title">Профессиональный автосервис в Ростове-на-Дону</h1>
+                        <p class="promo-description">Качественный ремонт, обслуживание и оригинальные запчасти для автомобилей всех марок. Работаем с 2010 года.</p>
+                        <div class="quick-access">
+                            <a href="#services" class="btn quick-btn">Наши услуги</a>
+                            <a href="forms.html" class="btn quick-btn">Онлайн-запись</a>
+                            <a href="#contact" class="btn quick-btn">Контакты</a>
+                        </div>
                     </div>
                 </div>
             </section>
+            
+            <!-- Счетчик -->
+            <div class="counter">
+                <div class="counter-item fade-in">
+                    <div class="counter-value" data-count="15">15+</div>
+                    <div class="counter-label">Лет опыта</div>
+                </div>
+                <div class="counter-item fade-in">
+                    <div class="counter-value" data-count="10000">10000+</div>
+                    <div class="counter-label">Довольных клиентов</div>
+                </div>
+                <div class="counter-item fade-in">
+                    <div class="counter-value" data-count="365">365</div>
+                    <div class="counter-label">Дней в году</div>
+                </div>
+                <div class="counter-item fade-in">
+                    <div class="counter-value" data-count="1">1 год</div>
+                    <div class="counter-label">Гарантии на работы</div>
+                </div>
+            </div>
 
             <!-- Преимущества -->
             <section class="section">
@@ -1194,6 +1443,14 @@
                         </div>
                         <h3 class="advantage-title">Фиксированные цены</h3>
                         <p>Честное ценообразование без скрытых платежей и неожиданностей</p>
+                    </div>
+                    
+                    <div class="advantage-card">
+                        <div class="advantage-icon">
+                            <i class="fas fa-truck-fast"></i>
+                        </div>
+                        <h3 class="advantage-title">Быстрая доставка</h3>
+                        <p>Запчасти в наличии или доставим за 1-2 часа в пределах города</p>
                     </div>
                 </div>
             </section>
@@ -1288,6 +1545,45 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-car-battery"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3>Диагностика</h3>
+                            <p>Компьютерная диагностика всех систем автомобиля</p>
+                            <div class="action-buttons">
+                                <a href="forms.html" class="btn">Записаться</a>
+                                <span class="price-request">от 1 500 ₽</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-tire"></i>
+                        </div>
+                        <div class="service-content">
+                            <span class="badge">Новинка</span>
+                            <h3>Ремонт ходовой</h3>
+                            <p>Диагностика и ремонт подвески, замена амортизаторов, сайлентблоков</p>
+                            <div class="action-buttons">
+                                <a href="forms.html" class="btn">Записаться</a>
+                                <span class="price-request">от 3 000 ₽</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Баннер с акцией -->
+            <section class="sale-banner">
+                <div class="sale-content">
+                    <div class="sale-badge">АКЦИЯ</div>
+                    <h2 class="sale-title">Скидка 10% на первый визит!</h2>
+                    <p class="sale-text">При записи через сайт получите скидку 10% на все работы. Предложение действует для новых клиентов.</p>
+                    <a href="forms.html" class="btn accent">Записаться со скидкой</a>
                 </div>
             </section>
 
@@ -1543,6 +1839,85 @@
                             <a href="#contact" class="btn">Узнать наличие</a>
                         </div>
                     </div>
+                    
+                    <!-- ДОБАВЛЕННЫЕ 6 НОВЫХ КАРТОЧЕК ЗАПЧАСТЕЙ -->
+                    <div class="part-card">
+                        <div class="part-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="part-content">
+                            <span class="availability in-stock">В наличии</span>
+                            <h3>Свечи зажигания</h3>
+                            <p class="price-request">от 450 ₽</p>
+                            <p class="part-description">Качественные свечи для бензиновых и дизельных двигателей</p>
+                            <a href="#contact" class="btn">Узнать цену</a>
+                        </div>
+                    </div>
+                    
+                    <div class="part-card">
+                        <div class="part-icon">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <div class="part-content">
+                            <span class="availability on-order">Под заказ</span>
+                            <h3>Ремень ГРМ</h3>
+                            <p class="price-request">от 3 000 ₽</p>
+                            <p class="part-description">Ремни ГРМ и комплекты для различных моделей автомобилей</p>
+                            <a href="#contact" class="btn">Узнать наличие</a>
+                        </div>
+                    </div>
+                    
+                    <div class="part-card">
+                        <div class="part-icon">
+                            <i class="fas fa-compress-alt"></i>
+                        </div>
+                        <div class="part-content">
+                            <span class="availability on-order">Под заказ</span>
+                            <h3>Амортизаторы</h3>
+                            <p class="price-request">от 4 500 ₽</p>
+                            <p class="part-description">Передние и задние амортизаторы для всех типов подвесок</p>
+                            <a href="#contact" class="btn">Узнать наличие</a>
+                        </div>
+                    </div>
+                    
+                    <div class="part-card">
+                        <div class="part-icon">
+                            <i class="fas fa-tire-rugged"></i>
+                        </div>
+                        <div class="part-content">
+                            <span class="availability in-stock">В наличии</span>
+                            <h3>Шины</h3>
+                            <p class="price-request">от 3 500 ₽</p>
+                            <p class="part-description">Летние, зимние и всесезонные шины различных производителей</p>
+                            <a href="#contact" class="btn">Узнать цену</a>
+                        </div>
+                    </div>
+                    
+                    <div class="part-card">
+                        <div class="part-icon">
+                            <i class="fas fa-circle-notch"></i>
+                        </div>
+                        <div class="part-content">
+                            <span class="availability on-order">Под заказ</span>
+                            <h3>Диски</h3>
+                            <p class="price-request">от 6 000 ₽</p>
+                            <p class="part-description">Литые и штампованные диски различных размеров и дизайнов</p>
+                            <a href="#contact" class="btn">Узнать наличие</a>
+                        </div>
+                    </div>
+                    
+                    <div class="part-card">
+                        <div class="part-icon">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <div class="part-content">
+                            <span class="availability in-stock">В наличии</span>
+                            <h3>Щетки стеклоочистителя</h3>
+                            <p class="price-request">от 800 ₽</p>
+                            <p class="part-description">Качественные щетки стеклоочистителя для всех моделей авто</p>
+                            <a href="#contact" class="btn">Узнать цену</a>
+                        </div>
+                    </div>
                 </div>
                 
                 <div style="text-align: center; margin-top: 30px;">
@@ -1621,7 +1996,6 @@
     </main>
 
     <!-- Подвал сайта -->
-    <!-- Подвал сайта -->
     <footer>
         <div class="container">
             <!-- БАННЕР В ПОДВАЛЕ -->
@@ -1643,7 +2017,7 @@
                     <p>Профессиональный ремонт и обслуживание автомобилей всех марок. Мы работаем, чтобы вы могли ездить с удовольствием и уверенностью.</p>
                     
                     <!-- QR-код для оплаты СБП -->
-                    <div class="qr-section" style="margin-top: 25px; padding: 15px; background: var(--gray-20); border-radius: var(--border-radius);">
+                    <div class="qr-section">
                         <h4 class="footer-title" style="margin: 0 0 15px 0; font-size: 16px;">Оплата СБП (Тинькофф)</h4>
                         <a href="https://www.tinkoff.ru/rm/r_ZqxhxNoAMT.ksOhwLlNBY/FwoNr88418" target="_blank" style="display: block; text-align: center;">
                             <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.tinkoff.ru/rm/r_ZqxhxNoAMT.ksOhwLlNBY/FwoNr88418" 
@@ -1664,6 +2038,9 @@
                         <a href="#services">Ремонт двигателя</a>
                         <a href="#services">Ремонт КПП</a>
                         <a href="#services">Автоэлектрика</a>
+                        <a href="#services">Кузовные работы</a>
+                        <a href="#services">Диагностика</a>
+                        <a href="#services">Ремонт ходовой</a>
                     </div>
                 </div>
                 
@@ -1675,6 +2052,9 @@
                         <a href="#parts">Моторные масла</a>
                         <a href="#parts">Фильтры</a>
                         <a href="#parts">Тормозные колодки</a>
+                        <a href="#parts">Аккумуляторы</a>
+                        <a href="#parts">Свечи зажигания</a>
+                        <a href="#parts">Ремень ГРМ</a>
                     </div>
                 </div>
                 
@@ -1693,7 +2073,7 @@
                 
                 <div class="footer-col">
                     <h4 class="footer-title">Юридическая информация</h4>
-                    <div class="legal-info" style="color: var(--gray-80); font-size: 14px; line-height: 1.5;">
+                    <div class="legal-info">
                         <p><strong>Индивидуальный предприниматель</strong></p>
                         <p>Курзанцев Виталий Николаевич</p>
                         
@@ -1726,6 +2106,7 @@
             </div>
         </div>
     </footer>
+
     <script>
         // Плавная прокрутка для якорных ссылок
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1746,7 +2127,9 @@
             "Качественный ремонт автомобилей всех марок в Ростове-на-Дону",
             "Более 15 лет опыта в авторемонте",
             "Гарантия на все виды работ до 1 года",
-            "Оригинальные запчасти и расходные материалы"
+            "Оригинальные запчасти и расходные материалы",
+            "Быстрая доставка запчастей за 1-2 часа",
+            "Профессиональные мастера с профильным образованием"
         ];
         
         let currentQuote = 0;
@@ -1767,13 +2150,29 @@
         
         // Анимация при появлении в области видимости
         document.addEventListener('DOMContentLoaded', function() {
-            const animatedElements = document.querySelectorAll('.service-card, .part-card, .gallery-item, .advantage-card');
+            const animatedElements = document.querySelectorAll('.service-card, .part-card, .gallery-item, .advantage-card, .counter-item');
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.style.opacity = 1;
                         entry.target.style.transform = 'translateY(0)';
+                        
+                        // Анимация счетчика
+                        if (entry.target.classList.contains('counter-item')) {
+                            const valueElement = entry.target.querySelector('.counter-value');
+                            const target = parseInt(valueElement.getAttribute('data-count'));
+                            let current = 0;
+                            const increment = target / 50;
+                            const timer = setInterval(() => {
+                                current += increment;
+                                if (current >= target) {
+                                    current = target;
+                                    clearInterval(timer);
+                                }
+                                valueElement.textContent = Math.floor(current) + (valueElement.textContent.includes('+') ? '+' : '');
+                            }, 30);
+                        }
                     }
                 });
             }, {
