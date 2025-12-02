@@ -6,7 +6,47 @@
     <title>Автосервис "VN-MASTERS" - Профессиональный ремонт автомобилей в Ростове-на-Дону</title>
     <meta name="description" content="Профессиональный автосервис в Ростове-на-Дону. Качественный ремонт, ТО, запчасти. Работаем с 2010 года. Гарантия 1 год.">
     <meta name="keywords" content="автосервис, ремонт автомобилей, Ростов-на-Дону, техническое обслуживание, запчасти, шиномонтаж">
+    
+    <!-- Open Graph для соцсетей -->
+    <meta property="og:title" content="Автосервис VN-MASTERS - Профессиональный ремонт автомобилей">
+    <meta property="og:description" content="Качественный ремонт автомобилей всех марок в Ростове-на-Дону. Гарантия 1 год.">
+    <meta property="og:image" content="https://www.autodepo71.ru/upload/iblock/c3b/jx90ygitvh51sedc7oj7zyrivfl8iub3/2.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vn-masters.ru">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/car-service.png">
+    <link rel="apple-touch-icon" href="https://img.icons8.com/color/96/car-service.png">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Schema.org разметка -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AutoRepair",
+        "name": "VN-MASTERS",
+        "description": "Профессиональный автосервис в Ростове-на-Дону",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "ул. Стартовая 1/1",
+            "addressLocality": "Ростов-на-Дону",
+            "addressRegion": "Ростовская область",
+            "postalCode": "344064",
+            "addressCountry": "RU"
+        },
+        "telephone": "+78632600345",
+        "openingHours": "Mo-Su 08:00-20:00",
+        "priceRange": "₽₽",
+        "image": "https://www.autodepo71.ru/upload/iblock/c3b/jx90ygitvh51sedc7oj7zyrivfl8iub3/2.jpg",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "ratingCount": "87"
+        }
+    }
+    </script>
+    
     <style>
         /* :root переменные для цветов */
         :root {
@@ -55,6 +95,7 @@
         img {
             max-width: 100%;
             height: auto;
+            display: block;
         }
         
         /* Шапка сайта */
@@ -145,26 +186,6 @@
             }
         }
 
-        /* Баннер в шапке */
-        .header-banner {
-            text-align: center;
-            margin: 20px 0 0 0;
-        }
-
-        .banner-image {
-            max-width: 1200px;
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-        }
-        
-        .banner-image:hover {
-            transform: scale(1.01);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-        }
-
         .phone {
             font-size: 18px;
             font-weight: 700;
@@ -246,7 +267,6 @@
             color: var(--gray-90);
             transition: var(--transition);
             text-decoration: none;
-            position: relative;
         }
         
         .nav-item:hover {
@@ -268,76 +288,44 @@
             background: var(--primary-color);
         }
         
-/* Промо-баннер */
-.promo-banner {
-    margin: 40px 0;
-    position: relative;
-    overflow: hidden;
-    border-radius: var(--border-radius);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    min-height: 300px; /* Изменили height на min-height */
-}
+        /* Промо-баннер */
+        .promo-banner {
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            min-height: 300px;
+        }
 
-.promo-banner img {
-    width: 100%;
-    height: 100%; /* Изменили фиксированную высоту на 100% */
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: transform 0.8s ease;
-}
+        .promo-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform 0.8s ease;
+        }
 
-.promo-banner:hover img {
-    transform: scale(1.05);
-}
+        .promo-banner:hover img {
+            transform: scale(1.05);
+        }
 
-.promo-content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to right, rgba(230, 10, 15, 0.85), rgba(0, 0, 0, 0.7));
-    display: flex;
-    align-items: center;
-    padding: 0 40px;
-    color: white;
-    z-index: 1; /* Добавили z-index */
-}
+        .promo-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(230, 10, 15, 0.85), rgba(0, 0, 0, 0.7));
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            color: white;
+            z-index: 2;
+        }
 
-/* Адаптивность для промо-баннера */
-@media (max-width: 768px) {
-    .promo-banner {
-        min-height: 250px; /* Используем min-height вместо изменения высоты img */
-    }
-    
-    .promo-content {
-        padding: 0 20px;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-    }
-    
-    .promo-title {
-        font-size: 24px;
-    }
-    
-    .promo-description {
-        font-size: 16px;
-    }
-}
-
-@media (max-width: 480px) {
-    .promo-banner {
-        min-height: 200px;
-    }
-    
-    .promo-title {
-        font-size: 20px;
-    }
-}
-        
         /* Баннер-ссылка */
         .banner-link {
             display: block;
@@ -828,7 +816,7 @@
             z-index: 1;
         }
         
-        /* Секция с отзывами */
+        /* Секция с отзывами - ИСПРАВЛЕНА */
         .reviews-section {
             margin: 40px 0;
         }
@@ -872,7 +860,7 @@
         .reviews-track {
             display: flex;
             flex-direction: column;
-            animation: scrollReviews 180s linear infinite;
+            animation: scrollReviews 60s linear infinite;
         }
         
         .reviews-wrapper:hover .reviews-track {
@@ -926,6 +914,15 @@
             font-size: 1.2em;
         }
         
+        .review-response {
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 5px;
+            border-left: 3px solid var(--accent-color);
+            font-size: 0.9em;
+        }
+        
         .reviews-controls {
             text-align: center;
             padding: 10px 0;
@@ -971,7 +968,7 @@
             z-index: 2;
         }
         
-        /* Анимация прокрутки отзывов */
+        /* Анимация прокрутки отзывов - ИСПРАВЛЕНА */
         @keyframes scrollReviews {
             0% {
                 transform: translateY(0);
@@ -1166,22 +1163,30 @@
             letter-spacing: 1px;
         }
         
+        /* Простой баннер с фото */
+        .simple-banner {
+            margin: 40px 0;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .simple-banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.8s ease;
+        }
+
+        .simple-banner:hover img {
+            transform: scale(1.03);
+        }
+        
         /* Адаптивность */
         @media (max-width: 992px) {
             .welcome-title {
                 font-size: 36px;
-            }
-            
-            .promo-title {
-                font-size: 28px;
-            }
-            
-            .promo-description {
-                font-size: 16px;
-            }
-            
-            .footer-content {
-                flex-direction: column;
             }
             
             .reviews-wrapper {
@@ -1235,19 +1240,11 @@
                 max-height: 60px;
             }
             
-            .promo-banner img {
-                height: 250px;
-            }
-            
             .promo-content {
                 padding: 0 20px;
                 flex-direction: column;
                 justify-content: center;
                 text-align: center;
-            }
-            
-            .promo-title {
-                font-size: 24px;
             }
             
             .welcome-title {
@@ -1319,14 +1316,6 @@
                 max-height: 50px;
             }
             
-            .promo-banner img {
-                height: 200px;
-            }
-            
-            .promo-title {
-                font-size: 20px;
-            }
-            
             .gallery-item {
                 height: 200px;
             }
@@ -1350,25 +1339,6 @@
                 padding: 10px;
             }
         }
-        /* Простой баннер с фото */
-.simple-banner {
-    margin: 40px 0;
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    position: relative;
-}
-
-.simple-banner img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.8s ease;
-}
-
-.simple-banner:hover img {
-    transform: scale(1.03);
-}
     </style>
 </head>
 <body>
@@ -1379,7 +1349,7 @@
             <div class="top-row">
                 <!-- Кликабельный баннер-логотип -->
                 <div class="logo-section">
-                    <a href="index.html" class="logo-banner-link">
+                    <a href="index.html" class="logo-banner-link" aria-label="Главная страница VN-MASTERS">
                         <img src="https://s3.radikal.cloud/2025/11/27/unnamedcef392b5bea91fce.jpg" 
                              alt="VN-MASTERS Профессиональный автосервис" class="logo-banner">
                     </a>
@@ -1400,7 +1370,7 @@
             
             <!-- Навигация -->
             <div class="nav-container">
-                <nav class="main-nav">
+                <nav class="main-nav" aria-label="Основная навигация">
                     <a href="#home" class="nav-item active">Главная</a>
                     <a href="#services" class="nav-item">Услуги</a>
                     <a href="#parts" class="nav-item">Запчасти</a>
@@ -1408,7 +1378,7 @@
                     <a href="#reviews" class="nav-item">Отзывы</a>
                     <a href="#contact" class="nav-item">Контакты</a>
                     <a href="forms.html" class="nav-item">Онлайн-запись</a>
-                    <a href="admin.html" class="nav-item">Администраторам</a>
+                    <!-- <a href="admin.html" class="nav-item">Администраторам</a> -->
                 </nav>
             </div>
         </div>
@@ -1418,9 +1388,9 @@
     <main class="main-content">
         <div class="container">
             <!-- Промо-баннер -->
-           <section class="promo-banner" id="home">
+            <section class="promo-banner" id="home">
                 <img src="https://www.autodepo71.ru/upload/iblock/c3b/jx90ygitvh51sedc7oj7zyrivfl8iub3/2.jpg" 
-                     alt="Профессиональный автосервис VN-MASTERS" loading="lazy">
+                     alt="Профессиональный автосервис VN-MASTERS" loading="lazy" width="1200" height="300">
                 <div class="promo-content">
                     <div class="promo-text">
                         <h1 class="promo-title">Профессиональный автосервис в Ростове-на-Дону</h1>
@@ -1453,11 +1423,13 @@
                     <div class="counter-label">Гарантии на работы</div>
                 </div>
             </div>
+            
             <!-- Большой промо-баннер -->
             <section class="simple-banner">
                 <img src="https://radika1.link/2025/12/02/17646733498bdcee41fd387087.png" 
-                     alt="Баннер автосервиса VN-MASTERS">
+                     alt="Баннер автосервиса VN-MASTERS" loading="lazy">
             </section>
+            
             <!-- Преимущества -->
             <section class="section">
                 <h2 class="section-title">Почему выбирают нас</h2>
@@ -1520,7 +1492,7 @@
                     
                     <div class="service-card">
                         <div class="service-icon">
-<i class="fa-solid fa-truck-monster"></i>
+                            <i class="fa-solid fa-truck-monster"></i>
                         </div>
                         <div class="service-content">
                             <span class="badge">Популярно</span>
@@ -1618,9 +1590,9 @@
                         </div>
                     </div>
 
-                     <div class="service-card">
+                    <div class="service-card">
                         <div class="service-icon">
-                  <i class="fa-solid fa-car-rear"></i>
+                            <i class="fa-solid fa-car-rear"></i>
                         </div>
                         <div class="service-content">
                             <span class="badge">Новинка</span>
@@ -1653,7 +1625,7 @@
                 <div class="gallery-grid">
                     <div class="gallery-item">
                         <img src="https://cdn.euroinnova.edu.es/img/subidasEditor/img_20210310_204000-1615440336.webp" 
-                             alt="Современный автосервис с профессиональным оборудованием" loading="lazy">
+                             alt="Современный автосервис с профессиональным оборудованием" loading="lazy" width="400" height="250">
                         <div class="gallery-overlay">
                             <h3 class="gallery-title">Современное оборудование</h3>
                             <p>Диагностические стенды последнего поколения</p>
@@ -1662,7 +1634,7 @@
                     
                     <div class="gallery-item">
                         <img src="https://img.freepik.com/free-photo/muscular-car-service-worker-repairing-vehicle_146671-19605.jpg?semt=ais_hybrid&w=740&q=80" 
-                             alt="Профессиональные мастера за работой" loading="lazy">
+                             alt="Профессиональные мастера за работой" loading="lazy" width="400" height="250">
                         <div class="gallery-overlay">
                             <h3 class="gallery-title">Профессиональные мастера</h3>
                             <p>Опытные специалисты с профильным образованием</p>
@@ -1671,7 +1643,7 @@
                     
                     <div class="gallery-item">
                         <img src="https://img.freepik.com/free-photo/car-mechanic-polishing-car-before-painting_1303-28150.jpg?semt=ais_hybrid&w=740&q=80" 
-                             alt="Зона кузовного ремонта и покраски" loading="lazy">
+                             alt="Зона кузовного ремонта и покраски" loading="lazy" width="400" height="250">
                         <div class="gallery-overlay">
                             <h3 class="gallery-title">Кузовной цех</h3>
                             <p>Оборудование для качественного восстановления кузовов</p>
@@ -1689,7 +1661,7 @@
                     </div>
 
                     <div class="reviews-wrapper">
-                        <div class="reviews-track" id="track">
+                        <div class="reviews-track" id="reviewsTrack">
                             <!-- Отзывы -->
                             <div class="review-card">
                                 <div class="review-author">Наталья Шатунова</div>
@@ -1767,34 +1739,6 @@
                                     <strong>Ответ сервиса (12 февраля 2025):</strong> Ирина. Благодарим за высокую оценку 🤗 Были рады знакомству.
                                 </div>
                             </div>
-                            
-                            <!-- Дубликаты для бесконечной прокрутки -->
-                            <div class="review-card">
-                                <div class="review-author">Наталья Шатунова</div>
-                                <div class="review-date">13 февраля 2025</div>
-                                <div class="review-rating">★★★★★</div>
-                                <div class="review-text">Рекомендую сервис, все вопросы решают быстро, чётко, удобно.</div>
-                                <div class="review-response">
-                                    <strong>Ответ сервиса (6 марта 2025):</strong> Здравствуйте. Спасибо, Наталья, за приятный отзыв, будем рады вам всегда 🌸
-                                </div>
-                            </div>
-                            
-                            <div class="review-card">
-                                <div class="review-author">Глеб Поличов</div>
-                                <div class="review-date">12 февраля 2025</div>
-                                <div class="review-rating">★★★★★</div>
-                                <div class="review-text">Был на ТО, у ребят очень профессиональный подход. Сразу же можно купить все расходники и запчасти в целом. Подсказали что нужно менять пыльники ШРУС (показали что рваные), обязательно приеду в этот сервис. Советую</div>
-                                <div class="review-response">
-                                    <strong>Ответ сервиса (6 марта 2025):</strong> Глеб, здравствуйте. Большое спасибо за приятный отзыв 😉 Приходите к нам почаще!
-                                </div>
-                            </div>
-                            
-                            <div class="review-card">
-                                <div class="review-author">Olesya Kalugina</div>
-                                <div class="review-date">27 января 2025</div>
-                                <div class="review-rating">★★★★★</div>
-                                <div class="review-text">Хочу выразить огромную благодарность автосервису, в котором обслуживаюсь уже более 10 лет! Здесь работают настоящие профессионалы своего дела, которые всегда готовы прийти на помощь и решить любую проблему с моим автомобилем. Особенно хочу отметить высокий уровень сервиса и оперативность сотрудников. Они всегда вежливы, внимательны и готовы ответить на все вопросы. Благодаря их профессионализму и опыту, мой автомобиль всегда в надёжных руках.</div>
-                            </div>
                         </div>
                     </div>
                     
@@ -1806,9 +1750,9 @@
                         <p>Вы тоже можете оставить свой отзыв о работе нашего автосервиса!</p>
                         <div>
                             <a href="https://yandex.ru/maps/org/vn_masters/42750637752/reviews/?ll=39.690857%2C47.294329&z=17" 
-                               target="_blank" class="btn" style="margin: 5px;">Оставить отзыв на Яндекс Картах</a>
+                               target="_blank" rel="noopener noreferrer" class="btn" style="margin: 5px;">Оставить отзыв на Яндекс Картах</a>
                             <a href="https://2gis.ru/rostov-on-don/firm/70000001095146498?m=39.690894%2C47.294398%2F16" 
-                               target="_blank" class="btn secondary" style="margin: 5px;">Оставить отзыв на 2ГИС</a>
+                               target="_blank" rel="noopener noreferrer" class="btn secondary" style="margin: 5px;">Оставить отзыв на 2ГИС</a>
                         </div>
                     </div>
                 </div>
@@ -1940,7 +1884,7 @@
                     
                     <div class="part-card">
                         <div class="part-icon">
-<i class="fa-solid fa-car-burst"></i>
+                            <i class="fa-solid fa-car-burst"></i>
                         </div>
                         <div class="part-content">
                             <span class="availability in-stock">В наличии</span>
@@ -2029,11 +1973,11 @@
                             <h4>Мы на картах</h4>
                             <div class="social-links">
                                 <a href="https://yandex.ru/maps/org/vn_masters/42750637752/?ll=39.690857%2C47.294329&z=17" 
-                                   target="_blank" class="btn" style="padding: 8px 15px;">
+                                   target="_blank" rel="noopener noreferrer" class="btn" style="padding: 8px 15px;">
                                     <i class="fab fa-yandex"></i> Яндекс Карты
                                 </a>
                                 <a href="https://2gis.ru/rostov-on-don/firm/70000001095146498?m=39.690894%2C47.294398%2F16" 
-                                   target="_blank" class="btn secondary" style="padding: 8px 15px;">
+                                   target="_blank" rel="noopener noreferrer" class="btn secondary" style="padding: 8px 15px;">
                                     <i class="fas fa-map"></i> 2ГИС
                                 </a>
                             </div>
@@ -2065,7 +2009,7 @@
                 <div class="footer-col">
                     <div class="footer-logo">
                         <!-- Баннер в подвале (уменьшенный) -->
-                        <a href="index.html">
+                        <a href="index.html" aria-label="На главную страницу">
                             <img src="https://s3.radikal.cloud/2025/11/27/unnamedcef392b5bea91fce.jpg" 
                                  alt="VN-MASTERS Автосервис" 
                                  style="max-height: 60px; width: auto;"
@@ -2077,9 +2021,9 @@
                     <!-- QR-код для оплаты СБП -->
                     <div class="qr-section">
                         <h4 class="footer-title" style="margin: 0 0 15px 0; font-size: 16px;">Оплата СБП (Тинькофф)</h4>
-                        <a href="https://www.tinkoff.ru/rm/r_ZqxhxNoAMT.ksOhwLlNBY/FwoNr88418" target="_blank" style="display: block; text-align: center;">
+                        <a href="https://www.tinkoff.ru/rm/r_ZqxhxNoAMT.ksOhwLlNBY/FwoNr88418" target="_blank" rel="noopener noreferrer" style="display: block; text-align: center;">
                             <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.tinkoff.ru/rm/r_ZqxhxNoAMT.ksOhwLlNBY/FwoNr88418" 
-                                 alt="QR-код для оплаты через СБП" 
+                                 alt="QR-код для оплаты через СБП на номер +7 (863) 260-03-45" 
                                  style="width: 150px; height: 150px; border-radius: 8px; border: 2px solid var(--primary-color);">
                         </a>
                         <p style="font-size: 12px; text-align: center; margin-top: 10px; color: var(--gray-80);">
@@ -2124,8 +2068,8 @@
                         <a href="tel:+79185900199">+7 (918) 590-01-99</a>
                         <a href="#contact">ул. Стартовая 1/1, Ростов-на-Дону</a>
                         <a href="#contact">Ежедневно 8:00-20:00</a>
-                        <a href="https://yandex.ru/maps/org/vn_masters/42750637752/" target="_blank">Яндекс Карты</a>
-                        <a href="https://2gis.ru/rostov-on-don/firm/70000001095146498" target="_blank">2ГИС</a>
+                        <a href="https://yandex.ru/maps/org/vn_masters/42750637752/" target="_blank" rel="noopener noreferrer">Яндекс Карты</a>
+                        <a href="https://2gis.ru/rostov-on-don/firm/70000001095146498" target="_blank" rel="noopener noreferrer">2ГИС</a>
                     </div>
                 </div>
                 
@@ -2143,7 +2087,7 @@
                         <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--gray-40);">
                             <p><strong>Оплата услуг:</strong></p>
                             <a href="https://www.tinkoff.ru/rm/r_ZqxhxNoAMT.ksOhwLlNBY/FwoNr88418" 
-                               target="_blank" 
+                               target="_blank" rel="noopener noreferrer"
                                style="display: inline-block; background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); color: white; padding: 8px 15px; border-radius: var(--border-radius); text-decoration: none; margin-top: 8px; font-size: 13px;">
                                 <i class="fas fa-credit-card"></i> Оплатить онлайн (СБП)
                             </a>
@@ -2244,15 +2188,37 @@
                 observer.observe(el);
             });
             
-            // Настройка анимации отзывов
+            // Настройка анимации отзывов (улучшенная версия)
             const reviewsTrack = document.querySelector('.reviews-track');
             const reviews = document.querySelectorAll('.review-card');
             
             if (reviewsTrack && reviews.length > 0) {
+                // Клонируем отзывы для бесконечной прокрутки
+                const cloneReviews = () => {
+                    reviews.forEach(review => {
+                        const clone = review.cloneNode(true);
+                        reviewsTrack.appendChild(clone);
+                    });
+                };
+                
+                // Клонируем отзывы один раз
+                cloneReviews();
+                
+                // Оптимизируем анимацию
                 const containerHeight = window.innerWidth <= 768 ? 400 : 500;
-                const totalHeight = reviews.length * (reviews[0]?.offsetHeight + 25);
-                const duration = Math.max(120, (totalHeight / 50) * 2);
+                const totalHeight = reviews.length * (reviews[0]?.offsetHeight + 25) * 2; // Умножаем на 2, так как есть клоны
+                const duration = 60; // Уменьшили до 60 секунд
                 reviewsTrack.style.animationDuration = `${duration}s`;
+                
+                // Сброс анимации при достижении конца
+                reviewsTrack.addEventListener('animationiteration', () => {
+                    // Плавный переход в начало
+                    reviewsTrack.style.transition = 'none';
+                    reviewsTrack.style.transform = 'translateY(0)';
+                    setTimeout(() => {
+                        reviewsTrack.style.transition = '';
+                    }, 50);
+                });
             }
         });
 
@@ -2276,6 +2242,15 @@
                 if (link.getAttribute('href') === `#${current}`) {
                     link.classList.add('active');
                 }
+            });
+        });
+        
+        // Добавляем атрибут aria-current для доступности
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                navItems.forEach(i => i.removeAttribute('aria-current'));
+                this.setAttribute('aria-current', 'page');
             });
         });
     </script>
