@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Админ-панель - VN-MASTERS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <style>
         /* :root переменные для цветов */
         :root {
@@ -20,13 +19,6 @@
             --gray-60: rgb(200, 200, 200);
             --gray-40: rgb(218, 218, 218);
             --gray-20: rgb(236, 236, 236);
-            
-            /* Черные оттенки с прозрачностью */
-            --black-70: rgba(0, 0, 0, 0.7);
-            --black-50: rgba(0, 0, 0, 0.5);
-            --black-30: rgba(0, 0, 0, 0.3);
-            --black-20: rgba(0, 0, 0, 0.2);
-            --black-10: rgba(0, 0, 0, 0.1);
             
             /* Общие переменные */
             --container-width: 1200px;
@@ -84,6 +76,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 15px;
         }
         
         .logo-section {
@@ -117,6 +110,47 @@
         .admin-role {
             font-size: 14px;
             color: var(--gray-80);
+        }
+        
+        .nav-container {
+            border-top: 1px solid var(--gray-40);
+            padding-top: 15px;
+        }
+        
+        .main-nav {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .nav-item {
+            position: relative;
+            cursor: pointer;
+            padding: 8px 0;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--gray-90);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .nav-item:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-item.active {
+            color: var(--primary-color);
+        }
+        
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-color);
         }
         
         /* Основной контент */
@@ -453,12 +487,6 @@
             margin-bottom: 20px;
         }
         
-        @media (max-width: 768px) {
-            .form-row, .form-row-3 {
-                grid-template-columns: 1fr;
-            }
-        }
-        
         /* Фильтры для отчетов */
         .filters {
             background: var(--gray-20);
@@ -557,6 +585,16 @@
                 text-align: center;
             }
             
+            .main-nav {
+                gap: 15px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .nav-item {
+                width: 100%;
+            }
+            
             .nav-tabs {
                 flex-direction: column;
             }
@@ -584,6 +622,10 @@
             
             .filter-group {
                 min-width: 100%;
+            }
+            
+            .form-row, .form-row-3 {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -630,23 +672,6 @@
             width: 90%;
             max-height: 90vh;
             overflow-y: auto;
-        }
-
-        .stat-card {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary-color) 0%, transparent 100%);
-            opacity: 0.1;
-            z-index: 1;
         }
 
         .status-badge {
@@ -708,7 +733,7 @@
             <div class="top-row">
                 <div class="logo-section">
                     <a href="index.html" class="logo-banner-link">
-                        <img src="https://via.placeholder.com/250x60/1a3e6f/ffffff?text=VN-MASTERS+Админ" 
+                        <img src="https://s3.radikal.cloud/2025/11/27/unnamedcef392b5bea91fce.jpg" 
                              alt="VN-MASTERS Админ-панель" class="logo-banner">
                     </a>
                 </div>
@@ -716,6 +741,17 @@
                     <div class="admin-name" id="adminName">Администратор</div>
                     <div class="admin-role">Автосервис VN-MASTERS</div>
                 </div>
+            </div>
+            
+            <!-- Навигация -->
+            <div class="nav-container">
+                <nav class="main-nav" aria-label="Основная навигация">
+                    <a href="index.html" class="nav-item">Главная</a>
+                    <a href="#calculator" class="nav-item active" onclick="switchTab('calculator')">Калькулятор дохода</a>
+                    <a href="#work-order" class="nav-item" onclick="switchTab('work-order')">Заказ-наряд</a>
+                    <a href="#clients" class="nav-item" onclick="switchTab('clients')">Клиенты</a>
+                    <a href="#reports" class="nav-item" onclick="switchTab('reports')">Отчеты</a>
+                </nav>
             </div>
         </div>
     </header>
@@ -765,9 +801,6 @@
                             <input type="file" accept=".json" onchange="importData(event)" 
                                    style="display: none;">
                         </label>
-                        <button class="btn" onclick="showSetupGuide()" style="padding: 8px 15px;">
-                            <i class="fas fa-cog"></i> Настройка Google Sheets
-                        </button>
                     </div>
                 </div>
 
@@ -813,8 +846,8 @@
                                 <tr>
                                     <th>Наименование</th>
                                     <th>Себестоимость (руб)</th>
-                                    <th>Наценка (руб)</th>
-                                    <th>Чистая прибыль</th>
+                                    <th>Цена продажи (руб)</th>
+                                    <th>Прибыль</th>
                                     <th>Действия</th>
                                 </tr>
                             </thead>
@@ -1117,8 +1150,8 @@
                             <i class="fas fa-chart-bar"></i> Динамика по дням
                         </h3>
                         
-                        <div style="background: var(--gray-20); padding: 20px; border-radius: var(--border-radius); text-align: center;">
-                            <canvas id="revenueChart" style="max-height: 300px;"></canvas>
+                        <div style="background: var(--gray-20); padding: 20px; border-radius: var(--border-radius); text-align: center; min-height: 300px; display: flex; align-items: center; justify-content: center;">
+                            <p style="color: var(--gray-80);">График будет построен при наличии данных за выбранный период</p>
                         </div>
                         
                         <h3 style="margin: 25px 0 15px 0; color: var(--primary-color);">
@@ -1153,6 +1186,9 @@
             <div class="footer-content">
                 <div class="copyright">
                     <p>&copy; 2025 Автосервис "VN-MASTERS". Админ-панель.</p>
+                    <p style="margin-top: 8px; font-size: 13px; color: var(--gray-80);">
+                        ИП Курзанцев В.Н., ОГРНИП: 325619600120014, ИНН: 615103836896
+                    </p>
                 </div>
                 <button class="logout-btn" id="logoutBtn" style="display: none;">
                     <i class="fas fa-sign-out-alt"></i> Выйти
@@ -1161,21 +1197,12 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         // =============================
         // КОНФИГУРАЦИЯ И НАСТРОЙКИ
         // =============================
         const ADMIN_PASSWORD = "admin123";
         const STORAGE_KEY = "vn_masters_admin_auth";
-        
-        // URL вашего Google Apps Script (замените на свой после настройки)
-        let API_URL = localStorage.getItem('vn_masters_api_url') || "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
-        const API_PASS = "VNMASTERS2025";
-        
-        // Режим работы (true - Google Sheets, false - localStorage)
-        let useGoogleSheets = true;
         
         // Ключи для localStorage
         const WORK_ORDERS_KEY = "vn_masters_work_orders";
@@ -1200,15 +1227,11 @@
         let workCalcCounter = 1;
         let materialCalcCounter = 1;
         
-        // Переменные для отчетов
-        let revenueChart = null;
-        
         // Инициализация
         document.addEventListener('DOMContentLoaded', function() {
             initDates();
             checkAuth();
             initEventListeners();
-            checkConnection();
             loadAllData();
         });
         
@@ -1261,138 +1284,72 @@
             document.getElementById('workHours').addEventListener('input', calculateWorkOrderTotal);
             document.getElementById('hourlyRate').addEventListener('input', calculateWorkOrderTotal);
             document.getElementById('materialsCost').addEventListener('input', calculateWorkOrderTotal);
+            
+            // Навигация по якорным ссылкам
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    if (this.getAttribute('href') && this.getAttribute('href').startsWith('#')) {
+                        e.preventDefault();
+                        const tabId = this.getAttribute('href').substring(1);
+                        switchTab(tabId);
+                    }
+                });
+            });
+        }
+        
+        function switchTab(tabId) {
+            navTabs.forEach(t => t.classList.remove('active'));
+            tabContents.forEach(t => t.classList.remove('active'));
+            
+            const tabButton = document.querySelector(`.nav-tab[data-tab="${tabId}"]`);
+            const tabContent = document.getElementById(tabId);
+            
+            if (tabButton && tabContent) {
+                tabButton.classList.add('active');
+                tabContent.classList.add('active');
+                
+                // Обновляем активную ссылку в навигации
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                document.querySelector(`.nav-item[href="#${tabId}"]`)?.classList.add('active');
+                
+                if (tabId === 'clients') loadClients();
+                if (tabId === 'reports') generateReport();
+            }
         }
         
         // =============================
-        // API И ХРАНИЛИЩЕ
+        // ЛОКАЛЬНОЕ ХРАНИЛИЩЕ
         // =============================
         
-        async function checkConnection() {
-            if (!API_URL || API_URL.includes('YOUR_SCRIPT_ID')) {
-                useGoogleSheets = false;
-                showNotification('Настройте Google Sheets для облачного хранения', 'warning');
-                return false;
-            }
-            
-            try {
-                const response = await fetch(API_URL, {method: 'GET'});
-                useGoogleSheets = response.ok;
-                if (response.ok) {
-                    showNotification('Подключено к Google Sheets', 'success');
-                } else {
-                    throw new Error('No connection');
-                }
-            } catch (error) {
-                useGoogleSheets = false;
-                showNotification('Используется локальное хранилище', 'warning');
-            }
-            return useGoogleSheets;
+        function saveWorkOrders() {
+            localStorage.setItem(WORK_ORDERS_KEY, JSON.stringify(workOrders));
         }
         
-        async function saveData(sheetName, data, action = 'add', id = null) {
-            if (!useGoogleSheets) {
-                return saveToLocalStorage(sheetName, data, action, id);
-            }
-            
-            try {
-                const payload = {
-                    pass: API_PASS,
-                    sheet: sheetName,
-                    action: action,
-                    data: action === 'update' ? {id, data} : data
-                };
-                
-                const response = await fetch(API_URL, {
-                    method: 'POST',
-                    body: JSON.stringify(payload)
-                });
-                
-                const result = await response.json();
-                if (result.error) throw new Error(result.error);
-                
-                // Синхронизируем с localStorage для резерва
-                saveToLocalStorage(sheetName, data, action, id);
-                
-                return result;
-            } catch (error) {
-                console.error('Google Sheets error:', error);
-                return saveToLocalStorage(sheetName, data, action, id);
-            }
+        function loadWorkOrders() {
+            const saved = localStorage.getItem(WORK_ORDERS_KEY);
+            workOrders = saved ? JSON.parse(saved) : [];
+            return workOrders;
         }
         
-        async function loadData(sheetName, filters = null) {
-            if (!useGoogleSheets) {
-                return loadFromLocalStorage(sheetName, filters);
-            }
-            
-            try {
-                const payload = {
-                    pass: API_PASS,
-                    sheet: sheetName,
-                    action: filters ? 'get' : 'get_all',
-                    data: filters
-                };
-                
-                const response = await fetch(API_URL, {
-                    method: 'POST',
-                    body: JSON.stringify(payload)
-                });
-                
-                const result = await response.json();
-                if (result.error) throw new Error(result.error);
-                
-                // Сохраняем в localStorage для офлайн-работы
-                localStorage.setItem(`backup_${sheetName}`, JSON.stringify(result));
-                
-                return result;
-            } catch (error) {
-                console.error('Google Sheets error:', error);
-                return loadFromLocalStorage(sheetName, filters);
-            }
+        function saveClients() {
+            localStorage.setItem(CLIENTS_KEY, JSON.stringify(clients));
         }
         
-        function saveToLocalStorage(sheetName, data, action, id) {
-            const key = `vn_masters_${sheetName}`;
-            let items = JSON.parse(localStorage.getItem(key) || '[]');
-            
-            switch(action) {
-                case 'add':
-                    items.push({id: Date.now(), ...data});
-                    break;
-                case 'update':
-                    items = items.map(item => item.id === id ? {...item, ...data} : item);
-                    break;
-                case 'delete':
-                    items = items.filter(item => item.id !== id);
-                    break;
-            }
-            
-            localStorage.setItem(key, JSON.stringify(items));
-            return {success: true, id: data.id || Date.now()};
-        }
-        
-        function loadFromLocalStorage(sheetName, filters) {
-            const key = `vn_masters_${sheetName}`;
-            let items = JSON.parse(localStorage.getItem(key) || '[]');
-            
-            if (filters) {
-                items = items.filter(item => {
-                    return Object.keys(filters).every(key => 
-                        item[key] == filters[key]
-                    );
-                });
-            }
-            
-            return items;
+        function loadClients() {
+            const saved = localStorage.getItem(CLIENTS_KEY);
+            clients = saved ? JSON.parse(saved) : [];
+            return clients;
         }
         
         // =============================
         // ОСНОВНЫЕ ФУНКЦИИ
         // =============================
         
-        async function loadAllData() {
-            workOrders = await loadData('ЗаказНакаряды');
-            clients = await loadData('Клиенты');
+        function loadAllData() {
+            workOrders = loadWorkOrders();
+            clients = loadClients();
             
             // Загрузка заказ-нарядов для отображения
             filterWorkOrders();
@@ -1415,7 +1372,7 @@
             logoutBtn.style.display = 'block';
         }
         
-        async function handleLogin(e) {
+        function handleLogin(e) {
             e.preventDefault();
             const password = document.getElementById('password').value;
             
@@ -1423,10 +1380,11 @@
                 localStorage.setItem(STORAGE_KEY, 'true');
                 showAdminPanel();
                 loginError.style.display = 'none';
-                await checkConnection();
-                await loadAllData();
+                loadAllData();
+                showNotification('Добро пожаловать в админ-панель!', 'success');
             } else {
                 loginError.style.display = 'block';
+                showNotification('Неверный пароль', 'error');
             }
         }
         
@@ -1434,10 +1392,11 @@
             localStorage.removeItem(STORAGE_KEY);
             showLoginForm();
             loginForm.reset();
+            showNotification('Вы вышли из системы', 'info');
         }
         
         // =============================
-        // КАЛЬКУЛЯТОР ДОХОДА (старый функционал)
+        // КАЛЬКУЛЯТОР ДОХОДА
         // =============================
         
         function addWorkRowCalculator() {
@@ -1445,10 +1404,10 @@
             const row = table.insertRow();
             
             row.innerHTML = `
-                <td><input type="text" class="form-input" placeholder="Наименование работы" oninput="calculateTotals()"></td>
-                <td><input type="number" class="form-input income" value="0" min="0" oninput="calculateTotals()"></td>
-                <td><input type="number" class="form-input expenses" value="0" min="0" oninput="calculateTotals()"></td>
-                <td class="profit">0</td>
+                <td><input type="text" class="form-input work-name" placeholder="Наименование работы" oninput="calculateTotals()"></td>
+                <td><input type="number" class="form-input work-income" value="0" min="0" step="100" oninput="calculateTotals()"></td>
+                <td><input type="number" class="form-input work-expenses" value="0" min="0" step="100" oninput="calculateTotals()"></td>
+                <td class="work-profit">0</td>
                 <td>
                     <button type="button" class="remove-btn" onclick="removeWorkRowCalculator(this)">
                         <i class="fas fa-trash"></i>
@@ -1465,10 +1424,10 @@
             const row = table.insertRow();
             
             row.innerHTML = `
-                <td><input type="text" class="form-input" placeholder="Наименование материала" oninput="calculateTotals()"></td>
-                <td><input type="number" class="form-input cost" value="0" min="0" oninput="calculateTotals()"></td>
-                <td><input type="number" class="form-input markup" value="0" min="0" oninput="calculateTotals()"></td>
-                <td class="profit">0</td>
+                <td><input type="text" class="form-input material-name" placeholder="Наименование материала" oninput="calculateTotals()"></td>
+                <td><input type="number" class="form-input material-cost" value="0" min="0" step="100" oninput="calculateTotals()"></td>
+                <td><input type="number" class="form-input material-sell-price" value="0" min="0" step="100" oninput="calculateTotals()"></td>
+                <td class="material-profit">0</td>
                 <td>
                     <button type="button" class="remove-btn" onclick="removeMaterialRowCalculator(this)">
                         <i class="fas fa-trash"></i>
@@ -1500,11 +1459,11 @@
             
             const workRows = document.querySelectorAll('#workTableCalculator tbody tr');
             workRows.forEach(row => {
-                const income = parseFloat(row.querySelector('.income').value) || 0;
-                const expenses = parseFloat(row.querySelector('.expenses').value) || 0;
+                const income = parseFloat(row.querySelector('.work-income').value) || 0;
+                const expenses = parseFloat(row.querySelector('.work-expenses').value) || 0;
                 const profit = income - expenses;
                 
-                row.querySelector('.profit').textContent = profit.toFixed(0);
+                row.querySelector('.work-profit').textContent = profit.toFixed(0);
                 totalWorkIncome += income;
                 totalWorkExpenses += expenses;
                 totalWorkProfit += profit;
@@ -1513,20 +1472,22 @@
             // Расчет по материалам
             let totalMaterialProfit = 0;
             let totalMaterialCost = 0;
+            let totalMaterialRevenue = 0;
             
             const materialRows = document.querySelectorAll('#materialTableCalculator tbody tr');
             materialRows.forEach(row => {
-                const cost = parseFloat(row.querySelector('.cost').value) || 0;
-                const markup = parseFloat(row.querySelector('.markup').value) || 0;
-                const profit = markup;
+                const cost = parseFloat(row.querySelector('.material-cost').value) || 0;
+                const sellPrice = parseFloat(row.querySelector('.material-sell-price').value) || 0;
+                const profit = sellPrice - cost;
                 
-                row.querySelector('.profit').textContent = profit.toFixed(0);
+                row.querySelector('.material-profit').textContent = profit.toFixed(0);
                 totalMaterialCost += cost;
+                totalMaterialRevenue += sellPrice;
                 totalMaterialProfit += profit;
             });
             
             // Общие итоги
-            const totalIncome = totalWorkIncome + totalMaterialCost + totalMaterialProfit;
+            const totalIncome = totalWorkIncome + totalMaterialRevenue;
             const totalExpenses = totalWorkExpenses + totalMaterialCost;
             const totalProfit = totalWorkProfit + totalMaterialProfit;
             
@@ -1547,9 +1508,10 @@
             const workRows = document.querySelectorAll('#workTableCalculator tbody tr');
             workRows.forEach(row => {
                 calculatorData.works.push({
-                    name: row.querySelector('input[type="text"]').value,
-                    income: parseFloat(row.querySelector('.income').value) || 0,
-                    expenses: parseFloat(row.querySelector('.expenses').value) || 0
+                    name: row.querySelector('.work-name').value,
+                    income: parseFloat(row.querySelector('.work-income').value) || 0,
+                    expenses: parseFloat(row.querySelector('.work-expenses').value) || 0,
+                    profit: parseFloat(row.querySelector('.work-profit').textContent) || 0
                 });
             });
             
@@ -1557,9 +1519,10 @@
             const materialRows = document.querySelectorAll('#materialTableCalculator tbody tr');
             materialRows.forEach(row => {
                 calculatorData.materials.push({
-                    name: row.querySelector('input[type="text"]').value,
-                    cost: parseFloat(row.querySelector('.cost').value) || 0,
-                    markup: parseFloat(row.querySelector('.markup').value) || 0
+                    name: row.querySelector('.material-name').value,
+                    cost: parseFloat(row.querySelector('.material-cost').value) || 0,
+                    sellPrice: parseFloat(row.querySelector('.material-sell-price').value) || 0,
+                    profit: parseFloat(row.querySelector('.material-profit').textContent) || 0
                 });
             });
             
@@ -1582,9 +1545,9 @@
                     const rows = document.querySelectorAll('#workTableCalculator tbody tr');
                     const lastRow = rows[rows.length - 1];
                     
-                    lastRow.querySelector('input[type="text"]').value = work.name;
-                    lastRow.querySelector('.income').value = work.income;
-                    lastRow.querySelector('.expenses').value = work.expenses;
+                    lastRow.querySelector('.work-name').value = work.name;
+                    lastRow.querySelector('.work-income').value = work.income;
+                    lastRow.querySelector('.work-expenses').value = work.expenses;
                 });
                 
                 // Загружаем материалы
@@ -1593,9 +1556,9 @@
                     const rows = document.querySelectorAll('#materialTableCalculator tbody tr');
                     const lastRow = rows[rows.length - 1];
                     
-                    lastRow.querySelector('input[type="text"]').value = material.name;
-                    lastRow.querySelector('.cost').value = material.cost;
-                    lastRow.querySelector('.markup').value = material.markup;
+                    lastRow.querySelector('.material-name').value = material.name;
+                    lastRow.querySelector('.material-cost').value = material.cost;
+                    lastRow.querySelector('.material-sell-price').value = material.sellPrice;
                 });
                 
                 calculateTotals();
@@ -1646,7 +1609,7 @@
                             <tr>
                                 <th>Наименование</th>
                                 <th>Себестоимость</th>
-                                <th>Наценка</th>
+                                <th>Цена продажи</th>
                                 <th>Прибыль</th>
                             </tr>
                             ${getMaterialRowsForPrint()}
@@ -1674,12 +1637,16 @@
             const workRows = document.querySelectorAll('#workTableCalculator tbody tr');
             
             workRows.forEach(row => {
-                const cells = row.querySelectorAll('td');
+                const name = row.querySelector('.work-name').value || '';
+                const income = row.querySelector('.work-income').value || 0;
+                const expenses = row.querySelector('.work-expenses').value || 0;
+                const profit = row.querySelector('.work-profit').textContent || 0;
+                
                 rows += `<tr>
-                    <td>${cells[0].querySelector('input').value || ''}</td>
-                    <td>${cells[1].querySelector('input').value || 0}</td>
-                    <td>${cells[2].querySelector('input').value || 0}</td>
-                    <td>${cells[3].textContent}</td>
+                    <td>${name}</td>
+                    <td>${income}</td>
+                    <td>${expenses}</td>
+                    <td>${profit}</td>
                 </tr>`;
             });
             
@@ -1691,12 +1658,16 @@
             const materialRows = document.querySelectorAll('#materialTableCalculator tbody tr');
             
             materialRows.forEach(row => {
-                const cells = row.querySelectorAll('td');
+                const name = row.querySelector('.material-name').value || '';
+                const cost = row.querySelector('.material-cost').value || 0;
+                const sellPrice = row.querySelector('.material-sell-price').value || 0;
+                const profit = row.querySelector('.material-profit').textContent || 0;
+                
                 rows += `<tr>
-                    <td>${cells[0].querySelector('input').value || ''}</td>
-                    <td>${cells[1].querySelector('input').value || 0}</td>
-                    <td>${cells[2].querySelector('input').value || 0}</td>
-                    <td>${cells[3].textContent}</td>
+                    <td>${name}</td>
+                    <td>${cost}</td>
+                    <td>${sellPrice}</td>
+                    <td>${profit}</td>
                 </tr>`;
             });
             
@@ -1719,7 +1690,7 @@
         }
         
         // =============================
-        // ЗАКАЗ-НАРЯДЫ (интеграция с Google Sheets)
+        // ЗАКАЗ-НАРЯДЫ
         // =============================
         
         function generateOrderNumber() {
@@ -1728,10 +1699,14 @@
             const month = (date.getMonth() + 1).toString().padStart(2, '0');
             const day = date.getDate().toString().padStart(2, '0');
             
-            // Генерируем случайный номер
-            const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+            // Ищем максимальный номер за сегодня
+            const todayOrders = workOrders.filter(order => 
+                order.orderDate === date.toISOString().split('T')[0]
+            );
             
-            document.getElementById('orderNumber').value = `ЗН-${year}${month}${day}-${random}`;
+            const orderNumber = todayOrders.length + 1;
+            
+            document.getElementById('orderNumber').value = `ЗН-${year}${month}${day}-${orderNumber.toString().padStart(3, '0')}`;
         }
         
         function calculateWorkOrderTotal() {
@@ -1747,7 +1722,7 @@
             document.getElementById('orderTotal').textContent = total.toFixed(0);
         }
         
-        async function saveWorkOrder() {
+        function saveWorkOrder() {
             // Собираем данные формы
             const workOrder = {
                 id: currentWorkOrderId || Date.now().toString(),
@@ -1767,6 +1742,7 @@
                 paymentStatus: document.getElementById('paymentStatus').value,
                 workCost: parseFloat(document.getElementById('workCost').textContent) || 0,
                 orderTotal: parseFloat(document.getElementById('orderTotal').textContent) || 0,
+                profit: (parseFloat(document.getElementById('workCost').textContent) || 0) * 0.6 + (parseFloat(document.getElementById('materialsCost').value) || 0) * 0.3,
                 createdAt: new Date().toISOString()
             };
             
@@ -1780,14 +1756,15 @@
             const index = workOrders.findIndex(order => order.id === workOrder.id);
             if (index !== -1) {
                 workOrders[index] = workOrder;
-                await saveData('ЗаказНакаряды', workOrder, 'update', workOrder.id);
             } else {
                 workOrders.push(workOrder);
-                await saveData('ЗаказНакаряды', workOrder);
             }
             
+            // Сохраняем в localStorage
+            saveWorkOrders();
+            
             // Проверяем и обновляем клиента
-            await updateClientFromWorkOrder(workOrder);
+            updateClientFromWorkOrder(workOrder);
             
             // Показываем сообщение об успехе
             document.getElementById('workOrderSuccess').style.display = 'block';
@@ -1804,7 +1781,7 @@
             showNotification('Заказ-наряд сохранен успешно!', 'success');
         }
         
-        async function updateClientFromWorkOrder(workOrder) {
+        function updateClientFromWorkOrder(workOrder) {
             // Ищем клиента по телефону
             let client = clients.find(c => c.phone === workOrder.clientPhone);
             
@@ -1816,8 +1793,6 @@
                 if (!client.car && workOrder.clientCar) {
                     client.car = workOrder.clientCar;
                 }
-                
-                await saveData('Клиенты', client, 'update', client.id);
             } else {
                 // Создаем нового клиента
                 const newClient = {
@@ -1836,11 +1811,13 @@
                 };
                 
                 clients.push(newClient);
-                await saveData('Клиенты', newClient);
             }
+            
+            // Сохраняем клиентов
+            saveClients();
         }
         
-        async function filterWorkOrders() {
+        function filterWorkOrders() {
             const statusFilter = document.getElementById('filterStatus').value;
             const periodFilter = document.getElementById('filterPeriod').value;
             
@@ -1953,10 +1930,10 @@
             showNotification('Редактирование заказа. Сохраните изменения.', 'info');
         }
         
-        async function deleteWorkOrder(id) {
+        function deleteWorkOrder(id) {
             if (confirm('Вы уверены, что хотите удалить этот заказ-наряд?')) {
                 workOrders = workOrders.filter(order => order.id !== id);
-                await saveData('ЗаказНакаряды', null, 'delete', id);
+                saveWorkOrders();
                 filterWorkOrders();
                 showNotification('Заказ удален', 'success');
             }
@@ -2100,7 +2077,7 @@
         
         function exportWorkOrders() {
             // Создаем CSV данные
-            let csv = 'Номер заказа;Дата;Клиент;Автомобиль;Сумма;Статус\n';
+            let csv = 'Номер заказа;Дата;Клиент;Телефон;Автомобиль;Работы;Материалы;Итого;Статус\n';
             
             workOrders.forEach(order => {
                 const statusText = {
@@ -2110,7 +2087,7 @@
                     'paid': 'Оплачен'
                 }[order.orderStatus] || order.orderStatus;
                 
-                csv += `${order.orderNumber};${order.orderDate};${order.clientName};${order.clientCar};${order.orderTotal};${statusText}\n`;
+                csv += `${order.orderNumber};${order.orderDate};${order.clientName};${order.clientPhone};${order.clientCar};${order.workCost};${order.materialsCost};${order.orderTotal};${statusText}\n`;
             });
             
             // Создаем ссылку для скачивания
@@ -2129,9 +2106,14 @@
         // КАРТОТЕКА КЛИЕНТОВ
         // =============================
         
-        async function loadClients() {
-            clients = await loadData('Клиенты');
+        function loadClients() {
+            clients = loadClientsFromStorage();
             displayClients(clients);
+        }
+        
+        function loadClientsFromStorage() {
+            const saved = localStorage.getItem(CLIENTS_KEY);
+            return saved ? JSON.parse(saved) : [];
         }
         
         function displayClients(clientsList) {
@@ -2139,6 +2121,11 @@
             if (!container) return;
             
             container.innerHTML = '';
+            
+            if (clientsList.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: var(--gray-80);">Клиентов нет</p>';
+                return;
+            }
             
             clientsList.forEach(client => {
                 const clientCard = document.createElement('div');
@@ -2162,14 +2149,14 @@
                         <p style="margin: 2px 0;"><i class="fas fa-phone"></i> ${client.phone || 'Нет телефона'}</p>
                         <p style="margin: 2px 0;"><i class="fas fa-car"></i> ${client.car || 'Нет авто'}</p>
                         <p style="margin: 2px 0; font-size: 12px; color: #666;">
-                            Последний визит: ${client.lastVisit || 'Нет данных'}
+                            Последний визит: ${client.lastVisit || 'Нет данных'} | Всего визитов: ${client.visitsCount || 0}
                         </p>
                     </div>
                     <div>
                         <button class="edit-btn" onclick="editClient('${client.id}')">
                             <i class="fas fa-edit"></i>
                         </button>
-                        <button class="btn" onclick="showClientHistory('${client.id}')" style="padding: 5px 10px;">
+                        <button class="btn" onclick="showClientHistory('${client.id}')" style="padding: 5px 10px; margin-left: 5px;">
                             История
                         </button>
                     </div>
@@ -2266,7 +2253,7 @@
             document.body.appendChild(modal);
         }
         
-        async function saveNewClient() {
+        function saveNewClient() {
             const clientData = {
                 id: Date.now(),
                 name: document.getElementById('modalClientName').value,
@@ -2289,13 +2276,14 @@
                 return;
             }
             
-            await saveData('Клиенты', clientData);
+            clients.push(clientData);
+            saveClients();
             showNotification('Клиент сохранен', 'success');
             closeModal();
             loadClients();
         }
         
-        async function editClient(clientId) {
+        function editClient(clientId) {
             const client = clients.find(c => c.id == clientId);
             if (!client) return;
             
@@ -2319,7 +2307,7 @@
             }, 100);
         }
         
-        async function updateClient(clientId) {
+        function updateClient(clientId) {
             const clientData = {
                 name: document.getElementById('modalClientName').value,
                 phone: document.getElementById('modalClientPhone').value,
@@ -2331,10 +2319,14 @@
                 notes: document.getElementById('modalClientNotes').value
             };
             
-            await saveData('Клиенты', clientData, 'update', clientId);
-            showNotification('Клиент обновлен', 'success');
-            closeModal();
-            loadClients();
+            const index = clients.findIndex(c => c.id == clientId);
+            if (index !== -1) {
+                clients[index] = { ...clients[index], ...clientData };
+                saveClients();
+                showNotification('Клиент обновлен', 'success');
+                closeModal();
+                loadClients();
+            }
         }
         
         function showClientHistory(clientId) {
@@ -2350,30 +2342,34 @@
             historyContainer.innerHTML = `
                 <div style="background: var(--gray-20); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
                     <h4>${client.name} - История обслуживания</h4>
+                    <p>Телефон: ${client.phone}</p>
+                    <p>Автомобиль: ${client.car || 'Не указан'} ${client.carYear ? `(${client.carYear} г.)` : ''}</p>
                     <p>Всего визитов: ${clientOrders.length}</p>
-                    <p>Общая сумма: ${clientOrders.reduce((sum, order) => sum + (parseFloat(order.orderTotal) || 0), 0)} ₽</p>
+                    <p>Общая сумма: ${clientOrders.reduce((sum, order) => sum + (parseFloat(order.orderTotal) || 0), 0).toFixed(0)} ₽</p>
                 </div>
                 
-                <table style="width: 100%;">
+                ${clientOrders.length > 0 ? `
+                <table style="width: 100%; border-collapse: collapse;">
                     <thead>
-                        <tr>
-                            <th>Дата</th>
-                            <th>Заказ</th>
-                            <th>Работы</th>
-                            <th>Сумма</th>
+                        <tr style="background: var(--gray-20);">
+                            <th style="padding: 10px; text-align: left;">Дата</th>
+                            <th style="padding: 10px; text-align: left;">Заказ</th>
+                            <th style="padding: 10px; text-align: left;">Работы</th>
+                            <th style="padding: 10px; text-align: left;">Сумма</th>
                         </tr>
                     </thead>
                     <tbody>
                         ${clientOrders.map(order => `
-                            <tr>
-                                <td>${order.orderDate}</td>
-                                <td>${order.orderNumber}</td>
-                                <td>${order.workDescription?.substring(0, 50)}...</td>
-                                <td>${order.orderTotal} ₽</td>
+                            <tr style="border-bottom: 1px solid var(--gray-40);">
+                                <td style="padding: 10px;">${order.orderDate}</td>
+                                <td style="padding: 10px;">${order.orderNumber}</td>
+                                <td style="padding: 10px;">${order.workDescription?.substring(0, 50) || 'Нет описания'}...</td>
+                                <td style="padding: 10px;">${order.orderTotal} ₽</td>
                             </tr>
                         `).join('')}
                     </tbody>
                 </table>
+                ` : '<p style="text-align: center; color: var(--gray-80);">История заказов отсутствует</p>'}
             `;
         }
         
@@ -2427,18 +2423,20 @@
             
             // Отображаем детализацию
             displayReportDetails(filteredOrders);
-            
-            // Строим график
-            buildRevenueChart(filteredOrders);
         }
         
         function calculateStatistics(orders) {
-            const revenueTotal = orders.reduce((sum, order) => sum + order.orderTotal, 0);
+            const revenueTotal = orders.reduce((sum, order) => sum + (parseFloat(order.orderTotal) || 0), 0);
             const ordersCount = orders.length;
             const averageOrder = ordersCount > 0 ? revenueTotal / ordersCount : 0;
             
-            // Предполагаем, что прибыль составляет 40% от выручки (можно изменить)
-            const profitTotal = revenueTotal * 0.4;
+            // Рассчитываем прибыль: 60% от стоимости работ + 30% от стоимости материалов
+            const profitTotal = orders.reduce((sum, order) => {
+                const workProfit = (parseFloat(order.workCost) || 0) * 0.6;
+                const materialsProfit = (parseFloat(order.materialsCost) || 0) * 0.3;
+                return sum + workProfit + materialsProfit;
+            }, 0);
+            
             const profitMargin = revenueTotal > 0 ? Math.round((profitTotal / revenueTotal) * 100) : 0;
             
             // Обновляем статистику
@@ -2456,138 +2454,33 @@
             orders.sort((a, b) => new Date(b.orderDate) - new Date(a.orderDate));
             
             orders.forEach(order => {
-                // Рассчитываем прибыль (40% от суммы заказа)
-                const profit = order.orderTotal * 0.4;
+                // Рассчитываем прибыль: 60% от стоимости работ + 30% от стоимости материалов
+                const workProfit = (parseFloat(order.workCost) || 0) * 0.6;
+                const materialsProfit = (parseFloat(order.materialsCost) || 0) * 0.3;
+                const profit = workProfit + materialsProfit;
                 
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${order.orderDate}</td>
                     <td>${order.orderNumber}</td>
                     <td>${order.clientName}</td>
-                    <td>${order.workCost.toFixed(0)} ₽</td>
-                    <td>${order.materialsCost.toFixed(0)} ₽</td>
-                    <td>${order.orderTotal.toFixed(0)} ₽</td>
+                    <td>${parseFloat(order.workCost || 0).toFixed(0)} ₽</td>
+                    <td>${parseFloat(order.materialsCost || 0).toFixed(0)} ₽</td>
+                    <td>${parseFloat(order.orderTotal || 0).toFixed(0)} ₽</td>
                     <td>${profit.toFixed(0)} ₽</td>
                 `;
                 tbody.appendChild(row);
             });
-        }
-        
-        function buildRevenueChart(orders) {
-            // Группируем заказы по дате
-            const ordersByDate = {};
             
-            orders.forEach(order => {
-                const date = order.orderDate;
-                if (!ordersByDate[date]) {
-                    ordersByDate[date] = {
-                        revenue: 0,
-                        orders: 0
-                    };
-                }
-                ordersByDate[date].revenue += order.orderTotal;
-                ordersByDate[date].orders += 1;
-            });
-            
-            // Сортируем даты
-            const sortedDates = Object.keys(ordersByDate).sort();
-            
-            // Подготавливаем данные для графика
-            const labels = sortedDates;
-            const revenueData = sortedDates.map(date => ordersByDate[date].revenue);
-            const ordersData = sortedDates.map(date => ordersByDate[date].orders);
-            
-            // Получаем контекст canvas
-            const ctx = document.getElementById('revenueChart').getContext('2d');
-            
-            // Уничтожаем предыдущий график, если он существует
-            if (revenueChart) {
-                revenueChart.destroy();
+            if (orders.length === 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td colspan="7" style="text-align: center; color: var(--gray-80);">
+                        Нет данных за выбранный период
+                    </td>
+                `;
+                tbody.appendChild(row);
             }
-            
-            // Создаем новый график
-            revenueChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: labels,
-                    datasets: [
-                        {
-                            label: 'Выручка (руб)',
-                            data: revenueData,
-                            backgroundColor: 'rgba(230, 10, 15, 0.7)',
-                            borderColor: 'rgb(230, 10, 15)',
-                            borderWidth: 1,
-                            yAxisID: 'y'
-                        },
-                        {
-                            label: 'Количество заказов',
-                            data: ordersData,
-                            type: 'line',
-                            borderColor: 'rgb(0, 123, 255)',
-                            backgroundColor: 'rgba(0, 123, 255, 0.1)',
-                            borderWidth: 2,
-                            fill: false,
-                            yAxisID: 'y1'
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    interaction: {
-                        mode: 'index',
-                        intersect: false,
-                    },
-                    scales: {
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Дата'
-                            }
-                        },
-                        y: {
-                            type: 'linear',
-                            display: true,
-                            position: 'left',
-                            title: {
-                                display: true,
-                                text: 'Выручка (руб)'
-                            },
-                            ticks: {
-                                callback: function(value) {
-                                    return value.toLocaleString('ru-RU') + ' ₽';
-                                }
-                            }
-                        },
-                        y1: {
-                            type: 'linear',
-                            display: true,
-                            position: 'right',
-                            title: {
-                                display: true,
-                                text: 'Количество заказов'
-                            },
-                            grid: {
-                                drawOnChartArea: false,
-                            },
-                        }
-                    },
-                    plugins: {
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    let label = context.dataset.label || '';
-                                    if (label === 'Выручка (руб)') {
-                                        label += ': ' + context.parsed.y.toLocaleString('ru-RU') + ' ₽';
-                                    } else {
-                                        label += ': ' + context.parsed.y;
-                                    }
-                                    return label;
-                                }
-                            }
-                        }
-                    }
-                }
-            });
         }
         
         function printReport() {
@@ -2624,6 +2517,7 @@
                         <h1>${reportTitle}</h1>
                         <h2>Автосервис "VN-MASTERS"</h2>
                         <p><strong>Период:</strong> ${reportType === 'custom' ? 'Произвольный' : reportDate}</p>
+                        <p><strong>Дата формирования:</strong> ${new Date().toLocaleDateString('ru-RU')}</p>
                         
                         <div class="stats-grid">
                             <div class="stat-card">
@@ -2657,22 +2551,14 @@
                                     <th>Прибыль</th>
                                 </tr>
                             </thead>
-                            <tbody id="reportTableBody">
+                            <tbody>
+                                ${document.querySelector('#reportTable tbody').innerHTML}
                             </tbody>
                         </table>
                         
                         <p style="margin-top: 30px; font-size: 12px; color: #666;">
                             Сгенерировано: ${new Date().toLocaleString('ru-RU')}
                         </p>
-                        
-                        <script>
-                            // Копируем таблицу из текущего документа
-                            const reportTable = document.querySelector('#reportTable tbody');
-                            const printTable = document.getElementById('reportTableBody');
-                            if (reportTable && printTable) {
-                                printTable.innerHTML = reportTable.innerHTML;
-                            }
-                        <\/script>
                     </body>
                 </html>
             `);
@@ -2714,7 +2600,7 @@
         }
         
         // Экспорт данных
-        async function exportData() {
+        function exportData() {
             const allData = {
                 workOrders,
                 clients,
@@ -2735,12 +2621,12 @@
         }
         
         // Импорт данных
-        async function importData(event) {
+        function importData(event) {
             const file = event.target.files[0];
             if (!file) return;
             
             const reader = new FileReader();
-            reader.onload = async function(e) {
+            reader.onload = function(e) {
                 try {
                     const data = JSON.parse(e.target.result);
                     
@@ -2755,7 +2641,7 @@
                     }
                     
                     showNotification('Данные импортированы', 'success');
-                    await loadAllData();
+                    loadAllData();
                 } catch (error) {
                     showNotification('Ошибка импорта: ' + error.message, 'error');
                 }
@@ -2763,172 +2649,20 @@
             reader.readAsText(file);
         }
         
-        // Настройка Google Sheets
-        function showSetupGuide() {
-            const modal = document.createElement('div');
-            modal.id = 'setupModal';
-            modal.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0,0,0,0.8);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                z-index: 3000;
-            `;
-            
-            modal.innerHTML = `
-                <div style="
-                    background: white;
-                    padding: 30px;
-                    border-radius: 10px;
-                    max-width: 600px;
-                    width: 90%;
-                    max-height: 90vh;
-                    overflow-y: auto;
-                ">
-                    <h2 style="color: var(--primary-color); margin-bottom: 20px;">
-                        <i class="fas fa-info-circle"></i> Настройка Google Sheets
-                    </h2>
-                    
-                    <div style="margin-bottom: 20px;">
-                        <h3>📋 Шаг 1: Создайте таблицу</h3>
-                        <p>1. Перейдите на <a href="https://sheets.google.com" target="_blank">Google Sheets</a></p>
-                        <p>2. Нажмите "+ Пустой файл"</p>
-                        <p>3. Создайте 2 листа с именами:</p>
-                        <ul style="margin-left: 20px; margin-bottom: 10px;">
-                            <li><strong>Клиенты</strong></li>
-                            <li><strong>ЗаказНакаряды</strong></li>
-                        </ul>
-                    </div>
-                    
-                    <div style="margin-bottom: 20px;">
-                        <h3>🔍 Шаг 2: Найдите ID таблицы</h3>
-                        <p>Посмотрите на адресную строку браузера:</p>
-                        <div style="
-                            background: #f8f9fa;
-                            padding: 15px;
-                            border-radius: 5px;
-                            font-family: monospace;
-                            margin: 10px 0;
-                            border-left: 4px solid var(--primary-color);
-                        ">
-                            https://docs.google.com/spreadsheets/d/<span style="background: yellow; padding: 2px;">ВАШ_ID_ТАБЛИЦЫ</span>/edit#gid=0
-                        </div>
-                        <p>Скопируйте выделенную часть (между <code>/d/</code> и <code>/edit</code>)</p>
-                    </div>
-                    
-                    <div style="margin-bottom: 20px;">
-                        <h3>⚙️ Шаг 3: Настройте Apps Script</h3>
-                        <p>1. В таблице нажмите: <strong>Расширения → Apps Script</strong></p>
-                        <p>2. Вставьте код из инструкции</p>
-                        <p>3. Замените <code>'ВАШ_ID_ТАБЛИЦЫ'</code> на ваш ID</p>
-                        <p>4. Нажмите "Развернуть" → "Новый веб-приложение"</p>
-                        <p>5. Выполнение: от имени "Я", доступ: "Все, включая анонимных"</p>
-                        <p>6. Скопируйте URL веб-приложения</p>
-                    </div>
-                    
-                    <div style="margin-bottom: 20px;">
-                        <h3>🔗 Шаг 4: Вставьте в систему</h3>
-                        <p>Введите полученный URL веб-приложения:</p>
-                        <input type="text" id="webAppUrl" placeholder="https://script.google.com/macros/s/..." 
-                               value="${API_URL}"
-                               style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px;">
-                    </div>
-                    
-                    <div style="display: flex; gap: 10px; margin-top: 20px;">
-                        <button class="btn" onclick="testConnection()" style="flex: 1;">
-                            <i class="fas fa-plug"></i> Проверить подключение
-                        </button>
-                        <button class="btn" onclick="closeSetupModal()" style="flex: 1; background: #6c757d;">
-                            <i class="fas fa-times"></i> Закрыть
-                        </button>
-                    </div>
-                    
-                    <div id="testResult" style="margin-top: 20px; display: none;"></div>
-                </div>
-            `;
-            
-            document.body.appendChild(modal);
-        }
-        
-        async function testConnection() {
-            const url = document.getElementById('webAppUrl').value;
-            const resultDiv = document.getElementById('testResult');
-            
-            if (!url) {
-                resultDiv.innerHTML = '<div class="alert alert-error">Введите URL веб-приложения</div>';
-                resultDiv.style.display = 'block';
-                return;
-            }
-            
-            resultDiv.innerHTML = '<div class="alert">Проверяем подключение...</div>';
-            resultDiv.style.display = 'block';
-            
-            try {
-                const response = await fetch(url, { method: 'GET' });
-                
-                if (response.ok) {
-                    resultDiv.innerHTML = `
-                        <div class="alert alert-success">
-                            <i class="fas fa-check-circle"></i> Подключение успешно!
-                        </div>
-                        <div style="margin-top: 10px;">
-                            <button class="btn" onclick="saveApiUrl('${url}')">
-                                <i class="fas fa-save"></i> Сохранить настройки
-                            </button>
-                        </div>
-                    `;
-                } else {
-                    throw new Error('Ошибка подключения');
-                }
-            } catch (error) {
-                resultDiv.innerHTML = `
-                    <div class="alert alert-error">
-                        <i class="fas fa-exclamation-circle"></i> Ошибка подключения
-                    </div>
-                    <div style="margin-top: 10px;">
-                        <p>Проверьте:</p>
-                        <ul style="margin-left: 20px;">
-                            <li>Правильно ли скопирован URL</li>
-                            <li>Развернуто ли веб-приложение</li>
-                            <li>Доступ установлен "Все, включая анонимных"</li>
-                        </ul>
-                    </div>
-                `;
-            }
-        }
-        
-        function saveApiUrl(url) {
-            API_URL = url;
-            localStorage.setItem('vn_masters_api_url', url);
-            showNotification('Настройки сохранены!', 'success');
-            closeSetupModal();
-            checkConnection();
-        }
-        
-        function closeSetupModal() {
-            const modal = document.getElementById('setupModal');
-            if (modal) modal.remove();
-        }
-        
-        // Инициализация Flatpickr
-        document.addEventListener('DOMContentLoaded', function() {
+        // Инициализация дат при загрузке
+        function initializeDates() {
             const today = new Date().toISOString().split('T')[0];
             
-            flatpickr("#orderDate", {
-                dateFormat: "Y-m-d",
-                defaultDate: today
+            // Устанавливаем сегодняшнюю дату во все поля
+            document.querySelectorAll('input[type="date"]').forEach(input => {
+                if (!input.value) {
+                    input.value = today;
+                }
             });
-            
-            flatpickr("#reportDate", {
-                dateFormat: "Y-m-d",
-                defaultDate: today
-            });
-        });
+        }
+        
+        // Вызываем инициализацию при загрузке страницы
+        document.addEventListener('DOMContentLoaded', initializeDates);
     </script>
 </body>
 </html>
