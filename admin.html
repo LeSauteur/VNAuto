@@ -598,79 +598,107 @@
             }
         }
 
-    /* Дополнительные стили */
-.client-card {
-    transition: all 0.3s ease;
-    border-left: 4px solid var(--primary-color);
-}
+        /* Дополнительные стили */
+        .client-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary-color);
+        }
 
-.client-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
+        .client-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
 
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
-}
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
 
-.modal-content {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    max-width: 600px;
-    width: 90%;
-    max-height: 90vh;
-    overflow-y: auto;
-}
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
 
-.stat-card {
-    position: relative;
-    overflow: hidden;
-}
+        .stat-card {
+            position: relative;
+            overflow: hidden;
+        }
 
-.stat-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, var(--primary-color) 0%, transparent 100%);
-    opacity: 0.1;
-    z-index: 1;
-}
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-color) 0%, transparent 100%);
+            opacity: 0.1;
+            z-index: 1;
+        }
 
-.status-badge {
-    display: inline-block;
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-size: 12px;
-    font-weight: 600;
-}
+        .status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
 
-.status-new { background: #dc3545; color: white; }
-.status-in-progress { background: #ffc107; color: #000; }
--status-completed { background: #28a745; color: white; }
-.status-paid { background: #007bff; color: white; }
+        .status-new { background: #dc3545; color: white; }
+        .status-in-progress { background: #ffc107; color: #000; }
+        .status-completed { background: #28a745; color: white; }
+        .status-paid { background: #007bff; color: white; }
 
-/* Анимации */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-.tab-content.active {
-    animation: fadeIn 0.3s ease;
-}
+        .tab-content.active {
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* Стили для уведомлений */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 3000;
+            animation: slideIn 0.3s ease;
+        }
+
+        .notification-success { background: #28a745; }
+        .notification-error { background: #dc3545; }
+        .notification-warning { background: #ffc107; color: #000; }
+        .notification-info { background: #17a2b8; }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
     </style>
 </head>
 <body>
@@ -723,7 +751,23 @@
                     <div class="nav-tabs">
                         <button class="nav-tab active" data-tab="calculator">Калькулятор дохода</button>
                         <button class="nav-tab" data-tab="work-order">Заказ-наряд</button>
+                        <button class="nav-tab" data-tab="clients">Клиенты</button>
                         <button class="nav-tab" data-tab="reports">Отчеты</button>
+                    </div>
+                    
+                    <!-- Кнопки экспорта/импорта -->
+                    <div style="margin-top: 15px; display: flex; gap: 10px;">
+                        <button class="btn" onclick="exportData()" style="padding: 8px 15px;">
+                            <i class="fas fa-download"></i> Экспорт
+                        </button>
+                        <label class="btn" style="padding: 8px 15px; cursor: pointer;">
+                            <i class="fas fa-upload"></i> Импорт
+                            <input type="file" accept=".json" onchange="importData(event)" 
+                                   style="display: none;">
+                        </label>
+                        <button class="btn" onclick="showSetupGuide()" style="padding: 8px 15px;">
+                            <i class="fas fa-cog"></i> Настройка Google Sheets
+                        </button>
                     </div>
                 </div>
 
@@ -964,7 +1008,7 @@
                                 </div>
                                 <div class="filter-group">
                                     <button type="button" class="btn" onclick="exportWorkOrders()">
-                                        <i class="fas fa-download"></i> Экспорт
+                                        <i class="fas fa-download"></i> Экспорт CSV
                                     </button>
                                 </div>
                             </div>
@@ -986,6 +1030,33 @@
                                 <!-- Work orders will be loaded here -->
                             </tbody>
                         </table>
+                    </div>
+                </div>
+
+                <!-- Клиенты -->
+                <div class="tab-content" id="clients">
+                    <div class="section">
+                        <h2 class="section-title">Картотека клиентов</h2>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="clientSearch" class="form-input" placeholder="Поиск клиента..." oninput="searchClients()">
+                            </div>
+                            <div class="form-group">
+                                <button class="btn" onclick="showAddClientModal()">
+                                    <i class="fas fa-plus"></i> Добавить клиента
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div id="clientsList">
+                            <!-- Список клиентов будет здесь -->
+                        </div>
+                        
+                        <h3 style="margin: 30px 0 15px 0; color: var(--primary-color);">
+                            <i class="fas fa-history"></i> История визитов
+                        </h3>
+                        <div id="clientHistory"></div>
                     </div>
                 </div>
 
@@ -1093,13 +1164,25 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        // Конфигурация
-        const ADMIN_PASSWORD = "admin123"; // Пароль можно поменять
+        // =============================
+        // КОНФИГУРАЦИЯ И НАСТРОЙКИ
+        // =============================
+        const ADMIN_PASSWORD = "admin123";
         const STORAGE_KEY = "vn_masters_admin_auth";
+        
+        // URL вашего Google Apps Script (замените на свой после настройки)
+        let API_URL = localStorage.getItem('vn_masters_api_url') || "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
+        const API_PASS = "VNMASTERS2025";
+        
+        // Режим работы (true - Google Sheets, false - localStorage)
+        let useGoogleSheets = true;
+        
+        // Ключи для localStorage
         const WORK_ORDERS_KEY = "vn_masters_work_orders";
         const CALCULATOR_DATA_KEY = "vn_masters_calculator_data";
+        const CLIENTS_KEY = "vn_masters_clients";
         
-        // Элементы
+        // Элементы DOM
         const loginSection = document.getElementById('loginSection');
         const adminPanel = document.getElementById('adminPanel');
         const loginForm = document.getElementById('loginForm');
@@ -1107,49 +1190,43 @@
         const logoutBtn = document.getElementById('logoutBtn');
         const navTabs = document.querySelectorAll('.nav-tab');
         const tabContents = document.querySelectorAll('.tab-content');
-        const calcDate = document.getElementById('calcDate');
+        
+        // Коллекции данных
+        let workOrders = [];
+        let clients = [];
+        let currentWorkOrderId = null;
         
         // Переменные для калькулятора
         let workCalcCounter = 1;
         let materialCalcCounter = 1;
         
-        // Переменные для заказ-нарядов
-        let workOrders = [];
-        let currentWorkOrderId = null;
-        
         // Переменные для отчетов
         let revenueChart = null;
         
-        // Инициализация при загрузке
+        // Инициализация
         document.addEventListener('DOMContentLoaded', function() {
-            // Установка текущей даты
+            initDates();
+            checkAuth();
+            initEventListeners();
+            checkConnection();
+            loadAllData();
+        });
+        
+        // =============================
+        // ИНИЦИАЛИЗАЦИЯ
+        // =============================
+        
+        function initDates() {
             const today = new Date().toISOString().split('T')[0];
-            calcDate.value = today;
+            document.getElementById('calcDate').value = today;
             document.getElementById('orderDate').value = today;
             document.getElementById('reportDate').value = today;
             
             // Генерация номера заказа
             generateOrderNumber();
             
-            // Проверка авторизации
-            checkAuth();
-            
             // Инициализация калькулятора
             loadCalculatorData();
-            
-            // Загрузка заказ-нарядов
-            loadWorkOrders();
-            
-            // Инициализация Flatpickr для дат
-            flatpickr("#orderDate", {
-                dateFormat: "Y-m-d",
-                defaultDate: today
-            });
-            
-            flatpickr("#reportDate", {
-                dateFormat: "Y-m-d",
-                defaultDate: today
-            });
             
             // Инициализация расчетов
             calculateTotals();
@@ -1157,34 +1234,188 @@
             
             // Генерация отчета
             generateReport();
-        });
+        }
         
-        // Проверка авторизации
-        function checkAuth() {
-            const savedAuth = localStorage.getItem(STORAGE_KEY);
-            if (savedAuth === 'true') {
-                showAdminPanel();
-            } else {
-                showLoginForm();
+        function initEventListeners() {
+            // Навигация
+            navTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    navTabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                    
+                    if (tabId === 'clients') loadClients();
+                    if (tabId === 'reports') generateReport();
+                });
+            });
+            
+            // Форма логина
+            loginForm.addEventListener('submit', handleLogin);
+            
+            // Выход
+            logoutBtn.addEventListener('click', handleLogout);
+            
+            // Расчет стоимости в заказ-наряде
+            document.getElementById('workHours').addEventListener('input', calculateWorkOrderTotal);
+            document.getElementById('hourlyRate').addEventListener('input', calculateWorkOrderTotal);
+            document.getElementById('materialsCost').addEventListener('input', calculateWorkOrderTotal);
+        }
+        
+        // =============================
+        // API И ХРАНИЛИЩЕ
+        // =============================
+        
+        async function checkConnection() {
+            if (!API_URL || API_URL.includes('YOUR_SCRIPT_ID')) {
+                useGoogleSheets = false;
+                showNotification('Настройте Google Sheets для облачного хранения', 'warning');
+                return false;
+            }
+            
+            try {
+                const response = await fetch(API_URL, {method: 'GET'});
+                useGoogleSheets = response.ok;
+                if (response.ok) {
+                    showNotification('Подключено к Google Sheets', 'success');
+                } else {
+                    throw new Error('No connection');
+                }
+            } catch (error) {
+                useGoogleSheets = false;
+                showNotification('Используется локальное хранилище', 'warning');
+            }
+            return useGoogleSheets;
+        }
+        
+        async function saveData(sheetName, data, action = 'add', id = null) {
+            if (!useGoogleSheets) {
+                return saveToLocalStorage(sheetName, data, action, id);
+            }
+            
+            try {
+                const payload = {
+                    pass: API_PASS,
+                    sheet: sheetName,
+                    action: action,
+                    data: action === 'update' ? {id, data} : data
+                };
+                
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(payload)
+                });
+                
+                const result = await response.json();
+                if (result.error) throw new Error(result.error);
+                
+                // Синхронизируем с localStorage для резерва
+                saveToLocalStorage(sheetName, data, action, id);
+                
+                return result;
+            } catch (error) {
+                console.error('Google Sheets error:', error);
+                return saveToLocalStorage(sheetName, data, action, id);
             }
         }
         
-        // Показать форму входа
+        async function loadData(sheetName, filters = null) {
+            if (!useGoogleSheets) {
+                return loadFromLocalStorage(sheetName, filters);
+            }
+            
+            try {
+                const payload = {
+                    pass: API_PASS,
+                    sheet: sheetName,
+                    action: filters ? 'get' : 'get_all',
+                    data: filters
+                };
+                
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(payload)
+                });
+                
+                const result = await response.json();
+                if (result.error) throw new Error(result.error);
+                
+                // Сохраняем в localStorage для офлайн-работы
+                localStorage.setItem(`backup_${sheetName}`, JSON.stringify(result));
+                
+                return result;
+            } catch (error) {
+                console.error('Google Sheets error:', error);
+                return loadFromLocalStorage(sheetName, filters);
+            }
+        }
+        
+        function saveToLocalStorage(sheetName, data, action, id) {
+            const key = `vn_masters_${sheetName}`;
+            let items = JSON.parse(localStorage.getItem(key) || '[]');
+            
+            switch(action) {
+                case 'add':
+                    items.push({id: Date.now(), ...data});
+                    break;
+                case 'update':
+                    items = items.map(item => item.id === id ? {...item, ...data} : item);
+                    break;
+                case 'delete':
+                    items = items.filter(item => item.id !== id);
+                    break;
+            }
+            
+            localStorage.setItem(key, JSON.stringify(items));
+            return {success: true, id: data.id || Date.now()};
+        }
+        
+        function loadFromLocalStorage(sheetName, filters) {
+            const key = `vn_masters_${sheetName}`;
+            let items = JSON.parse(localStorage.getItem(key) || '[]');
+            
+            if (filters) {
+                items = items.filter(item => {
+                    return Object.keys(filters).every(key => 
+                        item[key] == filters[key]
+                    );
+                });
+            }
+            
+            return items;
+        }
+        
+        // =============================
+        // ОСНОВНЫЕ ФУНКЦИИ
+        // =============================
+        
+        async function loadAllData() {
+            workOrders = await loadData('ЗаказНакаряды');
+            clients = await loadData('Клиенты');
+            
+            // Загрузка заказ-нарядов для отображения
+            filterWorkOrders();
+        }
+        
+        function checkAuth() {
+            const savedAuth = localStorage.getItem(STORAGE_KEY);
+            savedAuth === 'true' ? showAdminPanel() : showLoginForm();
+        }
+        
         function showLoginForm() {
             loginSection.style.display = 'block';
             adminPanel.style.display = 'none';
             logoutBtn.style.display = 'none';
         }
         
-        // Показать админ-панель
         function showAdminPanel() {
             loginSection.style.display = 'none';
             adminPanel.style.display = 'block';
             logoutBtn.style.display = 'block';
         }
         
-        // Обработчик формы входа
-        loginForm.addEventListener('submit', function(e) {
+        async function handleLogin(e) {
             e.preventDefault();
             const password = document.getElementById('password').value;
             
@@ -1192,40 +1423,21 @@
                 localStorage.setItem(STORAGE_KEY, 'true');
                 showAdminPanel();
                 loginError.style.display = 'none';
+                await checkConnection();
+                await loadAllData();
             } else {
                 loginError.style.display = 'block';
             }
-        });
+        }
         
-        // Выход из системы
-        logoutBtn.addEventListener('click', function() {
+        function handleLogout() {
             localStorage.removeItem(STORAGE_KEY);
             showLoginForm();
             loginForm.reset();
-        });
-        
-        // Переключение вкладок
-        navTabs.forEach(tab => {
-            tab.addEventListener('click', function() {
-                const tabId = this.getAttribute('data-tab');
-                
-                // Убираем активный класс у всех вкладок
-                navTabs.forEach(t => t.classList.remove('active'));
-                tabContents.forEach(t => t.classList.remove('active'));
-                
-                // Добавляем активный класс текущей вкладке
-                this.classList.add('active');
-                document.getElementById(tabId).classList.add('active');
-                
-                // Обновляем данные при переключении на отчеты
-                if (tabId === 'reports') {
-                    generateReport();
-                }
-            });
-        });
+        }
         
         // =============================
-        // КАЛЬКУЛЯТОР ДОХОДА
+        // КАЛЬКУЛЯТОР ДОХОДА (старый функционал)
         // =============================
         
         function addWorkRowCalculator() {
@@ -1354,13 +1566,7 @@
             // Сохраняем в localStorage
             localStorage.setItem(CALCULATOR_DATA_KEY + '_' + calculatorData.date, JSON.stringify(calculatorData));
             
-            // Показываем сообщение
-            const alert = document.createElement('div');
-            alert.className = 'alert alert-success';
-            alert.innerHTML = '<i class="fas fa-check-circle"></i> Данные калькулятора сохранены!';
-            document.querySelector('#calculator .section').insertBefore(alert, document.querySelector('#calculator .section-title'));
-            
-            setTimeout(() => alert.remove(), 3000);
+            showNotification('Данные калькулятора сохранены!', 'success');
         }
         
         function loadCalculatorData() {
@@ -1513,7 +1719,7 @@
         }
         
         // =============================
-        // ЗАКАЗ-НАРЯДЫ
+        // ЗАКАЗ-НАРЯДЫ (интеграция с Google Sheets)
         // =============================
         
         function generateOrderNumber() {
@@ -1541,12 +1747,7 @@
             document.getElementById('orderTotal').textContent = total.toFixed(0);
         }
         
-        // Добавляем обработчики для расчета стоимости
-        document.getElementById('workHours').addEventListener('input', calculateWorkOrderTotal);
-        document.getElementById('hourlyRate').addEventListener('input', calculateWorkOrderTotal);
-        document.getElementById('materialsCost').addEventListener('input', calculateWorkOrderTotal);
-        
-        function saveWorkOrder() {
+        async function saveWorkOrder() {
             // Собираем данные формы
             const workOrder = {
                 id: currentWorkOrderId || Date.now().toString(),
@@ -1571,23 +1772,22 @@
             
             // Проверяем обязательные поля
             if (!workOrder.clientName || !workOrder.clientPhone || !workOrder.clientCar) {
-                alert('Пожалуйста, заполните обязательные поля: ФИО клиента, телефон и автомобиль');
+                showNotification('Заполните обязательные поля: ФИО клиента, телефон и автомобиль', 'error');
                 return;
             }
-            
-            // Загружаем существующие заказы
-            loadWorkOrders();
             
             // Обновляем или добавляем заказ
             const index = workOrders.findIndex(order => order.id === workOrder.id);
             if (index !== -1) {
                 workOrders[index] = workOrder;
+                await saveData('ЗаказНакаряды', workOrder, 'update', workOrder.id);
             } else {
                 workOrders.push(workOrder);
+                await saveData('ЗаказНакаряды', workOrder);
             }
             
-            // Сохраняем в localStorage
-            localStorage.setItem(WORK_ORDERS_KEY, JSON.stringify(workOrders));
+            // Проверяем и обновляем клиента
+            await updateClientFromWorkOrder(workOrder);
             
             // Показываем сообщение об успехе
             document.getElementById('workOrderSuccess').style.display = 'block';
@@ -1600,14 +1800,47 @@
             
             // Обновляем таблицу
             filterWorkOrders();
+            
+            showNotification('Заказ-наряд сохранен успешно!', 'success');
         }
         
-        function loadWorkOrders() {
-            const savedOrders = localStorage.getItem(WORK_ORDERS_KEY);
-            workOrders = savedOrders ? JSON.parse(savedOrders) : [];
+        async function updateClientFromWorkOrder(workOrder) {
+            // Ищем клиента по телефону
+            let client = clients.find(c => c.phone === workOrder.clientPhone);
+            
+            if (client) {
+                // Обновляем существующего клиента
+                client.lastVisit = workOrder.orderDate;
+                client.visitsCount = (client.visitsCount || 0) + 1;
+                client.totalSpent = (client.totalSpent || 0) + workOrder.orderTotal;
+                if (!client.car && workOrder.clientCar) {
+                    client.car = workOrder.clientCar;
+                }
+                
+                await saveData('Клиенты', client, 'update', client.id);
+            } else {
+                // Создаем нового клиента
+                const newClient = {
+                    id: Date.now(),
+                    name: workOrder.clientName,
+                    phone: workOrder.clientPhone,
+                    car: workOrder.clientCar,
+                    carYear: workOrder.carYear,
+                    vin: workOrder.carVin,
+                    firstVisit: workOrder.orderDate,
+                    lastVisit: workOrder.orderDate,
+                    visitsCount: 1,
+                    totalSpent: workOrder.orderTotal,
+                    notes: `Добавлен из заказа ${workOrder.orderNumber}`,
+                    createdAt: new Date().toISOString()
+                };
+                
+                clients.push(newClient);
+                await saveData('Клиенты', newClient);
+            }
         }
         
-        function filterWorkOrders() {
+        async function filterWorkOrders() {
             const statusFilter = document.getElementById('filterStatus').value;
             const periodFilter = document.getElementById('filterPeriod').value;
             
@@ -1717,19 +1950,15 @@
             // Прокручиваем к форме
             document.querySelector('#work-order').scrollIntoView({ behavior: 'smooth' });
             
-            // Показываем сообщение
-            const alert = document.createElement('div');
-            alert.className = 'alert alert-success';
-            alert.innerHTML = '<i class="fas fa-info-circle"></i> Редактирование заказа. Сохраните изменения.';
-            document.querySelector('#work-order .section').insertBefore(alert, document.querySelector('#work-order .section-title'));
-            setTimeout(() => alert.remove(), 3000);
+            showNotification('Редактирование заказа. Сохраните изменения.', 'info');
         }
         
-        function deleteWorkOrder(id) {
+        async function deleteWorkOrder(id) {
             if (confirm('Вы уверены, что хотите удалить этот заказ-наряд?')) {
                 workOrders = workOrders.filter(order => order.id !== id);
-                localStorage.setItem(WORK_ORDERS_KEY, JSON.stringify(workOrders));
+                await saveData('ЗаказНакаряды', null, 'delete', id);
                 filterWorkOrders();
+                showNotification('Заказ удален', 'success');
             }
         }
         
@@ -1897,15 +2126,269 @@
         }
         
         // =============================
+        // КАРТОТЕКА КЛИЕНТОВ
+        // =============================
+        
+        async function loadClients() {
+            clients = await loadData('Клиенты');
+            displayClients(clients);
+        }
+        
+        function displayClients(clientsList) {
+            const container = document.getElementById('clientsList');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            clientsList.forEach(client => {
+                const clientCard = document.createElement('div');
+                clientCard.className = 'client-card';
+                clientCard.style.cssText = `
+                    background: white;
+                    border-radius: 8px;
+                    padding: 15px;
+                    margin-bottom: 10px;
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                `;
+                
+                clientCard.innerHTML = `
+                    <div>
+                        <h4 style="color: var(--primary-color); margin-bottom: 5px;">
+                            ${client.name || 'Без имени'}
+                        </h4>
+                        <p style="margin: 2px 0;"><i class="fas fa-phone"></i> ${client.phone || 'Нет телефона'}</p>
+                        <p style="margin: 2px 0;"><i class="fas fa-car"></i> ${client.car || 'Нет авто'}</p>
+                        <p style="margin: 2px 0; font-size: 12px; color: #666;">
+                            Последний визит: ${client.lastVisit || 'Нет данных'}
+                        </p>
+                    </div>
+                    <div>
+                        <button class="edit-btn" onclick="editClient('${client.id}')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn" onclick="showClientHistory('${client.id}')" style="padding: 5px 10px;">
+                            История
+                        </button>
+                    </div>
+                `;
+                
+                container.appendChild(clientCard);
+            });
+        }
+        
+        function searchClients() {
+            const searchTerm = document.getElementById('clientSearch').value.toLowerCase();
+            const filteredClients = clients.filter(client =>
+                (client.name && client.name.toLowerCase().includes(searchTerm)) ||
+                (client.phone && client.phone.includes(searchTerm)) ||
+                (client.car && client.car.toLowerCase().includes(searchTerm))
+            );
+            displayClients(filteredClients);
+        }
+        
+        function showAddClientModal() {
+            const modal = document.createElement('div');
+            modal.id = 'clientModal';
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 2000;
+            `;
+            
+            modal.innerHTML = `
+                <div style="background: white; padding: 30px; border-radius: 10px; max-width: 500px; width: 90%; max-height: 90vh; overflow-y: auto;">
+                    <h2 style="color: var(--primary-color); margin-bottom: 20px;">Добавить клиента</h2>
+                    
+                    <div class="form-group">
+                        <label class="form-label">ФИО *</label>
+                        <input type="text" id="modalClientName" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Телефон *</label>
+                            <input type="tel" id="modalClientPhone" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" id="modalClientEmail" class="form-input">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Автомобиль</label>
+                            <input type="text" id="modalClientCar" class="form-input" placeholder="Марка, модель">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Год выпуска</label>
+                            <input type="number" id="modalClientCarYear" class="form-input" min="1990" max="2025">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">VIN номер</label>
+                            <input type="text" id="modalClientVin" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Пробег (км)</label>
+                            <input type="number" id="modalClientMileage" class="form-input" min="0">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Примечания</label>
+                        <textarea id="modalClientNotes" class="form-input" rows="3"></textarea>
+                    </div>
+                    
+                    <div style="display: flex; gap: 10px; margin-top: 20px;">
+                        <button class="btn" onclick="saveNewClient()" style="flex: 1;">
+                            <i class="fas fa-save"></i> Сохранить
+                        </button>
+                        <button class="btn" onclick="closeModal()" style="flex: 1; background: #6c757d;">
+                            Отмена
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+        }
+        
+        async function saveNewClient() {
+            const clientData = {
+                id: Date.now(),
+                name: document.getElementById('modalClientName').value,
+                phone: document.getElementById('modalClientPhone').value,
+                email: document.getElementById('modalClientEmail').value,
+                car: document.getElementById('modalClientCar').value,
+                carYear: document.getElementById('modalClientCarYear').value,
+                vin: document.getElementById('modalClientVin').value,
+                mileage: document.getElementById('modalClientMileage').value,
+                firstVisit: new Date().toISOString().split('T')[0],
+                lastVisit: new Date().toISOString().split('T')[0],
+                visitsCount: 0,
+                totalSpent: 0,
+                notes: document.getElementById('modalClientNotes').value,
+                createdAt: new Date().toISOString()
+            };
+            
+            if (!clientData.name || !clientData.phone) {
+                showNotification('Заполните обязательные поля', 'error');
+                return;
+            }
+            
+            await saveData('Клиенты', clientData);
+            showNotification('Клиент сохранен', 'success');
+            closeModal();
+            loadClients();
+        }
+        
+        async function editClient(clientId) {
+            const client = clients.find(c => c.id == clientId);
+            if (!client) return;
+            
+            showAddClientModal();
+            
+            // Заполняем форму данными клиента
+            setTimeout(() => {
+                document.getElementById('modalClientName').value = client.name || '';
+                document.getElementById('modalClientPhone').value = client.phone || '';
+                document.getElementById('modalClientEmail').value = client.email || '';
+                document.getElementById('modalClientCar').value = client.car || '';
+                document.getElementById('modalClientCarYear').value = client.carYear || '';
+                document.getElementById('modalClientVin').value = client.vin || '';
+                document.getElementById('modalClientMileage').value = client.mileage || '';
+                document.getElementById('modalClientNotes').value = client.notes || '';
+                
+                // Меняем кнопку сохранения
+                const saveBtn = document.querySelector('#clientModal .btn:first-child');
+                saveBtn.innerHTML = '<i class="fas fa-save"></i> Обновить';
+                saveBtn.onclick = () => updateClient(clientId);
+            }, 100);
+        }
+        
+        async function updateClient(clientId) {
+            const clientData = {
+                name: document.getElementById('modalClientName').value,
+                phone: document.getElementById('modalClientPhone').value,
+                email: document.getElementById('modalClientEmail').value,
+                car: document.getElementById('modalClientCar').value,
+                carYear: document.getElementById('modalClientCarYear').value,
+                vin: document.getElementById('modalClientVin').value,
+                mileage: document.getElementById('modalClientMileage').value,
+                notes: document.getElementById('modalClientNotes').value
+            };
+            
+            await saveData('Клиенты', clientData, 'update', clientId);
+            showNotification('Клиент обновлен', 'success');
+            closeModal();
+            loadClients();
+        }
+        
+        function showClientHistory(clientId) {
+            const client = clients.find(c => c.id == clientId);
+            if (!client) return;
+            
+            const historyContainer = document.getElementById('clientHistory');
+            if (!historyContainer) return;
+            
+            // Находим заказы этого клиента
+            const clientOrders = workOrders.filter(order => order.clientPhone === client.phone);
+            
+            historyContainer.innerHTML = `
+                <div style="background: var(--gray-20); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                    <h4>${client.name} - История обслуживания</h4>
+                    <p>Всего визитов: ${clientOrders.length}</p>
+                    <p>Общая сумма: ${clientOrders.reduce((sum, order) => sum + (parseFloat(order.orderTotal) || 0), 0)} ₽</p>
+                </div>
+                
+                <table style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>Дата</th>
+                            <th>Заказ</th>
+                            <th>Работы</th>
+                            <th>Сумма</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${clientOrders.map(order => `
+                            <tr>
+                                <td>${order.orderDate}</td>
+                                <td>${order.orderNumber}</td>
+                                <td>${order.workDescription?.substring(0, 50)}...</td>
+                                <td>${order.orderTotal} ₽</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('clientModal');
+            if (modal) modal.remove();
+        }
+        
+        // =============================
         // ОТЧЕТЫ
         // =============================
         
         function generateReport() {
             const reportType = document.getElementById('reportType').value;
             const reportDate = new Date(document.getElementById('reportDate').value);
-            
-            // Загружаем данные
-            loadWorkOrders();
             
             // Фильтруем заказы по периоду
             let filteredOrders = [...workOrders];
@@ -2182,746 +2665,270 @@
                             Сгенерировано: ${new Date().toLocaleString('ru-RU')}
                         </p>
                         
-                  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    // =============================
-    // КОНФИГУРАЦИЯ И НАСТРОЙКИ
-    // =============================
-    const ADMIN_PASSWORD = "admin123";
-    const STORAGE_KEY = "vn_masters_admin_auth";
-    const BACKUP_KEY = "vn_masters_backup";
-    
-    // URL вашего Google Apps Script (замените на свой)
-    const API_URL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
-    const API_PASS = "VNMASTERS2025";
-    
-    // Режим работы (true - Google Sheets, false - localStorage)
-    let useGoogleSheets = true;
-    
-    // Элементы DOM
-    const loginSection = document.getElementById('loginSection');
-    const adminPanel = document.getElementById('adminPanel');
-    const loginForm = document.getElementById('loginForm');
-    const loginError = document.getElementById('loginError');
-    const logoutBtn = document.getElementById('logoutBtn');
-    const navTabs = document.querySelectorAll('.nav-tab');
-    const tabContents = document.querySelectorAll('.tab-content');
-    
-    // Коллекции данных
-    let workOrders = [];
-    let clients = [];
-    let services = [];
-    let materials = [];
-    let finances = [];
-    
-    // Инициализация
-    document.addEventListener('DOMContentLoaded', function() {
-        initDates();
-        checkAuth();
-        initEventListeners();
-        checkConnection();
-        loadAllData();
-    });
-    
-    // =============================
-    // ИНИЦИАЛИЗАЦИЯ
-    // =============================
-    
-    function initDates() {
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById('calcDate').value = today;
-        document.getElementById('orderDate').value = today;
-        document.getElementById('reportDate').value = today;
-        document.getElementById('clientFirstVisit').value = today;
-    }
-    
-    function initEventListeners() {
-        // Навигация
-        navTabs.forEach(tab => {
-            tab.addEventListener('click', function() {
-                const tabId = this.getAttribute('data-tab');
-                navTabs.forEach(t => t.classList.remove('active'));
-                tabContents.forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-                document.getElementById(tabId).classList.add('active');
-                
-                if (tabId === 'clients') loadClients();
-                if (tabId === 'reports') generateReport();
-                if (tabId === 'services') loadServices();
-            });
-        });
-        
-        // Форма логина
-        loginForm.addEventListener('submit', handleLogin);
-        
-        // Выход
-        logoutBtn.addEventListener('click', handleLogout);
-        
-        // Расчет стоимости в заказ-наряде
-        document.getElementById('workHours').addEventListener('input', calculateWorkOrderTotal);
-        document.getElementById('hourlyRate').addEventListener('input', calculateWorkOrderTotal);
-        document.getElementById('materialsCost').addEventListener('input', calculateWorkOrderTotal);
-    }
-    
-    // =============================
-    // API И ХРАНИЛИЩЕ
-    // =============================
-    
-    async function checkConnection() {
-        if (!useGoogleSheets) {
-            showNotification('Используется локальное хранилище', 'info');
-            return false;
+                        <script>
+                            // Копируем таблицу из текущего документа
+                            const reportTable = document.querySelector('#reportTable tbody');
+                            const printTable = document.getElementById('reportTableBody');
+                            if (reportTable && printTable) {
+                                printTable.innerHTML = reportTable.innerHTML;
+                            }
+                        <\/script>
+                    </body>
+                </html>
+            `);
+            printWindow.document.close();
+            printWindow.print();
         }
         
-        try {
-            const response = await fetch(API_URL, {method: 'GET'});
-            useGoogleSheets = response.ok;
-            if (response.ok) {
-                showNotification('Подключено к Google Sheets', 'success');
-            } else {
-                throw new Error('No connection');
-            }
-        } catch (error) {
-            useGoogleSheets = false;
-            showNotification('Используется локальное хранилище', 'warning');
-        }
-        return useGoogleSheets;
-    }
-    
-    async function saveData(sheetName, data, action = 'add', id = null) {
-        if (!useGoogleSheets) {
-            return saveToLocalStorage(sheetName, data, action, id);
+        // =============================
+        // УВЕДОМЛЕНИЯ И УТИЛИТЫ
+        // =============================
+        
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 20px;
+                background: ${type === 'success' ? '#28a745' : type === 'error' ? '#dc3545' : type === 'warning' ? '#ffc107' : '#17a2b8'};
+                color: ${type === 'warning' ? '#000' : 'white'};
+                border-radius: 5px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                z-index: 3000;
+                animation: slideIn 0.3s ease;
+            `;
+            
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : type === 'warning' ? 'exclamation-triangle' : 'info-circle'}"></i>
+                ${message}
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
         }
         
-        try {
-            const payload = {
-                pass: API_PASS,
-                sheet: sheetName,
-                action: action,
-                data: action === 'update' ? {id, data} : data
+        // Экспорт данных
+        async function exportData() {
+            const allData = {
+                workOrders,
+                clients,
+                exportDate: new Date().toISOString()
             };
             
-            const response = await fetch(API_URL, {
-                method: 'POST',
-                body: JSON.stringify(payload)
-            });
+            const blob = new Blob([JSON.stringify(allData, null, 2)], {type: 'application/json'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `vn_masters_backup_${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
             
-            const result = await response.json();
-            if (result.error) throw new Error(result.error);
-            
-            // Синхронизируем с localStorage для резерва
-            saveToLocalStorage(sheetName, data, action, id);
-            
-            return result;
-        } catch (error) {
-            console.error('Google Sheets error:', error);
-            return saveToLocalStorage(sheetName, data, action, id);
-        }
-    }
-    
-    async function loadData(sheetName, filters = null) {
-        if (!useGoogleSheets) {
-            return loadFromLocalStorage(sheetName, filters);
+            showNotification('Данные экспортированы', 'success');
         }
         
-        try {
-            const payload = {
-                pass: API_PASS,
-                sheet: sheetName,
-                action: filters ? 'get' : 'get_all',
-                data: filters
+        // Импорт данных
+        async function importData(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = async function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    
+                    if (data.workOrders) {
+                        workOrders = data.workOrders;
+                        localStorage.setItem(WORK_ORDERS_KEY, JSON.stringify(workOrders));
+                    }
+                    
+                    if (data.clients) {
+                        clients = data.clients;
+                        localStorage.setItem(CLIENTS_KEY, JSON.stringify(clients));
+                    }
+                    
+                    showNotification('Данные импортированы', 'success');
+                    await loadAllData();
+                } catch (error) {
+                    showNotification('Ошибка импорта: ' + error.message, 'error');
+                }
             };
+            reader.readAsText(file);
+        }
+        
+        // Настройка Google Sheets
+        function showSetupGuide() {
+            const modal = document.createElement('div');
+            modal.id = 'setupModal';
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.8);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 3000;
+            `;
             
-            const response = await fetch(API_URL, {
-                method: 'POST',
-                body: JSON.stringify(payload)
-            });
-            
-            const result = await response.json();
-            if (result.error) throw new Error(result.error);
-            
-            // Сохраняем в localStorage для офлайн-работы
-            saveBackup(sheetName, result);
-            
-            return result;
-        } catch (error) {
-            console.error('Google Sheets error:', error);
-            return loadFromLocalStorage(sheetName, filters);
-        }
-    }
-    
-    function saveToLocalStorage(sheetName, data, action, id) {
-        const key = `vn_masters_${sheetName}`;
-        let items = JSON.parse(localStorage.getItem(key) || '[]');
-        
-        switch(action) {
-            case 'add':
-                items.push({id: Date.now(), ...data});
-                break;
-            case 'update':
-                items = items.map(item => item.id === id ? {...item, ...data} : item);
-                break;
-            case 'delete':
-                items = items.filter(item => item.id !== id);
-                break;
-        }
-        
-        localStorage.setItem(key, JSON.stringify(items));
-        return {success: true, id: data.id || Date.now()};
-    }
-    
-    function loadFromLocalStorage(sheetName, filters) {
-        const key = `vn_masters_${sheetName}`;
-        let items = JSON.parse(localStorage.getItem(key) || '[]');
-        
-        if (filters) {
-            items = items.filter(item => {
-                return Object.keys(filters).every(key => 
-                    item[key] == filters[key]
-                );
-            });
-        }
-        
-        return items;
-    }
-    
-    function saveBackup(sheetName, data) {
-        localStorage.setItem(`backup_${sheetName}`, JSON.stringify(data));
-    }
-    
-    // =============================
-    // ОСНОВНЫЕ ФУНКЦИИ
-    // =============================
-    
-    async function loadAllData() {
-        workOrders = await loadData('ЗаказНакаряды');
-        clients = await loadData('Клиенты');
-        services = await loadData('Работы');
-        materials = await loadData('Материалы');
-        finances = await loadData('Финансы');
-        
-        updateDashboard();
-    }
-    
-    function checkAuth() {
-        const savedAuth = localStorage.getItem(STORAGE_KEY);
-        savedAuth === 'true' ? showAdminPanel() : showLoginForm();
-    }
-    
-    function showLoginForm() {
-        loginSection.style.display = 'block';
-        adminPanel.style.display = 'none';
-        logoutBtn.style.display = 'none';
-    }
-    
-    function showAdminPanel() {
-        loginSection.style.display = 'none';
-        adminPanel.style.display = 'block';
-        logoutBtn.style.display = 'block';
-    }
-    
-    async function handleLogin(e) {
-        e.preventDefault();
-        const password = document.getElementById('password').value;
-        
-        if (password === ADMIN_PASSWORD) {
-            localStorage.setItem(STORAGE_KEY, 'true');
-            showAdminPanel();
-            loginError.style.display = 'none';
-            await checkConnection();
-            await loadAllData();
-        } else {
-            loginError.style.display = 'block';
-        }
-    }
-    
-    function handleLogout() {
-        localStorage.removeItem(STORAGE_KEY);
-        showLoginForm();
-        loginForm.reset();
-    }
-    
-    // =============================
-    // КАЛЬКУЛЯТОР ДОХОДА
-    // =============================
-    
-    function addWorkRowCalculator() {
-        const table = document.getElementById('workTableCalculator').getElementsByTagName('tbody')[0];
-        const row = table.insertRow();
-        
-        row.innerHTML = `
-            <td><input type="text" class="form-input work-name" placeholder="Наименование работы"></td>
-            <td><input type="number" class="form-input income" value="0" min="0"></td>
-            <td><input type="number" class="form-input expenses" value="0" min="0"></td>
-            <td class="profit">0</td>
-            <td>
-                <button type="button" class="edit-btn" onclick="saveWorkToService(this)">
-                    <i class="fas fa-save"></i>
-                </button>
-                <button type="button" class="remove-btn" onclick="removeWorkRowCalculator(this)">
-                    <i class="fas fa-trash"></i>
-                </button>
-            </td>
-        `;
-        
-        row.querySelectorAll('input').forEach(input => {
-            input.addEventListener('input', calculateTotals);
-        });
-    }
-    
-    async function saveWorkToService(button) {
-        const row = button.closest('tr');
-        const name = row.querySelector('.work-name').value;
-        const income = row.querySelector('.income').value;
-        const expenses = row.querySelector('.expenses').value;
-        
-        if (!name) {
-            showNotification('Введите название работы', 'error');
-            return;
-        }
-        
-        const serviceData = {
-            name: name,
-            price: parseInt(income),
-            cost: parseInt(expenses),
-            category: 'Работа',
-            date: new Date().toISOString().split('T')[0]
-        };
-        
-        await saveData('Работы', serviceData);
-        showNotification('Работа сохранена в каталог', 'success');
-    }
-    
-    // Остальные функции калькулятора остаются аналогичными, но с вызовом saveData/loadData
-    
-    // =============================
-    // КАРТОТЕКА КЛИЕНТОВ (НОВАЯ ВКЛАДКА)
-    // =============================
-    
-    function addClientTab() {
-        // Добавляем новую вкладку в навигацию
-        const navTabsContainer = document.querySelector('.nav-tabs');
-        const clientTab = document.createElement('button');
-        clientTab.className = 'nav-tab';
-        clientTab.setAttribute('data-tab', 'clients');
-        clientTab.innerHTML = '<i class="fas fa-users"></i> Клиенты';
-        navTabsContainer.appendChild(clientTab);
-        
-        // Добавляем контент вкладки
-        const tabContent = document.createElement('div');
-        tabContent.className = 'tab-content';
-        tabContent.id = 'clients';
-        tabContent.innerHTML = `
-            <div class="section">
-                <h2 class="section-title">Картотека клиентов</h2>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <input type="text" id="clientSearch" class="form-input" placeholder="Поиск клиента..." oninput="searchClients()">
+            modal.innerHTML = `
+                <div style="
+                    background: white;
+                    padding: 30px;
+                    border-radius: 10px;
+                    max-width: 600px;
+                    width: 90%;
+                    max-height: 90vh;
+                    overflow-y: auto;
+                ">
+                    <h2 style="color: var(--primary-color); margin-bottom: 20px;">
+                        <i class="fas fa-info-circle"></i> Настройка Google Sheets
+                    </h2>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <h3>📋 Шаг 1: Создайте таблицу</h3>
+                        <p>1. Перейдите на <a href="https://sheets.google.com" target="_blank">Google Sheets</a></p>
+                        <p>2. Нажмите "+ Пустой файл"</p>
+                        <p>3. Создайте 2 листа с именами:</p>
+                        <ul style="margin-left: 20px; margin-bottom: 10px;">
+                            <li><strong>Клиенты</strong></li>
+                            <li><strong>ЗаказНакаряды</strong></li>
+                        </ul>
                     </div>
-                    <div class="form-group">
-                        <button class="btn" onclick="showAddClientModal()">
-                            <i class="fas fa-plus"></i> Добавить клиента
+                    
+                    <div style="margin-bottom: 20px;">
+                        <h3>🔍 Шаг 2: Найдите ID таблицы</h3>
+                        <p>Посмотрите на адресную строку браузера:</p>
+                        <div style="
+                            background: #f8f9fa;
+                            padding: 15px;
+                            border-radius: 5px;
+                            font-family: monospace;
+                            margin: 10px 0;
+                            border-left: 4px solid var(--primary-color);
+                        ">
+                            https://docs.google.com/spreadsheets/d/<span style="background: yellow; padding: 2px;">ВАШ_ID_ТАБЛИЦЫ</span>/edit#gid=0
+                        </div>
+                        <p>Скопируйте выделенную часть (между <code>/d/</code> и <code>/edit</code>)</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <h3>⚙️ Шаг 3: Настройте Apps Script</h3>
+                        <p>1. В таблице нажмите: <strong>Расширения → Apps Script</strong></p>
+                        <p>2. Вставьте код из инструкции</p>
+                        <p>3. Замените <code>'ВАШ_ID_ТАБЛИЦЫ'</code> на ваш ID</p>
+                        <p>4. Нажмите "Развернуть" → "Новый веб-приложение"</p>
+                        <p>5. Выполнение: от имени "Я", доступ: "Все, включая анонимных"</p>
+                        <p>6. Скопируйте URL веб-приложения</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <h3>🔗 Шаг 4: Вставьте в систему</h3>
+                        <p>Введите полученный URL веб-приложения:</p>
+                        <input type="text" id="webAppUrl" placeholder="https://script.google.com/macros/s/..." 
+                               value="${API_URL}"
+                               style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px;">
+                    </div>
+                    
+                    <div style="display: flex; gap: 10px; margin-top: 20px;">
+                        <button class="btn" onclick="testConnection()" style="flex: 1;">
+                            <i class="fas fa-plug"></i> Проверить подключение
+                        </button>
+                        <button class="btn" onclick="closeSetupModal()" style="flex: 1; background: #6c757d;">
+                            <i class="fas fa-times"></i> Закрыть
                         </button>
                     </div>
-                </div>
-                
-                <div id="clientsList">
-                    <!-- Список клиентов будет здесь -->
-                </div>
-                
-                <h3 style="margin: 30px 0 15px 0; color: var(--primary-color);">
-                    <i class="fas fa-history"></i> История визитов
-                </h3>
-                <div id="clientHistory"></div>
-            </div>
-        `;
-        
-        document.querySelector('.admin-panel').appendChild(tabContent);
-        
-        // Добавляем обработчик клика
-        clientTab.addEventListener('click', function() {
-            navTabs.forEach(t => t.classList.remove('active'));
-            tabContents.forEach(t => t.classList.remove('active'));
-            this.classList.add('active');
-            tabContent.classList.add('active');
-            loadClients();
-        });
-    }
-    
-    async function loadClients() {
-        clients = await loadData('Клиенты');
-        displayClients(clients);
-    }
-    
-    function displayClients(clientsList) {
-        const container = document.getElementById('clientsList');
-        if (!container) return;
-        
-        container.innerHTML = '';
-        
-        clientsList.forEach(client => {
-            const clientCard = document.createElement('div');
-            clientCard.className = 'client-card';
-            clientCard.style.cssText = `
-                background: white;
-                border-radius: 8px;
-                padding: 15px;
-                margin-bottom: 10px;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            `;
-            
-            clientCard.innerHTML = `
-                <div>
-                    <h4 style="color: var(--primary-color); margin-bottom: 5px;">
-                        ${client.name || 'Без имени'}
-                    </h4>
-                    <p style="margin: 2px 0;"><i class="fas fa-phone"></i> ${client.phone || 'Нет телефона'}</p>
-                    <p style="margin: 2px 0;"><i class="fas fa-car"></i> ${client.car || 'Нет авто'}</p>
-                    <p style="margin: 2px 0; font-size: 12px; color: #666;">
-                        Последний визит: ${client.lastVisit || 'Нет данных'}
-                    </p>
-                </div>
-                <div>
-                    <button class="edit-btn" onclick="editClient('${client.id}')">
-                        <i class="fas fa-edit"></i>
-                    </button>
-                    <button class="btn" onclick="showClientHistory('${client.id}')" style="padding: 5px 10px;">
-                        История
-                    </button>
+                    
+                    <div id="testResult" style="margin-top: 20px; display: none;"></div>
                 </div>
             `;
             
-            container.appendChild(clientCard);
-        });
-    }
-    
-    function showAddClientModal() {
-        const modal = document.createElement('div');
-        modal.id = 'clientModal';
-        modal.style.cssText = `
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-        `;
-        
-        modal.innerHTML = `
-            <div style="background: white; padding: 30px; border-radius: 10px; max-width: 500px; width: 90%; max-height: 90vh; overflow-y: auto;">
-                <h2 style="color: var(--primary-color); margin-bottom: 20px;">Добавить клиента</h2>
-                
-                <div class="form-group">
-                    <label class="form-label">ФИО *</label>
-                    <input type="text" id="modalClientName" class="form-input" required>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label">Телефон *</label>
-                        <input type="tel" id="modalClientPhone" class="form-input" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Email</label>
-                        <input type="email" id="modalClientEmail" class="form-input">
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label">Автомобиль</label>
-                        <input type="text" id="modalClientCar" class="form-input" placeholder="Марка, модель">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Год выпуска</label>
-                        <input type="number" id="modalClientCarYear" class="form-input" min="1990" max="2025">
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label">VIN номер</label>
-                        <input type="text" id="modalClientVin" class="form-input">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Пробег (км)</label>
-                        <input type="number" id="modalClientMileage" class="form-input" min="0">
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Дата первого визита</label>
-                    <input type="date" id="modalClientFirstVisit" class="form-input">
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Примечания</label>
-                    <textarea id="modalClientNotes" class="form-input" rows="3"></textarea>
-                </div>
-                
-                <div style="display: flex; gap: 10px; margin-top: 20px;">
-                    <button class="btn" onclick="saveNewClient()" style="flex: 1;">
-                        <i class="fas fa-save"></i> Сохранить
-                    </button>
-                    <button class="btn" onclick="closeModal()" style="flex: 1; background: #6c757d;">
-                        Отмена
-                    </button>
-                </div>
-            </div>
-        `;
-        
-        document.body.appendChild(modal);
-        document.getElementById('modalClientFirstVisit').value = new Date().toISOString().split('T')[0];
-    }
-    
-    async function saveNewClient() {
-        const clientData = {
-            id: Date.now(),
-            name: document.getElementById('modalClientName').value,
-            phone: document.getElementById('modalClientPhone').value,
-            email: document.getElementById('modalClientEmail').value,
-            car: document.getElementById('modalClientCar').value,
-            carYear: document.getElementById('modalClientCarYear').value,
-            vin: document.getElementById('modalClientVin').value,
-            mileage: document.getElementById('modalClientMileage').value,
-            firstVisit: document.getElementById('modalClientFirstVisit').value,
-            lastVisit: new Date().toISOString().split('T')[0],
-            visitsCount: 1,
-            totalSpent: 0,
-            notes: document.getElementById('modalClientNotes').value,
-            createdAt: new Date().toISOString()
-        };
-        
-        if (!clientData.name || !clientData.phone) {
-            showNotification('Заполните обязательные поля', 'error');
-            return;
+            document.body.appendChild(modal);
         }
         
-        await saveData('Клиенты', clientData);
-        showNotification('Клиент сохранен', 'success');
-        closeModal();
-        loadClients();
-    }
-    
-    function closeModal() {
-        const modal = document.getElementById('clientModal');
-        if (modal) modal.remove();
-    }
-    
-    function showClientHistory(clientId) {
-        const client = clients.find(c => c.id == clientId);
-        if (!client) return;
-        
-        const historyContainer = document.getElementById('clientHistory');
-        if (!historyContainer) return;
-        
-        // Находим заказы этого клиента
-        const clientOrders = workOrders.filter(order => order.clientPhone === client.phone);
-        
-        historyContainer.innerHTML = `
-            <div style="background: var(--gray-20); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-                <h4>${client.name} - История обслуживания</h4>
-                <p>Всего визитов: ${clientOrders.length}</p>
-                <p>Общая сумма: ${clientOrders.reduce((sum, order) => sum + (parseFloat(order.orderTotal) || 0), 0)} ₽</p>
-            </div>
+        async function testConnection() {
+            const url = document.getElementById('webAppUrl').value;
+            const resultDiv = document.getElementById('testResult');
             
-            <table style="width: 100%;">
-                <thead>
-                    <tr>
-                        <th>Дата</th>
-                        <th>Заказ</th>
-                        <th>Работы</th>
-                        <th>Сумма</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    ${clientOrders.map(order => `
-                        <tr>
-                            <td>${order.orderDate}</td>
-                            <td>${order.orderNumber}</td>
-                            <td>${order.workDescription?.substring(0, 50)}...</td>
-                            <td>${order.orderTotal} ₽</td>
-                        </tr>
-                    `).join('')}
-                </tbody>
-            </table>
-        `;
-    }
-    
-    // =============================
-    // УВЕДОМЛЕНИЯ И УТИЛИТЫ
-    // =============================
-    
-    function showNotification(message, type = 'info') {
-        const notification = document.createElement('div');
-        notification.className = `notification notification-${type}`;
-        notification.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 15px 20px;
-            background: ${type === 'success' ? '#28a745' : type === 'error' ? '#dc3545' : '#17a2b8'};
-            color: white;
-            border-radius: 5px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            z-index: 3000;
-            animation: slideIn 0.3s ease;
-        `;
-        
-        notification.innerHTML = `
-            <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
-            ${message}
-        `;
-        
-        document.body.appendChild(notification);
-        
-        setTimeout(() => {
-            notification.style.animation = 'slideOut 0.3s ease';
-            setTimeout(() => notification.remove(), 300);
-        }, 3000);
-    }
-    
-    // Добавляем стили для анимации уведомлений
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        @keyframes slideOut {
-            from { transform: translateX(0); opacity: 1; }
-            to { transform: translateX(100%); opacity: 0; }
-        }
-    `;
-    document.head.appendChild(style);
-    
-    // =============================
-    // ДОПОЛНИТЕЛЬНЫЕ УЛУЧШЕНИЯ
-    // =============================
-    
-    // Автозаполнение клиентов
-    function setupClientAutocomplete() {
-        const clientNameInput = document.getElementById('clientName');
-        if (!clientNameInput) return;
-        
-        clientNameInput.addEventListener('input', async function() {
-            const searchTerm = this.value.toLowerCase();
-            if (searchTerm.length < 2) return;
-            
-            const filteredClients = clients.filter(client =>
-                client.name?.toLowerCase().includes(searchTerm) ||
-                client.phone?.includes(searchTerm)
-            );
-            
-            // Можно добавить выпадающий список с автозаполнением
-        });
-    }
-    
-    // Экспорт данных
-    async function exportData() {
-        const allData = {
-            workOrders,
-            clients,
-            services,
-            materials,
-            finances
-        };
-        
-        const blob = new Blob([JSON.stringify(allData, null, 2)], {type: 'application/json'});
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `vn_masters_backup_${new Date().toISOString().split('T')[0]}.json`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-    }
-    
-    // Импорт данных
-    function importData(event) {
-        const file = event.target.files[0];
-        if (!file) return;
-        
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            try {
-                const data = JSON.parse(e.target.result);
-                // Валидация и импорт данных
-                showNotification('Данные импортированы', 'success');
-            } catch (error) {
-                showNotification('Ошибка импорта', 'error');
+            if (!url) {
+                resultDiv.innerHTML = '<div class="alert alert-error">Введите URL веб-приложения</div>';
+                resultDiv.style.display = 'block';
+                return;
             }
-        };
-        reader.readAsText(file);
-    }
-    
-    // Обновляем навигацию при загрузке
-    document.addEventListener('DOMContentLoaded', function() {
-        // Добавляем новые вкладки
-        addClientTab();
-        
-        // Инициализируем автозаполнение
-        setupClientAutocomplete();
-        
-        // Добавляем кнопки экспорта/импорта
-        addExportImportButtons();
-    });
-    
-    function addExportImportButtons() {
-        const adminNav = document.querySelector('.admin-nav');
-        if (!adminNav) return;
-        
-        const exportDiv = document.createElement('div');
-        exportDiv.style.cssText = 'margin-top: 15px; display: flex; gap: 10px;';
-        exportDiv.innerHTML = `
-            <button class="btn" onclick="exportData()" style="padding: 8px 15px;">
-                <i class="fas fa-download"></i> Экспорт
-            </button>
-            <label class="btn" style="padding: 8px 15px; cursor: pointer;">
-                <i class="fas fa-upload"></i> Импорт
-                <input type="file" accept=".json" onchange="importData(event)" 
-                       style="display: none;">
-            </label>
-        `;
-        
-        adminNav.appendChild(exportDiv);
-    }
-    
-    // =============================
-    // ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ
-    // =============================
-    
-    // Вызываем после загрузки DOM
-    setTimeout(() => {
-        // Проверяем обновления
-        checkForUpdates();
-        
-        // Показываем уведомление о режиме работы
-        if (!useGoogleSheets) {
-            showNotification('Работаем в офлайн-режиме. Данные сохраняются локально.', 'warning');
+            
+            resultDiv.innerHTML = '<div class="alert">Проверяем подключение...</div>';
+            resultDiv.style.display = 'block';
+            
+            try {
+                const response = await fetch(url, { method: 'GET' });
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `
+                        <div class="alert alert-success">
+                            <i class="fas fa-check-circle"></i> Подключение успешно!
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <button class="btn" onclick="saveApiUrl('${url}')">
+                                <i class="fas fa-save"></i> Сохранить настройки
+                            </button>
+                        </div>
+                    `;
+                } else {
+                    throw new Error('Ошибка подключения');
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="alert alert-error">
+                        <i class="fas fa-exclamation-circle"></i> Ошибка подключения
+                    </div>
+                    <div style="margin-top: 10px;">
+                        <p>Проверьте:</p>
+                        <ul style="margin-left: 20px;">
+                            <li>Правильно ли скопирован URL</li>
+                            <li>Развернуто ли веб-приложение</li>
+                            <li>Доступ установлен "Все, включая анонимных"</li>
+                        </ul>
+                    </div>
+                `;
+            }
         }
-    }, 1000);
-    
-    function checkForUpdates() {
-        // Проверка новых версий
-        const lastVersion = localStorage.getItem('last_version');
-        const currentVersion = '1.1.0';
         
-        if (lastVersion !== currentVersion) {
-            showNotification(`Обновлено до версии ${currentVersion}`, 'info');
-            localStorage.setItem('last_version', currentVersion);
+        function saveApiUrl(url) {
+            API_URL = url;
+            localStorage.setItem('vn_masters_api_url', url);
+            showNotification('Настройки сохранены!', 'success');
+            closeSetupModal();
+            checkConnection();
         }
-    }
+        
+        function closeSetupModal() {
+            const modal = document.getElementById('setupModal');
+            if (modal) modal.remove();
+        }
+        
+        // Инициализация Flatpickr
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            
+            flatpickr("#orderDate", {
+                dateFormat: "Y-m-d",
+                defaultDate: today
+            });
+            
+            flatpickr("#reportDate", {
+                dateFormat: "Y-m-d",
+                defaultDate: today
+            });
+        });
     </script>
 </body>
 </html>
