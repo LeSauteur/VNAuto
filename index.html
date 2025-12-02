@@ -1065,6 +1065,45 @@
                 }
             }
         }
+         /* Дополнительные стили для QR-кода и юридической информации */
+        .qr-section {
+            transition: var(--transition);
+        }
+        
+        .qr-section:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .qr-section img {
+            transition: var(--transition);
+        }
+        
+        .qr-section img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .legal-info {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: var(--border-radius);
+        }
+        
+        .legal-info p {
+            margin-bottom: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .qr-section {
+                text-align: center;
+                margin: 20px auto;
+                max-width: 300px;
+            }
+            
+            .legal-info {
+                margin-top: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1582,6 +1621,7 @@
     </main>
 
     <!-- Подвал сайта -->
+    <!-- Подвал сайта -->
     <footer>
         <div class="container">
             <!-- БАННЕР В ПОДВАЛЕ -->
@@ -1601,6 +1641,19 @@
                         </a>
                     </div>
                     <p>Профессиональный ремонт и обслуживание автомобилей всех марок. Мы работаем, чтобы вы могли ездить с удовольствием и уверенностью.</p>
+                    
+                    <!-- QR-код для оплаты СБП -->
+                    <div class="qr-section" style="margin-top: 25px; padding: 15px; background: var(--gray-20); border-radius: var(--border-radius);">
+                        <h4 class="footer-title" style="margin: 0 0 15px 0; font-size: 16px;">Оплата СБП (Тинькофф)</h4>
+                        <a href="https://www.tinkoff.ru/rm/r_ZqxhxNoAMT.ksOhwLlNBY/FwoNr88418" target="_blank" style="display: block; text-align: center;">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.tinkoff.ru/rm/r_ZqxhxNoAMT.ksOhwLlNBY/FwoNr88418" 
+                                 alt="QR-код для оплаты через СБП" 
+                                 style="width: 150px; height: 150px; border-radius: 8px; border: 2px solid var(--primary-color);">
+                        </a>
+                        <p style="font-size: 12px; text-align: center; margin-top: 10px; color: var(--gray-80);">
+                            Наведите камеру телефона для оплаты
+                        </p>
+                    </div>
                 </div>
                 
                 <div class="footer-col">
@@ -1637,14 +1690,42 @@
                         <a href="https://2gis.ru/rostov-on-don/firm/70000001095146498" target="_blank">2ГИС</a>
                     </div>
                 </div>
+                
+                <div class="footer-col">
+                    <h4 class="footer-title">Юридическая информация</h4>
+                    <div class="legal-info" style="color: var(--gray-80); font-size: 14px; line-height: 1.5;">
+                        <p><strong>Индивидуальный предприниматель</strong></p>
+                        <p>Курзанцев Виталий Николаевич</p>
+                        
+                        <div style="margin-top: 15px;">
+                            <p><strong>ОГРНИП:</strong> 325619600120014</p>
+                            <p><strong>ИНН:</strong> 615103836896</p>
+                        </div>
+                        
+                        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--gray-40);">
+                            <p><strong>Оплата услуг:</strong></p>
+                            <a href="https://www.tinkoff.ru/rm/r_ZqxhxNoAMT.ksOhwLlNBY/FwoNr88418" 
+                               target="_blank" 
+                               style="display: inline-block; background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); color: white; padding: 8px 15px; border-radius: var(--border-radius); text-decoration: none; margin-top: 8px; font-size: 13px;">
+                                <i class="fas fa-credit-card"></i> Оплатить онлайн (СБП)
+                            </a>
+                        </div>
+                        
+                        <div style="margin-top: 15px; font-size: 12px; color: var(--gray-80);">
+                            <p>Все работы защищены гарантией. Предоставляем официальные закрывающие документы.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <div class="copyright">
                 <p>&copy; 2025 Автосервис "VN-MASTERS". Все права защищены.</p>
+                <p style="margin-top: 8px; font-size: 13px; color: var(--gray-80);">
+                    ИП Курзанцев В.Н., ОГРНИП: 325619600120014, ИНН: 615103836896
+                </p>
             </div>
         </div>
     </footer>
-
     <script>
         // Плавная прокрутка для якорных ссылок
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
