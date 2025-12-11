@@ -1,3 +1,12 @@
+Добрый день!
+
+Вот обновлённый код для `forms.html`, включающий интеграцию с Telegram и удалённым хранилищем, как описано в документе. Я подставил ваши реальные данные для Telegram.
+
+**ВАЖНО:**
+1.  **Безопасность:** Размещение токена бота прямо в HTML-коде **не является безопасным**. Любой посетитель сайта может открыть исходный код и увидеть его. Использование токена таким образом даёт доступ к вашему боту (читать/писать сообщения, управлять им и т.д.). Рассмотрите возможность использования промежуточного сервера (даже простого Google Apps Script, как предлагалось в документе) для выполнения запроса к Telegram API, чтобы токен не был открыт на клиентской стороне. Тем не менее, согласно вашему запросу, он вставлен в код.
+2.  **Удалённое хранилище:** Я оставил плейсхолдер `{{remote_api_endpoint}}`. Вам нужно будет заменить его на реальный URL вашего удалённого API (например, Google Apps Script Web App), когда он будет готов. Если вы не будете использовать удалённое хранилище, вы можете удалить соответствующую строку `await sendToRemoteStorage(requestData);`.
+
+```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -6,25 +15,6 @@
 <title>Онлайн-запись - Автосервис VN-MASTERS</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-/* Все ваши существующие стили остаются без изменений до конца файла */
-/* Я сохранил все ваши оригинальные стили, только добавил несколько новых */
-
-/* Добавляем стиль для индикатора загрузки */
-.loading {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border: 3px solid rgba(255,255,255,.3);
-  border-radius: 50%;
-  border-top-color: white;
-  animation: spin 1s ease-in-out infinite;
-  margin-right: 10px;
-  vertical-align: middle;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
 /* :root переменные для цветов */
         :root {
             /* Основные цвета */
@@ -518,7 +508,7 @@
     <div class="top-row">
       <div class="logo-section">
         <a href="index.html" class="logo-banner-link">
-          <img src="https://s3.radikal.cloud/2025/11/27/unnamedcef392b5bea91fce.jpg" 
+          <img src="https://s3.radikal.cloud/2025/11/27/unnamedcef392b5bea91fce.jpg"
                alt="VN-MASTERS Профессиональный автосервис" class="logo-banner">
         </a>
       </div>
@@ -565,52 +555,52 @@
         </div>
 
         <!-- ФОРМА FORMSPREE -->
-        <form id="bookingForm" action="https://formspree.io/f/mldqndzq" method="POST">
-          <!-- Скрытые поля для настройки Formspree -->
+        <form id="bookingForm" class="form">
+          <!-- Скрытые поля для настройки Formspree (если используется) -->
           <input type="hidden" name="_language" value="ru">
           <input type="hidden" name="_subject" value="Новая заявка с сайта VN-MASTERS">
           <input type="hidden" name="_format" value="plain">
           <!-- Анти-спам поле (пользователи его не увидят) -->
           <input type="text" name="_gotcha" style="display:none">
-          
+
           <div class="form-row">
             <div class="form-group">
               <label for="name" class="form-label required">Ваше имя</label>
-              <input type="text" id="name" name="Имя_клиента" class="form-input" required placeholder="Иван Иванов">
+              <input type="text" id="name" name="Имя_клиента" data-field="name" class="form-input" required placeholder="Иван Иванов" autocomplete="name">
             </div>
 
             <div class="form-group">
               <label for="phone" class="form-label required">Телефон</label>
-              <input type="tel" id="phone" name="Телефон" class="form-input" required placeholder="+7 (999) 123-45-67">
+              <input type="tel" id="phone" name="Телефон" data-field="phone" class="form-input" required placeholder="+7 (999) 123-45-67" autocomplete="tel">
             </div>
           </div>
 
           <div class="form-group">
             <label for="email" class="form-label">Email (необязательно)</label>
-            <input type="email" id="email" name="Email" class="form-input" placeholder="example@mail.ru">
+            <input type="email" id="email" name="Email" data-field="email" class="form-input" placeholder="example@mail.ru" autocomplete="email">
           </div>
 
           <div class="form-row">
             <div class="form-group">
               <label for="carBrand" class="form-label required">Марка автомобиля</label>
-              <input type="text" id="carBrand" name="Марка_автомобиля" class="form-input" required placeholder="Toyota">
+              <input type="text" id="carBrand" name="Марка_автомобиля" data-field="carBrand" class="form-input" required placeholder="Toyota">
             </div>
 
             <div class="form-group">
               <label for="carModel" class="form-label required">Модель автомобиля</label>
-              <input type="text" id="carModel" name="Модель_автомобиля" class="form-input" required placeholder="Camry">
+              <input type="text" id="carModel" name="Модель_автомобиля" data-field="carModel" class="form-input" required placeholder="Camry">
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
               <label for="year" class="form-label required">Год выпуска</label>
-              <input type="number" id="year" name="Год_выпуска" class="form-input" required min="1990" max="2025" placeholder="2018">
+              <input type="number" id="year" name="Год_выпуска" data-field="carYear" class="form-input" required min="1990" max="2025" placeholder="2018">
             </div>
 
             <div class="form-group">
               <label for="service" class="form-label required">Услуга</label>
-              <select id="service" name="Услуга" class="form-select" required>
+              <select id="service" name="Услуга" data-field="serviceType" class="form-select" required>
                 <option value="">-- Выберите услугу --</option>
                 <option value="Техническое обслуживание">Техническое обслуживание</option>
                 <option value="Ремонт двигателя">Ремонт двигателя</option>
@@ -624,14 +614,20 @@
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="date" class="form-label">Желаемая дата визита</label>
-            <input type="date" id="date" name="Дата_визита" class="form-input">
+          <div class="form-row">
+             <div class="form-group">
+              <label for="date" class="form-label">Желаемая дата визита</label>
+              <input type="date" id="date" name="Дата_визита" data-field="preferredDate" class="form-input">
+            </div>
+            <div class="form-group">
+              <label for="time" class="form-label">Желаемое время визита</label>
+              <input type="time" id="time" name="Время_визита" data-field="preferredTime" class="form-input">
+            </div>
           </div>
 
           <div class="form-group">
             <label for="problem" class="form-label">Описание проблемы / дополнительные пожелания</label>
-            <textarea id="problem" name="Описание_проблемы" class="form-textarea" placeholder="Опишите проблему с автомобилем или укажите дополнительные пожелания..."></textarea>
+            <textarea id="problem" name="Описание_проблемы" data-field="comment" class="form-textarea" placeholder="Опишите проблему с автомобилем или укажите дополнительные пожелания..."></textarea>
           </div>
 
           <div class="form-submit">
@@ -652,7 +648,7 @@
       <div class="footer-col">
         <div class="footer-logo">
           <a href="index.html">
-            <img src="https://s3.radikal.cloud/2025/11/27/unnamedcef392b5bea91fce.jpg" 
+            <img src="https://s3.radikal.cloud/2025/11/27/unnamedcef392b5bea91fce.jpg"
                  alt="VN-MASTERS Автосервис" style="max-height: 60px; width: auto;">
           </a>
         </div>
@@ -698,23 +694,38 @@
 </footer>
 
 <script>
+// Константы интеграций
+const TELEGRAM_BOT_TOKEN = '8520593130:AAHREPonOG49ekGEFkjqNWg5EgFLcRy4BKY'; // Ваш токен бота
+const TELEGRAM_CHAT_ID = '833755025'; // Ваш ID
+const REMOTE_API_ENDPOINT = '{{remote_api_endpoint}}'; // Замените на реальный URL вашего API или удалите строку
+
 document.addEventListener('DOMContentLoaded', function() {
-  // Устанавливаем минимальную дату (завтра)
+  const form = document.getElementById('bookingForm');
+  const successMessage = document.getElementById('successMessage');
+  const errorMessage = document.getElementById('errorMessage');
+  const submitBtn = document.getElementById('submitBtn');
   const dateField = document.getElementById('date');
+  const timeField = document.getElementById('time');
+  const phoneInput = document.getElementById('phone');
+
+  // Устанавливаем минимальную дату (завтра) и дату по умолчанию (через 2 дня)
   if (dateField) {
     const today = new Date();
     const tomorrow = new Date(today);
     tomorrow.setDate(tomorrow.getDate() + 1);
     dateField.min = tomorrow.toISOString().split('T')[0];
-    
-    // Устанавливаем дату по умолчанию (через 2 дня)
+
     const defaultDate = new Date(today);
     defaultDate.setDate(defaultDate.getDate() + 2);
     dateField.value = defaultDate.toISOString().split('T')[0];
   }
-  
+
+  // Устанавливаем время по умолчанию (9:00)
+  if (timeField) {
+      timeField.value = '09:00';
+  }
+
   // Маска для телефона
-  const phoneInput = document.getElementById('phone');
   if (phoneInput) {
     phoneInput.addEventListener('input', function(e) {
       let value = e.target.value.replace(/\D/g, '');
@@ -739,77 +750,109 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
-  
-  // Обработчик отправки формы
-  const form = document.getElementById('bookingForm');
-  const successMessage = document.getElementById('successMessage');
-  const errorMessage = document.getElementById('errorMessage');
-  const submitBtn = document.getElementById('submitBtn');
-  
-  if (form) {
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      
-      // Проверяем валидность формы
-      if (!validateForm()) {
-        return;
-      }
-      
-      // Показываем индикатор загрузки
-      const originalText = submitBtn.innerHTML;
-      submitBtn.innerHTML = '<span class="loading"></span> Отправка...';
-      submitBtn.disabled = true;
-      
-      try {
-        // Создаем FormData из формы
-        const formData = new FormData(form);
-        
-        // Отправляем данные в Formspree
-        const response = await fetch(form.action, {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
-        
-        if (response.ok) {
-          // Успешная отправка
-          showSuccess();
-          
-          // Очищаем форму через 2 секунды
-          setTimeout(() => {
-            form.reset();
-            // Восстанавливаем дату по умолчанию
-            if (dateField) {
-              const today = new Date();
-              const defaultDate = new Date(today);
-              defaultDate.setDate(defaultDate.getDate() + 2);
-              dateField.value = defaultDate.toISOString().split('T')[0];
-            }
-          }, 2000);
-          
-        } else {
-          const error = await response.json();
-          console.error('Formspree error:', error);
-          showError("Ошибка отправки. Пожалуйста, позвоните нам: +7 (863) 260-03-45");
-        }
-      } catch (error) {
-        console.error('Network error:', error);
-        showError("Ошибка сети. Пожалуйста, позвоните нам: +7 (863) 260-03-45");
-      } finally {
-        // Восстанавливаем кнопку
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-      }
-    });
+
+  // Функция сбора данных формы
+  function collectFormData() {
+    const now = new Date();
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+    const carBrand = document.getElementById('carBrand').value;
+    const carModel = document.getElementById('carModel').value;
+    const carYear = document.getElementById('year').value;
+    const serviceType = document.getElementById('service').value;
+    const preferredDate = document.getElementById('date').value;
+    const preferredTime = document.getElementById('time').value;
+    const comment = document.getElementById('problem').value;
+
+    return {
+      id: generateRequestId(),
+      created_at: now.toISOString(),
+      name: name.trim(),
+      phone: phone.trim(),
+      email: email.trim(),
+      carBrand: carBrand.trim(),
+      carModel: carModel.trim(),
+      carYear: carYear.trim(),
+      serviceType: serviceType.trim(),
+      preferredDate,
+      preferredTime,
+      comment: comment.trim(),
+      source: 'site-form',
+      status: 'Новый'
+    };
   }
-  
-  // Валидация формы
+
+  // Функция генерации ID заявки
+  function generateRequestId() {
+    const ts = Date.now();
+    const rand = Math.floor(Math.random() * 100000);
+    return 'req_' + ts + '_' + rand;
+  }
+
+  // Функция формирования текста для Telegram
+  function buildTelegramMessage(data) {
+    return [
+      'Новая заявка с сайта VN-MASTERS',
+      'ID: ' + data.id,
+      'Имя: ' + (data.name || '-'),
+      'Телефон: ' + (data.phone || '-'),
+      'Email: ' + (data.email || '-'),
+      'Авто: ' + [data.carBrand, data.carModel, data.carYear].filter(Boolean).join(' '),
+      'Услуга: ' + (data.serviceType || '-'),
+      'Желаемая дата: ' + (data.preferredDate || '-') + ' ' + (data.preferredTime || ''),
+      'Комментарий: ' + (data.comment || '-')
+    ].join('\n');
+  }
+
+  // Функция отправки в Telegram
+  async function sendToTelegram(data) {
+    const message = buildTelegramMessage(data);
+    const url = 'https://api.telegram.org/bot' + TELEGRAM_BOT_TOKEN + '/sendMessage';
+
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+      body: JSON.stringify({
+        chat_id: TELEGRAM_CHAT_ID,
+        text: message,
+        parse_mode: 'HTML'
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error('Telegram API error');
+    }
+  }
+
+  // Функция отправки в удалённое хранилище (замените URL)
+  async function sendToRemoteStorage(data) {
+    // Удалите следующие 2 строки, если не используете удалённое хранилище
+    if (REMOTE_API_ENDPOINT === '{{remote_api_endpoint}}') {
+         console.warn('REMOTE_API_ENDPOINT не задан, пропускаю отправку в удалённое хранилище.');
+         return;
+    }
+
+    const response = await fetch(REMOTE_API_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+      body: JSON.stringify(data)
+    });
+
+    if (!response.ok) {
+      throw new Error('Remote API error');
+    }
+  }
+
+  // Функция валидации формы
   function validateForm() {
     let isValid = true;
     const requiredFields = form.querySelectorAll('[required]');
-    
+
     requiredFields.forEach(field => {
       if (!field.value.trim()) {
         field.style.borderColor = 'var(--primary-color)';
@@ -820,7 +863,7 @@ document.addEventListener('DOMContentLoaded', function() {
         field.style.boxShadow = '';
       }
     });
-    
+
     // Валидация телефона
     const phone = document.getElementById('phone').value;
     const phoneRegex = /^\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}$/;
@@ -830,45 +873,94 @@ document.addEventListener('DOMContentLoaded', function() {
       showError("Введите телефон в формате: +7 (999) 123-45-67", false);
       isValid = false;
     }
-    
+
     return isValid;
   }
-  
-  // Показать успешное сообщение
+
+  // Функция показа успешного сообщения
   function showSuccess() {
     successMessage.style.display = 'block';
     errorMessage.style.display = 'none';
-    
-    // Автоскрытие через 5 секунд
+
     setTimeout(() => {
       successMessage.style.display = 'none';
     }, 5000);
   }
-  
-  // Показать сообщение об ошибке
+
+  // Функция показа сообщения об ошибке
   function showError(message, autoHide = true) {
     if (message) {
       errorMessage.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
     }
     errorMessage.style.display = 'block';
     successMessage.style.display = 'none';
-    
-    // Автоскрытие только если autoHide = true
+
     if (autoHide) {
       setTimeout(() => {
         errorMessage.style.display = 'none';
       }, 5000);
     }
   }
-  
-  // Сброс стилей полей при вводе
-  form.querySelectorAll('input, select, textarea').forEach(field => {
-    field.addEventListener('input', function() {
-      this.style.borderColor = '';
-      this.style.boxShadow = '';
+
+  // Обработчик отправки формы
+  if (form) {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      if (!validateForm()) {
+        return;
+      }
+
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<span class="loading"></span> Отправка...';
+      submitBtn.disabled = true;
+      errorMessage.style.display = 'none';
+      successMessage.style.display = 'none';
+
+      const requestData = collectFormData();
+
+      try {
+        // Отправляем сначала в удалённое хранилище, потом в Telegram
+        await sendToRemoteStorage(requestData);
+        await sendToTelegram(requestData);
+        showSuccess();
+
+        setTimeout(() => {
+          form.reset();
+          // Восстанавливаем дату и время по умолчанию
+          if (dateField) {
+            const today = new Date();
+            const defaultDate = new Date(today);
+            defaultDate.setDate(defaultDate.getDate() + 2);
+            dateField.value = defaultDate.toISOString().split('T')[0];
+          }
+          if (timeField) {
+              timeField.value = '09:00';
+          }
+        }, 2000);
+
+      } catch (error) {
+        console.error(error);
+        showError('Ошибка отправки. Пожалуйста, попробуйте еще раз или позвоните нам: +7 (863) 260-03-45');
+      } finally {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+      }
     });
-  });
+  }
+
+  // Сброс стилей полей при вводе (теперь проверяет существование формы)
+  if (form) {
+    form.querySelectorAll('input, select, textarea').forEach(field => {
+      field.addEventListener('input', function() {
+        this.style.borderColor = '';
+        this.style.boxShadow = '';
+      });
+    });
+  }
 });
+
 </script>
 </body>
 </html>
+```
