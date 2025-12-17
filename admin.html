@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -1185,8 +1186,8 @@
         // =============================
         document.addEventListener('DOMContentLoaded', function() {
             initDates();
-            initFirebaseAuth();
-            initEventListeners();
+            initEventListeners();   // ← СНАЧАЛА
+            initFirebaseAuth();     // ← ПОТОМ
         });
         // =============================
         // FIREBASE АУТЕНТИФИКАЦИЯ
@@ -1238,14 +1239,8 @@
                 });
         }
         function handleLogout() {
-            auth.signOut()
-                .then(() => {
-                    showNotification('Вы вышли из системы', 'info');
-                })
-                .catch((error) => {
-                    console.error('Ошибка выхода:', error);
-                    showNotification('Ошибка при выходе из системы', 'error');
-                });
+            auth.signOut();
+            showLoginForm(); // мгновенно
         }
         function updateSyncStatus(isAuthenticated) {
             const syncIcon = syncStatus.querySelector('i');
@@ -1384,7 +1379,7 @@
             } catch (error) {
                 console.error('Ошибка загрузки данных:', error);
                 showNotification('Ошибка загрузки данных. Проверьте подключение.', 'error');
-                updateSyncStatus(false);
+                // updateSyncStatus НЕ ТРОГАТЬ
             }
         }
         async function saveWorkOrderToFirebase(workOrder) {
@@ -1946,7 +1941,7 @@
                     workOrders = workOrders.filter(order => order.id !== id);
                     // Обновляем таблицу
                     filterWorkOrders();
-                    updateSyncStatus(false);
+                    updateSyncStatus(true); // ✅ или ПРОСТО УДАЛИТЬ
                     showNotification('Заказ удален', 'success');
                 } catch (error) {
                     console.error('Ошибка удаления заказ-наряда:', error);
@@ -2243,7 +2238,7 @@
                 showNotification('Клиент сохранен', 'success');
                 closeModal();
                 displayClients(clients);
-                updateSyncStatus(false);
+                // updateSyncStatus НЕ ТРОГАТЬ
             } catch (error) {
                 console.error('Ошибка сохранения клиента:', error);
                 showNotification('Ошибка сохранения клиента: ' + error.message, 'error');
