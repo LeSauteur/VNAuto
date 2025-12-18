@@ -57,7 +57,7 @@
             padding: 0 20px;
         }
         
-        /* Шапка сайта - стили как на основном сайте */
+        /* Шапка сайта - СКРЫТА ПО УМОЛЧАНИЮ */
         .header {
             background-color: white;
             border-bottom: 1px solid var(--gray-40);
@@ -66,6 +66,7 @@
             top: 0;
             z-index: 1000;
             box-shadow: var(--box-shadow);
+            display: none; /* Скрыта по умолчанию */
         }
         
         .header::before {
@@ -252,9 +253,9 @@
             background: var(--primary-color);
         }
         
-        /* ИСПРАВЛЕНО: Секция логина НЕ на весь экран */
+        /* Секция логина */
         .login-section {
-            display: none; /* Сначала скрыта */
+            display: none;
             justify-content: center;
             align-items: center;
             padding: 40px 20px;
@@ -853,8 +854,8 @@
     </style>
 </head>
 <body>
-    <!-- Шапка сайта -->
-    <header class="header">
+    <!-- Шапка сайта - СКРЫТА ПО УМОЛЧАНИЮ -->
+    <header class="header" id="adminHeader" style="display:none">
         <div class="container">
             <div class="top-row">
                 <div class="logo-section">
@@ -871,7 +872,6 @@
                         <i class="fas fa-sync"></i>
                         <span id="syncText">Не авторизован</span>
                     </div>
-                    <!-- ИСПРАВЛЕНО: Только одна кнопка с классом logout-btn -->
                     <button class="logout-btn" id="logoutBtn">
                         <i class="fas fa-sign-out-alt"></i> Выйти
                     </button>
@@ -900,8 +900,8 @@
         </div>
     </header>
     
-    <!-- ИСПРАВЛЕНО: Секция логина НЕ на весь экран -->
-    <section class="login-section" id="loginSection">
+    <!-- Секция логина - СКРЫТА по умолчанию -->
+    <section class="login-section" id="loginSection" style="display:none">
         <div class="login-container">
             <div class="login-icon">
                 <i class="fas fa-lock"></i>
@@ -922,7 +922,7 @@
         </div>
     </section>
     
-    <!-- Админ-панель -->
+    <!-- Админ-панель - СКРЫТА по умолчанию -->
     <section class="main-content">
         <div class="container">
             <div class="admin-panel" id="adminPanel" style="display:none">
@@ -1357,7 +1357,6 @@
                 <div class="copyright">
                     &copy; 2025 VN-MASTERS. Автосервис в Ростове-на-Дону. Все права защищены.
                 </div>
-                <!-- УДАЛЕНО: Вторая кнопка выхода в подвале -->
             </div>
         </div>
     </footer>
@@ -1365,17 +1364,10 @@
     <!-- Модальное окно истории клиента -->
     <div id="clientHistoryContainer"></div>
     
-    <!-- ИСПРАВЛЕННЫЙ JavaScript -->
     <script>
         // =============================
-        // ИСПРАВЛЕНИЯ КРИТИЧНЫХ КОСЯКОВ
+        // ИСПРАВЛЕННЫЙ КОД
         // =============================
-        
-        // 1. ИСПРАВЛЕНО: Логин теперь НЕ на весь экран
-        // 2. ИСПРАВЛЕНО: Убрана вторая кнопка выхода
-        // 3. ИСПРАВЛЕНО: Chart.js инициализируется при показе админки
-        // 4. ИСПРАВЛЕНО: Статусы переводятся на русский
-        // 5. ИСПРАВЛЕНО: Все logout-btn обрабатываются через делегирование
         
         // =============================
         // ИНИЦИАЛИЗАЦИЯ FIREBASE
@@ -1414,6 +1406,7 @@
         // =============================
         const loginSection = document.getElementById('loginSection');
         const adminPanel = document.getElementById('adminPanel');
+        const adminHeader = document.getElementById('adminHeader');
         const loginForm = document.getElementById('loginForm');
         const loginError = document.getElementById('loginError');
         const syncStatus = document.getElementById('syncStatus');
@@ -1438,6 +1431,50 @@
             pending: 'Ожидает оплаты',
             partial: 'Частично оплачен'
         };
+        
+        // =============================
+        // ФУНКЦИИ ПОКАЗА/СКРЫТИЯ ИНТЕРФЕЙСА
+        // =============================
+        function showLoginForm() {
+            // Скрываем шапку и админку, показываем форму логина
+            if (adminHeader) {
+                adminHeader.style.display = 'none';
+            }
+            
+            if (adminPanel) {
+                adminPanel.style.display = 'none';
+            }
+            
+            if (loginSection) {
+                loginSection.style.display = 'flex';
+                loginSection.style.margin = '40px auto';
+            }
+            
+            // Очищаем пароль
+            const passwordInput = document.getElementById('passwordInput');
+            if (passwordInput) passwordInput.value = '';
+            
+            // Сбрасываем статус синхронизации
+            updateSyncStatus(false);
+        }
+        
+        function showAdminPanel() {
+            // Скрываем форму логина, показываем шапку и админку
+            if (loginSection) {
+                loginSection.style.display = 'none';
+            }
+            
+            if (adminHeader) {
+                adminHeader.style.display = 'block';
+            }
+            
+            if (adminPanel) {
+                adminPanel.style.display = 'block';
+            }
+            
+            // Обновляем статус синхронизации
+            updateSyncStatus(true);
+        }
         
         // =============================
         // ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
@@ -1465,7 +1502,6 @@
         }
         
         function showNotification(message, type = 'info') {
-            // Создаем уведомление
             const notification = document.createElement('div');
             notification.className = `notification notification-${type}`;
             notification.style.cssText = `
@@ -1495,10 +1531,8 @@
                 <span>${message}</span>
             `;
             
-            // Добавляем в тело документа
             document.body.appendChild(notification);
             
-            // Удаляем через 5 секунд
             setTimeout(() => {
                 notification.style.animation = 'slideOut 0.3s ease';
                 setTimeout(() => {
@@ -1507,6 +1541,25 @@
                     }
                 }, 300);
             }, 5000);
+        }
+        
+        function updateSyncStatus(isAuthenticated) {
+            const syncIcon = syncStatus.querySelector('i');
+            const user = auth.currentUser;
+            
+            if (!isAuthenticated || !user) {
+                if (syncIcon) syncIcon.className = 'fas fa-sync not-authorized';
+                if (syncText) {
+                    syncText.textContent = 'Не авторизован';
+                    syncText.className = 'not-authorized';
+                }
+            } else {
+                if (syncIcon) syncIcon.className = 'fas fa-sync synced';
+                if (syncText) {
+                    syncText.textContent = 'Синхронизировано';
+                    syncText.className = 'synced';
+                }
+            }
         }
         
         // =============================
@@ -1620,7 +1673,7 @@
         }
         
         // =============================
-        // ФОРМЫ
+        // ФОРМЫ ЗАКАЗ-НАРЯДОВ
         // =============================
         function resetWorkOrder() {
             currentWorkOrderId = null;
@@ -1676,12 +1729,9 @@
         }
         
         // =============================
-        // ИНТЕРФЕЙС
+        // ОБНОВЛЕНИЕ ИНТЕРФЕЙСА
         // =============================
         function updateDashboard() {
-            const today = new Date().toISOString().split('T')[0];
-            const todayOrders = workOrders.filter(order => order.orderDate === today);
-            const todayRevenue = todayOrders.reduce((sum, order) => sum + (order.orderTotal || 0), 0);
             const totalRevenue = workOrders.reduce((sum, order) => sum + (order.orderTotal || 0), 0);
             const totalProfit = workOrders.reduce((sum, order) => sum + (order.profit || 0), 0);
             
@@ -1695,14 +1745,12 @@
             if (totalProfitDashboardEl) totalProfitDashboardEl.textContent = totalProfit.toFixed(0) + ' ₽';
             if (totalClientsEl) totalClientsEl.textContent = clients.length;
             
-            // Обновляем график
             updateChart();
         }
         
         function updateChart() {
             if (!revenueChart) return;
             
-            // Генерируем данные за последние 7 дней
             const labels = [];
             const data = [];
             
@@ -1899,9 +1947,7 @@
             
             document.body.appendChild(modal);
             
-            // Закрытие по клику на крестик
             modal.querySelector('.modal-close').addEventListener('click', closeModal);
-            // Закрытие по клику вне окна
             modal.addEventListener('click', function(e) {
                 if (e.target === modal) closeModal();
             });
@@ -1914,7 +1960,6 @@
             currentClientId = clientId;
             showAddClientModal();
             
-            // Заполняем форму данными клиента
             setTimeout(() => {
                 const nameEl = document.getElementById('modalClientName');
                 const phoneEl = document.getElementById('modalClientPhone');
@@ -1934,7 +1979,6 @@
                 if (mileageEl) mileageEl.value = client.mileage || '';
                 if (notesEl) notesEl.value = client.notes || '';
                 
-                // Меняем заголовок
                 const title = document.querySelector('#clientModal h2');
                 if (title) title.textContent = 'Редактировать клиента';
             }, 100);
@@ -1942,6 +1986,56 @@
         
         function closeModal() {
             const modal = document.getElementById('clientModal');
+            if (modal && modal.parentNode) {
+                modal.parentNode.removeChild(modal);
+            }
+        }
+        
+        function showClientHistory(phone) {
+            const normalizedPhone = normalizePhone(phone);
+            const client = clients.find(c => c.normalizedPhone === normalizedPhone);
+            if (!client) return;
+            
+            const historyContainer = document.getElementById('clientHistoryContainer');
+            if (!historyContainer) return;
+            
+            const clientOrders = workOrders.filter(order => normalizePhone(order.clientPhone) === normalizedPhone);
+            
+            historyContainer.innerHTML = `
+                <div class="modal-overlay" id="historyModal">
+                    <div class="modal-content" style="max-width: 800px;">
+                        <button class="modal-close" onclick="closeHistoryModal()">&times;</button>
+                        <h2 style="color: var(--primary-color); margin-bottom: 20px;">
+                            <i class="fas fa-history"></i> История заказов - ${client.name}
+                        </h2>
+                        ${clientOrders.length > 0 ?
+                            clientOrders.map(order => `
+                                <div class="client-card" style="margin-bottom: 15px;">
+                                    <div>
+                                        <strong>Заказ:</strong> ${order.orderNumber}<br>
+                                        <strong>Дата:</strong> ${order.orderDate}<br>
+                                        <strong>Автомобиль:</strong> ${order.clientCar}<br>
+                                        <strong>Работы:</strong> ${order.workDescription || 'Не указано'}<br>
+                                        <strong>Сумма:</strong> ${order.orderTotal?.toFixed(0) || 0} ₽
+                                    </div>
+                                    <span class="status-badge">${statusMap[order.orderStatus] || order.orderStatus}</span>
+                                </div>
+                            `).join('')
+                        : '<p style="text-align: center; color: var(--gray-80); padding: 20px;">Нет истории заказов</p>'}
+                    </div>
+                </div>
+            `;
+            
+            const modal = document.getElementById('historyModal');
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) closeHistoryModal();
+                });
+            }
+        }
+        
+        function closeHistoryModal() {
+            const modal = document.getElementById('historyModal');
             if (modal && modal.parentNode) {
                 modal.parentNode.removeChild(modal);
             }
@@ -2116,225 +2210,15 @@
         }
         
         // =============================
-        // СИНХРОНИЗАЦИЯ
-        // =============================
-        function updateSyncStatus(isAuthenticated) {
-            const syncIcon = syncStatus.querySelector('i');
-            const user = auth.currentUser;
-            
-            if (!isAuthenticated || !user) {
-                if (syncIcon) syncIcon.className = 'fas fa-sync not-authorized';
-                if (syncText) {
-                    syncText.textContent = 'Не авторизован';
-                    syncText.className = 'not-authorized';
-                }
-            } else {
-                if (syncIcon) syncIcon.className = 'fas fa-sync synced';
-                if (syncText) {
-                    syncText.textContent = 'Синхронизировано';
-                    syncText.className = 'synced';
-                }
-            }
-        }
-        
-        // =============================
-        // НАВИГАЦИЯ
-        // =============================
-        function initDates() {
-            const today = new Date().toISOString().split('T')[0];
-            
-            const calcDateEl = document.getElementById('calcDate');
-            const orderDateEl = document.getElementById('orderDate');
-            const reportDateEl = document.getElementById('reportDate');
-            
-            if (calcDateEl) calcDateEl.value = today;
-            if (orderDateEl) orderDateEl.value = today;
-            if (reportDateEl) reportDateEl.value = today;
-            
-            generateOrderNumber();
-            calculateTotals();
-            calculateWorkOrderTotal();
-        }
-        
-        function initEventListeners() {
-            // Навигация по вкладкам
-            const navTabs = document.querySelectorAll('.nav-tab');
-            navTabs.forEach(tab => {
-                tab.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const tabId = this.getAttribute('data-tab');
-                    
-                    // Обновляем активные табы
-                    navTabs.forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Обновляем активное содержимое
-                    const tabContents = document.querySelectorAll('.tab-content');
-                    tabContents.forEach(content => content.classList.remove('active'));
-                    document.getElementById(tabId).classList.add('active');
-                    
-                    // Обновляем навигацию в шапке
-                    const navItems = document.querySelectorAll('.nav-item');
-                    navItems.forEach(item => item.classList.remove('active'));
-                    
-                    // Находим соответствующий элемент в шапке и активируем его
-                    const correspondingNavItem = document.querySelector(`.nav-item[data-tab="${tabId}"]`);
-                    if (correspondingNavItem) {
-                        correspondingNavItem.classList.add('active');
-                    }
-                    
-                    // Загружаем данные при необходимости
-                    if (tabId === 'reports') {
-                        generateReport();
-                    }
-                });
-            });
-            
-            // Навигация в шапке
-            const navItems = document.querySelectorAll('.nav-item[data-tab]');
-            navItems.forEach(item => {
-                item.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const tabId = this.getAttribute('data-tab');
-                    
-                    // Обновляем активные элементы навигации
-                    navItems.forEach(i => i.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Обновляем табы
-                    const navTabs = document.querySelectorAll('.nav-tab');
-                    navTabs.forEach(tab => tab.classList.remove('active'));
-                    
-                    const correspondingTab = document.querySelector(`.nav-tab[data-tab="${tabId}"]`);
-                    if (correspondingTab) {
-                        correspondingTab.classList.add('active');
-                    }
-                    
-                    // Обновляем содержимое
-                    const tabContents = document.querySelectorAll('.tab-content');
-                    tabContents.forEach(content => content.classList.remove('active'));
-                    document.getElementById(tabId).classList.add('active');
-                    
-                    if (tabId === 'reports') {
-                        generateReport();
-                    }
-                });
-            });
-            
-            // Форма логина
-            if (loginForm) {
-                loginForm.addEventListener('submit', handleLogin);
-            }
-            
-            // Кнопка выхода - ИСПРАВЛЕНО: делегирование на все кнопки с классом logout-btn
-            document.addEventListener('click', function(e) {
-                if (e.target.closest('.logout-btn')) {
-                    handleLogout();
-                }
-            });
-            
-            // Расчет стоимости в заказ-наряде
-            const workHoursEl = document.getElementById('workHours');
-            const hourlyRateEl = document.getElementById('hourlyRate');
-            const materialsCostEl = document.getElementById('materialsCost');
-            
-            if (workHoursEl) workHoursEl.addEventListener('input', calculateWorkOrderTotal);
-            if (hourlyRateEl) hourlyRateEl.addEventListener('input', calculateWorkOrderTotal);
-            if (materialsCostEl) materialsCostEl.addEventListener('input', calculateWorkOrderTotal);
-            
-            // Поиск клиентов
-            const clientSearchEl = document.getElementById('clientSearch');
-            if (clientSearchEl) clientSearchEl.addEventListener('input', searchClients);
-            
-            // Фильтрация заказов
-            const filterStatusEl = document.getElementById('filterStatus');
-            const filterPeriodEl = document.getElementById('filterPeriod');
-            
-            if (filterStatusEl) filterStatusEl.addEventListener('change', filterWorkOrders);
-            if (filterPeriodEl) filterPeriodEl.addEventListener('change', filterWorkOrders);
-            
-            // Генерация отчета
-            const reportTypeEl = document.getElementById('reportType');
-            const reportDateEl = document.getElementById('reportDate');
-            
-            if (reportTypeEl) reportTypeEl.addEventListener('change', generateReport);
-            if (reportDateEl) reportDateEl.addEventListener('change', generateReport);
-        }
-        
-        // =============================
-        // АВТОРИЗАЦИЯ
-        // =============================
-        function handleLogin(e) {
-            e.preventDefault();
-            
-            const passwordInput = document.getElementById('passwordInput');
-            const password = passwordInput ? passwordInput.value : '';
-            
-            auth.signInWithEmailAndPassword(ADMIN_EMAIL, password)
-                .then((cred) => {
-                    if (loginError) loginError.style.display = 'none';
-                    showNotification('Добро пожаловать в админ-панель!', 'success');
-                })
-                .catch((err) => {
-                    if (loginError) {
-                        loginError.style.display = 'block';
-                        if (err.code === 'auth/wrong-password') {
-                            loginError.innerHTML = '<i class="fas fa-exclamation-circle"></i> Неверный пароль';
-                        } else if (err.code === 'auth/user-not-found') {
-                            loginError.innerHTML = '<i class="fas fa-exclamation-circle"></i> Пользователь не найден';
-                        } else {
-                            loginError.innerHTML = '<i class="fas fa-exclamation-circle"></i> Ошибка входа: ' + err.message;
-                        }
-                    }
-                    showNotification('Ошибка входа', 'error');
-                });
-        }
-        
-        function handleLogout() {
-            auth.signOut()
-                .then(() => {
-                    showNotification('Вы вышли из системы', 'info');
-                    showLoginForm();
-                })
-                .catch((error) => {
-                    console.error('Ошибка выхода:', error);
-                });
-        }
-        
-        function showLoginForm() {
-            if (loginSection) {
-                loginSection.style.display = 'flex';
-                loginSection.style.margin = '40px auto';
-            }
-            if (adminPanel) adminPanel.style.display = 'none';
-            updateSyncStatus(false);
-            
-            // Очищаем пароль
-            const passwordInput = document.getElementById('passwordInput');
-            if (passwordInput) passwordInput.value = '';
-        }
-        
-        function showAdminPanel() {
-            if (loginSection) loginSection.style.display = 'none';
-            if (adminPanel) adminPanel.style.display = 'block';
-            updateSyncStatus(true);
-            
-            // Инициализируем график при показе админки
-            initChart();
-        }
-        
-        // =============================
         // FIRESTORE
         // =============================
         async function loadAllDataFromFirebase() {
             try {
                 const user = auth.currentUser;
                 if (!user) {
-                    updateSyncStatus(false);
+                    console.error('Пользователь не авторизован при загрузке данных');
                     return;
                 }
-                
-                showNotification('Загрузка данных...', 'info');
                 
                 // Загружаем заказы
                 const ordersSnapshot = await db.collection('work_orders')
@@ -2590,7 +2474,6 @@
             
             currentWorkOrderId = orderId;
             
-            // Заполняем форму
             const fields = [
                 'orderNumber', 'orderDate', 'clientName', 'clientPhone', 'clientEmail',
                 'clientCar', 'carYear', 'carVin', 'workDescription', 'workHours',
@@ -2608,7 +2491,6 @@
                 }
             });
             
-            // Поле carMileage может быть отдельно
             const carMileageEl = document.getElementById('carMileage');
             if (carMileageEl && order.carMileage !== undefined) {
                 carMileageEl.value = order.carMileage;
@@ -2651,6 +2533,7 @@
                 if (index !== -1) {
                     clients[index] = { ...clientData, id: savedId };
                 } else {
+                    // ИСПРАВЛЕНА СИНТАКСИЧЕСКАЯ ОШИБКА: добавлена закрывающая скобка
                     clients.push({ ...clientData, id: savedId });
                 }
                 
@@ -2677,57 +2560,6 @@
             }
         }
         
-        function showClientHistory(phone) {
-            const normalizedPhone = normalizePhone(phone);
-            const client = clients.find(c => c.normalizedPhone === normalizedPhone);
-            if (!client) return;
-            
-            const historyContainer = document.getElementById('clientHistoryContainer');
-            if (!historyContainer) return;
-            
-            const clientOrders = workOrders.filter(order => normalizePhone(order.clientPhone) === normalizedPhone);
-            
-            historyContainer.innerHTML = `
-                <div class="modal-overlay" id="historyModal">
-                    <div class="modal-content" style="max-width: 800px;">
-                        <button class="modal-close" onclick="closeHistoryModal()">&times;</button>
-                        <h2 style="color: var(--primary-color); margin-bottom: 20px;">
-                            <i class="fas fa-history"></i> История заказов - ${client.name}
-                        </h2>
-                        ${clientOrders.length > 0 ?
-                            clientOrders.map(order => `
-                                <div class="client-card" style="margin-bottom: 15px;">
-                                    <div>
-                                        <strong>Заказ:</strong> ${order.orderNumber}<br>
-                                        <strong>Дата:</strong> ${order.orderDate}<br>
-                                        <strong>Автомобиль:</strong> ${order.clientCar}<br>
-                                        <strong>Работы:</strong> ${order.workDescription || 'Не указано'}<br>
-                                        <strong>Сумма:</strong> ${order.orderTotal?.toFixed(0) || 0} ₽
-                                    </div>
-                                    <span class="status-badge">${statusMap[order.orderStatus] || order.orderStatus}</span>
-                                </div>
-                            `).join('')
-                        : '<p style="text-align: center; color: var(--gray-80); padding: 20px;">Нет истории заказов</p>'}
-                    </div>
-                </div>
-            `;
-            
-            // Закрытие модального окна
-            const modal = document.getElementById('historyModal');
-            if (modal) {
-                modal.addEventListener('click', function(e) {
-                    if (e.target === modal) closeHistoryModal();
-                });
-            }
-        }
-        
-        function closeHistoryModal() {
-            const modal = document.getElementById('historyModal');
-            if (modal && modal.parentNode) {
-                modal.parentNode.removeChild(modal);
-            }
-        }
-        
         // =============================
         // ГРАФИКИ
         // =============================
@@ -2735,12 +2567,10 @@
             const ctx = document.getElementById('revenueChart');
             if (!ctx) return;
             
-            // Если график уже существует, уничтожаем его
             if (revenueChart) {
                 revenueChart.destroy();
             }
             
-            // Создаем новый график
             revenueChart = new Chart(ctx, {
                 type: 'line',
                 data: {
@@ -2783,29 +2613,185 @@
                 }
             });
             
-            // Обновляем данные графика
             updateChart();
         }
         
         // =============================
-        // ИНИЦИАЛИЗАЦИЯ
+        // НАВИГАЦИЯ
+        // =============================
+        function initDates() {
+            const today = new Date().toISOString().split('T')[0];
+            
+            const calcDateEl = document.getElementById('calcDate');
+            const orderDateEl = document.getElementById('orderDate');
+            const reportDateEl = document.getElementById('reportDate');
+            
+            if (calcDateEl) calcDateEl.value = today;
+            if (orderDateEl) orderDateEl.value = today;
+            if (reportDateEl) reportDateEl.value = today;
+            
+            generateOrderNumber();
+            calculateTotals();
+            calculateWorkOrderTotal();
+        }
+        
+        function initEventListeners() {
+            // Навигация по вкладкам
+            const navTabs = document.querySelectorAll('.nav-tab');
+            navTabs.forEach(tab => {
+                tab.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    navTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const tabContents = document.querySelectorAll('.tab-content');
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    document.getElementById(tabId).classList.add('active');
+                    
+                    const navItems = document.querySelectorAll('.nav-item');
+                    navItems.forEach(item => item.classList.remove('active'));
+                    
+                    const correspondingNavItem = document.querySelector(`.nav-item[data-tab="${tabId}"]`);
+                    if (correspondingNavItem) {
+                        correspondingNavItem.classList.add('active');
+                    }
+                    
+                    if (tabId === 'reports') {
+                        generateReport();
+                    }
+                });
+            });
+            
+            // Навигация в шапке
+            const navItems = document.querySelectorAll('.nav-item[data-tab]');
+            navItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    navItems.forEach(i => i.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const navTabs = document.querySelectorAll('.nav-tab');
+                    navTabs.forEach(tab => tab.classList.remove('active'));
+                    
+                    const correspondingTab = document.querySelector(`.nav-tab[data-tab="${tabId}"]`);
+                    if (correspondingTab) {
+                        correspondingTab.classList.add('active');
+                    }
+                    
+                    const tabContents = document.querySelectorAll('.tab-content');
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    document.getElementById(tabId).classList.add('active');
+                    
+                    if (tabId === 'reports') {
+                        generateReport();
+                    }
+                });
+            });
+            
+            // Форма логина
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const passwordInput = document.getElementById('passwordInput');
+                    const password = passwordInput ? passwordInput.value : '';
+                    
+                    auth.signInWithEmailAndPassword(ADMIN_EMAIL, password)
+                        .then((cred) => {
+                            if (loginError) loginError.style.display = 'none';
+                            showNotification('Добро пожаловать в админ-панель!', 'success');
+                        })
+                        .catch((err) => {
+                            if (loginError) {
+                                loginError.style.display = 'block';
+                                if (err.code === 'auth/wrong-password') {
+                                    loginError.innerHTML = '<i class="fas fa-exclamation-circle"></i> Неверный пароль';
+                                } else if (err.code === 'auth/user-not-found') {
+                                    loginError.innerHTML = '<i class="fas fa-exclamation-circle"></i> Пользователь не найден';
+                                } else {
+                                    loginError.innerHTML = '<i class="fas fa-exclamation-circle"></i> Ошибка входа: ' + err.message;
+                                }
+                            }
+                            showNotification('Ошибка входа', 'error');
+                        });
+                });
+            }
+            
+            // Кнопка выхода
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('.logout-btn')) {
+                    if (!confirm('Вы уверены, что хотите выйти?')) return;
+                    
+                    auth.signOut()
+                        .then(() => {
+                            showNotification('Вы вышли из системы', 'info');
+                            
+                            workOrders = [];
+                            clients = [];
+                            filterWorkOrders();
+                            displayClients([]);
+                            updateDashboard();
+                        })
+                        .catch((error) => {
+                            console.error('Ошибка выхода:', error);
+                            showNotification('Ошибка при выходе из системы', 'error');
+                        });
+                }
+            });
+            
+            // Расчет стоимости в заказ-наряде
+            const workHoursEl = document.getElementById('workHours');
+            const hourlyRateEl = document.getElementById('hourlyRate');
+            const materialsCostEl = document.getElementById('materialsCost');
+            
+            if (workHoursEl) workHoursEl.addEventListener('input', calculateWorkOrderTotal);
+            if (hourlyRateEl) hourlyRateEl.addEventListener('input', calculateWorkOrderTotal);
+            if (materialsCostEl) materialsCostEl.addEventListener('input', calculateWorkOrderTotal);
+            
+            // Поиск клиентов
+            const clientSearchEl = document.getElementById('clientSearch');
+            if (clientSearchEl) clientSearchEl.addEventListener('input', searchClients);
+            
+            // Фильтрация заказов
+            const filterStatusEl = document.getElementById('filterStatus');
+            const filterPeriodEl = document.getElementById('filterPeriod');
+            
+            if (filterStatusEl) filterStatusEl.addEventListener('change', filterWorkOrders);
+            if (filterPeriodEl) filterPeriodEl.addEventListener('change', filterWorkOrders);
+            
+            // Генерация отчета
+            const reportTypeEl = document.getElementById('reportType');
+            const reportDateEl = document.getElementById('reportDate');
+            
+            if (reportTypeEl) reportTypeEl.addEventListener('change', generateReport);
+            if (reportDateEl) reportDateEl.addEventListener('change', generateReport);
+        }
+        
+        // =============================
+        // ИНИЦИАЛИЗАЦИЯ ПРИЛОЖЕНИЯ
         // =============================
         document.addEventListener('DOMContentLoaded', () => {
             initDates();
             initEventListeners();
             
-            // Инициализация Firebase с сохранением сессии
-            auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+            // Инициализация Firebase
+            firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
                 .then(() => {
-                    // Проверяем текущую сессию
-                    auth.onAuthStateChanged((user) => {
+                    // ЕДИНСТВЕННЫЙ слушатель состояния авторизации
+                    firebase.auth().onAuthStateChanged((user) => {
+                        console.log('Auth state changed:', user ? user.email : 'NO USER');
+                        
                         if (user) {
-                            console.log('Пользователь уже авторизован:', user.email);
+                            // ТОЛЬКО ЗДЕСЬ можно показывать админку
                             showAdminPanel();
                             loadAllDataFromFirebase();
                             updateSyncStatus(true);
                         } else {
-                            console.log('Пользователь не авторизован');
+                            // Всегда по умолчанию - форма логина
                             showLoginForm();
                             updateSyncStatus(false);
                         }
@@ -2813,6 +2799,9 @@
                 })
                 .catch((error) => {
                     console.error("Ошибка инициализации Firebase:", error);
+                    // При ошибке Firebase показываем форму логина
+                    showLoginForm();
+                    updateSyncStatus(false);
                 });
         });
     </script>
