@@ -33,13 +33,11 @@
             --transition: all 0.3s ease;
             --container-width: 1200px;
         }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
         body {
             font-family: 'Open Sans', Arial, sans-serif;
             color: var(--gray-90);
@@ -50,13 +48,11 @@
             display: flex;
             flex-direction: column;
         }
-        
         .container {
             max-width: var(--container-width);
             margin: 0 auto;
             padding: 0 20px;
         }
-        
         /* Шапка сайта - СКРЫТА ПО УМОЛЧАНИЮ */
         .header {
             background-color: white;
@@ -68,7 +64,6 @@
             box-shadow: var(--box-shadow);
             display: none; /* Скрыта по умолчанию */
         }
-        
         .header::before {
             content: '';
             position: absolute;
@@ -78,20 +73,17 @@
             height: 3px;
             background: var(--secondary-color); /* Красная линия как на сайте */
         }
-        
         .top-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 15px;
         }
-        
         .logo-section {
             display: flex;
             align-items: center;
             gap: 15px;
         }
-        
         .logo-banner-link {
             text-decoration: none;
             color: inherit;
@@ -99,12 +91,10 @@
             align-items: center;
             gap: 10px;
         }
-        
         .logo {
             height: 50px;
             object-fit: contain;
         }
-        
         .site-title {
             font-size: 1.5rem;
             font-weight: 700;
@@ -112,19 +102,16 @@
             display: flex;
             flex-direction: column;
         }
-        
         .site-subtitle {
             font-size: 0.8rem;
             color: var(--gray-60);
             font-weight: 400;
         }
-        
         .admin-info {
             display: flex;
             align-items: center;
             gap: 15px;
         }
-        
         .sync-status {
             font-size: 12px;
             color: var(--gray-80);
@@ -132,11 +119,9 @@
             align-items: center;
             gap: 5px;
         }
-        
         .sync-status .synced { color: #28a745; }
         .sync-status .not-synced { color: #dc3545; }
         .sync-status .not-authorized { color: #ffc107; }
-        
         /* Кнопки в стиле основного сайта */
         .btn {
             display: inline-flex;
@@ -155,47 +140,37 @@
             cursor: pointer;
             text-align: center;
         }
-        
         .btn:hover {
             background: var(--primary-dark);
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(26, 95, 180, 0.3);
         }
-        
         .btn-secondary {
             background: var(--secondary-color);
         }
-        
         .btn-secondary:hover {
             background: #a00;
             box-shadow: 0 4px 8px rgba(204, 0, 0, 0.3);
         }
-        
         .btn-success {
             background: var(--success-color);
         }
-        
         .btn-success:hover {
             background: #218838;
         }
-        
         .btn-danger {
             background: var(--danger-color);
         }
-        
         .btn-danger:hover {
             background: #c82333;
         }
-        
         .btn-warning {
             background: var(--warning-color);
             color: #000;
         }
-        
         .btn-warning:hover {
             background: #e0a800;
         }
-        
         .logout-btn {
             background: linear-gradient(135deg, var(--secondary-color), #a00);
             color: white;
@@ -206,12 +181,10 @@
             transition: var(--transition);
             font-weight: 600;
         }
-        
         .logout-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(204, 0, 0, 0.3);
         }
-        
         /* Навигация как на основном сайте */
         .main-nav {
             display: flex;
@@ -221,7 +194,6 @@
             border-top: 1px solid var(--gray-40);
             padding-top: 15px;
         }
-        
         .nav-item {
             position: relative;
             cursor: pointer;
@@ -234,15 +206,12 @@
             background: none;
             border: none;
         }
-        
         .nav-item:hover {
             color: var(--primary-color);
         }
-        
         .nav-item.active {
             color: var(--primary-color);
         }
-        
         .nav-item.active::after {
             content: '';
             position: absolute;
@@ -252,7 +221,6 @@
             height: 2px;
             background: var(--primary-color);
         }
-        
         /* Секция логина */
         .login-section {
             display: none;
@@ -264,7 +232,6 @@
             margin: 40px auto;
             max-width: 500px;
         }
-        
         .login-container {
             background: white;
             padding: 40px;
@@ -273,14 +240,12 @@
             box-shadow: var(--box-shadow);
             border-top: 4px solid var(--secondary-color); /* Красная линия сверху */
         }
-        
         .login-icon {
             font-size: 3rem;
             color: var(--primary-color);
             text-align: center;
             margin-bottom: 20px;
         }
-        
         .login-title {
             text-align: center;
             color: var(--primary-color);
@@ -288,24 +253,20 @@
             font-size: 1.8rem;
             font-weight: 700;
         }
-        
         .login-subtitle {
             text-align: center;
             color: var(--gray-80);
             margin-bottom: 30px;
         }
-        
         .form-group {
             margin-bottom: 20px;
         }
-        
         .form-label {
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
             color: var(--gray-90);
         }
-        
         .form-input {
             width: 100%;
             padding: 12px 15px;
@@ -315,47 +276,39 @@
             transition: var(--transition);
             font-family: inherit;
         }
-        
         .form-input:focus {
             outline: none;
             border-color: var(--primary-color);
             box-shadow: 0 0 0 3px rgba(26, 95, 180, 0.25);
         }
-        
         .btn-block {
             width: 100%;
         }
-        
         .alert {
             padding: 12px;
             border-radius: var(--border-radius);
             margin-bottom: 20px;
             display: none;
         }
-        
         .alert-error {
             background: rgba(220, 53, 69, 0.1);
             border: 1px solid rgba(220, 53, 69, 0.2);
             color: #dc3545;
         }
-        
         .alert-success {
             background: rgba(40, 167, 69, 0.1);
             border: 1px solid rgba(40, 167, 69, 0.2);
             color: #28a745;
         }
-        
         .alert-info {
             background: rgba(23, 162, 184, 0.1);
             border: 1px solid rgba(23, 162, 184, 0.2);
             color: #17a2b8;
         }
-        
         /* Админ-панель */
         .admin-panel {
             display: none;
         }
-        
         .tab-content {
             display: none;
             background-color: white;
@@ -365,11 +318,9 @@
             position: relative;
             overflow: hidden;
         }
-        
         .tab-content.active {
             display: block;
         }
-        
         .tab-content::before {
             content: '';
             position: absolute;
@@ -379,11 +330,9 @@
             height: 100%;
             background: var(--primary-color);
         }
-        
         .section {
             margin-bottom: 30px;
         }
-        
         .section-title {
             color: var(--primary-color);
             margin-bottom: 20px;
@@ -392,7 +341,6 @@
             position: relative;
             font-size: 28px;
         }
-        
         .section-title::after {
             content: '';
             position: absolute;
@@ -402,50 +350,42 @@
             height: 2px;
             background: var(--secondary-color);
         }
-        
         .form-row {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             margin-bottom: 20px;
         }
-        
         .form-row-3 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             margin-bottom: 20px;
         }
-        
         .table-container {
             overflow-x: auto;
             margin: 20px 0;
             border-radius: var(--border-radius);
             border: 1px solid var(--gray-40);
         }
-        
         table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 0;
         }
-        
         th, td {
             padding: 12px;
             text-align: left;
             border-bottom: 1px solid var(--gray-20);
         }
-        
         th {
             background-color: var(--gray-10);
             font-weight: 600;
             color: var(--primary-color);
         }
-        
         tr:hover {
             background-color: var(--gray-10);
         }
-        
         /* Статусы в стиле карточек */
         .status-badge {
             display: inline-block;
@@ -456,12 +396,10 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-        
         .status-new { background: #f8d7da; color: #721c24; }
         .status-in_progress { background: #fff3cd; color: #856404; }
         .status-completed { background: #d4edda; color: #155724; }
         .status-paid { background: #cce5ff; color: #004085; }
-        
         /* Фильтры */
         .filters {
             display: flex;
@@ -469,20 +407,17 @@
             margin-bottom: 20px;
             flex-wrap: wrap;
         }
-        
         .filter-group {
             display: flex;
             flex-direction: column;
             gap: 5px;
         }
-        
         .filter-row {
             display: flex;
             gap: 15px;
             margin-bottom: 15px;
             flex-wrap: wrap;
         }
-        
         /* Карточки статистики */
         .totals-grid {
             display: grid;
@@ -490,7 +425,6 @@
             gap: 20px;
             margin: 20px 0;
         }
-        
         .summary {
             background: linear-gradient(135deg, var(--gray-10), white);
             padding: 25px;
@@ -499,25 +433,21 @@
             border: 1px solid var(--gray-40);
             transition: var(--transition);
         }
-        
         .summary:hover {
             transform: translateY(-5px);
             box-shadow: var(--box-shadow);
         }
-        
         .summary h3 {
             color: var(--primary-color);
             margin-bottom: 15px;
             font-size: 1.2rem;
         }
-        
         .summary p {
             font-size: 1.5rem;
             font-weight: 700;
             margin: 10px 0;
             color: var(--gray-90);
         }
-        
         /* Модальные окна */
         .modal-overlay {
             position: fixed;
@@ -531,7 +461,6 @@
             align-items: center;
             z-index: 2000;
         }
-        
         .modal-content {
             background: white;
             padding: 30px;
@@ -543,7 +472,6 @@
             position: relative;
             box-shadow: var(--box-shadow);
         }
-        
         .modal-close {
             position: absolute;
             top: 15px;
@@ -554,11 +482,9 @@
             background: none;
             border: none;
         }
-        
         .modal-close:hover {
             color: var(--danger-color);
         }
-        
         /* Карточки клиентов */
         .client-card {
             transition: var(--transition);
@@ -572,12 +498,10 @@
             justify-content: space-between;
             align-items: center;
         }
-        
         .client-card:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
-        
         /* Калькулятор */
         .calculator-controls {
             display: flex;
@@ -585,7 +509,6 @@
             margin: 20px 0;
             flex-wrap: wrap;
         }
-        
         /* Статистика */
         .stats-grid {
             display: grid;
@@ -593,7 +516,6 @@
             gap: 20px;
             margin: 20px 0;
         }
-        
         .stat-card {
             background: linear-gradient(135deg, var(--gray-10), white);
             padding: 20px;
@@ -602,32 +524,27 @@
             border: 1px solid var(--gray-40);
             transition: var(--transition);
         }
-        
         .stat-card:hover {
             transform: translateY(-3px);
             box-shadow: var(--box-shadow);
         }
-        
         .stat-value {
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--primary-color);
             margin: 10px 0;
         }
-        
         .stat-label {
             color: var(--gray-80);
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        
         /* Основной контент */
         .main-content {
             flex: 1;
             padding: 30px 0;
         }
-        
         /* Подвал сайта */
         footer {
             background: white;
@@ -637,7 +554,6 @@
             margin-top: auto;
             position: relative;
         }
-        
         footer::before {
             content: '';
             position: absolute;
@@ -647,7 +563,6 @@
             height: 3px;
             background: var(--secondary-color); /* Красная линия как в основном сайте */
         }
-        
         .footer-content {
             display: flex;
             justify-content: space-between;
@@ -655,32 +570,26 @@
             flex-wrap: wrap;
             gap: 20px;
         }
-        
         .copyright {
             font-size: 14px;
             color: var(--gray-80);
         }
-        
         /* Анимации */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
         @keyframes slideIn {
             from { transform: translateX(100%); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
-        
         @keyframes slideOut {
             from { transform: translateY(0); opacity: 1; }
             to { transform: translateX(100%); opacity: 0; }
         }
-        
         .fade-in {
             animation: fadeIn 0.5s ease forwards;
         }
-        
         /* Адаптивность */
         @media (max-width: 768px) {
             .top-row {
@@ -688,70 +597,55 @@
                 text-align: center;
                 gap: 15px;
             }
-            
             .admin-info {
                 flex-direction: column;
                 text-align: center;
             }
-            
             .main-nav {
                 gap: 15px;
                 flex-direction: column;
                 align-items: flex-start;
             }
-            
             .nav-item {
                 width: 100%;
             }
-            
             .section {
                 padding: 20px;
             }
-            
             .form-row, .form-row-3 {
                 grid-template-columns: 1fr;
             }
-            
             table {
                 font-size: 14px;
             }
-            
             .footer-content {
                 flex-direction: column;
                 text-align: center;
             }
-            
             .filter-row {
                 flex-direction: column;
             }
-            
             .filter-group {
                 min-width: 100%;
             }
-            
             .totals-grid, .stats-grid {
                 grid-template-columns: 1fr;
             }
         }
-        
         @media (max-width: 480px) {
             .login-section {
                 padding: 20px 15px;
             }
-            
             .login-container {
                 padding: 30px 20px;
             }
-            
             .section {
                 padding: 15px;
             }
-            
             .tab-content {
                 padding: 20px 15px;
             }
         }
-        
         /* Вкладки навигации */
         .nav-tabs {
             display: flex;
@@ -761,7 +655,6 @@
             margin-bottom: 20px;
             box-shadow: var(--box-shadow);
         }
-        
         .nav-tab {
             flex: 1;
             padding: 15px 20px;
@@ -772,37 +665,30 @@
             border: none;
             font-weight: 500;
         }
-        
         .nav-tab.active {
             background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
             color: white;
         }
-        
         .nav-tab:hover:not(.active) {
             background-color: var(--gray-40);
         }
-        
         /* Дополнительные улучшения */
         textarea.form-input {
             min-height: 100px;
             resize: vertical;
             font-family: inherit;
         }
-        
         input[type="number"] {
             -moz-appearance: textfield;
         }
-        
         input[type="number"]::-webkit-outer-spin-button,
         input[type="number"]::-webkit-inner-spin-button {
             -webkit-appearance: none;
             margin: 0;
         }
-        
         select.form-input {
             cursor: pointer;
         }
-        
         /* Стили для Chart.js */
         .chart-container {
             margin: 20px 0;
@@ -811,7 +697,6 @@
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
         }
-        
         /* Уведомления */
         .notification {
             position: fixed;
@@ -827,25 +712,21 @@
             max-width: 400px;
             animation: slideIn 0.3s ease;
         }
-        
         .notification-success {
             background: #d4edda;
             color: #155724;
             border: 1px solid #c3e6cb;
         }
-        
         .notification-error {
             background: #f8d7da;
             color: #721c24;
             border: 1px solid #f5c6cb;
         }
-        
         .notification-info {
             background: #d1ecf1;
             color: #0c5460;
             border: 1px solid #bee5eb;
         }
-        
         .notification-warning {
             background: #fff3cd;
             color: #856404;
@@ -899,7 +780,6 @@
             </nav>
         </div>
     </header>
-    
     <!-- Секция логина - СКРЫТА по умолчанию -->
     <section class="login-section" id="loginSection" style="display:none">
         <div class="login-container">
@@ -921,7 +801,6 @@
             </div>
         </div>
     </section>
-    
     <!-- Админ-панель - СКРЫТА по умолчанию -->
     <section class="main-content">
         <div class="container">
@@ -934,13 +813,11 @@
                     <button class="nav-tab" data-tab="calculator">Калькулятор</button>
                     <button class="nav-tab" data-tab="reports">Отчеты</button>
                 </div>
-                
                 <!-- Главная панель -->
                 <div class="tab-content active" id="dashboard">
                     <div class="section">
                         <h2 class="section-title">Панель управления</h2>
                         <p>Добро пожаловать в админ-панель VN-MASTERS. Здесь вы можете управлять заказами, клиентами и отслеживать статистику.</p>
-                        
                         <div class="totals-grid">
                             <div class="summary">
                                 <h3>Всего заказов</h3>
@@ -959,20 +836,17 @@
                                 <p id="totalClients">0</p>
                             </div>
                         </div>
-                        
                         <div class="chart-container">
                             <h3>График выручки (последние 7 дней)</h3>
                             <canvas id="revenueChart" style="width:100%; height:300px;"></canvas>
                         </div>
                     </div>
                 </div>
-                
                 <!-- Заказ-наряды -->
                 <div class="tab-content" id="work-orders">
                     <!-- Форма заказ-наряда -->
                     <div class="section">
                         <h2 class="section-title">Заказ-наряды</h2>
-                        
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="form-label">Номер заказа</label>
@@ -983,11 +857,9 @@
                                 <input type="date" id="orderDate" class="form-input">
                             </div>
                         </div>
-                        
                         <h3 style="margin: 20px 0 15px 0; color: var(--primary-color);">
                             <i class="fas fa-user"></i> Информация о клиенте
                         </h3>
-                        
                         <div class="form-row-3">
                             <div class="form-group">
                                 <label class="form-label">ФИО клиента *</label>
@@ -1002,7 +874,6 @@
                                 <input type="email" id="clientEmail" class="form-input" placeholder="email@example.com">
                             </div>
                         </div>
-                        
                         <div class="form-row-3">
                             <div class="form-group">
                                 <label class="form-label">Автомобиль *</label>
@@ -1017,16 +888,13 @@
                                 <input type="text" id="carVin" class="form-input">
                             </div>
                         </div>
-                        
                         <h3 style="margin: 25px 0 15px 0; color: var(--primary-color);">
                             <i class="fas fa-tools"></i> Работы и материалы
                         </h3>
-                        
                         <div class="form-group">
                             <label class="form-label">Описание работ</label>
                             <textarea id="workDescription" class="form-input" rows="3" placeholder="Опишите выполненные работы..."></textarea>
                         </div>
-                        
                         <div class="form-row-3">
                             <div class="form-group">
                                 <label class="form-label">Нормо-часы</label>
@@ -1041,7 +909,6 @@
                                 <input type="number" id="materialsCost" class="form-input" value="0" min="0" oninput="calculateWorkOrderTotal()">
                             </div>
                         </div>
-                        
                         <div class="form-row-3">
                             <div class="form-group">
                                 <label class="form-label">Стоимость работ (руб)</label>
@@ -1056,7 +923,6 @@
                                 <input type="text" id="orderTotal" class="form-input" readonly>
                             </div>
                         </div>
-                        
                         <div class="form-row-3">
                             <div class="form-group">
                                 <label class="form-label">Статус заказа</label>
@@ -1080,11 +946,9 @@
                                 <input type="text" id="orderNotes" class="form-input">
                             </div>
                         </div>
-                        
                         <div class="alert alert-success" id="workOrderSuccess" style="display:none;">
                             <i class="fas fa-check-circle"></i> Заказ-наряд успешно сохранен!
                         </div>
-                        
                         <div style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap;">
                             <button class="btn" onclick="saveWorkOrder()">
                                 <i class="fas fa-save"></i> Сохранить заказ
@@ -1097,13 +961,11 @@
                             </button>
                         </div>
                     </div>
-                    
                     <!-- Список заказов -->
                     <div class="section" style="margin-top: 40px;">
                         <h3 style="margin-bottom: 15px; color: var(--primary-color);">
                             <i class="fas fa-list"></i> Список заказов
                         </h3>
-                        
                         <div class="filters">
                             <div class="filter-group">
                                 <label class="form-label">Фильтр по статусу</label>
@@ -1125,7 +987,6 @@
                                 </select>
                             </div>
                         </div>
-                        
                         <div class="table-container">
                             <table id="workOrdersTable">
                                 <thead>
@@ -1144,12 +1005,10 @@
                         </div>
                     </div>
                 </div>
-                
                 <!-- Клиенты -->
                 <div class="tab-content" id="clients">
                     <div class="section">
                         <h2 class="section-title">Клиенты</h2>
-                        
                         <div class="form-row">
                             <div class="form-group" style="flex: 1;">
                                 <input type="text" id="clientSearch" class="form-input" placeholder="Поиск по имени, телефону или автомобилю...">
@@ -1160,7 +1019,6 @@
                                 </button>
                             </div>
                         </div>
-                        
                         <div class="table-container">
                             <table id="clientsTable">
                                 <thead>
@@ -1180,23 +1038,19 @@
                         </div>
                     </div>
                 </div>
-                
                 <!-- Калькулятор -->
                 <div class="tab-content" id="calculator">
                     <div class="section">
                         <h2 class="section-title">Калькулятор доходов</h2>
-                        
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="form-label">Дата расчета</label>
                                 <input type="date" id="calcDate" class="form-input">
                             </div>
                         </div>
-                        
                         <h3 style="margin: 25px 0 15px 0; color: var(--primary-color);">
                             <i class="fas fa-tools"></i> Работы
                         </h3>
-                        
                         <div class="table-container">
                             <table>
                                 <thead>
@@ -1219,15 +1073,12 @@
                                 </tbody>
                             </table>
                         </div>
-                        
                         <button type="button" class="btn" onclick="addWorkRowCalculator()" style="margin: 10px 0;">
                             <i class="fas fa-plus"></i> Добавить работу
                         </button>
-                        
                         <h3 style="margin: 25px 0 15px 0; color: var(--primary-color);">
                             <i class="fas fa-cogs"></i> Материалы
                         </h3>
-                        
                         <div class="table-container">
                             <table>
                                 <thead>
@@ -1250,11 +1101,9 @@
                                 </tbody>
                             </table>
                         </div>
-                        
                         <button type="button" class="btn" onclick="addMaterialRowCalculator()" style="margin: 10px 0;">
                             <i class="fas fa-plus"></i> Добавить материал
                         </button>
-                        
                         <div class="totals-grid">
                             <div class="summary">
                                 <h3>Общий доход</h3>
@@ -1269,7 +1118,6 @@
                                 <p id="totalProfitCalc" style="color: var(--success-color);">0 ₽</p>
                             </div>
                         </div>
-                        
                         <div class="calculator-controls">
                             <button type="button" class="btn btn-success" onclick="saveCalculator()">
                                 <i class="fas fa-save"></i> Сохранить
@@ -1283,12 +1131,10 @@
                         </div>
                     </div>
                 </div>
-                
                 <!-- Отчеты -->
                 <div class="tab-content" id="reports">
                     <div class="section">
                         <h2 class="section-title">Отчеты</h2>
-                        
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="form-label">Тип отчета</label>
@@ -1304,7 +1150,6 @@
                                 <input type="date" id="reportDate" class="form-input">
                             </div>
                         </div>
-                        
                         <div class="stats-grid">
                             <div class="stat-card">
                                 <div class="stat-label">Выручка</div>
@@ -1323,7 +1168,6 @@
                                 <div class="stat-value" id="profitMargin">0%</div>
                             </div>
                         </div>
-                        
                         <div class="table-container">
                             <table id="reportTable">
                                 <thead>
@@ -1340,7 +1184,6 @@
                                 <tbody></tbody>
                             </table>
                         </div>
-                        
                         <button type="button" class="btn" onclick="printReport()" style="margin-top: 20px;">
                             <i class="fas fa-print"></i> Печать отчета
                         </button>
@@ -1349,7 +1192,6 @@
             </div>
         </div>
     </section>
-    
     <!-- Подвал -->
     <footer>
         <div class="container">
@@ -1360,15 +1202,12 @@
             </div>
         </div>
     </footer>
-    
     <!-- Модальное окно истории клиента -->
     <div id="clientHistoryContainer"></div>
-    
     <script>
         // =============================
         // ИСПРАВЛЕННЫЙ КОД
         // =============================
-        
         // =============================
         // ИНИЦИАЛИЗАЦИЯ FIREBASE
         // =============================
@@ -1381,18 +1220,15 @@
             appId: "1:1064819031608:web:aec87c27ca8fc355ecb0cd",
             measurementId: "G-K6SMJ1YZG8"
         };
-        
         // Инициализация Firebase
         const app = firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
         const db = firebase.firestore();
         const FieldValue = firebase.firestore.FieldValue;
-        
         // =============================
         // НАСТРОЙКИ АДМИНА
         // =============================
         const ADMIN_EMAIL = "Domian6123@gmail.com";
-        
         // =============================
         // КОНСТАНТЫ ДЛЯ РАСЧЕТОВ
         // =============================
@@ -1400,7 +1236,6 @@
             work: 0.6,
             materials: 0.3
         };
-        
         // =============================
         // ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ
         // =============================
@@ -1411,17 +1246,14 @@
         const loginError = document.getElementById('loginError');
         const syncStatus = document.getElementById('syncStatus');
         const syncText = document.getElementById('syncText');
-        
         let workOrders = [];
         let clients = [];
         let calculatorData = [];
         let currentWorkOrderId = null;
         let currentClientId = null;
-        
         let workCalcCounter = 1;
         let materialCalcCounter = 1;
         let revenueChart = null;
-        
         // Карта статусов для перевода на русский
         const statusMap = {
             new: 'Новый',
@@ -1431,7 +1263,6 @@
             pending: 'Ожидает оплаты',
             partial: 'Частично оплачен'
         };
-        
         // =============================
         // ФУНКЦИИ ПОКАЗА/СКРЫТИЯ ИНТЕРФЕЙСА
         // =============================
@@ -1440,42 +1271,33 @@
             if (adminHeader) {
                 adminHeader.style.display = 'none';
             }
-            
             if (adminPanel) {
                 adminPanel.style.display = 'none';
             }
-            
             if (loginSection) {
                 loginSection.style.display = 'flex';
                 loginSection.style.margin = '40px auto';
             }
-            
             // Очищаем пароль
             const passwordInput = document.getElementById('passwordInput');
             if (passwordInput) passwordInput.value = '';
-            
             // Сбрасываем статус синхронизации
             updateSyncStatus(false);
         }
-        
         function showAdminPanel() {
             // Скрываем форму логина, показываем шапку и админку
             if (loginSection) {
                 loginSection.style.display = 'none';
             }
-            
             if (adminHeader) {
                 adminHeader.style.display = 'block';
             }
-            
             if (adminPanel) {
                 adminPanel.style.display = 'block';
             }
-            
             // Обновляем статус синхронизации
             updateSyncStatus(true);
         }
-        
         // =============================
         // ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
         // =============================
@@ -1483,11 +1305,9 @@
             if (!phone) return '';
             return phone.replace(/\D/g, '');
         }
-        
         function normalizePhoneInput(input) {
             input.value = normalizePhone(input.value);
         }
-        
         function generateOrderNumber() {
             const now = new Date();
             const year = now.getFullYear().toString().slice(-2);
@@ -1500,7 +1320,6 @@
             if (orderNumberEl) orderNumberEl.value = number;
             return number;
         }
-        
         function showNotification(message, type = 'info') {
             const notification = document.createElement('div');
             notification.className = `notification notification-${type}`;
@@ -1518,21 +1337,17 @@
                 align-items: center;
                 gap: 10px;
             `;
-            
             const icons = {
                 'success': 'fa-check-circle',
                 'error': 'fa-exclamation-circle',
                 'info': 'fa-info-circle',
                 'warning': 'fa-exclamation-triangle'
             };
-            
             notification.innerHTML = `
                 <i class="fas ${icons[type] || 'fa-info-circle'}" style="font-size: 1.2rem;"></i>
                 <span>${message}</span>
             `;
-            
             document.body.appendChild(notification);
-            
             setTimeout(() => {
                 notification.style.animation = 'slideOut 0.3s ease';
                 setTimeout(() => {
@@ -1542,11 +1357,9 @@
                 }, 300);
             }, 5000);
         }
-        
         function updateSyncStatus(isAuthenticated) {
             const syncIcon = syncStatus.querySelector('i');
             const user = auth.currentUser;
-            
             if (!isAuthenticated || !user) {
                 if (syncIcon) syncIcon.className = 'fas fa-sync not-authorized';
                 if (syncText) {
@@ -1561,7 +1374,6 @@
                 }
             }
         }
-        
         // =============================
         // КАЛЬКУЛЯТОР
         // =============================
@@ -1578,7 +1390,6 @@
             `;
             calculateTotals();
         }
-        
         function removeWorkRowCalculator(button) {
             const row = button.closest('tr');
             if (row && row.parentNode) {
@@ -1586,7 +1397,6 @@
                 calculateTotals();
             }
         }
-        
         function addMaterialRowCalculator() {
             const table = document.getElementById('materialTableCalculator');
             if (!table) return;
@@ -1600,7 +1410,6 @@
             `;
             calculateTotals();
         }
-        
         function removeMaterialRowCalculator(button) {
             const row = button.closest('tr');
             if (row && row.parentNode) {
@@ -1608,12 +1417,10 @@
                 calculateTotals();
             }
         }
-        
         function calculateTotals() {
             let totalWorkIncome = 0;
             let totalWorkExpenses = 0;
             let totalWorkProfit = 0;
-            
             const workRows = document.querySelectorAll('#workTableCalculator tbody tr');
             workRows.forEach(row => {
                 const income = parseFloat(row.querySelector('.work-income').value) || 0;
@@ -1625,11 +1432,9 @@
                 totalWorkExpenses += expenses;
                 totalWorkProfit += profit;
             });
-            
             let totalMaterialRevenue = 0;
             let totalMaterialCost = 0;
             let totalMaterialProfit = 0;
-            
             const materialRows = document.querySelectorAll('#materialTableCalculator tbody tr');
             materialRows.forEach(row => {
                 const cost = parseFloat(row.querySelector('.material-cost').value) || 0;
@@ -1641,53 +1446,42 @@
                 totalMaterialCost += cost;
                 totalMaterialProfit += profit;
             });
-            
             const totalIncome = totalWorkIncome + totalMaterialRevenue;
             const totalExpenses = totalWorkExpenses + totalMaterialCost;
             const totalProfit = totalWorkProfit + totalMaterialProfit;
-            
             const totalIncomeEl = document.getElementById('totalIncome');
             const totalExpensesEl = document.getElementById('totalExpenses');
             const totalProfitCalcEl = document.getElementById('totalProfitCalc');
-            
             if (totalIncomeEl) totalIncomeEl.textContent = totalIncome.toFixed(0) + ' ₽';
             if (totalExpensesEl) totalExpensesEl.textContent = totalExpenses.toFixed(0) + ' ₽';
             if (totalProfitCalcEl) totalProfitCalcEl.textContent = totalProfit.toFixed(0) + ' ₽';
         }
-        
         function resetCalculator() {
             if (confirm('Вы уверены, что хотите сбросить все данные калькулятора?')) {
                 const workTable = document.querySelector('#workTableCalculator tbody');
                 const materialTable = document.querySelector('#materialTableCalculator tbody');
-                
                 if (workTable) workTable.innerHTML = '';
                 if (materialTable) materialTable.innerHTML = '';
-                
                 workCalcCounter = 1;
                 materialCalcCounter = 1;
-                
                 addWorkRowCalculator();
                 addMaterialRowCalculator();
                 calculateTotals();
             }
         }
-        
         // =============================
         // ФОРМЫ ЗАКАЗ-НАРЯДОВ
         // =============================
         function resetWorkOrder() {
             currentWorkOrderId = null;
             generateOrderNumber();
-            
             const orderDateEl = document.getElementById('orderDate');
             if (orderDateEl) orderDateEl.value = new Date().toISOString().split('T')[0];
-            
             const fields = [
                 'clientName', 'clientPhone', 'clientEmail', 'clientCar',
                 'carYear', 'carVin', 'workDescription', 'workHours',
                 'hourlyRate', 'materialsCost', 'orderNotes'
             ];
-            
             fields.forEach(fieldId => {
                 const el = document.getElementById(fieldId);
                 if (el) {
@@ -1697,15 +1491,12 @@
                     else el.value = '';
                 }
             });
-            
             const orderStatusEl = document.getElementById('orderStatus');
             const paymentStatusEl = document.getElementById('paymentStatus');
             if (orderStatusEl) orderStatusEl.value = 'new';
             if (paymentStatusEl) paymentStatusEl.value = 'pending';
-            
             calculateWorkOrderTotal();
         }
-        
         function calculateWorkOrderTotal() {
             const workHoursEl = document.getElementById('workHours');
             const hourlyRateEl = document.getElementById('hourlyRate');
@@ -1713,70 +1504,54 @@
             const workCostEl = document.getElementById('workCost');
             const materialsTotalEl = document.getElementById('materialsTotal');
             const orderTotalEl = document.getElementById('orderTotal');
-            
             if (!workHoursEl || !hourlyRateEl || !materialsCostEl || !workCostEl || !materialsTotalEl || !orderTotalEl) return;
-            
             const workHours = parseFloat(workHoursEl.value) || 0;
             const hourlyRate = parseFloat(hourlyRateEl.value) || 0;
             const materialsCost = parseFloat(materialsCostEl.value) || 0;
-            
             const workCost = workHours * hourlyRate;
             const total = workCost + materialsCost;
-            
             workCostEl.value = workCost.toFixed(0);
             materialsTotalEl.value = materialsCost.toFixed(0);
             orderTotalEl.value = total.toFixed(0);
         }
-        
         // =============================
         // ОБНОВЛЕНИЕ ИНТЕРФЕЙСА
         // =============================
         function updateDashboard() {
             const totalRevenue = workOrders.reduce((sum, order) => sum + (order.orderTotal || 0), 0);
             const totalProfit = workOrders.reduce((sum, order) => sum + (order.profit || 0), 0);
-            
             const totalOrdersEl = document.getElementById('totalOrders');
             const totalRevenueEl = document.getElementById('totalRevenue');
             const totalProfitDashboardEl = document.getElementById('totalProfitDashboard');
             const totalClientsEl = document.getElementById('totalClients');
-            
             if (totalOrdersEl) totalOrdersEl.textContent = workOrders.length;
             if (totalRevenueEl) totalRevenueEl.textContent = totalRevenue.toFixed(0) + ' ₽';
             if (totalProfitDashboardEl) totalProfitDashboardEl.textContent = totalProfit.toFixed(0) + ' ₽';
             if (totalClientsEl) totalClientsEl.textContent = clients.length;
-            
             updateChart();
         }
-        
         function updateChart() {
             if (!revenueChart) return;
-            
             const labels = [];
             const data = [];
-            
             for (let i = 6; i >= 0; i--) {
                 const date = new Date();
                 date.setDate(date.getDate() - i);
                 const dateStr = date.toISOString().split('T')[0];
                 labels.push(date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'short' }));
-                
                 const dayRevenue = workOrders
                     .filter(order => order.orderDate === dateStr)
                     .reduce((sum, order) => sum + (order.orderTotal || 0), 0);
                 data.push(dayRevenue);
             }
-            
             revenueChart.data.labels = labels;
             revenueChart.data.datasets[0].data = data;
             revenueChart.update();
         }
-        
         function displayWorkOrders(orders) {
             const tbody = document.querySelector('#workOrdersTable tbody');
             if (!tbody) return;
-            
             tbody.innerHTML = '';
-            
             orders.forEach(order => {
                 const statusText = statusMap[order.orderStatus] || order.orderStatus;
                 const statusColor = {
@@ -1785,7 +1560,6 @@
                     'completed': '#28a745',
                     'paid': '#007bff'
                 }[order.orderStatus] || '#6c757d';
-                
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${order.orderNumber}</td>
@@ -1802,13 +1576,10 @@
                 tbody.appendChild(row);
             });
         }
-        
         function displayClients(clientsList) {
             const tbody = document.querySelector('#clientsTable tbody');
             if (!tbody) return;
-            
             tbody.innerHTML = '';
-            
             clientsList.forEach(client => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
@@ -1828,24 +1599,20 @@
                 tbody.appendChild(row);
             });
         }
-        
         // =============================
         // ФИЛЬТРАЦИЯ
         // =============================
         function filterWorkOrders() {
             let filteredOrders = [...workOrders];
-            
             const statusFilter = document.getElementById('filterStatus');
             if (statusFilter && statusFilter.value !== 'all') {
                 filteredOrders = filteredOrders.filter(order => order.orderStatus === statusFilter.value);
             }
-            
             const periodFilter = document.getElementById('filterPeriod');
             if (periodFilter) {
                 const periodValue = periodFilter.value;
                 const now = new Date();
                 const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-                
                 if (periodValue === 'today') {
                     filteredOrders = filteredOrders.filter(order => {
                         const orderDate = new Date(order.orderDate);
@@ -1867,25 +1634,20 @@
                     });
                 }
             }
-            
             filteredOrders.sort((a, b) => new Date(b.orderDate) - new Date(a.orderDate));
             displayWorkOrders(filteredOrders);
         }
-        
         function searchClients() {
             const searchTerm = document.getElementById('clientSearch');
             if (!searchTerm) return;
-            
             const term = searchTerm.value.toLowerCase();
             const filteredClients = clients.filter(client =>
                 (client.name && client.name.toLowerCase().includes(term)) ||
                 (client.phone && client.phone.includes(term)) ||
                 (client.car && client.car.toLowerCase().includes(term))
             );
-            
             displayClients(filteredClients);
         }
-        
         // =============================
         // МОДАЛЬНЫЕ ОКНА
         // =============================
@@ -1944,22 +1706,17 @@
                     </div>
                 </div>
             `;
-            
             document.body.appendChild(modal);
-            
             modal.querySelector('.modal-close').addEventListener('click', closeModal);
             modal.addEventListener('click', function(e) {
                 if (e.target === modal) closeModal();
             });
         }
-        
         function editClient(clientId) {
             const client = clients.find(c => c.id === clientId);
             if (!client) return;
-            
             currentClientId = clientId;
             showAddClientModal();
-            
             setTimeout(() => {
                 const nameEl = document.getElementById('modalClientName');
                 const phoneEl = document.getElementById('modalClientPhone');
@@ -1969,7 +1726,6 @@
                 const vinEl = document.getElementById('modalClientVin');
                 const mileageEl = document.getElementById('modalClientMileage');
                 const notesEl = document.getElementById('modalClientNotes');
-                
                 if (nameEl) nameEl.value = client.name || '';
                 if (phoneEl) phoneEl.value = client.phone || '';
                 if (emailEl) emailEl.value = client.email || '';
@@ -1978,29 +1734,23 @@
                 if (vinEl) vinEl.value = client.vin || '';
                 if (mileageEl) mileageEl.value = client.mileage || '';
                 if (notesEl) notesEl.value = client.notes || '';
-                
                 const title = document.querySelector('#clientModal h2');
                 if (title) title.textContent = 'Редактировать клиента';
             }, 100);
         }
-        
         function closeModal() {
             const modal = document.getElementById('clientModal');
             if (modal && modal.parentNode) {
                 modal.parentNode.removeChild(modal);
             }
         }
-        
         function showClientHistory(phone) {
             const normalizedPhone = normalizePhone(phone);
             const client = clients.find(c => c.normalizedPhone === normalizedPhone);
             if (!client) return;
-            
             const historyContainer = document.getElementById('clientHistoryContainer');
             if (!historyContainer) return;
-            
             const clientOrders = workOrders.filter(order => normalizePhone(order.clientPhone) === normalizedPhone);
-            
             historyContainer.innerHTML = `
                 <div class="modal-overlay" id="historyModal">
                     <div class="modal-content" style="max-width: 800px;">
@@ -2025,7 +1775,6 @@
                     </div>
                 </div>
             `;
-            
             const modal = document.getElementById('historyModal');
             if (modal) {
                 modal.addEventListener('click', function(e) {
@@ -2033,14 +1782,12 @@
                 });
             }
         }
-        
         function closeHistoryModal() {
             const modal = document.getElementById('historyModal');
             if (modal && modal.parentNode) {
                 modal.parentNode.removeChild(modal);
             }
         }
-        
         // =============================
         // ОТЧЕТЫ
         // =============================
@@ -2048,12 +1795,10 @@
             const reportType = document.getElementById('reportType');
             const reportDate = document.getElementById('reportDate');
             if (!reportType || !reportDate) return;
-            
             let orders = [...workOrders];
             const reportTypeValue = reportType.value;
             const reportDateValue = reportDate.value;
             const reportDateObj = new Date(reportDateValue);
-            
             if (reportTypeValue === 'daily') {
                 orders = orders.filter(order => order.orderDate === reportDateValue);
             } else if (reportTypeValue === 'weekly') {
@@ -2073,32 +1818,26 @@
                     return orderDate >= startDate && orderDate < endDate;
                 });
             }
-            
             const totalRevenue = orders.reduce((sum, order) => sum + (order.orderTotal || 0), 0);
             const totalProfit = orders.reduce((sum, order) => sum + (order.profit || 0), 0);
             const averageOrder = orders.length > 0 ? totalRevenue / orders.length : 0;
             const profitMargin = totalRevenue > 0 ? (totalProfit / totalRevenue) * 100 : 0;
-            
             const revenueTotalEl = document.getElementById('revenueTotal');
             const ordersCountEl = document.getElementById('ordersCount');
             const averageOrderEl = document.getElementById('averageOrder');
             const profitMarginEl = document.getElementById('profitMargin');
-            
             if (revenueTotalEl) revenueTotalEl.textContent = totalRevenue.toFixed(0) + ' ₽';
             if (ordersCountEl) ordersCountEl.textContent = orders.length;
             if (averageOrderEl) averageOrderEl.textContent = averageOrder.toFixed(0) + ' ₽';
             if (profitMarginEl) profitMarginEl.textContent = profitMargin.toFixed(2) + '%';
-            
             const tbody = document.querySelector('#reportTable tbody');
             if (tbody) {
                 tbody.innerHTML = '';
                 orders.sort((a, b) => new Date(b.orderDate) - new Date(a.orderDate));
-                
                 orders.forEach(order => {
                     const workProfit = (parseFloat(order.workCost) || 0) * PROFIT_RATES.work;
                     const materialsProfit = (parseFloat(order.materialsCost) || 0) * PROFIT_RATES.materials;
                     const profit = workProfit + materialsProfit;
-                    
                     const row = document.createElement('tr');
                     row.innerHTML = `
                         <td>${order.orderDate}</td>
@@ -2111,7 +1850,6 @@
                     `;
                     tbody.appendChild(row);
                 });
-                
                 if (orders.length === 0) {
                     const row = document.createElement('tr');
                     row.innerHTML = `<td colspan="7" style="text-align: center; color: var(--gray-80); padding: 20px;">Нет данных за выбранный период</td>`;
@@ -2119,26 +1857,22 @@
                 }
             }
         }
-        
         function printReport() {
             const reportType = document.getElementById('reportType');
             const reportDate = document.getElementById('reportDate');
             if (!reportType || !reportDate) return;
-            
             const reportTypeValue = reportType.value;
             const reportDateValue = reportDate.value;
             const revenueTotal = document.getElementById('revenueTotal').textContent;
             const ordersCount = document.getElementById('ordersCount').textContent;
             const averageOrder = document.getElementById('averageOrder').textContent;
             const profitMargin = document.getElementById('profitMargin').textContent;
-            
             const reportTitle = {
                 'daily': 'Ежедневный отчет',
                 'weekly': 'Еженедельный отчет',
                 'monthly': 'Ежемесячный отчет',
                 'custom': 'Отчет за произвольный период'
             }[reportTypeValue] || 'Отчет';
-            
             const printWindow = window.open('', '_blank');
             printWindow.document.write(`
                 <html>
@@ -2208,7 +1942,6 @@
             printWindow.document.close();
             printWindow.print();
         }
-        
         // =============================
         // FIRESTORE
         // =============================
@@ -2219,42 +1952,41 @@
                     console.error('Пользователь не авторизован при загрузке данных');
                     return;
                 }
-                
                 // Загружаем заказы
                 const ordersSnapshot = await db.collection('work_orders')
                     .where('userId', '==', user.uid)
                     .orderBy('createdAt', 'desc')
                     .get();
-                
                 workOrders = ordersSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                
                 // Загружаем клиенты
                 const clientsSnapshot = await db.collection('clients')
                     .where('userId', '==', user.uid)
                     .orderBy('createdAt', 'desc')
                     .get();
-                
                 clients = clientsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                
                 // Обновляем интерфейс
                 filterWorkOrders();
                 if (document.getElementById('clients').classList.contains('active')) {
                     displayClients(clients);
                 }
                 updateDashboard();
-                
                 showNotification('Данные успешно загружены', 'success');
             } catch (error) {
                 console.error('Ошибка загрузки данных:', error);
-                showNotification('Ошибка загрузки данных. Проверьте подключение.', 'error');
+                if (error.code === 'failed-precondition') {
+                    showNotification(
+                        'Ошибка конфигурации базы данных (индекс). Обратитесь к администратору.',
+                        'warning'
+                    );
+                } else {
+                    showNotification('Ошибка загрузки данных. Проверьте подключение.', 'error');
+                }
             }
         }
-        
         async function saveWorkOrderToFirebase(workOrder) {
             try {
                 const user = auth.currentUser;
                 if (!user) throw new Error('Пользователь не авторизован');
-                
                 const workOrderData = {
                     ...workOrder,
                     userId: user.uid,
@@ -2262,7 +1994,6 @@
                     createdAt: workOrder.createdAt || FieldValue.serverTimestamp(),
                     updatedAt: FieldValue.serverTimestamp()
                 };
-                
                 if (!workOrder.id || workOrder.id === 'new') {
                     const docRef = await db.collection('work_orders').add(workOrderData);
                     return docRef.id;
@@ -2275,12 +2006,10 @@
                 throw error;
             }
         }
-        
         async function saveClientToFirebase(client) {
             try {
                 const user = auth.currentUser;
                 if (!user) throw new Error('Пользователь не авторизован');
-                
                 const normalizedPhone = normalizePhone(client.phone);
                 const clientData = {
                     ...client,
@@ -2290,7 +2019,6 @@
                     createdAt: client.createdAt || FieldValue.serverTimestamp(),
                     updatedAt: FieldValue.serverTimestamp()
                 };
-                
                 if (!client.id || client.id === 'new') {
                     const docRef = await db.collection('clients').add(clientData);
                     return docRef.id;
@@ -2303,15 +2031,12 @@
                 throw error;
             }
         }
-        
         async function saveCalculatorToFirebase() {
             try {
                 const user = auth.currentUser;
                 if (!user) throw new Error('Пользователь не авторизован');
-                
                 const today = document.getElementById('calcDate').value || new Date().toISOString().split('T')[0];
                 const docId = `calc_${user.uid}_${today}`;
-                
                 const dataToSave = {
                     date: today,
                     workRows: Array.from(document.querySelectorAll('#workTableCalculator tbody tr')).map(row => ({
@@ -2334,27 +2059,33 @@
                     userId: user.uid,
                     updatedAt: FieldValue.serverTimestamp()
                 };
-                
                 await db.collection('calculators').doc(docId).set(dataToSave);
                 showNotification('Данные калькулятора сохранены!', 'success');
             } catch (error) {
                 showNotification('Ошибка сохранения калькулятора: ' + error.message, 'error');
             }
         }
-        
         async function updateClientFromWorkOrder(workOrder) {
             try {
                 let client = clients.find(c => c.normalizedPhone === normalizePhone(workOrder.clientPhone));
-                
                 if (client) {
+                    // ИСПРАВЛЕНА ПРОБЛЕМА №2: обновляем только нужные поля, не передавая весь объект client
+                    await db.collection('clients').doc(client.id).set({
+                        car: workOrder.clientCar || client.car,
+                        carYear: workOrder.carYear || client.carYear,
+                        vin: workOrder.carVin || client.vin,
+                        lastVisit: workOrder.orderDate,
+                        visitsCount: (client.visitsCount || 0) + 1,
+                        totalSpent: (client.totalSpent || 0) + workOrder.orderTotal,
+                        updatedAt: FieldValue.serverTimestamp()
+                    }, { merge: true });
+                    // Обновляем локальный массив
                     client.car = workOrder.clientCar || client.car;
                     client.carYear = workOrder.carYear || client.carYear;
                     client.vin = workOrder.carVin || client.vin;
                     client.lastVisit = workOrder.orderDate;
                     client.visitsCount = (client.visitsCount || 0) + 1;
                     client.totalSpent = (client.totalSpent || 0) + workOrder.orderTotal;
-                    
-                    await db.collection('clients').doc(client.id).set(client, { merge: true });
                 } else {
                     const newClient = {
                         name: workOrder.clientName,
@@ -2373,7 +2104,6 @@
                         normalizedPhone: normalizePhone(workOrder.clientPhone),
                         updatedAt: new Date()
                     };
-                    
                     const docRef = await db.collection('clients').add(newClient);
                     newClient.id = docRef.id;
                     clients.push(newClient);
@@ -2382,7 +2112,6 @@
                 console.error('Ошибка обновления клиента:', error);
             }
         }
-        
         // =============================
         // ЗАКАЗ-НАРЯДЫ
         // =============================
@@ -2410,24 +2139,19 @@
                 profit: (parseFloat(document.getElementById('workCost').value) || 0) * PROFIT_RATES.work +
                        (parseFloat(document.getElementById('materialsCost').value) || 0) * PROFIT_RATES.materials
             };
-            
             if (!workOrder.clientName || !workOrder.clientPhone || !workOrder.clientCar) {
                 showNotification('Заполните обязательные поля: ФИО клиента, телефон и автомобиль', 'error');
                 return;
             }
-            
             try {
                 const savedId = await saveWorkOrderToFirebase(workOrder);
-                
                 const index = workOrders.findIndex(order => order.id === currentWorkOrderId);
                 if (index !== -1) {
                     workOrders[index] = { ...workOrder, id: savedId };
                 } else {
                     workOrders.push({ ...workOrder, id: savedId });
                 }
-                
                 await updateClientFromWorkOrder(workOrder);
-                
                 const successEl = document.getElementById('workOrderSuccess');
                 if (successEl) {
                     successEl.style.display = 'block';
@@ -2435,7 +2159,6 @@
                         successEl.style.display = 'none';
                     }, 3000);
                 }
-                
                 resetWorkOrder();
                 filterWorkOrders();
                 showNotification('Заказ-наряд сохранен!', 'success');
@@ -2444,17 +2167,14 @@
                 showNotification('Ошибка сохранения заказ-наряда: ' + error.message, 'error');
             }
         }
-        
         async function deleteWorkOrder(id) {
             const order = workOrders.find(order => order.id === id);
             if (!order) return;
-            
             const user = auth.currentUser;
             if (order.userId !== user.uid) {
                 showNotification('Нет прав на удаление этого заказа', 'error');
                 return;
             }
-            
             if (confirm('Вы уверены, что хотите удалить этот заказ-наряд?')) {
                 try {
                     await db.collection('work_orders').doc(id).delete();
@@ -2467,19 +2187,15 @@
                 }
             }
         }
-        
         function editWorkOrder(orderId) {
             const order = workOrders.find(order => order.id === orderId);
             if (!order) return;
-            
             currentWorkOrderId = orderId;
-            
             const fields = [
                 'orderNumber', 'orderDate', 'clientName', 'clientPhone', 'clientEmail',
                 'clientCar', 'carYear', 'carVin', 'workDescription', 'workHours',
                 'hourlyRate', 'materialsCost', 'orderNotes', 'orderStatus', 'paymentStatus'
             ];
-            
             fields.forEach(fieldId => {
                 const el = document.getElementById(fieldId);
                 if (el && order[fieldId] !== undefined) {
@@ -2490,23 +2206,20 @@
                     }
                 }
             });
-            
             const carMileageEl = document.getElementById('carMileage');
             if (carMileageEl && order.carMileage !== undefined) {
                 carMileageEl.value = order.carMileage;
             }
-            
             calculateWorkOrderTotal();
             document.querySelector('#work-orders').scrollIntoView({ behavior: 'smooth' });
             showNotification('Редактирование заказа. Сохраните изменения.', 'info');
         }
-        
         // =============================
         // КЛИЕНТЫ
         // =============================
         async function saveClient() {
+            // ИСПРАВЛЕНА ПРОБЛЕМА №1: Убрано id: currentClientId || 'new'
             const clientData = {
-                id: currentClientId || 'new',
                 name: document.getElementById('modalClientName').value,
                 phone: normalizePhone(document.getElementById('modalClientPhone').value),
                 email: document.getElementById('modalClientEmail').value,
@@ -2520,23 +2233,19 @@
                 visitsCount: 0,
                 totalSpent: 0
             };
-            
+
             if (!clientData.name || !clientData.phone) {
                 showNotification('Заполните обязательные поля', 'error');
                 return;
             }
-            
             try {
                 const savedId = await saveClientToFirebase(clientData);
-                
                 const index = clients.findIndex(c => c.id === currentClientId);
                 if (index !== -1) {
                     clients[index] = { ...clientData, id: savedId };
                 } else {
-                    // ИСПРАВЛЕНА СИНТАКСИЧЕСКАЯ ОШИБКА: добавлена закрывающая скобка
                     clients.push({ ...clientData, id: savedId });
                 }
-                
                 closeModal();
                 displayClients(clients);
                 showNotification('Клиент сохранен', 'success');
@@ -2545,7 +2254,6 @@
                 showNotification('Ошибка сохранения клиента: ' + error.message, 'error');
             }
         }
-        
         async function deleteClient(id) {
             if (confirm('Вы уверены, что хотите удалить этого клиента?')) {
                 try {
@@ -2559,18 +2267,15 @@
                 }
             }
         }
-        
         // =============================
         // ГРАФИКИ
         // =============================
         function initChart() {
             const ctx = document.getElementById('revenueChart');
             if (!ctx) return;
-            
             if (revenueChart) {
                 revenueChart.destroy();
             }
-            
             revenueChart = new Chart(ctx, {
                 type: 'line',
                 data: {
@@ -2612,29 +2317,23 @@
                     }
                 }
             });
-            
             updateChart();
         }
-        
         // =============================
         // НАВИГАЦИЯ
         // =============================
         function initDates() {
             const today = new Date().toISOString().split('T')[0];
-            
             const calcDateEl = document.getElementById('calcDate');
             const orderDateEl = document.getElementById('orderDate');
             const reportDateEl = document.getElementById('reportDate');
-            
             if (calcDateEl) calcDateEl.value = today;
             if (orderDateEl) orderDateEl.value = today;
             if (reportDateEl) reportDateEl.value = today;
-            
             generateOrderNumber();
             calculateTotals();
             calculateWorkOrderTotal();
         }
-        
         function initEventListeners() {
             // Навигация по вкладкам
             const navTabs = document.querySelectorAll('.nav-tab');
@@ -2642,17 +2341,13 @@
                 tab.addEventListener('click', function(e) {
                     e.preventDefault();
                     const tabId = this.getAttribute('data-tab');
-                    
                     navTabs.forEach(t => t.classList.remove('active'));
                     this.classList.add('active');
-                    
                     const tabContents = document.querySelectorAll('.tab-content');
                     tabContents.forEach(content => content.classList.remove('active'));
                     document.getElementById(tabId).classList.add('active');
-                    
                     const navItems = document.querySelectorAll('.nav-item');
                     navItems.forEach(item => item.classList.remove('active'));
-                    
                     const correspondingNavItem = document.querySelector(`.nav-item[data-tab="${tabId}"]`);
                     if (correspondingNavItem) {
                         correspondingNavItem.classList.add('active');
@@ -2665,46 +2360,37 @@
                     }
                 });
             });
-            
             // Навигация в шапке
             const navItems = document.querySelectorAll('.nav-item[data-tab]');
             navItems.forEach(item => {
                 item.addEventListener('click', function(e) {
                     e.preventDefault();
                     const tabId = this.getAttribute('data-tab');
-                    
                     navItems.forEach(i => i.classList.remove('active'));
                     this.classList.add('active');
-                    
                     const navTabs = document.querySelectorAll('.nav-tab');
                     navTabs.forEach(tab => tab.classList.remove('active'));
-                    
                     const correspondingTab = document.querySelector(`.nav-tab[data-tab="${tabId}"]`);
                     if (correspondingTab) {
                         correspondingTab.classList.add('active');
                     }
-                    
                     const tabContents = document.querySelectorAll('.tab-content');
                     tabContents.forEach(content => content.classList.remove('active'));
                     document.getElementById(tabId).classList.add('active');
                      if (tabId === 'clients') {
             displayClients(clients);
         }
-                    
                     if (tabId === 'reports') {
                         generateReport();
                     }
                 });
             });
-            
             // Форма логина
             if (loginForm) {
                 loginForm.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    
                     const passwordInput = document.getElementById('passwordInput');
                     const password = passwordInput ? passwordInput.value : '';
-                    
                     auth.signInWithEmailAndPassword(ADMIN_EMAIL, password)
                         .then((cred) => {
                             if (loginError) loginError.style.display = 'none';
@@ -2725,16 +2411,13 @@
                         });
                 });
             }
-            
             // Кнопка выхода
             document.addEventListener('click', function(e) {
                 if (e.target.closest('.logout-btn')) {
                     if (!confirm('Вы уверены, что хотите выйти?')) return;
-                    
                     auth.signOut()
                         .then(() => {
                             showNotification('Вы вышли из системы', 'info');
-                            
                             workOrders = [];
                             clients = [];
                             filterWorkOrders();
@@ -2747,49 +2430,39 @@
                         });
                 }
             });
-            
             // Расчет стоимости в заказ-наряде
             const workHoursEl = document.getElementById('workHours');
             const hourlyRateEl = document.getElementById('hourlyRate');
             const materialsCostEl = document.getElementById('materialsCost');
-            
             if (workHoursEl) workHoursEl.addEventListener('input', calculateWorkOrderTotal);
             if (hourlyRateEl) hourlyRateEl.addEventListener('input', calculateWorkOrderTotal);
             if (materialsCostEl) materialsCostEl.addEventListener('input', calculateWorkOrderTotal);
-            
             // Поиск клиентов
             const clientSearchEl = document.getElementById('clientSearch');
             if (clientSearchEl) clientSearchEl.addEventListener('input', searchClients);
-            
             // Фильтрация заказов
             const filterStatusEl = document.getElementById('filterStatus');
             const filterPeriodEl = document.getElementById('filterPeriod');
-            
             if (filterStatusEl) filterStatusEl.addEventListener('change', filterWorkOrders);
             if (filterPeriodEl) filterPeriodEl.addEventListener('change', filterWorkOrders);
-            
             // Генерация отчета
             const reportTypeEl = document.getElementById('reportType');
             const reportDateEl = document.getElementById('reportDate');
-            
             if (reportTypeEl) reportTypeEl.addEventListener('change', generateReport);
             if (reportDateEl) reportDateEl.addEventListener('change', generateReport);
         }
-        
         // =============================
         // ИНИЦИАЛИЗАЦИЯ ПРИЛОЖЕНИЯ
         // =============================
         document.addEventListener('DOMContentLoaded', () => {
             initDates();
             initEventListeners();
-            
             // Инициализация Firebase
             firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
                 .then(() => {
                     // ЕДИНСТВЕННЫЙ слушатель состояния авторизации
                     firebase.auth().onAuthStateChanged((user) => {
                         console.log('Auth state changed:', user ? user.email : 'NO USER');
-                        
                         if (user) {
                             // ТОЛЬКО ЗДЕСЬ можно показывать админку
                             showAdminPanel();
