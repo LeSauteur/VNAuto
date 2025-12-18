@@ -2657,7 +2657,9 @@
                     if (correspondingNavItem) {
                         correspondingNavItem.classList.add('active');
                     }
-                    
+                    if (tabId === 'clients') {
+            displayClients(clients);
+        }
                     if (tabId === 'reports') {
                         generateReport();
                     }
@@ -2685,6 +2687,9 @@
                     const tabContents = document.querySelectorAll('.tab-content');
                     tabContents.forEach(content => content.classList.remove('active'));
                     document.getElementById(tabId).classList.add('active');
+                     if (tabId === 'clients') {
+            displayClients(clients);
+        }
                     
                     if (tabId === 'reports') {
                         generateReport();
