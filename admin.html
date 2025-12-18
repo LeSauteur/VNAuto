@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -721,10 +722,10 @@
             </div>
         </div>
     </section>
-    <!-- Админ-панель -->
+    <!-- Админ-панель - ИСПРАВЛЕНО: добавлено style="display:none" -->
     <section class="main-content">
         <div class="container">
-            <div class="admin-panel" id="adminPanel">
+            <div class="admin-panel" id="adminPanel" style="display:none">
                 <!-- Главная панель -->
                 <div class="tab-content active" id="dashboard">
                     <div class="section">
@@ -1150,6 +1151,13 @@
         const tabContents = document.querySelectorAll('.tab-content');
         const syncStatus = document.getElementById('syncStatus'); // ИСПРАВЛЕНО: Теперь не null
         const syncText = document.getElementById('syncText');
+        // Явно скрываем админку при загрузке страницы
+        if (adminPanel) {
+            adminPanel.style.display = 'none';
+        }
+        if (loginSection) {
+            loginSection.style.display = 'flex';
+        }
         // Коллекции данных
         let workOrders = [];
         let clients = [];
@@ -1180,10 +1188,8 @@
             const hour = String(now.getHours()).padStart(2, '0');
             const minute = String(now.getMinutes()).padStart(2, '0');
             const number = `${year}${month}${day}-${hour}${minute}`;
-
             const orderNumberEl = document.getElementById('orderNumber');
             if (orderNumberEl) orderNumberEl.value = number; // Записываем в поле
-
             return number;
         }
         // Показ уведомления
@@ -1821,10 +1827,9 @@
                     console.log('✅ УСПЕШНЫЙ ВХОД', cred.user.email);
                     if (loginError) loginError.style.display = 'none';
                     showNotification('Добро пожаловать в админ-панель!', 'success');
-                    // Показываем админ-панель
-                    showAdminPanel();
-                    // Загружаем данные
-                    loadAllDataFromFirebase();
+                    // ВСЁ управление интерфейсом — ТОЛЬКО в onAuthStateChanged
+                    // showAdminPanel(); - УДАЛЕНО
+                    // loadAllDataFromFirebase(); - УДАЛЕНО
                 })
                 .catch((err) => {
                     console.error('❌ ОШИБКА', err.code);
@@ -2447,10 +2452,16 @@
                     if (user) {
                         console.log('✅ Пользователь уже авторизован:', user.email);
                         showAdminPanel();
-                        loadAllDataFromFirebase(); // updateSyncStatus(true) вызывается внутри
+                        loadAllDataFromFirebase();
+                        // updateSyncStatus(true); - УДАЛЕНО ИЗ onAuthStateChanged
                     } else {
                         console.log('🔒 Пользователь не авторизован');
                         showLoginForm();
+                        updateSyncStatus(false);  // ← ВАЖНО
+                        // ДОПОЛНИТЕЛЬНО: Явно скрываем админку
+                        if (adminPanel) {
+                            adminPanel.style.display = 'none';
+                        }
                     }
                 });
             })
@@ -2460,3 +2471,4 @@
     </script>
 </body>
 </html>
+```
