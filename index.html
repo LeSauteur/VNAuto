@@ -1,2258 +1,284 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Автосервис "VN-MASTERS" - Профессиональный ремонт автомобилей в Ростове-на-Дону</title>
-    <meta name="description" content="Профессиональный автосервис в Ростове-на-Дону. Качественный ремонт, ТО, запчасти. Работаем с 2010 года. Гарантия 1 год.">
-    <meta name="keywords" content="автосервис, ремонт автомобилей, Ростов-на-Дону, техническое обслуживание, запчасти, шиномонтаж">
-    
-    <!-- Open Graph для соцсетей -->
-    <meta property="og:title" content="Автосервис VN-MASTERS - Профессиональный ремонт автомобилей">
-    <meta property="og:description" content="Качественный ремонт автомобилей всех марок в Ростове-на-Дону. Гарантия 1 год.">
-    <meta property="og:image" content="https://www.autodepo71.ru/upload/iblock/c3b/jx90ygitvh51sedc7oj7zyrivfl8iub3/2.jpg">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://vn-masters.ru">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/car-service.png">
-    <link rel="apple-touch-icon" href="https://img.icons8.com/color/96/car-service.png">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Schema.org разметка -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "AutoRepair",
-        "name": "VN-MASTERS",
-        "description": "Профессиональный автосервис в Ростове-на-Дону",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "ул. Стартовая 1/1",
-            "addressLocality": "Ростов-на-Дону",
-            "addressRegion": "Ростовская область",
-            "postalCode": "344064",
-            "addressCountry": "RU"
-        },
-        "telephone": "+78632600345",
-        "openingHours": "Mo-Su 08:00-20:00",
-        "priceRange": "₽₽",
-        "image": "https://www.autodepo71.ru/upload/iblock/c3b/jx90ygitvh51sedc7oj7zyrivfl8iub3/2.jpg",
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "ratingCount": "87"
-        }
-    }
-    </script>
-    
-   <style>
-    /* :root переменные для цветов */
-    :root {
-        /* Основные цвета - синяя гамма */
-        --primary-color: #1a5fb4; /* Приятный синий */
-        --primary-dark: #0d4d9c; /* Темно-синий */
-        --secondary-color: #c00; /* Красный акцент */
-        --accent-color: #2a7de1; /* Светло-синий */
-        
-        /* Черные и серые оттенки */
-        --gray-90: #1a1a1a; /* Почти черный */
-        --gray-80: #333; /* Темно-серый */
-        --gray-60: #666;
-        --gray-40: #999;
-        --gray-20: #f5f5f5; /* Светлый фон */
-        
-        /* Общие переменные */
-        --container-width: 1200px;
-        --border-radius: 8px;
-        --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        --transition: all 0.3s ease;
-    }
-    
-    /* Сброс стилей */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    
-    /* Общие стили */
-    body {
-        font-family: 'Open Sans', Arial, sans-serif;
-        color: var(--gray-90);
-        background-color: white;
-        line-height: 1.6;
-        overflow-x: hidden;
-    }
-    
-    .container {
-        max-width: var(--container-width);
-        margin: 0 auto;
-        padding: 0 20px;
-    }
-    
-    img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-    }
-    
-    /* Шапка сайта */
-    .header {
-        background-color: white;
-        border-bottom: 1px solid var(--gray-40);
-        padding: 15px 0;
-        position: relative;
-        box-shadow: var(--shadow);
-        z-index: 1000;
-    }
-    
-    .header::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 3px;
-        background: var(--secondary-color); /* Красная линия */
-    }
-    
-    /* Верхняя строка с логотипом и цитатами */
-    .top-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 15px;
-    }
-    
-    .logo-section {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    /* Стили для кликабельного баннера-логотипа */
-    .logo-banner {
-        display: block;
-        max-height: 80px;
-        width: auto;
-        transition: var(--transition);
-        border-radius: var(--border-radius);
-    }
-    
-    .logo-banner:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(26, 95, 180, 0.3);
-    }
-    
-    .contacts {
-        text-align: right;
-    }
-    
-    .phone-list {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-    }
-    
-    /* Стили для строки с цитатами */
-    .quotes-bar {
-        background: linear-gradient(135deg, var(--secondary-color), #a00); /* Красный градиент */
-        color: white;
-        padding: 10px 20px;
-        border-radius: var(--border-radius);
-        box-shadow: 0 2px 8px rgba(204, 0, 0, 0.3);
-        text-align: center;
-        max-width: 600px;
-        flex-grow: 1;
-        margin: 0 20px;
-    }
-
-    .quote-text {
-        font-size: 16px;
-        font-weight: 600;
-        font-style: italic;
-        opacity: 0;
-        transform: translateY(-10px);
-        animation: fadeInUp 0.5s ease forwards;
-    }
-
-    /* Анимация появления цитаты */
-    @keyframes fadeInUp {
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .phone {
-        font-size: 18px;
-        font-weight: 700;
-        color: var(--primary-color); /* Синий */
-        text-decoration: none;
-        display: block;
-        transition: var(--transition);
-        line-height: 1.3;
-    }
-    
-    .phone:hover {
-        color: var(--primary-dark);
-    }
-    
-    /* Полуовальные кнопки */
-    .btn {
-        display: inline-block;
-        padding: 10px 20px;
-        background: var(--primary-color); /* Синий */
-        color: white;
-        text-decoration: none;
-        border-radius: 25px;
-        font-size: 14px;
-        font-weight: 600;
-        transition: var(--transition);
-        border: none;
-        cursor: pointer;
-        text-align: center;
-    }
-    
-    .btn:hover {
-        background: var(--primary-dark);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(26, 95, 180, 0.3);
-    }
-    
-    .btn.secondary {
-        background: var(--secondary-color); /* Красный */
-    }
-    
-    .btn.secondary:hover {
-        background: #a00;
-        box-shadow: 0 4px 8px rgba(204, 0, 0, 0.3);
-    }
-    
-    .btn.accent {
-        background: linear-gradient(135deg, var(--accent-color), #1a5fb4);
-    }
-    
-    .btn.accent:hover {
-        background: linear-gradient(135deg, #1a5fb4, #0d4d9c);
-        box-shadow: 0 4px 8px rgba(26, 95, 180, 0.3);
-    }
-    
-    .social-links {
-        display: flex;
-        gap: 10px;
-        margin-left: 20px;
-    }
-    
-    .nav-container {
-        border-top: 1px solid var(--gray-40);
-        padding-top: 15px;
-    }
-    
-    .main-nav {
-        display: flex;
-        gap: 30px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
-    .nav-item {
-        position: relative;
-        cursor: pointer;
-        padding: 8px 0;
-        font-size: 16px;
-        font-weight: 600;
-        color: var(--gray-90);
-        transition: var(--transition);
-        text-decoration: none;
-    }
-    
-    .nav-item:hover {
-        color: var(--primary-color);
-    }
-    
-    .nav-item.active, 
-    .nav-item:hover {
-        color: var(--primary-color);
-    }
-    
-    .nav-item.active::after {
-        content: '';
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        width: 100%;
-        height: 2px;
-        background: var(--primary-color); /* Синий */
-    }
-    
-    /* Промо-баннер */
-    .promo-banner {
-        margin: 40px 0;
-        position: relative;
-        overflow: hidden;
-        border-radius: var(--border-radius);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        min-height: 300px;
-    }
-
-    .promo-banner img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        position: absolute;
-        top: 0;
-        left: 0;
-        transition: transform 0.8s ease;
-    }
-
-    .promo-banner:hover img {
-        transform: scale(1.05);
-    }
-
-    .promo-content {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(to right, rgba(26, 95, 180, 0.85), rgba(0, 0, 0, 0.7)); /* Синий градиент */
-        display: flex;
-        align-items: center;
-        padding: 0 40px;
-        color: white;
-        z-index: 2;
-    }
-
-    /* Баннер-ссылка */
-    .banner-link {
-        display: block;
-        width: 100%;
-        background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); /* Синий градиент */
-        color: white;
-        text-align: center;
-        padding: 25px 0;
-        margin: 20px 0;
-        border-radius: var(--border-radius);
-        text-decoration: none;
-        font-size: 24px;
-        font-weight: 700;
-        box-shadow: 0 5px 15px rgba(26, 95, 180, 0.3);
-        transition: var(--transition);
-    }
-    
-    .banner-link:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(26, 95, 180, 0.4);
-    }
-    
-    /* Баннер с акцией */
-    .sale-banner {
-        background: linear-gradient(135deg, var(--secondary-color), #a00); /* Красный градиент */
-        color: white;
-        padding: 30px;
-        border-radius: var(--border-radius);
-        margin: 40px 0;
-        text-align: center;
-        box-shadow: 0 5px 20px rgba(204, 0, 0, 0.3);
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .sale-banner::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        right: -50%;
-        width: 100%;
-        height: 200%;
-        background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-        background-size: 50px 50px;
-        transform: rotate(30deg);
-        z-index: 0;
-    }
-    
-    .sale-content {
-        position: relative;
-        z-index: 1;
-    }
-    
-    .sale-badge {
-        display: inline-block;
-        background: white;
-        color: var(--secondary-color); /* Красный текст */
-        padding: 8px 20px;
-        border-radius: 30px;
-        font-weight: 700;
-        font-size: 18px;
-        margin-bottom: 20px;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-    }
-    
-    .sale-title {
-        font-size: 32px;
-        font-weight: 700;
-        margin-bottom: 15px;
-    }
-    
-    .sale-text {
-        font-size: 18px;
-        margin-bottom: 25px;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    /* Основной контент */
-    .main-content {
-        padding: 40px 0;
-    }
-    
-    .welcome-banner {
-        background: url('https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover;
-        position: relative;
-        color: white;
-        padding: 60px 30px;
-        text-align: center;
-        border-radius: var(--border-radius);
-        margin-bottom: 40px;
-        box-shadow: 0 10px 30px rgba(26, 95, 180, 0.3);
-    }
-    
-    .welcome-banner::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.7);
-        z-index: 0;
-    }
-    
-    .welcome-banner-content {
-        position: relative;
-        z-index: 1;
-    }
-    
-    .welcome-title {
-        font-size: 42px;
-        font-weight: 700;
-        margin-bottom: 20px;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    }
-    
-    .welcome-text {
-        font-size: 20px;
-        margin-bottom: 30px;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
-        line-height: 1.7;
-    }
-    
-    .quick-access {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
-        margin-top: 30px;
-    }
-    
-    .quick-btn {
-        background: rgba(255, 255, 255, 0.2);
-        color: white;
-        min-width: 180px;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-    }
-    
-    .quick-btn:hover {
-        background: rgba(255, 255, 255, 0.3);
-        transform: translateY(-3px);
-    }
-    
-    .section {
-        background: white;
-        border-radius: var(--border-radius);
-        padding: 30px;
-        margin-bottom: 30px;
-        box-shadow: var(--shadow);
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .section::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 5px;
-        height: 100%;
-        background: var(--primary-color); /* Синий */
-    }
-    
-    .section-title {
-        color: var(--primary-color); /* Синий */
-        font-size: 28px;
-        margin-bottom: 20px;
-        padding-bottom: 10px;
-        border-bottom: 2px solid var(--gray-40);
-        position: relative;
-    }
-    
-    .section-title::after {
-        content: '';
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        width: 60px;
-        height: 2px;
-        background: var(--secondary-color); /* Красный */
-    }
-    
-    /* Стили для карточек услуг */
-    .services-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 25px;
-        margin-top: 30px;
-    }
-    
-    .service-card {
-        background: white;
-        border-radius: var(--border-radius);
-        overflow: hidden;
-        box-shadow: var(--shadow);
-        transition: var(--transition);
-        border: 1px solid var(--gray-40);
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-    }
-    
-    .service-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    }
-    
-    .service-icon {
-        height: 120px;
-        background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); /* Синий градиент */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2.5rem;
-        color: white;
-    }
-    
-    .service-content {
-        padding: 20px;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .service-content h3 {
-        font-size: 1.3rem;
-        margin-bottom: 10px;
-        color: var(--primary-color); /* Синий */
-    }
-    
-    .service-content p {
-        color: var(--gray-90);
-        margin-bottom: 15px;
-        flex-grow: 1;
-    }
-    
-    .badge {
-        display: inline-block;
-        background: var(--secondary-color); /* Красный */
-        color: white;
-        padding: 4px 12px;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 600;
-        margin-bottom: 10px;
-    }
-    
-    .action-buttons {
-        margin-top: auto;
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-    }
-    
-    /* Стили для раздела запчастей */
-    .parts-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 25px;
-        margin-top: 30px;
-    }
-    
-    .part-card {
-        background: white;
-        border-radius: var(--border-radius);
-        overflow: hidden;
-        box-shadow: var(--shadow);
-        transition: var(--transition);
-        border: 1px solid var(--gray-40);
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-    }
-    
-    .part-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    }
-    
-    .part-icon {
-        height: 150px;
-        background: linear-gradient(135deg, var(--gray-20), var(--gray-40));
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 3rem;
-        color: var(--primary-color); /* Синий */
-        overflow: hidden;
-        position: relative;
-    }
-    
-    .part-content {
-        padding: 20px;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .part-content h3 {
-        font-size: 1.2rem;
-        margin-bottom: 10px;
-        color: var(--gray-90);
-    }
-    
-    .availability {
-        display: inline-block;
-        padding: 4px 12px;
-        border-radius: 15px;
-        font-size: 0.8rem;
-        font-weight: 600;
-        margin-bottom: 10px;
-    }
-    
-    .in-stock {
-        background: rgba(40, 167, 69, 0.1);
-        color: #28a745;
-    }
-    
-    .on-order {
-        background: rgba(255, 107, 0, 0.1);
-        color: #ff6b00;
-    }
-    
-    .price-request {
-        color: var(--gray-80);
-        font-style: italic;
-        margin-bottom: 10px;
-        font-weight: 600;
-    }
-    
-    .part-description {
-        margin-bottom: 15px;
-        flex-grow: 1;
-    }
-    
-    /* Новый раздел с фотографиями */
-    .gallery-section {
-        margin: 40px 0;
-    }
-    
-    .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-        margin-top: 25px;
-    }
-    
-    .gallery-item {
-        border-radius: var(--border-radius);
-        overflow: hidden;
-        box-shadow: var(--shadow);
-        transition: var(--transition);
-        position: relative;
-        height: 250px;
-    }
-    
-    .gallery-item:hover {
-        transform: scale(1.03);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    }
-    
-    .gallery-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: var(--transition);
-    }
-    
-    .gallery-overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: rgba(0, 0, 0, 0.7);
-        color: white;
-        padding: 15px;
-        transform: translateY(100%);
-        transition: var(--transition);
-    }
-    
-    .gallery-item:hover .gallery-overlay {
-        transform: translateY(0);
-    }
-    
-    .gallery-title {
-        font-size: 1.2rem;
-        font-weight: 600;
-        margin-bottom: 5px;
-    }
-    
-    /* Стили для раздела с преимуществами */
-    .advantages-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 25px;
-        margin-top: 30px;
-    }
-    
-    .advantage-card {
-        text-align: center;
-        padding: 25px 20px;
-        border-radius: var(--border-radius);
-        background: linear-gradient(135deg, var(--gray-20), white);
-        transition: var(--transition);
-        border: 1px solid var(--gray-40);
-    }
-    
-    .advantage-card:hover {
-        background: white;
-        transform: translateY(-5px);
-        box-shadow: var(--shadow);
-    }
-    
-    .advantage-icon {
-        font-size: 3rem;
-        color: var(--primary-color); /* Синий */
-        margin-bottom: 15px;
-    }
-    
-    .advantage-title {
-        font-size: 1.3rem;
-        color: var(--primary-color); /* Синий */
-        margin-bottom: 10px;
-        font-weight: 600;
-    }
-    
-    /* Контактная информация */
-    .contact-info {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-        margin-top: 30px;
-    }
-    
-    .contact-details {
-        background: var(--gray-20);
-        padding: 25px;
-        border-radius: var(--border-radius);
-        border-left: 4px solid var(--primary-color); /* Синий */
-    }
-    
-    .contact-item {
-        display: flex;
-        align-items: flex-start;
-        margin-bottom: 15px;
-    }
-    
-    .contact-icon {
-        background: var(--secondary-color); /* Красный */
-        color: white;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 15px;
-        flex-shrink: 0;
-    }
-    
-    .contact-text h4 {
-        margin-bottom: 5px;
-        color: var(--primary-color); /* Синий */
-    }
-    
-    .contact-text p {
-        margin-bottom: 5px;
-    }
-    
-    .map-container {
-        border-radius: var(--border-radius);
-        overflow: hidden;
-        box-shadow: var(--shadow);
-        height: 300px;
-        position: relative;
-    }
-    
-    .map-container iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-        position: relative;
-        z-index: 1;
-    }
-    
-    /* Секция с отзывами */
-    .reviews-section {
-        margin: 40px 0;
-    }
-    
-    .reviews-container {
-        background: white;
-        border-radius: var(--border-radius);
-        box-shadow: var(--shadow);
-        overflow: hidden;
-        border: 2px solid var(--primary-color); /* Синий */
-        margin: 40px auto;
-        max-width: 100%;
-        font-family: 'Open Sans', Arial, sans-serif;
-        color: var(--gray-90);
-    }
-    
-    .reviews-header {
-        background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); /* Синий градиент */
-        color: white;
-        padding: 25px;
-        text-align: center;
-    }
-    
-    .reviews-header h2 {
-        font-size: 32px;
-        margin-bottom: 10px;
-    }
-    
-    .reviews-header p {
-        font-size: 18px;
-        opacity: 0.9;
-    }
-    
-    .reviews-wrapper {
-        position: relative;
-        height: 500px;
-        overflow: hidden;
-        padding: 20px;
-    }
-    
-    .reviews-track {
-        display: flex;
-        flex-direction: column;
-        animation: scrollReviews 60s linear infinite;
-    }
-    
-    .reviews-wrapper:hover .reviews-track {
-        animation-play-state: paused;
-    }
-    
-    .review-card {
-        margin-bottom: 25px;
-        padding: 20px;
-        border-radius: var(--border-radius);
-        background: var(--gray-20);
-        box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-        transition: var(--transition);
-        border-left: 4px solid var(--primary-color); /* Синий */
-    }
-    
-    .review-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    
-    .review-author {
-        font-weight: bold;
-        color: var(--primary-color); /* Синий */
-        margin-bottom: 5px;
-        font-size: 1.1em;
-        display: flex;
-        align-items: center;
-    }
-    
-    .review-author::before {
-        content: "★";
-        margin-right: 8px;
-        color: #ffc107;
-    }
-    
-    .review-date {
-        color: var(--gray-80);
-        font-size: 0.9em;
-        margin-bottom: 10px;
-    }
-    
-    .review-text {
-        line-height: 1.6;
-        color: var(--gray-90);
-        margin-bottom: 15px;
-    }
-    
-    .review-rating {
-        color: #ffc107;
-        font-size: 1.2em;
-    }
-    
-    .review-response {
-        margin-top: 10px;
-        padding: 10px;
-        background: rgba(255, 255, 255, 0.5);
-        border-radius: 5px;
-        border-left: 3px solid var(--secondary-color); /* Красный */
-        font-size: 0.9em;
-    }
-    
-    .reviews-controls {
-        text-align: center;
-        padding: 10px 0;
-        background-color: var(--gray-20);
-        border-top: 1px solid var(--gray-40);
-        font-size: 0.9rem;
-        color: var(--gray-80);
-    }
-    
-    .reviews-footer {
-        text-align: center;
-        padding: 25px;
-        background: var(--gray-20);
-        border-top: 1px solid var(--gray-40);
-    }
-    
-    .reviews-footer p {
-        margin-bottom: 20px;
-        font-size: 1.1rem;
-        color: var(--gray-90);
-    }
-    
-    /* Градиенты сверху и снизу для отзывов */
-    .reviews-wrapper::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 20px;
-        right: 20px;
-        height: 40px;
-        background: linear-gradient(to bottom, white, transparent);
-        z-index: 2;
-    }
-    
-    .reviews-wrapper::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 20px;
-        right: 20px;
-        height: 40px;
-        background: linear-gradient(to top, white, transparent);
-        z-index: 2;
-    }
-    
-    /* Анимация прокрутки отзывов */
-    @keyframes scrollReviews {
-        0% {
-            transform: translateY(0);
-        }
-        100% {
-            transform: translateY(calc(-100% + 500px));
-        }
-    }
-    
-    /* Подвал сайта */
-    footer {
-        background: white;
-        color: var(--gray-90);
-        padding: 50px 0 30px 0;
-        border-top: 1px solid var(--gray-40);
-        margin-top: 40px;
-        position: relative;
-    }
-    
-    footer::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 3px;
-        background: var(--secondary-color); /* Красная линия */
-    }
-    
-    .footer-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-bottom: 30px;
-        flex-wrap: wrap;
-        gap: 30px;
-    }
-    
-    .footer-col {
-        flex: 1;
-        min-width: 250px;
-    }
-    
-    .footer-logo {
-        margin-bottom: 15px;
-    }
-    
-    .footer-title {
-        color: var(--primary-color); /* Синий */
-        font-size: 18px;
-        font-weight: 700;
-        margin: 0 0 20px 0;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        position: relative;
-        padding-bottom: 8px;
-    }
-    
-    .footer-title::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 40px;
-        height: 2px;
-        background: var(--secondary-color); /* Красный */
-    }
-    
-    .footer-links {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-    }
-    
-    .footer-links a {
-        color: var(--gray-90);
-        text-decoration: none;
-        font-size: 16px;
-        font-weight: 500;
-        transition: var(--transition);
-        display: inline-block;
-        position: relative;
-        padding-left: 20px;
-    }
-    
-    .footer-links a::before {
-        content: '\f0da';
-        font-family: 'Font Awesome 6 Free';
-        font-weight: 900;
-        position: absolute;
-        left: 0;
-        color: var(--primary-color); /* Синий */
-    }
-    
-    .footer-links a:hover {
-        color: var(--primary-color);
-        transform: translateX(5px);
-    }
-    
-    .copyright {
-        font-size: 14px;
-        color: var(--gray-80);
-        text-align: center;
-        padding-top: 20px;
-        margin-top: 30px;
-        border-top: 1px solid var(--gray-40);
-    }
-    
-    /* Дополнительные стили для QR-кода и юридической информации */
-    .qr-section {
-        transition: var(--transition);
-        margin-top: 25px;
-        padding: 15px;
-        background: linear-gradient(135deg, var(--gray-20), white);
-        border-radius: var(--border-radius);
-        border: 1px solid var(--gray-40);
-        text-align: center;
-    }
-    
-    .qr-section:hover {
-        transform: translateY(-3px);
-        box-shadow: var(--shadow);
-    }
-    
-    .qr-section img {
-        transition: var(--transition);
-        border-radius: 8px;
-        border: 2px solid var(--primary-color); /* Синий */
-    }
-    
-    .qr-section img:hover {
-        transform: scale(1.05);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    }
-    
-    .legal-info {
-        background: linear-gradient(135deg, var(--gray-20), white);
-        border-radius: var(--border-radius);
-        padding: 20px;
-        border: 1px solid var(--gray-40);
-    }
-    
-    .legal-info p {
-        margin-bottom: 8px;
-    }
-    
-    /* Анимация при появлении элементов */
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .fade-in {
-        animation: fadeIn 0.8s ease forwards;
-    }
-    
-    /* Стили для счетчика */
-    .counter {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        margin: 40px 0;
-        flex-wrap: wrap;
-    }
-    
-    .counter-item {
-        text-align: center;
-        padding: 20px;
-        border-radius: var(--border-radius);
-        background: white;
-        box-shadow: var(--shadow);
-        min-width: 150px;
-        transition: var(--transition);
-    }
-    
-    .counter-item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-    
-    .counter-value {
-        font-size: 36px;
-        font-weight: 700;
-        color: var(--primary-color); /* Синий */
-        margin-bottom: 5px;
-    }
-    
-    .counter-label {
-        color: var(--gray-80);
-        font-size: 14px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-    
-    /* Простой баннер с фото */
-    .simple-banner {
-        margin: 40px 0;
-        border-radius: var(--border-radius);
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        position: relative;
-    }
-
-    .simple-banner img {
-        width: 100%;
-        height: auto;
-        display: block;
-        transition: transform 0.8s ease;
-    }
-
-    .simple-banner:hover img {
-        transform: scale(1.03);
-    }
-    
-    /* Адаптивность */
-    @media (max-width: 992px) {
-        .welcome-title {
-            font-size: 36px;
-        }
-        
-        .reviews-wrapper {
-            height: 400px;
-        }
-        
-        @keyframes scrollReviews {
-            100% {
-                transform: translateY(calc(-100% + 400px));
-            }
-        }
-    }
-    
-    @media (max-width: 768px) {
-        .top-row {
-            flex-direction: column;
-            text-align: center;
-        }
-        
-        .quotes-bar {
-            margin: 15px 0;
-            max-width: 100%;
-        }
-        
-        .contacts {
-            margin: 15px 0;
-            text-align: center;
-        }
-        
-        .phone-list {
-            align-items: center;
-        }
-        
-        .social-links {
-            justify-content: center;
-            margin-left: 0;
-        }
-        
-        .main-nav {
-            gap: 15px;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-        
-        .nav-item {
-            font-size: 18px;
-            width: 100%;
-        }
-        
-        .logo-banner {
-            max-height: 60px;
-        }
-        
-        .promo-content {
-            padding: 0 20px;
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-        }
-        
-        .welcome-title {
-            font-size: 28px;
-        }
-        
-        .welcome-text {
-            font-size: 16px;
-        }
-        
-        .quick-access {
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .btn {
-            width: 100%;
-            max-width: 300px;
-        }
-        
-        .sale-title {
-            font-size: 24px;
-        }
-        
-        .sale-text {
-            font-size: 16px;
-        }
-        
-        .services-grid, .parts-grid, .gallery-grid, .advantages-grid {
-            grid-template-columns: 1fr;
-        }
-        
-        .contact-info {
-            grid-template-columns: 1fr;
-        }
-        
-        .reviews-header h2 {
-            font-size: 24px;
-        }
-        
-        .reviews-header p {
-            font-size: 16px;
-        }
-        
-        .counter {
-            gap: 15px;
-        }
-        
-        .counter-item {
-            min-width: 120px;
-            padding: 15px;
-        }
-        
-        .counter-value {
-            font-size: 28px;
-        }
-    }
-    
-    @media (max-width: 480px) {
-        .welcome-banner {
-            padding: 40px 20px;
-        }
-        
-        .section {
-            padding: 20px;
-        }
-        
-        .logo-banner {
-            max-height: 50px;
-        }
-        
-        .gallery-item {
-            height: 200px;
-        }
-        
-        .reviews-wrapper {
-            height: 350px;
-        }
-        
-        @keyframes scrollReviews {
-            100% {
-                transform: translateY(calc(-100% + 350px));
-            }
-        }
-        
-        .counter {
-            gap: 10px;
-        }
-        
-        .counter-item {
-            min-width: calc(50% - 20px);
-            padding: 10px;
-        }
-    }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Автосервис VN-MASTERS в Ростове-на-Дону — ремонт, диагностика, ТО</title>
+  <meta name="description" content="Профессиональный автосервис VN-MASTERS: диагностика, ТО, ремонт двигателя, ходовой, КПП, автоэлектрика, запчасти и шиномонтаж в Ростове-на-Дону.">
+  <meta property="og:title" content="Автосервис VN-MASTERS — Ростов-на-Дону">
+  <meta property="og:description" content="Диагностика, ремонт, ТО и запчасти. Согласуем смету до начала работ.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://vn-masters.ru/">
+  <meta property="og:image" content="assets/images/hero/hero-main.jpg">
+  <link rel="icon" href="assets/images/brand/logo.jpg">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AutoRepair",
+    "name": "VN-MASTERS",
+    "telephone": "+7 (863) 260-03-45",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ул. Стартовая 1/1",
+      "addressLocality": "Ростов-на-Дону",
+      "addressCountry": "RU"
+    },
+    "openingHours": "Mo-Su 08:00-20:00",
+    "description": "Автосервис в Ростове-на-Дону: диагностика, ремонт, ТО, шиномонтаж, запчасти."
+  }
+  </script>
 </head>
 <body>
-    <!-- Шапка сайта -->
-    <header class="header">
-        <div class="container">
-            <!-- Верхняя строка -->
-            <div class="top-row">
-                <!-- Кликабельный баннер-логотип -->
-                <div class="logo-section">
-                    <a href="index.html" class="logo-banner-link" aria-label="Главная страница VN-MASTERS">
-                        <img src="https://s3.radikal.cloud/2025/11/27/unnamedcef392b5bea91fce.jpg" 
-                             alt="VN-MASTERS Профессиональный автосервис" class="logo-banner">
-                    </a>
-                </div>
-                
-                <div class="quotes-bar">
-                    <div class="quote-text">Качественный ремонт автомобилей всех марок в Ростове-на-Дону</div>
-                </div>
-                
-                <div class="contacts">
-                    <div class="phone-list">
-                        <a href="tel:+78632600345" class="phone">+7 (863) 260-03-45</a>
-                        <a href="tel:+79045057390" class="phone">+7 (904) 505-73-90</a>
-                        <a href="tel:+79185900199" class="phone">+7 (918) 590-01-99</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Навигация -->
-            <div class="nav-container">
-                <nav class="main-nav" aria-label="Основная навигация">
-                    <a href="#home" class="nav-item active">Главная</a>
-                    <a href="#services" class="nav-item">Услуги</a>
-                    <a href="#parts" class="nav-item">Запчасти</a>
-                    <a href="#gallery" class="nav-item">Наш сервис</a>
-                    <a href="#reviews" class="nav-item">Отзывы</a>
-                    <a href="#contact" class="nav-item">Контакты</a>
-                    <a href="forms.html" class="nav-item">Онлайн-запись</a>
-                   <a href="admin.html" class="nav-item">Администраторам</a>
-                </nav>
-            </div>
+<header class="site-header">
+  <div class="container header-row">
+    <a class="logo-wrap" href="index.html" aria-label="VN-MASTERS">
+      <img src="assets/images/brand/logo.jpg" alt="Логотип VN-MASTERS">
+      <span class="logo-note">автосервис</span>
+    </a>
+    <nav class="main-nav" data-nav-menu aria-label="Основная навигация">
+      <a href="#home">Главная</a>
+      <a href="#services">Услуги</a>
+      <a href="#parts">Запчасти</a>
+      <a href="#workshop">Наш сервис</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#contacts">Контакты</a>
+      <a href="forms.html">Онлайн-запись</a>
+    </nav>
+    <div class="head-phones">
+      <a href="tel:+78632600345">+7 (863) 260-03-45</a>
+      <small>08:00–20:00 ежедневно</small>
+    </div>
+    <a class="btn btn-primary header-cta" href="forms.html">Записаться</a>
+    <button class="nav-toggle" type="button" data-nav-toggle aria-label="Меню" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-card">
+        <div class="hero-media"></div>
+        <div class="hero-content">
+          <h1>Профессиональный автосервис в Ростове-на-Дону</h1>
+          <p>Диагностика, ремонт, ТО и запчасти для автомобилей популярных марок. Согласуем смету до начала работ.</p>
+          <div class="badges">
+            <span>15+ лет опыта</span>
+            <span>Гарантия на работы</span>
+            <span>Запчасти в наличии и под заказ</span>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="forms.html">Записаться онлайн</a>
+            <a class="btn btn-outline" href="tel:+78632600345">Позвонить</a>
+          </div>
         </div>
-    </header>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong>4.9/5</strong><span>Средняя оценка клиентов</span></div>
+        <div class="stat"><strong>15 лет</strong><span>Работаем с 2010 года</span></div>
+        <div class="stat"><strong>12+</strong><span>Направлений ремонта</span></div>
+        <div class="stat"><strong>08:00–20:00</strong><span>Ежедневно без выходных</span></div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Основной контент -->
-    <main class="main-content">
-        <div class="container">
-            <!-- Промо-баннер -->
-            <section class="promo-banner" id="home">
-                <img src="https://www.autodepo71.ru/upload/iblock/c3b/jx90ygitvh51sedc7oj7zyrivfl8iub3/2.jpg" 
-                     alt="Профессиональный автосервис VN-MASTERS" loading="lazy" width="1200" height="300">
-                <div class="promo-content">
-                    <div class="promo-text">
-                        <h1 class="promo-title">Профессиональный автосервис в Ростове-на-Дону</h1>
-                        <p class="promo-description">Качественный ремонт, обслуживание и оригинальные запчасти для автомобилей всех марок. Работаем с 2010 года.</p>
-                        <div class="quick-access">
-                            <a href="#services" class="btn quick-btn">Наши услуги</a>
-                            <a href="forms.html" class="btn quick-btn">Онлайн-запись</a>
-                            <a href="#contact" class="btn quick-btn">Контакты</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Счетчик -->
-            <div class="counter">
-                <div class="counter-item fade-in">
-                    <div class="counter-value" data-count="15">15+</div>
-                    <div class="counter-label">Лет опыта</div>
-                </div>
-                <div class="counter-item fade-in">
-                    <div class="counter-value" data-count="10000">10000+</div>
-                    <div class="counter-label">Довольных клиентов</div>
-                </div>
-                <div class="counter-item fade-in">
-                    <div class="counter-value" data-count="365">365</div>
-                    <div class="counter-label">Дней в году</div>
-                </div>
-                <div class="counter-item fade-in">
-                    <div class="counter-value" data-count="1">1 год</div>
-                    <div class="counter-label">Гарантии на работы</div>
-                </div>
-            </div>
-            
-            <!-- Большой промо-баннер -->
-            <section class="simple-banner">
-                <img src="https://radika1.link/2025/12/02/17646733498bdcee41fd387087.png" 
-                     alt="Баннер автосервиса VN-MASTERS" loading="lazy">
-            </section>
-            
-            <!-- Преимущества -->
-            <section class="section">
-                <h2 class="section-title">Почему выбирают нас</h2>
-                <p>Более 15 лет мы обеспечиваем качественный ремонт автомобилей в Ростове-на-Дону</p>
-                
-                <div class="advantages-grid">
-                    <div class="advantage-card">
-                        <div class="advantage-icon">
-                            <i class="fas fa-medal"></i>
-                        </div>
-                        <h3 class="advantage-title">15 лет на рынке</h3>
-                        <p>Опытные мастера с профильным образованием и многолетним стажем</p>
-                    </div>
-                    
-                    <div class="advantage-card">
-                        <div class="advantage-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h3 class="advantage-title">Гарантия до 1 года</h3>
-                        <p>Предоставляем официальную гарантию на все виды работ и запчасти</p>
-                    </div>
-                    
-                    <div class="advantage-card">
-                        <div class="advantage-icon">
-                            <i class="fa-solid fa-ruble-sign"></i>
-                        </div>
-                        <h3 class="advantage-title">Фиксированные цены</h3>
-                        <p>Честное ценообразование без скрытых платежей и неожиданностей</p>
-                    </div>
-                    
-                    <div class="advantage-card">
-                        <div class="advantage-icon">
-                            <i class="fas fa-truck-fast"></i>
-                        </div>
-                        <h3 class="advantage-title">Быстрая доставка</h3>
-                        <p>Запчасти в наличии или доставим за 1-2 часа в пределах города</p>
-                    </div>
-                </div>
-            </section>
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-head">
+        <h2>Услуги автосервиса</h2>
+        <p>Крупные узлы, плановое обслуживание, диагностика и ремонт по понятной смете.</p>
+      </div>
+      <div class="service-grid">
+        <!-- Временные placeholders на будущее:
+             assets/images/real-service/service/service-maintenance-placeholder.svg
+             assets/images/real-service/service/service-engine-placeholder.svg
+             assets/images/real-service/service/service-diagnostics-placeholder.svg -->
+        <article class="photo-card"><img src="assets/images/services/maintenance.jpg" alt="Техническое обслуживание"><div class="card-content"><h3>Техническое обслуживание</h3><p>Регламентные работы, жидкости, фильтры и контроль состояния.</p><div class="card-actions"><a class="btn btn-primary" href="forms.html">Записаться</a></div></div></article>
+        <article class="photo-card"><img src="assets/images/services/engine-repair.jpg" alt="Ремонт двигателя"><div class="card-content"><h3>Ремонт двигателя</h3><p>Диагностика причин, восстановление и настройка агрегата.</p><div class="card-actions"><a class="btn btn-primary" href="forms.html">Записаться</a></div></div></article>
+        <article class="photo-card"><img src="assets/images/services/diagnostics.jpg" alt="Диагностика"><div class="card-content"><h3>Диагностика</h3><p>Компьютерная и инструментальная проверка узлов автомобиля.</p><div class="card-actions"><a class="btn btn-primary" href="forms.html">Записаться</a></div></div></article>
+        <article class="photo-card"><img src="assets/images/services/suspension.jpg" alt="Ремонт ходовой"><div class="card-content"><h3>Ремонт ходовой части</h3><p>Подвеска, шаровые, амортизаторы, сайлентблоки и рулевые тяги.</p><div class="card-actions"><a class="btn btn-primary" href="forms.html">Подробнее</a></div></div></article>
+        <article class="photo-card"><img src="assets/images/services/transmission-service.jpg" alt="Обслуживание МКПП и АКПП"><div class="card-content"><h3>Обслуживание АКПП / МКПП</h3><p>Замена масла, фильтров, адаптация и контроль работы трансмиссии.</p><div class="card-actions"><a class="btn btn-primary" href="forms.html">Подробнее</a></div></div></article>
+        <article class="photo-card"><img src="assets/images/services/automatic-transmission.jpg" alt="Ремонт АКПП"><div class="card-content"><h3>Ремонт АКПП</h3><p>Поиск неисправностей, ремонт и проверка на стенде.</p><div class="card-actions"><a class="btn btn-primary" href="forms.html">Подробнее</a></div></div></article>
+        <article class="photo-card"><img src="assets/images/services/auto-electrician.jpg" alt="Автоэлектрика"><div class="card-content"><h3>Автоэлектрика</h3><p>Проводка, стартер, генератор, датчики, электронные блоки.</p><div class="card-actions"><a class="btn btn-primary" href="forms.html">Подробнее</a></div></div></article>
+        <article class="photo-card"><img src="assets/images/services/steering.jpg" alt="Рулевое управление"><div class="card-content"><h3>Ремонт рулевого управления</h3><p>Рейка, насос, тяги и устранение люфта рулевого механизма.</p><div class="card-actions"><a class="btn btn-primary" href="forms.html">Подробнее</a></div></div></article>
+        <article class="photo-card"><img src="assets/images/services/ac-service.jpg" alt="Автокондиционер"><div class="card-content"><h3>Обслуживание автокондиционера</h3><p>Заправка, чистка, герметичность и ремонт климат-системы.</p><div class="card-actions"><a class="btn btn-primary" href="forms.html">Подробнее</a></div></div></article>
+        <article class="photo-card"><img src="assets/images/services/tire-service.jpg" alt="Шиномонтаж"><div class="card-content"><h3>Шиномонтаж</h3><p>Сезонная смена колёс, балансировка, ремонт шин и дисков.</p><div class="card-actions"><a class="btn btn-primary" href="forms.html">Записаться</a></div></div></article>
+        <article class="photo-card"><img src="assets/images/services/body-repair.jpg" alt="Кузовной ремонт"><div class="card-content"><h3>Кузовной ремонт</h3><p>Восстановление кузова, подготовка и окраска элементов.</p><div class="card-actions"><a class="btn btn-primary" href="forms.html">Записаться</a></div></div></article>
+        <article class="photo-card"><img src="assets/images/services/parts.jpg" alt="Запчасти"><div class="card-content"><h3>Запчасти</h3><p>Оригинал и качественные аналоги: в наличии и под заказ.</p><div class="card-actions"><a class="btn btn-primary" href="#parts">Смотреть</a></div></div></article>
+      </div>
+    </div>
+  </section>
 
-            <!-- Услуги -->
-            <section class="section" id="services">
-                <h2 class="section-title">Наши услуги</h2>
-                <p>Полный спектр услуг по ремонту и обслуживанию вашего автомобиля</p>
-                
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-tools"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3>Техническое обслуживание</h3>
-                            <p>Регулярное ТО, замена масла, фильтров, диагностика систем автомобиля</p>
-                            <div class="action-buttons">
-                                <a href="forms.html" class="btn">Записаться</a>
-                                <a href="#contact" class="btn secondary">Узнать цену</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fa-solid fa-truck-monster"></i>
-                        </div>
-                        <div class="service-content">
-                            <span class="badge">Популярно</span>
-                            <h3>Шиномонтаж</h3>
-                            <p>Шиномонтажные работы, балансировка, сезонное хранение шин</p>
-                            <div class="action-buttons">
-                                <a href="forms.html" class="btn">Записаться</a>
-                                <span class="price-request">от 1 500 ₽</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3>Автоэлектрика</h3>
-                            <p>Ремонт электрооборудования, диагностика, установка дополнительного оборудования</p>
-                            <div class="action-buttons">
-                                <a href="#contact" class="btn">Уточнить контакты</a>
-                                <span class="price-request">от 2 000 ₽</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-oil-can"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3>Ремонт двигателя</h3>
-                            <p>Диагностика и ремонт бензиновых и дизельных двигателей</p>
-                            <div class="action-buttons">
-                                <a href="forms.html" class="btn">Записаться</a>
-                                <span class="price-request">от 10 000 ₽</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-gear"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3>Ремонт КПП</h3>
-                            <p>Ремонт механических и автоматических коробок передач</p>
-                            <div class="action-buttons">
-                                <a href="forms.html" class="btn">Записаться</a>
-                                <span class="price-request">от 8 000 ₽</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-car-crash"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3>Кузовные работы</h3>
-                            <p>Восстановление геометрии кузова, покраска, устранение вмятин</p>
-                            <div class="action-buttons">
-                                <a href="#contact" class="btn">Уточнить контакты</a>
-                                <span class="price-request">от 5 000 ₽</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-car-battery"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3>Диагностика</h3>
-                            <p>Компьютерная диагностика всех систем автомобиля</p>
-                            <div class="action-buttons">
-                                <a href="forms.html" class="btn">Записаться</a>
-                                <span class="price-request">от 1 500 ₽</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fa-solid fa-taxi"></i>
-                        </div>
-                        <div class="service-content">
-                            <span class="badge">Новинка</span>
-                            <h3>Ремонт ходовой</h3>
-                            <p>Диагностика и ремонт подвески, замена амортизаторов, сайлентблоков</p>
-                            <div class="action-buttons">
-                                <a href="forms.html" class="btn">Записаться</a>
-                                <span class="price-request">от 3 000 ₽</span>
-                            </div>
-                        </div>
-                    </div>
+  <section class="section" id="workshop">
+    <div class="container">
+      <div class="section-head"><h2>Почему выбирают VN-MASTERS</h2><p>Не обещаем лишнего, работаем по процессу и показываем прозрачный результат.</p></div>
+      <div class="section-head" style="margin-top:18px;"><h2>Фотографии автосервиса</h2><p>Реальные фото нашего сервиса и рабочей зоны.</p></div>
+      <div class="service-grid">
+        <article class="photo-card"><img src="MG2/54c8156b-9e07-499e-9495-f225db3b0b07.png" alt="Фото автосервиса VN-MASTERS 1"></article>
+        <article class="photo-card"><img src="MG2/7dd01c61-946c-47f4-a874-bcfd7bf61eb5.png" alt="Фото автосервиса VN-MASTERS 2"></article>
+        <article class="photo-card"><img src="MG2/8a5c4c16-faf9-431d-bf03-e21e76439f6d.png" alt="Фото автосервиса VN-MASTERS 3"></article>
+        <article class="photo-card"><img src="MG2/cb1df704-aa8a-402b-bc53-e781e76a1d64.png" alt="Фото автосервиса VN-MASTERS 4"></article>
+        <article class="photo-card"><img src="MG2/e32457d7-4643-484f-a74a-c7abb6665596.png" alt="Фото автосервиса VN-MASTERS 5"></article>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card"><h3>Честная диагностика</h3><p>Показываем причину неисправности и рекомендуем только нужные работы.</p></article>
+        <article class="feature-card"><h3>Понятная смета</h3><p>Согласовываем стоимость и сроки до начала ремонта.</p></article>
+        <article class="feature-card"><h3>Запчасти под бюджет</h3><p>Подбираем оригинал или качественные аналоги по задаче клиента.</p></article>
+        <article class="feature-card"><h3>Гарантия на работы</h3><p>Фиксируем гарантийные обязательства в заказ-наряде.</p></article>
+        <article class="feature-card"><h3>Запись по времени</h3><p>Работаем по слотам, чтобы сократить ожидание в сервисе.</p></article>
+        <article class="feature-card"><h3>Фото-отчёт ремонта</h3><p>По запросу отправляем фото ключевых этапов работ.</p></article>
+      </div>
+    </div>
+  </section>
 
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fa-solid fa-car-rear"></i>
-                        </div>
-                        <div class="service-content">
-                            <span class="badge">Новинка</span>
-                            <h3>Ремонт трансмиссии</h3>
-                            <p>Аппаратная замена масла в АКПП и МКПП</p>
-                            <div class="action-buttons">
-                                <a href="forms.html" class="btn">Записаться</a>
-                                <span class="price-request">от 3 000 ₽</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+  <section class="section" id="prices">
+    <div class="container">
+      <div class="section-head"><h2>Ориентиры по стоимости</h2><p>Финальную стоимость согласуем после диагностики.</p></div>
+      <table class="price-table">
+        <thead><tr><th>Категория</th><th>Цена от</th><th>Комментарий</th></tr></thead>
+        <tbody>
+          <tr><td>Диагностика</td><td>1 200 ₽</td><td>Компьютерная и первичная механическая проверка</td></tr>
+          <tr><td>ТО</td><td>4 500 ₽</td><td>Без стоимости расходников</td></tr>
+          <tr><td>Шиномонтаж</td><td>2 200 ₽</td><td>Комплекс на легковой автомобиль</td></tr>
+          <tr><td>Ходовая часть</td><td>3 500 ₽</td><td>Зависит от состава узлов</td></tr>
+          <tr><td>Двигатель</td><td>5 000 ₽</td><td>После дефектовки и согласования</td></tr>
+          <tr><td>Автоэлектрика</td><td>2 000 ₽</td><td>По результатам диагностики</td></tr>
+          <tr><td>Кузовной ремонт</td><td>по запросу</td><td>Смета после осмотра</td></tr>
+          <tr><td>Запчасти</td><td>по запросу</td><td>В наличии и под заказ</td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top:14px;"><a class="btn btn-primary" href="prices.html">Полный прайс</a></div>
+    </div>
+  </section>
 
-            <!-- Баннер с акцией -->
-            <section class="sale-banner">
-                <div class="sale-content">
-                    <div class="sale-badge">АКЦИЯ</div>
-                    <h2 class="sale-title">Скидка 10% на первый визит!</h2>
-                    <p class="sale-text">При записи через сайт получите скидку 10% на все работы. Предложение действует для новых клиентов.</p>
-                    <a href="forms.html" class="btn accent">Записаться со скидкой</a>
-                </div>
-            </section>
+  <section class="section" id="steps">
+    <div class="container">
+      <div class="section-head"><h2>Как проходит ремонт</h2></div>
+      <div class="steps">
+        <article class="step"><span class="num">01</span><h3>Заявка</h3><p>Оставляете заявку на сайте или звоните.</p></article>
+        <article class="step"><span class="num">02</span><h3>Первичная консультация</h3><p>Уточняем симптомы и готовим план диагностики.</p></article>
+        <article class="step"><span class="num">03</span><h3>Диагностика</h3><p>Проверяем автомобиль и определяем объём работ.</p></article>
+        <article class="step"><span class="num">04</span><h3>Согласование сметы</h3><p>Согласуем перечень работ, запчасти и сроки.</p></article>
+        <article class="step"><span class="num">05</span><h3>Ремонт</h3><p>Выполняем работы по технологическим картам.</p></article>
+        <article class="step"><span class="num">06</span><h3>Контроль и выдача</h3><p>Проверяем результат, выдаём авто и рекомендации.</p></article>
+      </div>
+    </div>
+  </section>
 
-            <!-- Галерея нашего сервиса -->
-            <section class="section gallery-section" id="gallery">
-                <h2 class="section-title">Наш автосервис</h2>
-                <p>Современное оборудование и профессиональные мастера</p>
-                
-                <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <img src="https://cdn.euroinnova.edu.es/img/subidasEditor/img_20210310_204000-1615440336.webp" 
-                             alt="Современный автосервис с профессиональным оборудованием" loading="lazy" width="400" height="250">
-                        <div class="gallery-overlay">
-                            <h3 class="gallery-title">Современное оборудование</h3>
-                            <p>Диагностические стенды последнего поколения</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item">
-                        <img src="https://img.freepik.com/free-photo/muscular-car-service-worker-repairing-vehicle_146671-19605.jpg?semt=ais_hybrid&w=740&q=80" 
-                             alt="Профессиональные мастера за работой" loading="lazy" width="400" height="250">
-                        <div class="gallery-overlay">
-                            <h3 class="gallery-title">Профессиональные мастера</h3>
-                            <p>Опытные специалисты с профильным образованием</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item">
-                        <img src="https://img.freepik.com/free-photo/car-mechanic-polishing-car-before-painting_1303-28150.jpg?semt=ais_hybrid&w=740&q=80" 
-                             alt="Зона кузовного ремонта и покраски" loading="lazy" width="400" height="250">
-                        <div class="gallery-overlay">
-                            <h3 class="gallery-title">Кузовной цех</h3>
-                            <p>Оборудование для качественного восстановления кузовов</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+  <section class="section" id="reviews">
+    <div class="container">
+      <div class="section-head"><h2>Отзывы клиентов</h2><p>Реальные мнения о ремонте и обслуживании в VN-MASTERS.</p></div>
+      <div class="reviews-grid">
+        <article class="review"><div class="meta">Алексей • Kia Sportage • 15.04.2026</div><div class="stars">★★★★★</div><p>Приняли по записи, сделали диагностику ходовой, всё показали и согласовали. Работой доволен.</p></article>
+        <article class="review"><div class="meta">Елена • Volkswagen Polo • 28.03.2026</div><div class="stars">★★★★★</div><p>Делала ТО и замену тормозных колодок. Быстро, аккуратно, без навязывания лишнего.</p></article>
+        <article class="review"><div class="meta">Игорь • Renault Duster • 07.05.2026</div><div class="stars">★★★★★</div><p>Помогли с проблемой АКПП, сделали поэтапно и с фото. Машина едет ровно, без рывков.</p></article>
+      </div>
+    </div>
+  </section>
 
-            <!-- Отзывы -->
-            <section class="reviews-section" id="reviews">
-                <div class="reviews-container">
-                    <div class="reviews-header">
-                        <h2>Отзывы о VN-Masters</h2>
-                        <p>Узнайте, что говорят наши клиенты о работе с нами</p>
-                    </div>
+  <section class="section" id="parts">
+    <div class="container">
+      <div class="section-head"><h2>Автозапчасти</h2><p>Подбираем детали под VIN и бюджет: оригинал и качественные аналоги от проверенных поставщиков.</p></div>
+      <div class="parts-grid">
+        <!-- Временные фото запчастей: assets/images/parts/placeholders/.
+             Когда будут реальные фото, меняем путь на assets/images/parts/real/*.jpg.
+             Карта имен хранится в assets/images/parts/README.md -->
+        <article class="parts-card"><img src="assets/images/parts/real/headlight-bulbs.jpg" alt="Лампы для фар"><div class="parts-body"><h3>Лампы для фар</h3><span class="stock ok">В наличии</span><p>От 700 ₽</p><p class="parts-note">LED и галоген для популярных марок.</p><a class="btn btn-outline" href="forms.html">Узнать наличие</a></div></article>
+        <article class="parts-card"><img src="assets/images/parts/real/washer-fluid.jpg" alt="Стеклоомывающая жидкость"><div class="parts-body"><h3>Стеклоомывающая жидкость</h3><span class="stock ok">В наличии</span><p>От 300 ₽</p><p class="parts-note">Летние и зимние составы без резкого запаха.</p><a class="btn btn-outline" href="forms.html">Узнать наличие</a></div></article>
+        <article class="parts-card"><img src="assets/images/parts/real/motor-oil.jpg" alt="Моторные масла"><div class="parts-body"><h3>Моторные масла</h3><span class="stock ok">В наличии</span><p>От 1 900 ₽</p><p class="parts-note">Подбор вязкости по допускам производителя.</p><a class="btn btn-outline" href="forms.html">Узнать наличие</a></div></article>
+        <article class="parts-card"><img src="assets/images/parts/real/filters.jpg" alt="Фильтры"><div class="parts-body"><h3>Фильтры</h3><span class="stock ok">В наличии</span><p>От 450 ₽</p><p class="parts-note">Масляные, салонные, топливные и воздушные.</p><a class="btn btn-outline" href="forms.html">Узнать наличие</a></div></article>
+        <article class="parts-card"><img src="assets/images/parts/real/brake-pads.jpg" alt="Тормозные колодки"><div class="parts-body"><h3>Тормозные колодки</h3><span class="stock order">Под заказ</span><p>От 2 400 ₽</p><p class="parts-note">Проверенные бренды с прогнозируемым ресурсом.</p><a class="btn btn-outline" href="forms.html">Узнать наличие</a></div></article>
+        <article class="parts-card"><img src="assets/images/parts/real/battery.jpg" alt="Аккумуляторы"><div class="parts-body"><h3>Аккумуляторы</h3><span class="stock order">Под заказ</span><p>От 6 500 ₽</p><p class="parts-note">Подбор ёмкости и пускового тока под авто.</p><a class="btn btn-outline" href="forms.html">Узнать наличие</a></div></article>
+        <article class="parts-card"><img src="assets/images/parts/real/spark-plugs.jpg" alt="Свечи зажигания"><div class="parts-body"><h3>Свечи зажигания</h3><span class="stock ok">В наличии</span><p>От 550 ₽</p><p class="parts-note">Стандартные и иридиевые комплекты.</p><a class="btn btn-outline" href="forms.html">Узнать наличие</a></div></article>
+        <article class="parts-card"><img src="assets/images/parts/real/timing-belt.jpg" alt="Ремень ГРМ"><div class="parts-body"><h3>Ремень ГРМ</h3><span class="stock order">Под заказ</span><p>От 2 900 ₽</p><p class="parts-note">Комплекты ГРМ с роликами и помпой.</p><a class="btn btn-outline" href="forms.html">Узнать наличие</a></div></article>
+        <article class="parts-card"><img src="assets/images/parts/real/shock-absorbers.jpg" alt="Амортизаторы"><div class="parts-body"><h3>Амортизаторы</h3><span class="stock order">Под заказ</span><p>От 3 800 ₽</p><p class="parts-note">Передние и задние стойки с гарантией.</p><a class="btn btn-outline" href="forms.html">Узнать наличие</a></div></article>
+        <article class="parts-card"><img src="assets/images/parts/real/tires.jpg" alt="Шины"><div class="parts-body"><h3>Шины</h3><span class="stock order">Под заказ</span><p>По запросу</p><p class="parts-note">Подбор по размеру, сезону и стилю езды.</p><a class="btn btn-outline" href="forms.html">Узнать наличие</a></div></article>
+        <article class="parts-card"><img src="assets/images/parts/placeholders/wheels-placeholder.svg" alt="Диски"><div class="parts-body"><h3>Диски</h3><span class="stock order">Под заказ</span><p>По запросу</p><p class="parts-note">Литые и штампованные варианты под параметры.</p><a class="btn btn-outline" href="forms.html">Узнать наличие</a></div></article>
+        <article class="parts-card"><img src="assets/images/parts/placeholders/wipers-placeholder.svg" alt="Щетки стеклоочистителя"><div class="parts-body"><h3>Щетки стеклоочистителя</h3><span class="stock ok">В наличии</span><p>От 900 ₽</p><p class="parts-note">Каркасные и бескаркасные под крепление авто.</p><a class="btn btn-outline" href="forms.html">Узнать наличие</a></div></article>
+      </div>
+    </div>
+  </section>
 
-                    <div class="reviews-wrapper">
-                        <div class="reviews-track" id="reviewsTrack">
-                            <!-- Отзывы -->
-                            <div class="review-card">
-                                <div class="review-author">Наталья Шатунова</div>
-                                <div class="review-date">13 февраля 2025</div>
-                                <div class="review-rating">★★★★★</div>
-                                <div class="review-text">Рекомендую сервис, все вопросы решают быстро, чётко, удобно.</div>
-                                <div class="review-response">
-                                    <strong>Ответ сервиса (6 марта 2025):</strong> Здравствуйте. Спасибо, Наталья, за приятный отзыв, будем рады вам всегда 🌸
-                                </div>
-                            </div>
-                            
-                            <div class="review-card">
-                                <div class="review-author">Глеб Поличов</div>
-                                <div class="review-date">12 февраля 2025</div>
-                                <div class="review-rating">★★★★★</div>
-                                <div class="review-text">Был на ТО, у ребят очень профессиональный подход. Сразу же можно купить все расходники и запчасти в целом. Подсказали что нужно менять пыльники ШРУС (показали что рваные), обязательно приеду в этот сервис. Советую</div>
-                                <div class="review-response">
-                                    <strong>Ответ сервиса (6 марта 2025):</strong> Глеб, здравствуйте. Большое спасибо за приятный отзыв 😉 Приходите к нам почаще!
-                                </div>
-                            </div>
-                            
-                            <div class="review-card">
-                                <div class="review-author">Olesya Kalugina</div>
-                                <div class="review-date">27 января 2025</div>
-                                <div class="review-rating">★★★★★</div>
-                                <div class="review-text">Хочу выразить огромную благодарность автосервису, в котором обслуживаюсь уже более 10 лет! Здесь работают настоящие профессионалы своего дела, которые всегда готовы прийти на помощь и решить любую проблему с моим автомобилем. Особенно хочу отметить высокий уровень сервиса и оперативность сотрудников. Они всегда вежливы, внимательны и готовы ответить на все вопросы. Благодаря их профессионализму и опыту, мой автомобиль всегда в надёжных руках.</div>
-                            </div>
-                            
-                            <div class="review-card">
-                                <div class="review-author">Дашуля</div>
-                                <div class="review-date">25 января 2025</div>
-                                <div class="review-rating">★★★★★</div>
-                                <div class="review-text">Автосервис на высшем уровне! любую неисправность решают очень быстро , особенно хочу отметить что могут заказать любую запчасть которая будет доставлена в течении часа! огромная благодарность директору автосервиса Виталию Николаевичу</div>
-                                <div class="review-response">
-                                    <strong>Ответ сервиса (12 февраля 2025):</strong> Огромное спасибо за доверие! Приходите к нам ещё, всегда рады ❤
-                                </div>
-                            </div>
-                            
-                            <div class="review-card">
-                                <div class="review-author">Денис Ращенко</div>
-                                <div class="review-date">24 января 2025</div>
-                                <div class="review-rating">★★★★★</div>
-                                <div class="review-text">Отличный автосервис! Профессиональный подход к каждому клиенту! Рекомендую!!!</div>
-                                <div class="review-response">
-                                    <strong>Ответ сервиса (12 февраля 2025):</strong> Здравствуйте, большое спасибо, очень приятно получать обратную связь 🔥 Будьте здоровы 💛
-                                </div>
-                            </div>
-                            
-                            <div class="review-card">
-                                <div class="review-author">Дмитрий Камышанов</div>
-                                <div class="review-date">9 декабря 2024</div>
-                                <div class="review-rating">★★★★★</div>
-                                <div class="review-text">Качественный своевременный ремонт. Всем доволен</div>
-                                <div class="review-response">
-                                    <strong>Ответ сервиса (12 февраля 2025):</strong> Добрый вечер! Спасибо, Дмитрий, за доверие 🙏 Очень приятно!
-                                </div>
-                            </div>
-                            
-                            <div class="review-card">
-                                <div class="review-author">Александр</div>
-                                <div class="review-date">9 декабря 2024</div>
-                                <div class="review-rating">★★★★★</div>
-                                <div class="review-text">Отличный сервис. Все сделали как обговаривали.</div>
-                                <div class="review-response">
-                                    <strong>Ответ сервиса (12 февраля 2025):</strong> Добрый вечер! Спасибо вам за добрые слова о нашей работе Приходите к нам почаще
-                                </div>
-                            </div>
-                            
-                            <div class="review-card">
-                                <div class="review-author">Ирина Смирнова</div>
-                                <div class="review-date">7 декабря 2024</div>
-                                <div class="review-rating">★★★★★</div>
-                                <div class="review-text">Все понравилось. Быстро и качественно без лишних разговоров. В других сервисах то запчастей не было, то долго. А тут приятно удивилась. Запчасти пришли в этот же день и машинка была отремонтирована сразу) и ценник понравился. Теперь только сюда. Спасибо) Рекомендую.</div>
-                                <div class="review-response">
-                                    <strong>Ответ сервиса (12 февраля 2025):</strong> Ирина. Благодарим за высокую оценку 🤗 Были рады знакомству.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="reviews-controls">
-                        Наведите курсор на отзывы, чтобы приостановить прокрутку
-                    </div>
-                    
-                    <div class="reviews-footer">
-                        <p>Вы тоже можете оставить свой отзыв о работе нашего автосервиса!</p>
-                        <div>
-                            <a href="https://yandex.ru/maps/org/vn_masters/42750637752/reviews/?ll=39.690857%2C47.294329&z=17" 
-                               target="_blank" rel="noopener noreferrer" class="btn" style="margin: 5px;">Оставить отзыв на Яндекс Картах</a>
-                            <a href="https://2gis.ru/rostov-on-don/firm/70000001095146498?m=39.690894%2C47.294398%2F16" 
-                               target="_blank" rel="noopener noreferrer" class="btn secondary" style="margin: 5px;">Оставить отзыв на 2ГИС</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
+  <section class="section bonus" id="bonus">
+    <div class="container">
+      <div class="section-head"><h2>Бонусная программа VN-MASTERS</h2><p>Чем чаще обслуживаете авто у нас, тем больше скидка на работы и запчасти.</p></div>
+      <div class="bonus-grid">
+        <article class="bonus-card bronze"><h3>Бронза</h3><p class="bonus-level">Базовый статус</p><strong>3%</strong><p>На работы и запчасти</p><small>После первого обслуживания</small></article>
+        <article class="bonus-card silver"><h3>Серебро</h3><p class="bonus-level">От 60 000 ₽</p><strong>5%</strong><p>На работы и запчасти</p><small>При накоплении в течение года</small></article>
+        <article class="bonus-card gold"><h3>Золото</h3><p class="bonus-level">От 100 000 ₽</p><strong>7%</strong><p>На работы и запчасти</p><small>Приоритетная запись на свободные окна</small></article>
+        <article class="bonus-card platinum"><h3>Платина</h3><p class="bonus-level">От 180 000 ₽</p><strong>10%</strong><p>На работы и запчасти</p><small>Максимальная выгода для постоянных клиентов</small></article>
+      </div>
+    </div>
+  </section>
 
-            <!-- Запчасти -->
-            <section class="section" id="parts">
-                <h2 class="section-title">Автозапчасти</h2>
-                <p>Широкий ассортимент запчастей и расходных материалов</p>
-                
-                <div class="parts-grid">
-                    <div class="part-card">
-                        <div class="part-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <div class="part-content">
-                            <span class="availability in-stock">В наличии</span>
-                            <h3>Лампы для фар</h3>
-                            <p class="price-request">от 500 ₽</p>
-                            <p class="part-description">Широкий выбор ламп для головного света различных марок автомобилей</p>
-                            <a href="#contact" class="btn">Узнать цену</a>
-                        </div>
-                    </div>
-                    
-                    <div class="part-card">
-                        <div class="part-icon">
-                            <i class="fas fa-tint"></i>
-                        </div>
-                        <div class="part-content">
-                            <span class="availability in-stock">В наличии</span>
-                            <h3>Стеклоомывающая жидкость</h3>
-                            <p class="price-request">от 300 ₽</p>
-                            <p class="part-description">Качественная жидкость для омывателя стекла, летняя и зимняя</p>
-                            <a href="#contact" class="btn">Узнать цену</a>
-                        </div>
-                    </div>
-                    
-                    <div class="part-card">
-                        <div class="part-icon">
-                            <i class="fas fa-oil-can"></i>
-                        </div>
-                        <div class="part-content">
-                            <span class="availability on-order">Под заказ</span>
-                            <h3>Моторные масла</h3>
-                            <p class="price-request">от 1 200 ₽</p>
-                            <p class="part-description">Полный ассортимент моторных масел ведущих производителей</p>
-                            <a href="#contact" class="btn">Узнать наличие</a>
-                        </div>
-                    </div>
-                    
-                    <div class="part-card">
-                        <div class="part-icon">
-                            <i class="fas fa-filter"></i>
-                        </div>
-                        <div class="part-content">
-                            <span class="availability on-order">Под заказ</span>
-                            <h3>Фильтры</h3>
-                            <p class="price-request">от 400 ₽</p>
-                            <p class="part-description">Воздушные, масляные, топливные и салонные фильтры</p>
-                            <a href="#contact" class="btn">Узнать наличие</a>
-                        </div>
-                    </div>
-                    
-                    <div class="part-card">
-                        <div class="part-icon">
-                            <i class="fas fa-stop-circle"></i>
-                        </div>
-                        <div class="part-content">
-                            <span class="availability on-order">Под заказ</span>
-                            <h3>Тормозные колодки</h3>
-                            <p class="price-request">от 2 500 ₽</p>
-                            <p class="part-description">Качественные тормозные колодки для различных моделей авто</p>
-                            <a href="#contact" class="btn">Узнать наличие</a>
-                        </div>
-                    </div>
-                    
-                    <div class="part-card">
-                        <div class="part-icon">
-                            <i class="fas fa-car-battery"></i>
-                        </div>
-                        <div class="part-content">
-                            <span class="availability on-order">Под заказ</span>
-                            <h3>Аккумуляторы</h3>
-                            <p class="price-request">от 4 000 ₽</p>
-                            <p class="part-description">Автомобильные аккумуляторы различных емкостей и производителей</p>
-                            <a href="#contact" class="btn">Узнать наличие</a>
-                        </div>
-                    </div>
-                    
-                    <!-- ДОБАВЛЕННЫЕ 6 НОВЫХ КАРТОЧЕК ЗАПЧАСТЕЙ -->
-                    <div class="part-card">
-                        <div class="part-icon">
-                            <i class="fas fa-fire"></i>
-                        </div>
-                        <div class="part-content">
-                            <span class="availability in-stock">В наличии</span>
-                            <h3>Свечи зажигания</h3>
-                            <p class="price-request">от 450 ₽</p>
-                            <p class="part-description">Качественные свечи для бензиновых и дизельных двигателей</p>
-                            <a href="#contact" class="btn">Узнать цену</a>
-                        </div>
-                    </div>
-                    
-                    <div class="part-card">
-                        <div class="part-icon">
-                            <i class="fas fa-cog"></i>
-                        </div>
-                        <div class="part-content">
-                            <span class="availability on-order">Под заказ</span>
-                            <h3>Ремень ГРМ</h3>
-                            <p class="price-request">от 3 000 ₽</p>
-                            <p class="part-description">Ремни ГРМ и комплекты для различных моделей автомобилей</p>
-                            <a href="#contact" class="btn">Узнать наличие</a>
-                        </div>
-                    </div>
-                    
-                    <div class="part-card">
-                        <div class="part-icon">
-                            <i class="fas fa-compress-alt"></i>
-                        </div>
-                        <div class="part-content">
-                            <span class="availability on-order">Под заказ</span>
-                            <h3>Амортизаторы</h3>
-                            <p class="price-request">от 4 500 ₽</p>
-                            <p class="part-description">Передние и задние амортизаторы для всех типов подвесок</p>
-                            <a href="#contact" class="btn">Узнать наличие</a>
-                        </div>
-                    </div>
-                    
-                    <div class="part-card">
-                        <div class="part-icon">
-                            <i class="fa-solid fa-car-burst"></i>
-                        </div>
-                        <div class="part-content">
-                            <span class="availability in-stock">В наличии</span>
-                            <h3>Шины</h3>
-                            <p class="price-request">от 3 500 ₽</p>
-                            <p class="part-description">Летние, зимние и всесезонные шины различных производителей</p>
-                            <a href="#contact" class="btn">Узнать цену</a>
-                        </div>
-                    </div>
-                    
-                    <div class="part-card">
-                        <div class="part-icon">
-                            <i class="fas fa-circle-notch"></i>
-                        </div>
-                        <div class="part-content">
-                            <span class="availability on-order">Под заказ</span>
-                            <h3>Диски</h3>
-                            <p class="price-request">от 6 000 ₽</p>
-                            <p class="part-description">Литые и штампованные диски различных размеров и дизайнов</p>
-                            <a href="#contact" class="btn">Узнать наличие</a>
-                        </div>
-                    </div>
-                    
-                    <div class="part-card">
-                        <div class="part-icon">
-                            <i class="fas fa-wind"></i>
-                        </div>
-                        <div class="part-content">
-                            <span class="availability in-stock">В наличии</span>
-                            <h3>Щетки стеклоочистителя</h3>
-                            <p class="price-request">от 800 ₽</p>
-                            <p class="part-description">Качественные щетки стеклоочистителя для всех моделей авто</p>
-                            <a href="#contact" class="btn">Узнать цену</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div style="text-align: center; margin-top: 30px;">
-                    <p style="color: var(--gray-80); font-size: 1.1rem;">
-                        <strong>Нужна конкретная запчасть?</strong> Мы оперативно найдем и доставим любую деталь для вашего автомобиля
-                    </p>
-                    <a href="#contact" class="btn" style="margin-top: 20px;">Узнать о наличии</a>
-                </div>
-            </section>
+  <section class="section brands" id="brands">
+    <div class="container">
+      <div class="section-head"><h2>Обслуживаемые марки автомобилей</h2><p>Работаем с популярными европейскими, корейскими, японскими и китайскими брендами.</p></div>
+      <div class="brands-grid">
+        <span>Audi</span><span>BMW</span><span>Chevrolet</span><span>Citroen</span><span>Ford</span><span>Honda</span>
+        <span>Hyundai</span><span>Infiniti</span><span>Kia</span><span>LADA</span><span>Land Rover</span><span>Lexus</span>
+        <span>Mazda</span><span>Mercedes-Benz</span><span>Mitsubishi</span><span>Nissan</span><span>Opel</span><span>Peugeot</span>
+        <span>Porsche</span><span>Renault</span><span>Skoda</span><span>Subaru</span><span>Toyota</span><span>Volkswagen</span>
+        <span>Volvo</span><span>Changan</span><span>Chery</span><span>Exeed</span><span>Geely</span><span>Haval</span>
+      </div>
+    </div>
+  </section>
 
-            <!-- Контакты -->
-            <section class="section" id="contact">
-                <h2 class="section-title">Контакты</h2>
-                <p>Свяжитесь с нами удобным для вас способом</p>
-                
-                <div class="contact-info">
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Адрес</h4>
-                                <p>344064, Ростовская обл., Ростов-на-Дону, ул. Стартовая 1/1</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Телефоны</h4>
-                                <p><a href="tel:+78632600345" class="phone">+7 (863) 260-03-45</a></p>
-                                <p><a href="tel:+79045057390" class="phone">+7 (904) 505-73-90</a></p>
-                                <p><a href="tel:+79185900199" class="phone">+7 (918) 590-01-99</a></p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Режим работы</h4>
-                                <p>Пн-Вс: 8:00 - 20:00</p>
-                            </div>
-                        </div>
-                        
-                        <div style="margin-top: 20px;">
-                            <h4>Мы на картах</h4>
-                            <div class="social-links">
-                                <a href="https://yandex.ru/maps/org/vn_masters/42750637752/?ll=39.690857%2C47.294329&z=17" 
-                                   target="_blank" rel="noopener noreferrer" class="btn" style="padding: 8px 15px;">
-                                    <i class="fab fa-yandex"></i> Яндекс Карты
-                                </a>
-                                <a href="https://2gis.ru/rostov-on-don/firm/70000001095146498?m=39.690894%2C47.294398%2F16" 
-                                   target="_blank" rel="noopener noreferrer" class="btn secondary" style="padding: 8px 15px;">
-                                    <i class="fas fa-map"></i> 2ГИС
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="map-container">
-                        <!-- Яндекс Карта -->
-                        <iframe src="https://yandex.ru/map-widget/v1/?ll=39.690857%2C47.294329&z=17&pt=39.690857%2C47.294329%2Cpm2orgl&l=map" 
-                                allowfullscreen="true" 
-                                loading="lazy"
-                                title="Карта расположения автосервиса VN-MASTERS в Ростове-на-Дону">
-                        </iframe>
-                    </div>
-                </div>
-            </section>
+  <section class="section" id="contacts">
+    <div class="container">
+      <div class="cta-panel">
+        <h2 style="margin:0;">Нужен быстрый расчёт ремонта?</h2>
+        <p>Оставьте заявку, и мастер свяжется с вами, чтобы уточнить симптомы и предложить ближайшее время диагностики.</p>
+        <div class="hero-actions"><a class="btn btn-primary" href="forms.html">Записаться на сервис</a><a class="btn btn-outline" href="tel:+78632600345">Позвонить сейчас</a></div>
+      </div>
+      <div class="contact-wrap">
+        <div class="contact-card">
+          <h3>Контакты VN-MASTERS</h3>
+          <p class="contact-item"><strong>Адрес:</strong> ул. Стартовая 1/1, Ростов-на-Дону</p>
+          <p class="contact-item"><strong>Телефоны:</strong> <a href="tel:+78632600345">+7 (863) 260-03-45</a>, <a href="tel:+79045057390">+7 (904) 505-73-90</a>, <a href="tel:+79185900199">+7 (918) 590-01-99</a></p>
+          <p class="contact-item"><strong>Режим работы:</strong> 08:00–20:00 ежедневно</p>
+          <p class="contact-item"><a class="btn btn-outline" href="https://yandex.ru/maps/org/vn_masters/42750637752/" target="_blank" rel="noopener noreferrer">Построить маршрут</a></p>
+          <p class="contact-item"><a href="https://2gis.ru/rostov-on-don/firm/70000001095146498" target="_blank" rel="noopener noreferrer">Открыть в 2ГИС</a></p>
         </div>
-    </main>
+        <div class="map"><iframe src="https://yandex.ru/map-widget/v1/?ll=39.690857%2C47.294329&z=17&pt=39.690857%2C47.294329%2Cpm2orgl&l=map" loading="lazy" title="Карта VN-MASTERS"></iframe></div>
+      </div>
+    </div>
+  </section>
+</main>
 
-    <!-- Подвал сайта -->
-    <footer>
-        <div class="container">
-            <!-- БАННЕР В ПОДВАЛЕ -->
-            <a href="forms.html" class="banner-link">
-                Записаться онлайн и получить скидку 5% на все работы!
-            </a>
-            
-            <div class="footer-content">
-                <div class="footer-col">
-                    <div class="footer-logo">
-                        <!-- Баннер в подвале (уменьшенный) -->
-                        <a href="index.html" aria-label="На главную страницу">
-                            <img src="https://s3.radikal.cloud/2025/11/27/unnamedcef392b5bea91fce.jpg" 
-                                 alt="VN-MASTERS Автосервис" 
-                                 style="max-height: 60px; width: auto;"
-                                 loading="lazy">
-                        </a>
-                    </div>
-                    <p>Профессиональный ремонт и обслуживание автомобилей всех марок. Мы работаем, чтобы вы могли ездить с удовольствием и уверенностью.</p>
-                    
-                    <!-- QR-код для оплаты СБП -->
-                    <div class="qr-section">
-                        <h4 class="footer-title" style="margin: 0 0 15px 0; font-size: 16px;">Оплата СБП (Тинькофф)</h4>
-                        <a href="https://www.tinkoff.ru/rm/r_ZqxhxNoAMT.ksOhwLlNBY/FwoNr88418" target="_blank" rel="noopener noreferrer" style="display: block; text-align: center;">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.tinkoff.ru/rm/r_ZqxhxNoAMT.ksOhwLlNBY/FwoNr88418" 
-                                 alt="QR-код для оплаты через СБП на номер +7 (863) 260-03-45" 
-                                 style="width: 150px; height: 150px; border-radius: 8px; border: 2px solid var(--primary-color);">
-                        </a>
-                        <p style="font-size: 12px; text-align: center; margin-top: 10px; color: var(--gray-80);">
-                            Наведите камеру телефона для оплаты
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h4 class="footer-title">Услуги</h4>
-                    <div class="footer-links">
-                        <a href="#services">Техническое обслуживание</a>
-                        <a href="#services">Шиномонтаж</a>
-                        <a href="#services">Ремонт двигателя</a>
-                        <a href="#services">Ремонт КПП</a>
-                        <a href="#services">Автоэлектрика</a>
-                        <a href="#services">Кузовные работы</a>
-                        <a href="#services">Диагностика</a>
-                        <a href="#services">Ремонт ходовой</a>
-                    </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h4 class="footer-title">Запчасти</h4>
-                    <div class="footer-links">
-                        <a href="#parts">Лампы для фар</a>
-                        <a href="#parts">Стеклоомывающая жидкость</a>
-                        <a href="#parts">Моторные масла</a>
-                        <a href="#parts">Фильтры</a>
-                        <a href="#parts">Тормозные колодки</a>
-                        <a href="#parts">Аккумуляторы</a>
-                        <a href="#parts">Свечи зажигания</a>
-                        <a href="#parts">Ремень ГРМ</a>
-                    </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h4 class="footer-title">Контакты</h4>
-                    <div class="footer-links">
-                        <a href="tel:+78632600345">+7 (863) 260-03-45</a>
-                        <a href="tel:+79045057390">+7 (904) 505-73-90</a>
-                        <a href="tel:+79185900199">+7 (918) 590-01-99</a>
-                        <a href="#contact">ул. Стартовая 1/1, Ростов-на-Дону</a>
-                        <a href="#contact">Ежедневно 8:00-20:00</a>
-                        <a href="https://yandex.ru/maps/org/vn_masters/42750637752/" target="_blank" rel="noopener noreferrer">Яндекс Карты</a>
-                        <a href="https://2gis.ru/rostov-on-don/firm/70000001095146498" target="_blank" rel="noopener noreferrer">2ГИС</a>
-                    </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h4 class="footer-title">Юридическая информация</h4>
-                    <div class="legal-info">
-                        <p><strong>Индивидуальный предприниматель</strong></p>
-                        <p>Курзанцев Виталий Николаевич</p>
-                        
-                        <div style="margin-top: 15px;">
-                            <p><strong>ОГРНИП:</strong> 325619600120014</p>
-                            <p><strong>ИНН:</strong> 615103836896</p>
-                        </div>
-                        
-                        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--gray-40);">
-                            <p><strong>Оплата услуг:</strong></p>
-                            <a href="https://www.tinkoff.ru/rm/r_ZqxhxNoAMT.ksOhwLlNBY/FwoNr88418" 
-                               target="_blank" rel="noopener noreferrer"
-                               style="display: inline-block; background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); color: white; padding: 8px 15px; border-radius: var(--border-radius); text-decoration: none; margin-top: 8px; font-size: 13px;">
-                                <i class="fas fa-credit-card"></i> Оплатить онлайн (СБП)
-                            </a>
-                        </div>
-                        
-                        <div style="margin-top: 15px; font-size: 12px; color: var(--gray-80);">
-                            <p>Все работы защищены гарантией. Предоставляем официальные закрывающие документы.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2025 Автосервис "VN-MASTERS". Все права защищены.</p>
-                <p style="margin-top: 8px; font-size: 13px; color: var(--gray-80);">
-                    ИП Курзанцев В.Н., ОГРНИП: 325619600120014, ИНН: 615103836896
-                </p>
-            </div>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="assets/images/brand/logo.jpg" alt="Логотип VN-MASTERS" style="width:170px;border-radius:10px;">
+        <p>Автосервис VN-MASTERS в Ростове-на-Дону.</p>
+      </div>
+      <div>
+        <h4>Услуги</h4>
+        <div class="footer-links">
+          <a href="#services">Диагностика</a>
+          <a href="#services">ТО</a>
+          <a href="#services">Ремонт двигателя</a>
+          <a href="#services">Ходовая часть</a>
+          <a href="#services">Шиномонтаж</a>
         </div>
-    </footer>
-
-    <script>
-        // Плавная прокрутка для якорных ссылок
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Смена цитат
-        const quotes = [
-            "Качественный ремонт автомобилей всех марок в Ростове-на-Дону",
-            "Более 15 лет опыта в авторемонте",
-            "Гарантия на все виды работ до 1 года",
-            "Оригинальные запчасти и расходные материалы",
-            "Быстрая доставка запчастей за 1-2 часа",
-            "Профессиональные мастера с профильным образованием"
-        ];
-        
-        let currentQuote = 0;
-        const quoteElement = document.querySelector('.quote-text');
-        
-        function changeQuote() {
-            quoteElement.style.opacity = 0;
-            
-            setTimeout(() => {
-                currentQuote = (currentQuote + 1) % quotes.length;
-                quoteElement.textContent = quotes[currentQuote];
-                quoteElement.style.opacity = 1;
-            }, 500);
-        }
-        
-        // Меняем цитату каждые 5 секунд
-        setInterval(changeQuote, 5000);
-        
-        // Анимация при появлении в области видимости
-        document.addEventListener('DOMContentLoaded', function() {
-            const animatedElements = document.querySelectorAll('.service-card, .part-card, .gallery-item, .advantage-card, .counter-item');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = 'translateY(0)';
-                        
-                        // Анимация счетчика
-                        if (entry.target.classList.contains('counter-item')) {
-                            const valueElement = entry.target.querySelector('.counter-value');
-                            const target = parseInt(valueElement.getAttribute('data-count'));
-                            let current = 0;
-                            const increment = target / 50;
-                            const timer = setInterval(() => {
-                                current += increment;
-                                if (current >= target) {
-                                    current = target;
-                                    clearInterval(timer);
-                                }
-                                valueElement.textContent = Math.floor(current) + (valueElement.textContent.includes('+') ? '+' : '');
-                            }, 30);
-                        }
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-            
-            animatedElements.forEach(el => {
-                el.style.opacity = 0;
-                el.style.transform = 'translateY(20px)';
-                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(el);
-            });
-            
-            // Настройка анимации отзывов (улучшенная версия)
-            const reviewsTrack = document.querySelector('.reviews-track');
-            const reviews = document.querySelectorAll('.review-card');
-            
-            if (reviewsTrack && reviews.length > 0) {
-                // Клонируем отзывы для бесконечной прокрутки
-                const cloneReviews = () => {
-                    reviews.forEach(review => {
-                        const clone = review.cloneNode(true);
-                        reviewsTrack.appendChild(clone);
-                    });
-                };
-                
-                // Клонируем отзывы один раз
-                cloneReviews();
-                
-                // Оптимизируем анимацию
-                const containerHeight = window.innerWidth <= 768 ? 400 : 500;
-                const totalHeight = reviews.length * (reviews[0]?.offsetHeight + 25) * 2; // Умножаем на 2, так как есть клоны
-                const duration = 60; // Уменьшили до 60 секунд
-                reviewsTrack.style.animationDuration = `${duration}s`;
-                
-                // Сброс анимации при достижении конца
-                reviewsTrack.addEventListener('animationiteration', () => {
-                    // Плавный переход в начало
-                    reviewsTrack.style.transition = 'none';
-                    reviewsTrack.style.transform = 'translateY(0)';
-                    setTimeout(() => {
-                        reviewsTrack.style.transition = '';
-                    }, 50);
-                });
-            }
-        });
-
-        // Подсветка активного пункта меню при прокрутке
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-item');
-            
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 100)) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-        
-        // Добавляем атрибут aria-current для доступности
-        const navItems = document.querySelectorAll('.nav-item');
-        navItems.forEach(item => {
-            item.addEventListener('click', function() {
-                navItems.forEach(i => i.removeAttribute('aria-current'));
-                this.setAttribute('aria-current', 'page');
-            });
-        });
-    </script>
+      </div>
+      <div>
+        <h4>Оплата и реквизиты</h4>
+        <div class="footer-links">
+          <a href="https://www.tinkoff.ru/rm/r_ZqxhxNoAMT.ksOhwLlNBY/FwoNr88418" target="_blank" rel="noopener noreferrer">Оплата по СБП</a><img src="assets/images/brand/sbp-qr.png" alt="QR-код оплаты СБП" style="width:110px;border-radius:8px;">
+          <span>ИП Курзанцев Виталий Николаевич</span>
+          <span>ОГРНИП: 324619600102575</span>
+          <span>ИНН: 616808352375</span>
+          <a href="privacy.html">Политика конфиденциальности</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 VN-MASTERS. Все права защищены.</div>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
+
+
