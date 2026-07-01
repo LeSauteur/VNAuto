@@ -17,6 +17,16 @@
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       if (navMenu) navMenu.classList.remove('open');
+      if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
     });
   });
+
+  if (navMenu && navToggle) {
+    navMenu.querySelectorAll('a').forEach((a) => {
+      a.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
 })();

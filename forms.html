@@ -2,8 +2,8 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Онлайн-запись в автосервис VN-MASTERS</title>
-  <meta name="description" content="Форма записи в автосервис VN-MASTERS в Ростове-на-Дону.">
+  <title>Заявка на запись в сервис VN-MASTERS</title>
+  <meta name="description" content="Оставьте заявку на диагностику, ТО или ремонт в VN-MASTERS. Время визита подтвердим по телефону.">
   <link rel="icon" href="assets/images/brand/logo.jpg"><link rel="stylesheet" href="assets/css/main.css">
   <style>
     .form-shell { margin-top: 24px; background:#fff; border:1px solid var(--line); border-radius:16px; padding:22px; box-shadow:var(--shadow); }
@@ -20,9 +20,9 @@
   </style>
 </head>
 <body>
-<header class="site-header"><div class="container header-row"><a class="logo-wrap" href="index.html"><img src="assets/images/brand/logo.jpg" alt="Логотип VN-MASTERS"><span class="logo-note">автосервис</span></a><nav class="main-nav" data-nav-menu><a href="index.html">Главная</a><a href="services.html">Услуги</a><a href="prices.html">Цены</a><a href="contacts.html">Контакты</a><a href="forms.html">Онлайн-запись</a></nav><div class="head-phones"><a href="tel:+78632600345">+7 (863) 260-03-45</a><small>08:00–20:00</small></div><a class="btn btn-primary header-cta" href="forms.html">Записаться</a><button class="nav-toggle" type="button" data-nav-toggle aria-label="Меню" aria-expanded="false">☰</button></div></header>
+<header class="site-header"><div class="container header-row"><a class="logo-wrap" href="index.html"><img src="assets/images/brand/logo.jpg" alt="Логотип VN-MASTERS"><span class="logo-note">технический сервис</span></a><nav class="main-nav" data-nav-menu><a href="index.html">Главная</a><a href="services.html">Услуги</a><a href="prices.html">Цены</a><a href="contacts.html">Контакты</a><a href="forms.html">Оставить заявку</a></nav><div class="head-phones"><a href="tel:+78632600345">+7 (863) 260-03-45</a><small>Режим работы уточняйте по телефону</small></div><a class="btn btn-primary header-cta" href="forms.html">Оставить заявку</a><button class="nav-toggle" type="button" data-nav-toggle aria-label="Открыть меню" aria-expanded="false">☰</button></div></header>
 <main>
-  <section class="page-hero"><div class="container"><h1>Онлайн-запись на сервис</h1><p>Оставьте заявку, и мы перезвоним для подтверждения времени и состава работ.</p></div></section>
+  <section class="page-hero"><div class="container"><h1>Заявка на запись в сервис</h1><p>Опишите автомобиль и задачу. Мы подтвердим время визита по телефону и уточним, как подготовиться к диагностике.</p></div></section>
   <section class="section"><div class="container"><div class="form-shell">
     <form id="bookingForm" action="https://formspree.io/f/mldqndzq" method="POST">
       <input type="hidden" name="_subject" value="Новая заявка VN-MASTERS">
@@ -33,11 +33,12 @@
       <div class="form-grid">
         <div class="field"><label for="name">Ваше имя</label><input id="name" name="Имя" required></div>
         <div class="field"><label for="phone">Телефон</label><input id="phone" name="Телефон" required placeholder="+7 (999) 123-45-67"></div>
-        <div class="field"><label for="car">Марка и модель</label><input id="car" name="Автомобиль" required></div>
+        <div class="field"><label for="car">Марка, модель и год</label><input id="car" name="Автомобиль" required></div>
         <div class="field"><label for="service">Услуга</label><select id="service" name="Услуга" required><option value="">Выберите услугу</option><option>Диагностика</option><option>Техническое обслуживание</option><option>Шиномонтаж</option><option>Ремонт ходовой</option><option>Ремонт двигателя</option><option>Автоэлектрика</option><option>Кузовной ремонт</option><option>Запчасти</option></select></div>
-        <div class="field"><label for="date">Желаемая дата</label><input type="date" id="date" name="Дата визита"></div>
+        <div class="field"><label for="date">Желаемый день</label><input type="date" id="date" name="Дата визита"></div>
         <div class="field"><label for="time">Желаемое время</label><input type="time" id="time" name="Время визита"></div>
-        <div class="field full"><label for="msg">Описание проблемы</label><textarea id="msg" name="Описание"></textarea></div>
+        <div class="field full"><label for="msg">Что беспокоит</label><textarea id="msg" name="Описание" placeholder="Опишите симптомы, звуки, ошибки на панели или нужную услугу"></textarea></div>
+        <div class="field full"><p style="margin:0;color:var(--muted);font-size:14px;">Мы подтвердим время визита по телефону.</p></div>
         <div class="field full"><label style="display:flex; gap:10px; align-items:flex-start; font-weight:400;"><input type="checkbox" name="consent" required style="width:auto; margin-top:4px;"><span>Я согласен(а) на обработку персональных данных и принимаю <a href="privacy.html" target="_blank" rel="noopener noreferrer">политику конфиденциальности</a>.</span></label></div>
       </div>
 
