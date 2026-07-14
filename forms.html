@@ -32,9 +32,24 @@
 
       <div class="form-grid">
         <div class="field"><label for="name">Ваше имя</label><input id="name" name="Имя" required></div>
-        <div class="field"><label for="phone">Телефон</label><input id="phone" name="Телефон" required placeholder="+7 (999) 123-45-67"></div>
+        <div class="field"><label for="phone">Телефон</label><input type="tel" inputmode="tel" autocomplete="tel" id="phone" name="Телефон" required pattern="\+7 \([0-9]{3}\) [0-9]{3}-[0-9]{2}-[0-9]{2}" title="Введите полный российский номер из 11 цифр" placeholder="+7 (999) 123-45-67"></div>
         <div class="field"><label for="car">Марка, модель и год</label><input id="car" name="Автомобиль" required></div>
-        <div class="field"><label for="service">Услуга</label><select id="service" name="Услуга" required><option value="">Выберите услугу</option><option>Диагностика</option><option>Техническое обслуживание</option><option>Шиномонтаж</option><option>Ремонт ходовой</option><option>Ремонт двигателя</option><option>Автоэлектрика</option><option>Кузовной ремонт</option><option>Запчасти</option></select></div>
+        <div class="field"><label for="service">Услуга</label><select id="service" name="Услуга" required>
+          <option value="">Выберите услугу</option>
+          <option value="diagnostics">Диагностика</option>
+          <option value="maintenance">Техническое обслуживание</option>
+          <option value="tire-service">Шиномонтаж</option>
+          <option value="suspension">Ремонт ходовой</option>
+          <option value="engine-repair">Ремонт двигателя</option>
+          <option value="auto-electrician">Автоэлектрика</option>
+          <option value="body-repair">Кузовной ремонт</option>
+          <option value="parts">Запчасти</option>
+          <option value="manual-transmission">Обслуживание и ремонт МКПП</option>
+          <option value="automatic-transmission">Обслуживание и ремонт АКПП</option>
+          <option value="ac-service">Обслуживание кондиционера</option>
+          <option value="steering">Ремонт рулевого управления</option>
+          <option value="brake-system">Ремонт тормозной системы</option>
+        </select></div>
         <div class="field"><label for="date">Желаемый день</label><input type="date" id="date" name="Дата визита"></div>
         <div class="field"><label for="time">Желаемое время</label><input type="time" id="time" name="Время визита"></div>
         <div class="field full"><label for="msg">Что беспокоит</label><textarea id="msg" name="Описание" placeholder="Опишите симптомы, звуки, ошибки на панели или нужную услугу"></textarea></div>
@@ -57,6 +72,38 @@
   const ok = document.getElementById('ok');
   const err = document.getElementById('err');
   const phone = document.getElementById('phone');
+  const date = document.getElementById('date');
+  const service = document.getElementById('service');
+
+  const getLocalDate = () => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+
+  const validatePhone = () => {
+    let digits = phone.value.replace(/\D/g, '');
+    if (digits.startsWith('8')) digits = '7' + digits.slice(1);
+    const valid = digits.length === 11 && digits.startsWith('7');
+    phone.setCustomValidity(valid ? '' : 'Введите полный российский номер из 11 цифр.');
+    return valid;
+  };
+
+  const validateDate = () => {
+    const valid = !date.value || date.value >= date.min;
+    date.setCustomValidity(valid ? '' : 'Выберите сегодняшнюю или будущую дату.');
+    return valid;
+  };
+
+  date.min = getLocalDate();
+  date.addEventListener('input', validateDate);
+
+  const requestedService = new URLSearchParams(window.location.search).get('service');
+  if (requestedService && Array.from(service.options).some((option) => option.value === requestedService)) {
+    service.value = requestedService;
+  }
 
   phone.addEventListener('input', () => {
     let v = phone.value.replace(/\D/g, '');
@@ -64,10 +111,13 @@
     if (!v.startsWith('7')) v = '7' + v;
     const m = v.slice(0,11).match(/(\d)(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
     phone.value = `+${m[1]}${m[2] ? ' ('+m[2] : ''}${m[2]&&m[2].length===3 ? ')' : ''}${m[3] ? ' '+m[3] : ''}${m[4] ? '-'+m[4] : ''}${m[5] ? '-'+m[5] : ''}`;
+    validatePhone();
   });
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault(); ok.className='msg'; err.className='msg';
+    validatePhone();
+    validateDate();
     if (!form.reportValidity()) return;
     const old = btn.textContent; btn.disabled = true; btn.textContent='Отправка...';
     try {
