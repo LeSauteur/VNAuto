@@ -1,0 +1,587 @@
+- generic [active] [ref=e1]:
+  - banner:
+    - generic [ref=e2]:
+      - link "Pro Auto — на главную" [ref=e3] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e4]:
+          - text: Pro
+          - emphasis [ref=e5]: Auto
+      - navigation "Главное меню" [ref=e6]:
+        - link "Услуги" [ref=e7] [cursor=pointer]:
+          - /url: "#services"
+        - link "Цены" [ref=e8] [cursor=pointer]:
+          - /url: "#prices"
+        - link "О нас" [ref=e9] [cursor=pointer]:
+          - /url: "#about"
+        - link "Отзывы" [ref=e10] [cursor=pointer]:
+          - /url: "#reviews"
+        - link "Контакты" [ref=e11] [cursor=pointer]:
+          - /url: "#contacts"
+      - generic [ref=e12]:
+        - link "Позвонить" [ref=e13] [cursor=pointer]:
+          - /url: tel:+79885552230
+          - generic [ref=e16]: +7 (988) 555-22-30
+        - button "Записаться" [ref=e17] [cursor=pointer]
+  - generic:
+    - navigation:
+      - link:
+        - /url: "#services"
+        - text: Услуги
+      - link:
+        - /url: "#prices"
+        - text: Цены
+      - link:
+        - /url: "#about"
+        - text: О нас
+      - link:
+        - /url: "#reviews"
+        - text: Отзывы
+      - link:
+        - /url: "#contacts"
+        - text: Контакты
+      - link:
+        - /url: tel:+79885552230
+        - text: +7 (988) 555-22-30
+      - link:
+        - /url: "#"
+        - text: Записаться
+  - main [ref=e18]:
+    - generic [ref=e19]:
+      - generic [ref=e21]:
+        - generic [ref=e22]:
+          - generic [ref=e23]: Открыто сейчас • Запись свободна
+          - paragraph [ref=e26]: Работаем ежедневно с 8:30 до 23:00
+          - heading "Делаем профессионально ремонт, диагностику, ТО в Ростове-на-Дону" [level=1] [ref=e27]:
+            - generic [ref=e28]: Делаем профессионально
+            - generic "ремонт, диагностику, ТО" [ref=e29]:
+              - generic [ref=e30]: ремонт
+              - generic [ref=e31]: диагностику
+              - generic [ref=e32]: ТО авто
+            - generic [ref=e33]: в Ростове-на-Дону
+          - paragraph [ref=e34]: Автотехцентр в Нахичевани. Опытные мастера, прозрачные цены, запчасти всегда в наличии. Ремонт всех марок авто.
+          - generic [ref=e35]:
+            - button "Записаться на сервис" [ref=e36] [cursor=pointer]
+            - link "Все услуги" [ref=e40] [cursor=pointer]:
+              - /url: "#services"
+        - list [ref=e42]:
+          - listitem [ref=e43]:
+            - strong [ref=e44]:
+              - text: "355"
+              - emphasis [ref=e45]: +
+            - generic [ref=e46]: положительных отзывов
+          - listitem [ref=e47]:
+            - strong [ref=e48]:
+              - text: "12"
+              - emphasis [ref=e49]: + лет
+            - generic [ref=e50]: опыта мастеров
+          - listitem [ref=e51]:
+            - strong [ref=e52]: Свой
+            - generic [ref=e53]: склад автозапчастей
+          - listitem [ref=e54]:
+            - strong [ref=e55]: Свои
+            - generic [ref=e56]: эвакуаторы
+      - generic [ref=e58]:
+        - generic [ref=e59]:
+          - generic [ref=e60]: ТО и замена масла
+          - generic [ref=e61]: •
+          - generic [ref=e62]: Ремонт двигателя
+          - generic [ref=e63]: •
+          - generic [ref=e64]: Тормозная система
+          - generic [ref=e65]: •
+          - generic [ref=e66]: Кондиционеры
+          - generic [ref=e67]: •
+          - generic [ref=e68]: Электрика
+          - generic [ref=e69]: •
+          - generic [ref=e70]: Диагностика
+          - generic [ref=e71]: •
+          - generic [ref=e72]: Запчасти в наличии
+          - generic [ref=e73]: •
+          - generic [ref=e74]: +7 (988) 555-22-30
+          - generic [ref=e75]: •
+        - generic [ref=e76]:
+          - generic [ref=e77]: ТО и замена масла
+          - generic [ref=e78]: •
+          - generic [ref=e79]: Ремонт двигателя
+          - generic [ref=e80]: •
+          - generic [ref=e81]: Тормозная система
+          - generic [ref=e82]: •
+          - generic [ref=e83]: Кондиционеры
+          - generic [ref=e84]: •
+          - generic [ref=e85]: Электрика
+          - generic [ref=e86]: •
+          - generic [ref=e87]: Диагностика
+          - generic [ref=e88]: •
+          - generic [ref=e89]: Запчасти в наличии
+          - generic [ref=e90]: •
+          - generic [ref=e91]: +7 (988) 555-22-30
+          - generic [ref=e92]: •
+        - generic [ref=e93]:
+          - generic [ref=e94]: ТО и замена масла
+          - generic [ref=e95]: •
+          - generic [ref=e96]: Ремонт двигателя
+          - generic [ref=e97]: •
+          - generic [ref=e98]: Тормозная система
+          - generic [ref=e99]: •
+          - generic [ref=e100]: Кондиционеры
+          - generic [ref=e101]: •
+          - generic [ref=e102]: Электрика
+          - generic [ref=e103]: •
+          - generic [ref=e104]: Диагностика
+          - generic [ref=e105]: •
+          - generic [ref=e106]: Запчасти в наличии
+          - generic [ref=e107]: •
+          - generic [ref=e108]: +7 (988) 555-22-30
+          - generic [ref=e109]: •
+    - generic [ref=e111]:
+      - generic [ref=e112]:
+        - generic [ref=e113]:
+          - generic [ref=e114]: "01"
+          - text: Почему мы
+        - heading "Почему выбирают Pro Auto" [level=2] [ref=e115]
+      - generic [ref=e116]:
+        - generic [ref=e117]:
+          - heading "Опытные мастера" [level=3] [ref=e121]
+          - paragraph [ref=e122]: Точная диагностика и качественный ремонт любой сложности.
+        - generic [ref=e123]:
+          - heading "Запчасти в наличии" [level=3] [ref=e128]
+          - paragraph [ref=e129]: Большой склад, оригинал и аналоги почти на все марки авто.
+        - generic [ref=e130]:
+          - heading "Быстро" [level=3] [ref=e135]
+          - paragraph [ref=e136]: Оперативный приём, заказ запчастей в течение часа.
+        - generic [ref=e137]:
+          - heading "5.0 на Яндекс.Картах" [level=3] [ref=e141]
+          - paragraph [ref=e142]: Более 355 положительных отзывов реальных клиентов.
+    - generic [ref=e144]:
+      - generic [ref=e145]:
+        - generic [ref=e146]:
+          - generic [ref=e147]: "02"
+          - text: Услуги
+        - heading "Что мы делаем" [level=2] [ref=e148]
+        - paragraph [ref=e149]: Полный цикл обслуживания и ремонта легковых автомобилей всех марок.
+      - generic [ref=e150]:
+        - article [ref=e151]:
+          - img "Комплексная компьютерная диагностика" [ref=e153]
+          - generic [ref=e154]:
+            - heading "Комплексная компьютерная диагностика" [level=3] [ref=e155]
+            - paragraph [ref=e156]: Диагностика и адаптация систем ДВС, проверка компрессии, диагностика ходовой, проверка авто перед покупкой.
+            - button "Записаться" [ref=e157] [cursor=pointer]
+        - article [ref=e160]:
+          - img "Заправка и ремонт автокондиционера" [ref=e162]
+          - generic [ref=e163]:
+            - heading "Заправка и ремонт автокондиционера" [level=3] [ref=e164]
+            - paragraph [ref=e165]: Заправка фреоном, опрессовка азотом, диагностика и ремонт компрессора автокондиционера.
+            - button "Записаться" [ref=e166] [cursor=pointer]
+        - article [ref=e169]:
+          - img "ТО и замена масла" [ref=e171]
+          - generic [ref=e172]:
+            - heading "ТО, замена масла и тех жидкостей" [level=3] [ref=e173]
+            - paragraph [ref=e174]: Замена масла в ДВС + 3 фильтра, частичная замена масла в АКПП, замена охлаждающей жидкости.
+            - button "Записаться" [ref=e175] [cursor=pointer]
+        - article [ref=e178]:
+          - img "Стартеры и генераторы" [ref=e180]
+          - generic [ref=e181]:
+            - heading "Стартеры и генераторы" [level=3] [ref=e182]
+            - paragraph [ref=e183]: Диагностика, ремонт и замена стартеров, генераторов любой сложности.
+            - button "Записаться" [ref=e184] [cursor=pointer]
+        - article [ref=e187]:
+          - img "Радиаторы и система охлаждения" [ref=e189]
+          - generic [ref=e190]:
+            - heading "Радиаторы и система охлаждения" [level=3] [ref=e191]
+            - paragraph [ref=e192]: Замена радиатора охлаждения, ремонт системы охлаждения двигателя, замена приводного ремня и роликов.
+            - button "Записаться" [ref=e193] [cursor=pointer]
+        - article [ref=e196]:
+          - img "Тормозная система" [ref=e198]
+          - generic [ref=e199]:
+            - heading "Тормозная система" [level=3] [ref=e200]
+            - paragraph [ref=e201]: Замена колодок, дисков, ремонт суппортов, прокачка тормозов.
+            - button "Записаться" [ref=e202] [cursor=pointer]
+        - article [ref=e205]:
+          - img "Силовой агрегат (двигатель)" [ref=e207]
+          - generic [ref=e208]:
+            - heading "Силовой агрегат (двигатель)" [level=3] [ref=e209]
+            - paragraph [ref=e210]: Замена ГРМ/цепи, прокладки ГБЦ, опор двигателя, свечей и катушек, промывка дроссельной заслонки.
+            - button "Записаться" [ref=e211] [cursor=pointer]
+        - article [ref=e214]:
+          - img "Автоэлектрика" [ref=e216]
+          - generic [ref=e217]:
+            - heading "Автоэлектрика" [level=3] [ref=e218]
+            - paragraph [ref=e219]: Диагностика и ремонт электросистем автомобиля любой сложности.
+            - button "Записаться" [ref=e220] [cursor=pointer]
+    - generic [ref=e224]:
+      - generic [ref=e225]:
+        - generic [ref=e226]:
+          - generic [ref=e227]: "03"
+          - text: Цены
+        - heading "Стоимость работ" [level=2] [ref=e228]
+        - paragraph [ref=e229]: Ниже — ориентировочные цены. Окончательная стоимость определяется после диагностики.
+      - generic [ref=e230]:
+        - generic [ref=e231]:
+          - heading "Диагностика" [level=3] [ref=e232]
+          - list [ref=e233]:
+            - listitem [ref=e234]:
+              - generic [ref=e235]: Компьютерная диагностика
+              - generic [ref=e236]: 1 000 ₽
+            - listitem [ref=e237]:
+              - generic [ref=e238]: Замер компрессии ДВС
+              - generic [ref=e239]: 1 100 ₽
+            - listitem [ref=e240]:
+              - generic [ref=e241]: Эндоскопия двигателя
+              - generic [ref=e242]: 1 500 ₽
+            - listitem [ref=e243]:
+              - generic [ref=e244]: Диагностика ходовой
+              - generic [ref=e245]: 1 000 ₽
+            - listitem [ref=e246]:
+              - generic [ref=e247]: Диагностика перед покупкой
+              - generic [ref=e248]: 5 500 ₽
+        - generic [ref=e249]:
+          - heading "ТО и жидкости" [level=3] [ref=e250]
+          - list [ref=e251]:
+            - listitem [ref=e252]:
+              - generic [ref=e253]: Замена масла в ДВС + 3 фильтра
+              - generic [ref=e254]: 1 700 ₽
+            - listitem [ref=e255]:
+              - generic [ref=e256]: Замена охлаждающей жидкости
+              - generic [ref=e257]: 1 500 ₽
+            - listitem [ref=e258]:
+              - generic [ref=e259]: Замена масла в АКПП
+              - generic [ref=e260]: 3 500 ₽
+            - listitem [ref=e261]:
+              - generic [ref=e262]: Замена масла в вариаторе
+              - generic [ref=e263]: 4 500 ₽
+        - generic [ref=e264]:
+          - heading "Двигатель" [level=3] [ref=e265]
+          - list [ref=e266]:
+            - listitem [ref=e267]:
+              - generic [ref=e268]: Замена ГРМ
+              - generic [ref=e269]: 4 000 ₽
+            - listitem [ref=e270]:
+              - generic [ref=e271]: Замена цепи ГРМ
+              - generic [ref=e272]: 8 000 ₽
+            - listitem [ref=e273]:
+              - generic [ref=e274]: Замена прокладки ГБЦ
+              - generic [ref=e275]: от 5 500 ₽
+            - listitem [ref=e276]:
+              - generic [ref=e277]: Замена помпы
+              - generic [ref=e278]: 4 000 ₽
+            - listitem [ref=e279]:
+              - generic [ref=e280]: Замена термостата
+              - generic [ref=e281]: 2 500 ₽
+            - listitem [ref=e282]:
+              - generic [ref=e283]: Промывка дроссельной заслонки
+              - generic [ref=e284]: 1 000 ₽
+        - generic [ref=e285]:
+          - heading "Ходовая часть" [level=3] [ref=e286]
+          - list [ref=e287]:
+            - listitem [ref=e288]:
+              - generic [ref=e289]: Замена амортизатора
+              - generic [ref=e290]: от 2 500 ₽
+            - listitem [ref=e291]:
+              - generic [ref=e292]: Замена подшипника ступицы
+              - generic [ref=e293]: 3 000 ₽
+            - listitem [ref=e294]:
+              - generic [ref=e295]: Замена стойки стабилизатора
+              - generic [ref=e296]: 750 ₽
+            - listitem [ref=e297]:
+              - generic [ref=e298]: Замена наконечников рулевой тяги
+              - generic [ref=e299]: 1 000 ₽
+            - listitem [ref=e300]:
+              - generic [ref=e301]: Замена сайлентблоков балки
+              - generic [ref=e302]: 8 925 ₽
+        - generic [ref=e303]:
+          - heading "Тормозная система" [level=3] [ref=e304]
+          - list [ref=e305]:
+            - listitem [ref=e306]:
+              - generic [ref=e307]: Замена тормозных колодок
+              - generic [ref=e308]: 1 500 ₽
+            - listitem [ref=e309]:
+              - generic [ref=e310]: Замена тормозных дисков
+              - generic [ref=e311]: 2 500 ₽
+            - listitem [ref=e312]:
+              - generic [ref=e313]: Прокачка тормозов
+              - generic [ref=e314]: 2 500 ₽
+            - listitem [ref=e315]:
+              - generic [ref=e316]: Профилактика суппортов
+              - generic [ref=e317]: 2 500 ₽
+        - generic [ref=e318]:
+          - heading "Трансмиссия" [level=3] [ref=e319]
+          - list [ref=e320]:
+            - listitem [ref=e321]:
+              - generic [ref=e322]: Замена сцепления
+              - generic [ref=e323]: 5 000 ₽
+            - listitem [ref=e324]:
+              - generic [ref=e325]: Замена ШРУСа
+              - generic [ref=e326]: 3 500 ₽
+            - listitem [ref=e327]:
+              - generic [ref=e328]: Замена приводного ремня
+              - generic [ref=e329]: 2 000 ₽
+        - generic [ref=e330]:
+          - heading "Кондиционеры" [level=3] [ref=e331]
+          - list [ref=e332]:
+            - listitem [ref=e333]:
+              - generic [ref=e334]: Заправка кондиционера
+              - generic [ref=e335]: 3 500 ₽
+            - listitem [ref=e336]:
+              - generic [ref=e337]: Заправка + диагностика
+              - generic [ref=e338]: 3 000 ₽
+            - listitem [ref=e339]:
+              - generic [ref=e340]: Опрессовка азотом
+              - generic [ref=e341]: 4 500 ₽
+            - listitem [ref=e342]:
+              - generic [ref=e343]: Промывка системы
+              - generic [ref=e344]: 15 000 ₽
+        - generic [ref=e345]:
+          - heading "Не нашли услугу?" [level=3] [ref=e346]
+          - paragraph [ref=e347]: Позвоните или напишите — рассчитаем стоимость по вашему авто.
+          - button "Связаться" [ref=e348] [cursor=pointer]
+      - paragraph [ref=e349]: Окончательная стоимость определяется после диагностики. Звоните для уточнения.
+    - generic [ref=e351]:
+      - generic [ref=e352]:
+        - generic [ref=e353]:
+          - generic [ref=e354]: "04"
+          - text: Марки авто
+        - heading "Ремонт всех марок авто" [level=2] [ref=e355]
+      - generic [ref=e356]:
+        - generic [ref=e357]: Toyota
+        - generic [ref=e358]: Audi
+        - generic [ref=e359]: Nissan
+        - generic [ref=e360]: Mazda
+        - generic [ref=e361]: Hyundai
+        - generic [ref=e362]: BMW
+        - generic [ref=e363]: Mercedes
+        - generic [ref=e364]: VW
+        - generic [ref=e365]: Kia
+        - generic [ref=e366]: Lada
+        - generic [ref=e367]: Renault
+        - generic [ref=e368]: Ford
+    - generic [ref=e370]:
+      - img "Команда Pro Auto в работе" [ref=e372]
+      - generic [ref=e373]:
+        - generic [ref=e374]:
+          - generic [ref=e375]: "05"
+          - text: О нас
+        - heading "Команда, которой доверяют" [level=2] [ref=e376]
+        - paragraph [ref=e377]: Pro Auto — автотехцентр в Нахичевани, Ростов-на-Дону. Молодые опытные мастера с подходом «диагностика → согласование стоимости → ремонт». Без лишних разговоров и навязанных услуг.
+        - list [ref=e378]:
+          - listitem [ref=e379]: Базовое сервисное обслуживание
+          - listitem [ref=e380]: Оплата картой
+          - listitem [ref=e381]: Подарочные сертификаты
+          - listitem [ref=e382]: Ремонт по ОСАГО
+          - listitem [ref=e383]: Парковка для клиентов
+          - listitem [ref=e384]: Можно с собакой
+          - listitem [ref=e385]: Туалет, кнопка вызова персонала
+        - button "Записаться на сервис" [ref=e387] [cursor=pointer]
+    - generic [ref=e389]:
+      - generic [ref=e390]:
+        - generic [ref=e391]:
+          - generic [ref=e392]: "06"
+          - text: Отзывы
+        - heading "Нам доверяют" [level=2] [ref=e393]
+        - paragraph [ref=e394]: 5.0 на Яндекс.Картах • 355+ отзывов
+      - generic [ref=e395]:
+        - figure [ref=e396]:
+          - generic [ref=e397]:
+            - generic [ref=e398]: АС
+            - generic [ref=e399]:
+              - generic [ref=e400]: Аббас Салих
+              - generic "5 из 5" [ref=e401]: ★★★★★
+          - blockquote [ref=e402]: Позвонил ребятам, записали сразу и приняли. Сделали диагностику и всё объяснили, помогли с выбором запчастей, заказали и всё заменили. Советую данное место и буду теперь обслуживать свой автомобиль у них.
+        - figure [ref=e403]:
+          - generic [ref=e404]:
+            - generic [ref=e405]: ВК
+            - generic [ref=e406]:
+              - generic [ref=e407]: Виталий Кудрявцев
+              - generic "5 из 5" [ref=e408]: ★★★★★
+          - blockquote [ref=e409]: "Хорошее место, ребята молодые, но на опыте. Сделали диагностику ходовой, нашли стук, оперативно заказали запчасти — и буквально через пару часов машина снова в строю. Респект мастерам: без лишних разговоров, быстро, качественно, по адекватной цене."
+        - figure [ref=e410]:
+          - generic [ref=e411]:
+            - generic [ref=e412]: АЩ
+            - generic [ref=e413]:
+              - generic [ref=e414]: Алла Щербакова
+              - generic "5 из 5" [ref=e415]: ★★★★★
+          - blockquote [ref=e416]: Спасибо, рекомендую автосервис.
+        - figure [ref=e417]:
+          - generic [ref=e418]:
+            - generic [ref=e419]: МР
+            - generic [ref=e420]:
+              - generic [ref=e421]: Марк Ротенберг
+              - generic "5 из 5" [ref=e422]: ★★★★★
+          - blockquote [ref=e423]: Менял шрус, ступичный, суппорт. Всё чётко, всё работает. Буду ездить теперь сюда.
+      - link "Все отзывы на Яндекс.Картах" [ref=e425] [cursor=pointer]:
+        - /url: https://yandex.ru/maps/org/193014320605
+    - generic [ref=e430]:
+      - generic [ref=e431]:
+        - generic [ref=e432]:
+          - generic [ref=e433]: "07"
+          - text: Контакты
+        - heading "Как добраться" [level=2] [ref=e434]
+      - generic [ref=e435]:
+        - generic [ref=e436]:
+          - generic [ref=e437]:
+            - generic [ref=e438]: Адрес
+            - strong [ref=e439]: Ростов-на-Дону, Нахичевань,улица Листопадова, 17/42
+          - generic [ref=e440]:
+            - generic [ref=e441]: Телефон
+            - link "+7 (988) 555-22-30" [ref=e442] [cursor=pointer]:
+              - /url: tel:+79885552230
+          - generic [ref=e443]:
+            - generic [ref=e444]: Email
+            - link "Artem.tchivilsky@yandex.ru" [ref=e445] [cursor=pointer]:
+              - /url: mailto:Artem.tchivilsky@yandex.ru
+          - generic [ref=e446]:
+            - generic [ref=e447]: Часы работы
+            - strong [ref=e448]: "Ежедневно: 8:30 – 23:00"
+          - generic [ref=e449]:
+            - link "MAX" [ref=e450] [cursor=pointer]:
+              - /url: https://max.ru/u/f9LHodD0cOKr1lTA2mvXXb08dNc44IFxLc0V8kmgUC4VrrO1H0rTU7tQ3qo
+            - link "Telegram" [ref=e452] [cursor=pointer]:
+              - /url: https://t.me/+79885552230
+            - link "ВКонтакте" [ref=e454] [cursor=pointer]:
+              - /url: https://vk.com/pro_autoservice
+              - generic [ref=e455]: VK
+            - link "Позвонить" [ref=e456] [cursor=pointer]:
+              - /url: tel:+79885552230
+        - generic [ref=e460]:
+          - iframe [ref=e461]:
+            - generic [ref=f1e2]:
+              - generic:
+                - generic:
+                  - generic [ref=f1e3]: PROAUTO
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic [ref=f1e17]:
+                          - generic [ref=f1e18]:
+                            - button [ref=f1e21] [cursor=pointer]
+                            - button "Пробки" [ref=f1e23] [cursor=pointer]
+                          - iframe [ref=f1e27]:
+                            
+                        - generic [ref=f1e28]:
+                          - generic [ref=f1e31]:
+                            - button "Приблизить" [ref=f1e33] [cursor=pointer]
+                            - button "Отдалить" [ref=f1e35] [cursor=pointer]
+                          - iframe [ref=f1e36]:
+                            
+                        - generic [ref=f1e37]:
+                          - button "Моё местоположение" [ref=f1e40] [cursor=pointer]
+                          - iframe [ref=f1e41]:
+                            
+                        - generic [ref=f1e42]:
+                          - button "Открыть в Яндекс Картах" [ref=f1e45] [cursor=pointer]
+                          - iframe [ref=f1e47]:
+                            
+                        - generic:
+                          - generic:
+                            - generic:
+                              - button "Открыть в Картах"
+                          - iframe [ref=f1e48]:
+                            
+                        - generic:
+                          - generic:
+                            - generic:
+                              - button
+                          - iframe [ref=f1e49]:
+                            
+                      - generic:
+                        - generic:
+                          - contentinfo:
+                            - generic [ref=f1e51]:
+                              - generic [ref=f1e52]: © Яндекс
+                              - link "Условия использования" [ref=f1e53] [cursor=pointer]:
+                                - /url: https://yandex.ru/legal/maps_termsofuse/?lang=ru
+                        - generic: 60 м
+                      - iframe [ref=f1e54]:
+                        
+                  - iframe [ref=f1e55]:
+                    
+          - link "Построить маршрут" [ref=e462] [cursor=pointer]:
+            - /url: https://yandex.ru/maps/org/193014320605
+    - generic [ref=e465]:
+      - generic [ref=e466]:
+        - heading "Мы на ведущих платформах" [level=3] [ref=e467]
+        - paragraph [ref=e468]: Реальные оценки и отзывы клиентов — проверьте перед записью.
+      - generic [ref=e469]:
+        - link "Яндекс.Карты Яндекс.Карты 5.0 • 390 оценок" [ref=e470] [cursor=pointer]:
+          - /url: https://yandex.ru/maps/org/193014320605
+          - img "Яндекс.Карты" [ref=e471]
+          - generic [ref=e472]:
+            - strong [ref=e473]: Яндекс.Карты
+            - generic [ref=e474]: 5.0 • 390 оценок
+        - link "2ГИС 2ГИС Профиль организации" [ref=e478] [cursor=pointer]:
+          - /url: https://go.2gis.com/VRlTN
+          - img "2ГИС" [ref=e479]
+          - generic [ref=e480]:
+            - strong [ref=e481]: 2ГИС
+            - generic [ref=e482]: Профиль организации
+  - contentinfo [ref=e486]:
+    - generic [ref=e487]:
+      - generic [ref=e488]:
+        - link [ref=e489] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e490]:
+            - text: Pro
+            - emphasis [ref=e491]: Auto
+        - paragraph [ref=e492]: Автотехцентр в Ростове-на-Дону. Ремонт всех марок авто, диагностика, ТО.
+      - generic [ref=e493]:
+        - heading "Навигация" [level=4] [ref=e494]
+        - link "Услуги" [ref=e495] [cursor=pointer]:
+          - /url: "#services"
+        - link "Цены" [ref=e496] [cursor=pointer]:
+          - /url: "#prices"
+        - link "О нас" [ref=e497] [cursor=pointer]:
+          - /url: "#about"
+        - link "Отзывы" [ref=e498] [cursor=pointer]:
+          - /url: "#reviews"
+        - link "Контакты" [ref=e499] [cursor=pointer]:
+          - /url: "#contacts"
+      - generic [ref=e500]:
+        - heading "Контакты" [level=4] [ref=e501]
+        - link "+7 (988) 555-22-30" [ref=e502] [cursor=pointer]:
+          - /url: tel:+79885552230
+        - link "Artem.tchivilsky@yandex.ru" [ref=e503] [cursor=pointer]:
+          - /url: mailto:Artem.tchivilsky@yandex.ru
+        - generic [ref=e504]: ул. Листопадова, 17/42
+        - generic [ref=e505]: "Ежедневно: 8:30 – 23:00"
+      - generic [ref=e506]:
+        - heading "Соцсети" [level=4] [ref=e507]
+        - link "MAX" [ref=e508] [cursor=pointer]:
+          - /url: https://max.ru/u/f9LHodD0cOKr1lTA2mvXXb08dNc44IFxLc0V8kmgUC4VrrO1H0rTU7tQ3qo
+        - link "Telegram" [ref=e509] [cursor=pointer]:
+          - /url: https://t.me/+79885552230
+        - link "ВКонтакте" [ref=e510] [cursor=pointer]:
+          - /url: https://vk.com/pro_autoservice
+    - generic [ref=e512]:
+      - generic [ref=e513]: © 2026 Pro Auto. Все права защищены.
+      - generic [ref=e514]: "ИП Чивильский Артем Дмитриевич • ОГРНИП: 322619600043553 • ИНН: 614212681489"
+      - link "Разработано веб-студией Каскадия" [ref=e515] [cursor=pointer]:
+        - /url: https://kaskadia.ru/?utm_source=badge&utm_medium=referral&utm_campaign=proauto61.ru
+        - generic [ref=e518]:
+          - generic [ref=e526]:
+            - generic [ref=e527]: разработано
+            - generic [ref=e528]: КАСКАДИЯ
+          - generic [ref=e529]: →
+  - dialog:
+    - document:
+      - button
+      - heading [level=2]: Свяжитесь с нами удобным способом
+      - paragraph: Ответим в течение 5 минут
+      - generic:
+        - link:
+          - /url: tel:+79885552230
+          - generic:
+            - strong: Позвонить
+            - emphasis: +7 (988) 555-22-30
+        - link:
+          - /url: https://max.ru/u/f9LHodD0cOKr1lTA2mvXXb08dNc44IFxLc0V8kmgUC4VrrO1H0rTU7tQ3qo
+          - generic:
+            - strong: MAX
+            - emphasis: Написать в MAX
+        - link:
+          - /url: https://t.me/+79885552230
+          - generic:
+            - strong: Telegram
+            - emphasis: Написать в Telegram
+        - link:
+          - /url: https://vk.com/pro_autoservice
+          - generic:
+            - strong: ВКонтакте
+            - emphasis: Написать ВКонтакте

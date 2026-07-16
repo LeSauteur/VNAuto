@@ -2,187 +2,65 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const crypto = require('node:crypto');
 
 const root = path.resolve(__dirname, '..');
 const read = (file) => fs.readFileSync(path.join(root, file), 'utf8');
+const servicePages = ['diagnostics', 'maintenance', 'suspension', 'brakes', 'engine', 'electrics', 'transmission', 'ac-service', 'tire-service', 'parts'];
 
-const index = read('index.html');
-const forms = read('forms.html');
-const prices = read('prices.html');
-const services = read('services.html');
-const contacts = read('contacts.html');
-const privacy = read('privacy.html');
-const css = read('assets/css/main.css');
-
-test('главная использует утверждённое позиционирование и безопасные claims', () => {
-  assert.match(index, /Автосервис в[\s\S]*Ростове-на-Дону[\s\S]*с диагностикой и сметой до ремонта/);
-  assert.match(index, /class="nowrap">Ростове-на-Дону/);
-  assert.match(index, /Проверяем автомобиль, объясняем причину неисправности/);
-  assert.doesNotMatch(index, /4\.9\/5/);
-  assert.doesNotMatch(index, /08:00[–-]20:00/);
-  assert.match(index, /Режим работы уточняйте по телефону/);
+test('создан полный многостраничный каркас', () => {
+  const rootPages = ['index.html', 'services.html', 'prices.html', 'about.html', 'guarantee.html', 'reviews.html', 'contacts.html', 'forms.html', 'faq.html', 'privacy.html'];
+  for (const file of rootPages) assert.ok(fs.existsSync(path.join(root, file)), `${file} должен существовать`);
+  for (const slug of servicePages) assert.ok(fs.existsSync(path.join(root, `services/${slug}.html`)), `${slug}.html должен существовать`);
 });
 
-test('подтверждённая наценка до 10% вынесена в ключевые коммерческие блоки', () => {
-  const claim = 'Наценка на запчасти — до 10%';
-  const occurrences = index.split(claim).length - 1;
-  assert.ok(occurrences >= 3, `формулировка должна встречаться минимум 3 раза, сейчас ${occurrences}`);
+test('главная стала обзорной и ведёт на внутренние страницы', () => {
+  const index = read('index.html');
+  for (const href of ['services.html', 'prices.html', 'about.html', 'reviews.html', 'contacts.html', 'faq.html', 'guarantee.html']) assert.match(index, new RegExp(`href="${href.replace('.', '\\.')}"`));
+  for (const slug of ['diagnostics', 'maintenance', 'suspension', 'engine', 'electrics', 'transmission']) assert.match(index, new RegExp(`services/${slug}\\.html`));
+  assert.match(index, /Находим причину\./);
+  assert.match(index, /Согласовываем\./);
+  assert.match(index, /Ремонтируем\./);
 });
 
-test('ROLF Motor Oil подан как подтверждённая точка продаж, а не автомобильный сервис бренда', () => {
-  assert.match(index, /Замена масла и расходников/);
-  assert.match(index, /ROLF Motor Oil/);
-  assert.match(index, /авторизованной точки продаж ROLF Motor Oil/);
-  assert.doesNotMatch(index, /официальный сервис ROLF/i);
-  assert.match(index, /assets\/images\/real-service\/rolf-motor-oil\.png/);
-});
-
-test('три локальных доказательных фото подключены с понятными именами', () => {
-  const files = [
-    'assets/images/real-service/entry-door.png',
-    'assets/images/real-service/services-banner.png',
-    'assets/images/real-service/rolf-motor-oil.png',
-  ];
-  for (const file of files) {
-    assert.ok(fs.existsSync(path.join(root, file)), `${file} должен существовать`);
-    assert.match(index, new RegExp(file.replace(/[./]/g, '\\$&')));
-  }
-  const doorUses = index.split('assets/images/real-service/entry-door.png').length - 1;
-  assert.ok(doorUses >= 2, 'фото входа должно использоваться в галерее и блоке «Как нас найти»');
-});
-
-test('витрина запчастей подписана по фактическому содержимому', () => {
-  assert.match(index, /Оригинальные запчасти всегда в наличии/);
-  assert.doesNotMatch(index, /Автомобиль в работе/);
-});
-
-test('номера карточек проблем оформлены как заметный графический элемент без искусственного провала', () => {
-  assert.match(css, /\.problem-card > span\s*\{[^}]*font-size:\s*34px/s);
-  assert.match(css, /\.problem-card > span::after\s*\{/);
-  assert.doesNotMatch(css, /\.problem-card h3\s*\{[^}]*margin:\s*auto/s);
-});
-
-test('карточки услуг используют равную адаптивную сетку и локальные WebP', () => {
-  const serviceImages = [
-    'diagnostics',
-    'maintenance',
-    'suspension',
-    'auto-electrician',
-    'engine-repair',
-    'transmission-service',
-    'tire-service',
-    'parts',
-  ];
-  assert.match(css, /\.service-grid\s*\{[^}]*grid-template-columns:\s*repeat\(4,/s);
-  assert.match(css, /@media\s*\(max-width:\s*1180px\)[\s\S]*?\.service-grid\s*\{[^}]*repeat\(2,/s);
-  assert.match(css, /@media\s*\(max-width:\s*680px\)[\s\S]*?\.service-grid\s*\{[^}]*grid-template-columns:\s*1fr/s);
-  assert.match(css, /\.service-card a\s*\{[^}]*margin-top:\s*auto/s);
-  assert.doesNotMatch(css + index, /service-card-wide/);
-  for (const name of serviceImages) {
-    const file = `assets/images/services/${name}.webp`;
-    assert.ok(fs.existsSync(path.join(root, file)), `${file} должен существовать`);
-    assert.match(index, new RegExp(`${name}\\.webp`));
-    assert.match(services, new RegExp(`${name}\\.webp`));
-  }
-  for (const html of [index, services]) {
-    assert.match(html, /width="1200" height="800" loading="lazy" decoding="async"/);
+test('страницы услуг содержат обязательные содержательные блоки', () => {
+  for (const slug of servicePages) {
+    const html = read(`services/${slug}.html`);
+    for (const marker of ['breadcrumbs', 'bullet-grid', 'work-flow', 'faq-list', 'related-grid']) assert.match(html, new RegExp(marker, 'i'), `${slug}: нет блока ${marker}`);
+    assert.match(html, /Для оцен|Для предваритель|Для расчёт|До визита|Для записи|Для запроса/i, `${slug}: нет данных для предварительной оценки`);
+    assert.match(html, /href="\.\.\/forms\.html\?service=/);
+    assert.match(html, /\+7 \(863\) 260-03-45/);
   }
 });
 
-test('главная содержит полный блок частых обращений', () => {
-  const expected = [
-    'Подвеска стучит или машину уводит в сторону',
-    'На панели появилась ошибка',
-    'Нужно плановое ТО без лишних услуг',
-    'Кондиционер охлаждает слабо или появился запах',
-    'Появилась вибрация, гул или посторонние звуки',
-    'Нужно переобуться или подготовить машину к сезону',
-  ];
-  for (const text of expected) assert.match(index, new RegExp(text));
+test('форма использует реальную доставку и нужные поля', () => {
+  const form = read('forms.html');
+  assert.match(form, /action="https:\/\/formspree\.io\/f\/mldqndzq"/);
+  for (const name of ['name', 'phone', 'car', 'year', 'service', 'contact_method', 'message', 'consent']) assert.match(form, new RegExp(`name="${name}"`));
+  assert.match(form, /время визита подтверждается/i);
+  assert.doesNotMatch(form, /body-repair|automatic-transmission/);
 });
 
-test('ключевые секции главной расположены в утверждённом порядке', () => {
-  const ids = [
-    'home',
-    'trust',
-    'problems',
-    'services',
-    'steps',
-    'proof',
-    'workshop',
-    'prices',
-    'parts',
-    'reviews',
-    'bonus',
-    'brands',
-    'contacts',
-  ];
-  let last = -1;
-  for (const id of ids) {
-    const current = index.indexOf(`id="${id}"`);
-    assert.ok(current > last, `секция #${id} должна идти после предыдущей`);
-    last = current;
+test('неподтверждённые коммерческие заявления не возвращены', () => {
+  const html = [
+    ...fs.readdirSync(root).filter((file) => file.endsWith('.html') && !['admin.html', 'test.html'].includes(file)).map(read),
+    ...servicePages.map((slug) => read(`services/${slug}.html`)),
+  ].join('\n');
+  for (const claim of ['С 2010 года', 'Наценка на запчасти — до 10%', 'Фотоэтапы по запросу', '4.9/5', '100% гарантия']) assert.doesNotMatch(html, new RegExp(claim, 'i'));
+});
+
+test('реальные фотографии оптимизированы и исходники сохранены', () => {
+  const outputs = ['workshop-brand.webp', 'parts-lighting.webp', 'workshop-tools.webp', 'workshop-repair.webp', 'waiting-area.webp', 'entry-door.webp', 'services-banner.webp', 'rolf-oil.webp'];
+  for (const name of outputs) {
+    const file = path.join(root, 'assets/images/service', name);
+    assert.ok(fs.existsSync(file));
+    assert.ok(fs.statSync(file).size < 250_000, `${name} должен быть легче 250 КБ`);
   }
+  assert.ok(fs.existsSync(path.join(root, 'MG2/54c8156b-9e07-499e-9495-f225db3b0b07.png')));
+  assert.ok(fs.existsSync(path.join(root, 'favicon.ico')));
 });
 
-test('скидочная программа сохраняет уровни, проценты и точные условия', () => {
-  const levels = [
-    ['Бронза', '3%', 'После первого обслуживания', 'Базовая скидка на работы и запчасти'],
-    ['Серебро', '5%', 'От 60 000 ₽ за год', 'Для клиентов, которые обслуживают автомобиль регулярно'],
-    ['Золото', '7%', 'От 100 000 ₽ за год', 'Повышенная выгода и приоритетная запись при свободных окнах'],
-    ['Платина', '10%', 'От 180 000 ₽ за год', 'Максимальная скидка для постоянных клиентов сервиса'],
-  ];
-  assert.match(index, /Скидки для постоянных клиентов/);
-  for (const level of levels) {
-    for (const text of level) assert.match(index, new RegExp(text.replace('%', '%')));
-  }
-  assert.match(
-    index,
-    /Условия программы и применение скидки уточняются при записи\. Скидки не суммируются с отдельными спецпредложениями, если иное не согласовано\./,
-  );
-});
-
-test('форма сохраняет endpoint и использует терминологию заявки', () => {
-  assert.match(forms, /action="https:\/\/formspree\.io\/f\/mldqndzq"/);
-  assert.match(forms, /Заявка на запись в сервис/);
-  assert.match(forms, /Марка, модель и год/);
-  assert.match(forms, /Что беспокоит/);
-  assert.match(forms, /Желаемый день/);
-  assert.match(forms, /Мы подтвердим время визита по телефону/);
-  assert.match(forms, /type="tel" inputmode="tel" autocomplete="tel"/);
-  assert.match(forms, /Введите полный российский номер из 11 цифр/);
-  assert.match(forms, /date\.min = getLocalDate\(\)/);
-  assert.match(forms, /URLSearchParams\(window\.location\.search\)\.get\('service'\)/);
-  for (const option of [
-    'Обслуживание и ремонт МКПП',
-    'Обслуживание и ремонт АКПП',
-    'Обслуживание кондиционера',
-    'Ремонт рулевого управления',
-    'Ремонт тормозной системы',
-  ]) {
-    assert.match(forms, new RegExp(option));
-  }
-});
-
-test('технические контейнеры учитывают липкую шапку и узкие таблицы', () => {
-  assert.match(css, /section\[id\]\s*\{[^}]*scroll-margin-top:\s*96px/s);
-  assert.match(prices, /<div class="table-wrap"><table class="price-table">/);
-});
-
-test('вторичные страницы поддерживают новый тон и не обещают график', () => {
-  assert.match(prices, /Итоговая стоимость зависит от состояния автомобиля, состава работ и выбранных запчастей/);
-  assert.doesNotMatch(services, />Подробнее</);
-  for (const html of [forms, prices, services, contacts, privacy]) {
-    assert.doesNotMatch(html, /Онлайн-запись/);
-    assert.doesNotMatch(html, /08:00[–-]20:00/);
-  }
-});
-
-test('контакты, карта и внешние ссылки сохранены', () => {
-  for (const text of ['tel:+78632600345', 'tel:+79045057390', 'tel:+79185900199']) {
-    assert.match(index + contacts, new RegExp(text.replace('+', '\\+')));
-  }
-  assert.match(index, /https:\/\/yandex\.ru\/maps\/org\/vn_masters\/42750637752\//);
-  assert.match(index, /https:\/\/2gis\.ru\/rostov-on-don\/firm\/70000001095146498/);
-  assert.match(index, /https:\/\/yandex\.ru\/map-widget\/v1\//);
+test('admin.html не изменён', () => {
+  const hash = crypto.createHash('sha256').update(fs.readFileSync(path.join(root, 'admin.html'))).digest('hex').toUpperCase();
+  assert.equal(hash, '82817BD216C8B15A425AE6F5896DDEB1ABD16DA2088BA966D952FF1423C12581');
 });

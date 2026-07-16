@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /admin.html
+Disallow: /test.html
+Disallow: /tests/
+Disallow: /docs/
 
 Sitemap: https://vn-masters.ru/sitemap.xml
+

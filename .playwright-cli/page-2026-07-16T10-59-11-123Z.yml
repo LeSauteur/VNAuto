@@ -1,0 +1,222 @@
+- generic [active] [ref=f13e1]:
+  - link "Перейти к содержимому" [ref=f13e2] [cursor=pointer]:
+    - /url: "#content"
+  - banner [ref=f13e3]:
+    - generic [ref=f13e4]:
+      - link "VN-MASTERS — главная" [ref=f13e5] [cursor=pointer]:
+        - /url: index.html
+        - img "VN-MASTERS" [ref=f13e6]
+        - generic [ref=f13e7]: технический сервис
+      - navigation "Основная навигация" [ref=f13e8]:
+        - link "Услуги" [ref=f13e9] [cursor=pointer]:
+          - /url: services.html
+        - link "Цены" [ref=f13e10] [cursor=pointer]:
+          - /url: prices.html
+        - link "О сервисе" [ref=f13e11] [cursor=pointer]:
+          - /url: about.html
+        - link "Отзывы" [ref=f13e12] [cursor=pointer]:
+          - /url: reviews.html
+        - link "Контакты" [ref=f13e13] [cursor=pointer]:
+          - /url: contacts.html
+      - generic [ref=f13e14]:
+        - link "+7 (863) 260-03-45 Пн–Пт · 9:00–21:00" [ref=f13e15] [cursor=pointer]:
+          - /url: tel:+78632600345
+          - strong [ref=f13e16]: +7 (863) 260-03-45
+          - generic [ref=f13e17]: Пн–Пт · 9:00–21:00
+        - link "Записаться" [ref=f13e18] [cursor=pointer]:
+          - /url: forms.html
+  - main [ref=f13e19]:
+    - generic [ref=f13e21]:
+      - list "Хлебные крошки" [ref=f13e22]:
+        - listitem [ref=f13e23]:
+          - link "Главная" [ref=f13e24] [cursor=pointer]:
+            - /url: index.html
+          - text: /
+        - listitem [ref=f13e25]: Услуги
+      - heading "Услуги VN-MASTERS" [level=1] [ref=f13e26]
+      - paragraph [ref=f13e27]: "Выберите направление или начните с симптома. Каталог не подменяет диагностику: он помогает понять, какие сведения подготовить и как будет построена проверка."
+      - generic [ref=f13e28]:
+        - link "Описать задачу" [ref=f13e29] [cursor=pointer]:
+          - /url: forms.html
+        - link "Ориентиры цен" [ref=f13e30] [cursor=pointer]:
+          - /url: prices.html
+    - generic [ref=f13e32]:
+      - generic [ref=f13e33]:
+        - generic [ref=f13e34]:
+          - paragraph [ref=f13e35]: Каталог направлений
+          - heading "Не список деталей, а понятные сценарии" [level=2] [ref=f13e36]
+        - paragraph [ref=f13e37]: Каждая страница объясняет симптомы, возможные причины, состав работ, данные для предварительной оценки и связанные направления.
+      - generic [ref=f13e38]:
+        - article [ref=f13e39]:
+          - img "Иллюстрация диагностики автомобиля" [ref=f13e40]
+          - generic [ref=f13e41]:
+            - generic [ref=f13e42]: Диагностика
+            - heading "Комплексная проверка" [level=3] [ref=f13e43]
+            - paragraph [ref=f13e44]: Ошибки, нестабильная работа, шумы и симптомы без очевидной причины.
+            - link "Открыть страницу →" [ref=f13e45] [cursor=pointer]:
+              - /url: services/diagnostics.html
+        - article [ref=f13e46]:
+          - img "Иллюстрация технического обслуживания" [ref=f13e47]
+          - generic [ref=f13e48]:
+            - generic [ref=f13e49]: ТО
+            - heading "Плановое обслуживание" [level=3] [ref=f13e50]
+            - paragraph [ref=f13e51]: Масло, фильтры, жидкости и контроль состояния по автомобилю и пробегу.
+            - link "Открыть страницу →" [ref=f13e52] [cursor=pointer]:
+              - /url: services/maintenance.html
+        - article [ref=f13e53]:
+          - img "Иллюстрация проверки подвески" [ref=f13e54]
+          - generic [ref=f13e55]:
+            - generic [ref=f13e56]: Ходовая
+            - heading "Подвеска и рулевые элементы" [level=3] [ref=f13e57]
+            - paragraph [ref=f13e58]: Стуки, люфты, увод, гул и изменение поведения автомобиля.
+            - link "Открыть страницу →" [ref=f13e59] [cursor=pointer]:
+              - /url: services/suspension.html
+        - article [ref=f13e60]:
+          - img "Рабочее место VN-MASTERS" [ref=f13e61]
+          - generic [ref=f13e62]:
+            - generic [ref=f13e63]: Тормоза
+            - heading "Тормозная система" [level=3] [ref=f13e64]
+            - paragraph [ref=f13e65]: Снижение эффективности, вибрация, шум, изменение педали или увод.
+            - link "Открыть страницу →" [ref=f13e66] [cursor=pointer]:
+              - /url: services/brakes.html
+        - article [ref=f13e67]:
+          - img "Иллюстрация ремонта двигателя" [ref=f13e68]
+          - generic [ref=f13e69]:
+            - generic [ref=f13e70]: Двигатель
+            - heading "Диагностика и ремонт двигателя" [level=3] [ref=f13e71]
+            - paragraph [ref=f13e72]: Неровная работа, потеря тяги, расход жидкостей, перегрев и шумы.
+            - link "Открыть страницу →" [ref=f13e73] [cursor=pointer]:
+              - /url: services/engine.html
+        - article [ref=f13e74]:
+          - img "Иллюстрация диагностики автоэлектрики" [ref=f13e75]
+          - generic [ref=f13e76]:
+            - generic [ref=f13e77]: Электрика
+            - heading "Электросистемы автомобиля" [level=3] [ref=f13e78]
+            - paragraph [ref=f13e79]: Запуск, зарядка, освещение, проводка, датчики и электронные ошибки.
+            - link "Открыть страницу →" [ref=f13e80] [cursor=pointer]:
+              - /url: services/electrics.html
+        - article [ref=f13e81]:
+          - img "Иллюстрация обслуживания механической трансмиссии" [ref=f13e82]
+          - generic [ref=f13e83]:
+            - generic [ref=f13e84]: МКПП
+            - heading "Механическая трансмиссия" [level=3] [ref=f13e85]
+            - paragraph [ref=f13e86]: Сцепление, привод, шумы и затруднённое переключение передач.
+            - link "Открыть страницу →" [ref=f13e87] [cursor=pointer]:
+              - /url: services/transmission.html
+        - article [ref=f13e88]:
+          - img "Автомобиль в рабочей зоне VN-MASTERS" [ref=f13e89]
+          - generic [ref=f13e90]:
+            - generic [ref=f13e91]: Климат
+            - heading "Обслуживание кондиционера" [level=3] [ref=f13e92]
+            - paragraph [ref=f13e93]: Слабое охлаждение, запах, шум или нестабильная работа климатической системы.
+            - link "Открыть страницу →" [ref=f13e94] [cursor=pointer]:
+              - /url: services/ac-service.html
+        - article [ref=f13e95]:
+          - img "Иллюстрация шиномонтажа" [ref=f13e96]
+          - generic [ref=f13e97]:
+            - generic [ref=f13e98]: Колёса
+            - heading "Шиномонтаж" [level=3] [ref=f13e99]
+            - paragraph [ref=f13e100]: Сезонная смена, балансировка и проверка состояния колёс.
+            - link "Открыть страницу →" [ref=f13e101] [cursor=pointer]:
+              - /url: services/tire-service.html
+        - article [ref=f13e102]:
+          - img "Иллюстрация подбора запчастей" [ref=f13e103]
+          - generic [ref=f13e104]:
+            - generic [ref=f13e105]: Запчасти
+            - heading "Подбор по VIN" [level=3] [ref=f13e106]
+            - paragraph [ref=f13e107]: Исходные данные, совместимость и согласование варианта детали до заказа.
+            - link "Открыть страницу →" [ref=f13e108] [cursor=pointer]:
+              - /url: services/parts.html
+    - generic [ref=f13e110]:
+      - generic [ref=f13e111]:
+        - paragraph [ref=f13e112]: Вход по симптому
+        - heading "Не знаете, куда отнести проблему?" [level=2] [ref=f13e113]
+      - generic [ref=f13e114]:
+        - article [ref=f13e115]:
+          - generic [ref=f13e116]: "!"
+          - heading "Ошибка на панели" [level=3] [ref=f13e117]
+          - paragraph [ref=f13e118]: Начните с диагностики, а не с замены узла по коду ошибки.
+        - article [ref=f13e119]:
+          - generic [ref=f13e120]: ↯
+          - heading "Не заводится" [level=3] [ref=f13e121]
+          - paragraph [ref=f13e122]: Проверка питания, запуска, топлива и условий появления неисправности.
+        - article [ref=f13e123]:
+          - generic [ref=f13e124]: ≈
+          - heading "Стук или вибрация" [level=3] [ref=f13e125]
+          - paragraph [ref=f13e126]: Важны скорость, режим движения, нагрузка и место, откуда слышен звук.
+        - article [ref=f13e127]:
+          - generic [ref=f13e128]: °
+          - heading "Перегрев или запах" [level=3] [ref=f13e129]
+          - paragraph [ref=f13e130]: Лучше прекратить движение, если продолжение может повредить автомобиль.
+    - generic [ref=f13e132]:
+      - img "Подтверждённые направления и марки на вывеске VN-MASTERS" [ref=f13e134]
+      - generic [ref=f13e135]:
+        - paragraph [ref=f13e136]: Марки на вывеске сервиса
+        - heading "Работы с автомобилями разных марок" [level=2] [ref=f13e137]
+        - paragraph [ref=f13e138]: В материалах VN-MASTERS подтверждены BMW, Volkswagen, Nissan, Honda, Mitsubishi, Hyundai, Škoda, Opel, Peugeot, Citroën, Chevrolet, Kia и Ford. Перед записью назовите марку, модель, год, двигатель и VIN — так сервис сможет проверить применимость конкретной работы и детали.
+        - paragraph [ref=f13e139]: Утверждение «все марки без ограничений» требует отдельного подтверждения, поэтому на сайте используется фактический список с наружной вывески.
+        - link "Уточнить по автомобилю" [ref=f13e140] [cursor=pointer]:
+          - /url: forms.html
+    - generic [ref=f13e142]:
+      - paragraph [ref=f13e143]: Перед записью
+      - heading "Частые вопросы об услугах" [level=2] [ref=f13e144]
+      - generic [ref=f13e145]:
+        - group [ref=f13e146]:
+          - generic "Что делать, если я не знаю нужную услугу? +" [ref=f13e147] [cursor=pointer]
+        - group [ref=f13e148]:
+          - generic "Можно ли выполнить только диагностику? +" [ref=f13e149] [cursor=pointer]
+        - group [ref=f13e150]:
+          - generic "Почему на сайте нет кузовного ремонта и АКПП? +" [ref=f13e151] [cursor=pointer]
+    - generic [ref=f13e154]:
+      - generic [ref=f13e155]:
+        - heading "Опишите симптом своими словами" [level=2] [ref=f13e156]
+        - paragraph [ref=f13e157]: Сервис уточнит детали, предложит направление проверки и подтвердит время визита.
+      - generic [ref=f13e158]:
+        - link "Оставить заявку" [ref=f13e159] [cursor=pointer]:
+          - /url: forms.html
+        - link "Позвонить" [ref=f13e160] [cursor=pointer]:
+          - /url: tel:+78632600345
+  - contentinfo [ref=f13e161]:
+    - generic [ref=f13e162]:
+      - generic [ref=f13e163]:
+        - generic [ref=f13e164]:
+          - img "VN-MASTERS" [ref=f13e165]
+          - paragraph [ref=f13e166]: Технический сервис в Ростове-на-Дону. Диагностика, согласование и ремонт по подтверждённому перечню работ.
+        - generic [ref=f13e167]:
+          - heading "Разделы" [level=2] [ref=f13e168]
+          - generic [ref=f13e169]:
+            - link "Услуги" [ref=f13e170] [cursor=pointer]:
+              - /url: services.html
+            - link "Цены" [ref=f13e171] [cursor=pointer]:
+              - /url: prices.html
+            - link "О сервисе" [ref=f13e172] [cursor=pointer]:
+              - /url: about.html
+            - link "Отзывы" [ref=f13e173] [cursor=pointer]:
+              - /url: reviews.html
+            - link "Контакты" [ref=f13e174] [cursor=pointer]:
+              - /url: contacts.html
+        - generic [ref=f13e175]:
+          - heading "Клиенту" [level=2] [ref=f13e176]
+          - generic [ref=f13e177]:
+            - link "Запись" [ref=f13e178] [cursor=pointer]:
+              - /url: forms.html
+            - link "Согласование и гарантия" [ref=f13e179] [cursor=pointer]:
+              - /url: guarantee.html
+            - link "Вопросы и ответы" [ref=f13e180] [cursor=pointer]:
+              - /url: faq.html
+            - link "Персональные данные" [ref=f13e181] [cursor=pointer]:
+              - /url: privacy.html
+        - generic [ref=f13e182]:
+          - heading "Контакты" [level=2] [ref=f13e183]
+          - generic [ref=f13e184]:
+            - link "+7 (863) 260-03-45" [ref=f13e185] [cursor=pointer]:
+              - /url: tel:+78632600345
+            - link "+7 (904) 505-73-90" [ref=f13e186] [cursor=pointer]:
+              - /url: tel:+79045057390
+            - link "+7 (918) 590-01-99" [ref=f13e187] [cursor=pointer]:
+              - /url: tel:+79185900199
+            - generic [ref=f13e188]: ул. Стартовая, 1/1
+            - generic [ref=f13e189]: Пн–Пт · 9:00–21:00
+      - generic [ref=f13e190]:
+        - generic [ref=f13e191]: © 2026 VN-MASTERS
+        - generic [ref=f13e192]: Информация на сайте не является публичной офертой.

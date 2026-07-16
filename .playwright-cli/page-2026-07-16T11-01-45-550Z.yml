@@ -1,0 +1,409 @@
+- generic [active] [ref=e1]:
+  - link "Перейти к содержимому" [ref=e2] [cursor=pointer]:
+    - /url: "#content"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "VN-MASTERS — главная" [ref=e5] [cursor=pointer]:
+        - /url: index.html
+        - img "VN-MASTERS" [ref=e6]
+        - generic [ref=e7]: технический сервис
+      - navigation "Основная навигация" [ref=e8]:
+        - link "Услуги" [ref=e9] [cursor=pointer]:
+          - /url: services.html
+        - link "Цены" [ref=e10] [cursor=pointer]:
+          - /url: prices.html
+        - link "О сервисе" [ref=e11] [cursor=pointer]:
+          - /url: about.html
+        - link "Отзывы" [ref=e12] [cursor=pointer]:
+          - /url: reviews.html
+        - link "Контакты" [ref=e13] [cursor=pointer]:
+          - /url: contacts.html
+      - generic [ref=e14]:
+        - link "+7 (863) 260-03-45 Пн–Пт · 9:00–21:00" [ref=e15] [cursor=pointer]:
+          - /url: tel:+78632600345
+          - strong [ref=e16]: +7 (863) 260-03-45
+          - generic [ref=e17]: Пн–Пт · 9:00–21:00
+        - link "Записаться" [ref=e18] [cursor=pointer]:
+          - /url: forms.html
+  - main [ref=e19]:
+    - generic [ref=e22]:
+      - generic "Адрес и график" [ref=e23]:
+        - generic [ref=e24]: Стартовая, 1/1
+        - generic [ref=e25]: Пн–Пт · 9:00–21:00
+      - heading "Находим причину. Согласовываем. Ремонтируем. в Ростове-на-Дону" [level=1] [ref=e26]:
+        - generic [ref=e27]: Находим причину.
+        - generic [ref=e28]: Согласовываем.
+        - generic [ref=e29]: Ремонтируем.
+        - generic [ref=e30]: в Ростове-на-Дону
+      - paragraph [ref=e31]: Опишите симптом обычными словами. В VN-MASTERS проверят автомобиль, объяснят вывод и обсудят состав работ до начала ремонта.
+      - list "Адрес и режим работы" [ref=e32]:
+        - listitem [ref=e33]: ул. Стартовая, 1/1•
+        - listitem [ref=e34]: Пн–Пт · 9:00–21:00•
+        - listitem [ref=e35]: Сб–Вс · выходной
+      - generic [ref=e36]:
+        - link "Оставить заявку" [ref=e37] [cursor=pointer]:
+          - /url: forms.html
+        - link "Позвонить в сервис" [ref=e38] [cursor=pointer]:
+          - /url: tel:+78632600345
+      - paragraph [ref=e39]: "Заявка не фиксирует время автоматически: сервис свяжется с вами и подтвердит визит."
+    - region "Принципы работы" [ref=e40]:
+      - generic [ref=e41]:
+        - generic [ref=e42]:
+          - strong [ref=e43]: Диагностика до ремонта
+          - generic [ref=e44]: Сначала проверяем симптом и собираем факты.
+        - generic [ref=e45]:
+          - strong [ref=e46]: Согласование работ
+          - generic [ref=e47]: Обсуждаем состав и ориентир стоимости до старта.
+        - generic [ref=e48]:
+          - strong [ref=e49]: Понятная выдача
+          - generic [ref=e50]: Объясняем результат и дальнейшие рекомендации.
+        - generic [ref=e51]:
+          - strong [ref=e52]: Реальный сервис
+          - generic [ref=e53]: На сайте используются фотографии VN-MASTERS.
+    - region "Направления сервиса" [ref=e54]:
+      - generic [ref=e55]:
+        - generic [ref=e56]: Диагностика
+        - generic [ref=e57]: •
+        - generic [ref=e58]: Техническое обслуживание
+        - generic [ref=e59]: •
+        - generic [ref=e60]: Ходовая
+        - generic [ref=e61]: •
+        - generic [ref=e62]: Двигатель
+        - generic [ref=e63]: •
+        - generic [ref=e64]: Электрика
+        - generic [ref=e65]: •
+        - generic [ref=e66]: МКПП
+        - generic [ref=e67]: •
+        - generic [ref=e68]: Шиномонтаж
+    - generic [ref=e70]:
+      - generic [ref=e71]:
+        - generic [ref=e72]:
+          - paragraph [ref=e73]: Можно начать без диагноза
+          - heading "С чем обращаются" [level=2] [ref=e74]
+        - paragraph [ref=e75]: Не обязательно знать название детали. Выберите похожий симптом, а точную причину определят после проверки автомобиля.
+      - generic [ref=e76]:
+        - article [ref=e77]:
+          - generic [ref=e78]: "01"
+          - heading "Горит ошибка на панели" [level=3] [ref=e79]
+          - paragraph [ref=e80]: Важно понять, какая система зафиксировала сбой и при каких условиях он появляется.
+          - link "Как проходит диагностика →" [ref=e81] [cursor=pointer]:
+            - /url: services/diagnostics.html
+        - article [ref=e82]:
+          - generic [ref=e83]: "02"
+          - heading "Слышен стук или гул" [level=3] [ref=e84]
+          - paragraph [ref=e85]: Источник звука может быть в подвеске, рулевом управлении, тормозах или приводе.
+          - link "Проверка ходовой →" [ref=e86] [cursor=pointer]:
+            - /url: services/suspension.html
+        - article [ref=e87]:
+          - generic [ref=e88]: "03"
+          - heading "Машину уводит при движении" [level=3] [ref=e89]
+          - paragraph [ref=e90]: Проверяют состояние ходовой, колёс, тормозных механизмов и рулевых элементов.
+          - link "Разобрать симптом →" [ref=e91] [cursor=pointer]:
+            - /url: services/suspension.html
+        - article [ref=e92]:
+          - generic [ref=e93]: "04"
+          - heading "Двигатель работает неровно" [level=3] [ref=e94]
+          - paragraph [ref=e95]: Причина может относиться к зажиганию, питанию, датчикам или механической части.
+          - link "Диагностика двигателя →" [ref=e96] [cursor=pointer]:
+            - /url: services/engine.html
+        - article [ref=e97]:
+          - generic [ref=e98]: "05"
+          - heading "Педаль или торможение изменились" [level=3] [ref=e99]
+          - paragraph [ref=e100]: Снижение эффективности, вибрация и посторонний звук требуют проверки тормозной системы.
+          - link "Проверка тормозов →" [ref=e101] [cursor=pointer]:
+            - /url: services/brakes.html
+        - article [ref=e102]:
+          - generic [ref=e103]: "06"
+          - heading "Нужно плановое обслуживание" [level=3] [ref=e104]
+          - paragraph [ref=e105]: Подготовьте марку, модель, год и пробег — это поможет сверить перечень работ и расходников.
+          - link "О техническом обслуживании →" [ref=e106] [cursor=pointer]:
+            - /url: services/maintenance.html
+    - generic [ref=e108]:
+      - generic [ref=e109]:
+        - generic [ref=e110]:
+          - paragraph [ref=e111]: Основные направления
+          - heading "От диагностики до контрольной проверки" [level=2] [ref=e112]
+        - paragraph [ref=e113]: В каталоге собраны подтверждённые направления. На каждой странице — симптомы, состав проверки, возможные причины и подготовка к оценке.
+      - generic [ref=e114]:
+        - article [ref=e115]:
+          - img "Иллюстрация компьютерной диагностики автомобиля" [ref=e116]
+          - generic [ref=e117]:
+            - generic [ref=e118]: Проверка
+            - heading "Диагностика автомобиля" [level=3] [ref=e119]
+            - paragraph [ref=e120]: Ошибки, нестабильная работа, посторонние звуки и непонятные симптомы.
+            - link "О диагностике →" [ref=e121] [cursor=pointer]:
+              - /url: services/diagnostics.html
+        - article [ref=e122]:
+          - img "Иллюстрация технического обслуживания автомобиля" [ref=e123]
+          - generic [ref=e124]:
+            - generic [ref=e125]: Регламент
+            - heading "Техническое обслуживание" [level=3] [ref=e126]
+            - paragraph [ref=e127]: Масло, фильтры, жидкости и проверка состояния автомобиля.
+            - link "О плановом ТО →" [ref=e128] [cursor=pointer]:
+              - /url: services/maintenance.html
+        - article [ref=e129]:
+          - img "Иллюстрация диагностики ходовой части" [ref=e130]
+          - generic [ref=e131]:
+            - generic [ref=e132]: Управляемость
+            - heading "Ходовая и тормоза" [level=3] [ref=e133]
+            - paragraph [ref=e134]: Стуки, люфты, увод автомобиля, вибрация и изменение торможения.
+            - link "О ходовой части →" [ref=e135] [cursor=pointer]:
+              - /url: services/suspension.html
+        - article [ref=e136]:
+          - img "Иллюстрация ремонта двигателя" [ref=e137]
+          - generic [ref=e138]:
+            - generic [ref=e139]: Силовой агрегат
+            - heading "Двигатель" [level=3] [ref=e140]
+            - paragraph [ref=e141]: Диагностика причины, согласование объёма и работа по результатам проверки.
+            - link "О ремонте двигателя →" [ref=e142] [cursor=pointer]:
+              - /url: services/engine.html
+        - article [ref=e143]:
+          - img "Иллюстрация проверки автоэлектрики" [ref=e144]
+          - generic [ref=e145]:
+            - generic [ref=e146]: Электросистемы
+            - heading "Автоэлектрика" [level=3] [ref=e147]
+            - paragraph [ref=e148]: Питание, запуск, зарядка, проводка, датчики и связанные ошибки.
+            - link "Об автоэлектрике →" [ref=e149] [cursor=pointer]:
+              - /url: services/electrics.html
+        - article [ref=e150]:
+          - img "Иллюстрация обслуживания механической трансмиссии" [ref=e151]
+          - generic [ref=e152]:
+            - generic [ref=e153]: Механика
+            - heading "МКПП и сцепление" [level=3] [ref=e154]
+            - paragraph [ref=e155]: Шумы, затруднённое переключение, вибрации и неисправности привода.
+            - link "О механической трансмиссии →" [ref=e156] [cursor=pointer]:
+              - /url: services/transmission.html
+      - generic [ref=e157]:
+        - link "Все направления" [ref=e158] [cursor=pointer]:
+          - /url: services.html
+        - link "Описать свою задачу" [ref=e159] [cursor=pointer]:
+          - /url: forms.html
+    - generic [ref=e161]:
+      - generic [ref=e162]:
+        - generic [ref=e163]:
+          - paragraph [ref=e164]: Понятный маршрут
+          - heading "Как проходит работа" [level=2] [ref=e165]
+        - paragraph [ref=e166]: Каждый этап нужен, чтобы не переходить к замене деталей без понятной причины и согласованного объёма.
+      - generic [ref=e167]:
+        - article [ref=e168]:
+          - text: "01"
+          - heading "Обращение" [level=3] [ref=e169]
+          - paragraph [ref=e170]: Автомобиль, симптом и удобный способ связи.
+        - article [ref=e171]:
+          - text: "02"
+          - heading "Уточнение" [level=3] [ref=e172]
+          - paragraph [ref=e173]: Сервис задаёт вопросы и подтверждает визит.
+        - article [ref=e174]:
+          - text: "03"
+          - heading "Диагностика" [level=3] [ref=e175]
+          - paragraph [ref=e176]: Проверка системы и условий проявления симптома.
+        - article [ref=e177]:
+          - text: "04"
+          - heading "Согласование" [level=3] [ref=e178]
+          - paragraph [ref=e179]: Обсуждение работ, запчастей и стоимости.
+        - article [ref=e180]:
+          - text: "05"
+          - heading "Ремонт" [level=3] [ref=e181]
+          - paragraph [ref=e182]: Выполнение согласованного перечня.
+        - article [ref=e183]:
+          - text: "06"
+          - heading "Контроль" [level=3] [ref=e184]
+          - paragraph [ref=e185]: Проверка результата и объяснение при выдаче.
+    - generic [ref=e187]:
+      - generic [ref=e188]:
+        - generic [ref=e189]:
+          - paragraph [ref=e190]: Доверие через процесс
+          - heading "Что важно до начала ремонта" [level=2] [ref=e191]
+        - paragraph [ref=e192]: Честный сервис — это не набор громких цифр. Это понятные действия, за которые обе стороны отвечают на каждом этапе.
+      - generic [ref=e193]:
+        - article [ref=e194]:
+          - generic [ref=e195]: "01"
+          - heading "Показать логику вывода" [level=3] [ref=e196]
+          - paragraph [ref=e197]: Не просто назвать деталь, а объяснить, какие признаки указывают на неисправность.
+        - article [ref=e198]:
+          - generic [ref=e199]: "02"
+          - heading "Разделить необходимое и рекомендуемое" [level=3] [ref=e200]
+          - paragraph [ref=e201]: Срочные работы не должны смешиваться с тем, что можно запланировать отдельно.
+        - article [ref=e202]:
+          - generic [ref=e203]: "03"
+          - heading "Согласовать запчасти" [level=3] [ref=e204]
+          - paragraph [ref=e205]: Совместимость, вариант детали и стоимость обсуждаются до заказа и установки.
+        - article [ref=e206]:
+          - generic [ref=e207]: "04"
+          - heading "Не менять объём молча" [level=3] [ref=e208]
+          - paragraph [ref=e209]: Если после разборки обнаружены дополнительные работы, их сначала согласуют.
+        - article [ref=e210]:
+          - generic [ref=e211]: "05"
+          - heading "Проверить результат" [level=3] [ref=e212]
+          - paragraph [ref=e213]: Контроль связан с исходным симптомом и выполненными операциями.
+        - article [ref=e214]:
+          - generic [ref=e215]: "06"
+          - heading "Зафиксировать условия" [level=3] [ref=e216]
+          - paragraph [ref=e217]: Состав работ и применимые условия отражаются в документах по заказу.
+      - link "Порядок согласования и гарантийный подход" [ref=e219] [cursor=pointer]:
+        - /url: guarantee.html
+    - generic [ref=e221]:
+      - generic [ref=e222]:
+        - paragraph [ref=e223]: Опубликованные ориентиры
+        - heading "Сколько может стоить обращение" [level=2] [ref=e224]
+        - paragraph [ref=e225]: "Стартовая цена не заменяет осмотр: итог зависит от автомобиля, состояния узла, состава работ и выбранных запчастей."
+        - generic [ref=e226]:
+          - link "Смотреть цены" [ref=e227] [cursor=pointer]:
+            - /url: prices.html
+          - link "Запросить оценку" [ref=e228] [cursor=pointer]:
+            - /url: forms.html
+      - generic [ref=e229]:
+        - generic [ref=e230]:
+          - generic [ref=e231]:
+            - generic [ref=e232]: Диагностика
+            - strong [ref=e233]: от 1 200 ₽
+          - generic [ref=e234]:
+            - generic [ref=e235]: Техническое обслуживание
+            - strong [ref=e236]: от 4 500 ₽
+          - generic [ref=e237]:
+            - generic [ref=e238]: Ходовая часть
+            - strong [ref=e239]: от 3 500 ₽
+          - generic [ref=e240]:
+            - generic [ref=e241]: Автоэлектрика
+            - strong [ref=e242]: от 2 000 ₽
+          - generic [ref=e243]:
+            - generic [ref=e244]: Шиномонтаж
+            - strong [ref=e245]: от 2 200 ₽
+        - paragraph [ref=e246]: Запчасти и дополнительные операции согласуются отдельно. Цены не являются публичной офертой.
+    - generic [ref=e248]:
+      - generic [ref=e249]:
+        - generic [ref=e250]:
+          - paragraph [ref=e251]: Без подмены чужими интерьерами
+          - heading "VN-MASTERS в реальности" [level=2] [ref=e252]
+        - paragraph [ref=e253]: Рабочая зона, автомобиль в ремонте, витрина и место ожидания — реальные фотографии сервиса из материалов проекта.
+      - generic [ref=e254]:
+        - figure "Рабочая зона" [ref=e255]:
+          - img "Рабочая зона VN-MASTERS с фирменной вывеской" [ref=e256]
+        - figure "Автомобиль в работе" [ref=e258]:
+          - img "Автомобиль в рабочей зоне VN-MASTERS" [ref=e259]
+        - figure "Рабочее место" [ref=e261]:
+          - img "Рабочее место и инструменты VN-MASTERS" [ref=e262]
+        - figure "Зона ожидания" [ref=e264]:
+          - img "Зона ожидания VN-MASTERS" [ref=e265]
+        - figure "Витрина" [ref=e267]:
+          - img "Витрина автомобильного света в VN-MASTERS" [ref=e268]
+    - generic [ref=e271]:
+      - generic [ref=e272]:
+        - img "Наружная вывеска с направлениями работ VN-MASTERS"
+      - generic [ref=e273]:
+        - paragraph [ref=e274]: О сервисе
+        - heading "Локальный технический сервис на Стартовой" [level=2] [ref=e275]
+        - paragraph [ref=e276]: VN-MASTERS принимает обращения по диагностике, обслуживанию и ремонту автомобиля. Основные подтверждённые направления — двигатель, МКПП, электрика, ходовая и диагностика; отдельные страницы помогают понять подготовку к визиту.
+        - paragraph [ref=e277]: На сайте нет обещания определить неисправность по одному сообщению. Предварительная оценка помогает подготовиться, а решение принимается после осмотра.
+        - link "Подробнее о сервисе" [ref=e278] [cursor=pointer]:
+          - /url: about.html
+    - generic [ref=e280]:
+      - generic [ref=e281]:
+        - generic [ref=e282]:
+          - paragraph [ref=e283]: Независимые площадки
+          - heading "Отзывы лучше проверять у источника" [level=2] [ref=e284]
+        - paragraph [ref=e285]: Мы не переносим на сайт чужие тексты без прямой ссылки и не показываем неподтверждённый рейтинг. Откройте карточку организации и посмотрите свежие отзывы полностью.
+      - generic [ref=e286]:
+        - article [ref=e287]:
+          - generic [ref=e288]: Я
+          - heading "Яндекс Карты" [level=3] [ref=e289]
+          - paragraph [ref=e290]: Отзывы, фотографии, маршрут и данные карточки организации.
+          - link "Открыть профиль →" [ref=e291] [cursor=pointer]:
+            - /url: https://yandex.ru/maps/org/vn_masters/42750637752/
+        - article [ref=e292]:
+          - generic [ref=e293]: "2"
+          - heading "2ГИС" [level=3] [ref=e294]
+          - paragraph [ref=e295]: Карточка VN-MASTERS с адресом, контактами и пользовательскими отзывами.
+          - link "Открыть профиль →" [ref=e296] [cursor=pointer]:
+            - /url: https://2gis.ru/rostov-on-don/firm/70000001095146498
+      - link "Как читать отзывы о сервисе" [ref=e298] [cursor=pointer]:
+        - /url: reviews.html
+    - generic [ref=e300]:
+      - paragraph [ref=e301]: Коротко о главном
+      - heading "Частые вопросы перед визитом" [level=2] [ref=e302]
+      - generic [ref=e303]:
+        - group [ref=e304]:
+          - generic "Нужно ли заранее знать, что сломалось? +" [ref=e305] [cursor=pointer]
+        - group [ref=e306]:
+          - generic "Можно ли узнать точную стоимость по телефону? +" [ref=e307] [cursor=pointer]
+        - group [ref=e308]:
+          - generic "Когда начинается ремонт? +" [ref=e309] [cursor=pointer]
+        - group [ref=e310]:
+          - generic "Что взять для подбора запчастей? +" [ref=e311] [cursor=pointer]
+      - link "Все вопросы и ответы" [ref=e313] [cursor=pointer]:
+        - /url: faq.html
+    - generic [ref=e315]:
+      - generic [ref=e316]:
+        - paragraph [ref=e317]: Контакты
+        - heading "Приезжайте на Стартовую" [level=2] [ref=e318]
+        - generic [ref=e319]:
+          - generic [ref=e320]:
+            - term [ref=e321]: Адрес
+            - definition [ref=e322]: Ростов-на-Дону,ул. Стартовая, 1/1
+          - generic [ref=e323]:
+            - term [ref=e324]: Основной телефон
+            - definition [ref=e325]:
+              - link "+7 (863) 260-03-45" [ref=e326] [cursor=pointer]:
+                - /url: tel:+78632600345
+          - generic [ref=e327]:
+            - term [ref=e328]: Режим работы
+            - definition [ref=e329]: Пн–Пт · 9:00–21:00Сб–Вс · выходной
+        - generic [ref=e330]:
+          - link "Построить маршрут" [ref=e331] [cursor=pointer]:
+            - /url: https://yandex.ru/maps/org/vn_masters/42750637752/
+          - link "Все контакты" [ref=e332] [cursor=pointer]:
+            - /url: contacts.html
+      - iframe [ref=e334]
+    - generic [ref=e337]:
+      - generic [ref=e338]:
+        - heading "Расскажите, что происходит с автомобилем" [level=2] [ref=e339]
+        - paragraph [ref=e340]: Оставьте телефон, данные автомобиля и симптом. VN-MASTERS свяжется с вами, чтобы уточнить задачу и согласовать визит.
+      - generic [ref=e341]:
+        - link "Оставить заявку" [ref=e342] [cursor=pointer]:
+          - /url: forms.html
+        - link "Позвонить" [ref=e343] [cursor=pointer]:
+          - /url: tel:+78632600345
+  - contentinfo [ref=e344]:
+    - generic [ref=e345]:
+      - generic [ref=e346]:
+        - generic [ref=e347]:
+          - img "VN-MASTERS" [ref=e348]
+          - paragraph [ref=e349]: Технический сервис в Ростове-на-Дону. Диагностика, согласование и ремонт по подтверждённому перечню работ.
+        - generic [ref=e350]:
+          - heading "Разделы" [level=2] [ref=e351]
+          - generic [ref=e352]:
+            - link "Услуги" [ref=e353] [cursor=pointer]:
+              - /url: services.html
+            - link "Цены" [ref=e354] [cursor=pointer]:
+              - /url: prices.html
+            - link "О сервисе" [ref=e355] [cursor=pointer]:
+              - /url: about.html
+            - link "Отзывы" [ref=e356] [cursor=pointer]:
+              - /url: reviews.html
+            - link "Контакты" [ref=e357] [cursor=pointer]:
+              - /url: contacts.html
+        - generic [ref=e358]:
+          - heading "Клиенту" [level=2] [ref=e359]
+          - generic [ref=e360]:
+            - link "Запись" [ref=e361] [cursor=pointer]:
+              - /url: forms.html
+            - link "Согласование и гарантия" [ref=e362] [cursor=pointer]:
+              - /url: guarantee.html
+            - link "Вопросы и ответы" [ref=e363] [cursor=pointer]:
+              - /url: faq.html
+            - link "Персональные данные" [ref=e364] [cursor=pointer]:
+              - /url: privacy.html
+        - generic [ref=e365]:
+          - heading "Контакты" [level=2] [ref=e366]
+          - generic [ref=e367]:
+            - link "+7 (863) 260-03-45" [ref=e368] [cursor=pointer]:
+              - /url: tel:+78632600345
+            - link "+7 (904) 505-73-90" [ref=e369] [cursor=pointer]:
+              - /url: tel:+79045057390
+            - link "+7 (918) 590-01-99" [ref=e370] [cursor=pointer]:
+              - /url: tel:+79185900199
+            - generic [ref=e371]: ул. Стартовая, 1/1
+            - generic [ref=e372]: Пн–Пт · 9:00–21:00
+      - generic [ref=e373]:
+        - generic [ref=e374]: © 2026 VN-MASTERS
+        - generic [ref=e375]: Информация на сайте не является публичной офертой.
