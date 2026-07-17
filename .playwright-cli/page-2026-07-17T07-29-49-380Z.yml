@@ -1,0 +1,248 @@
+- generic [ref=f1e1]:
+  - link "К основному содержанию" [ref=f1e2] [cursor=pointer]:
+    - /url: "#admin-view"
+  - generic [ref=f1e3]:
+    - complementary "Разделы панели" [ref=f1e4]:
+      - link "VN-MASTERS — обзор" [ref=f1e5] [cursor=pointer]:
+        - /url: "#/dashboard"
+        - generic [ref=f1e6]:
+          - strong [ref=f1e7]: VN-MASTERS
+          - generic [ref=f1e8]: Демо-панель
+      - note [ref=f1e9]:
+        - generic [ref=f1e10]: ●
+        - strong [ref=f1e11]: Публичная демо-версия
+        - generic [ref=f1e12]: Без входа и облачного сервера
+      - navigation "Основная навигация" [ref=f1e13]:
+        - list [ref=f1e209]:
+          - listitem [ref=f1e210]:
+            - link "Обзор" [ref=f1e211] [cursor=pointer]:
+              - /url: "#/dashboard"
+              - generic [ref=f1e212]: ▦
+          - listitem [ref=f1e215]:
+            - link "Запись 5" [ref=f1e216] [cursor=pointer]:
+              - /url: "#/appointments"
+              - generic [ref=f1e217]: ◷
+              - generic [ref=f1e218]: Запись
+              - generic [ref=f1e219]: "5"
+          - listitem [ref=f1e220]:
+            - link "Клиенты 8" [ref=f1e221] [cursor=pointer]:
+              - /url: "#/clients"
+              - generic [ref=f1e222]: ◎
+              - generic [ref=f1e223]: Клиенты
+              - generic [ref=f1e224]: "8"
+          - listitem [ref=f1e225]:
+            - link "Автомобили 11" [ref=f1e226] [cursor=pointer]:
+              - /url: "#/vehicles"
+              - generic [ref=f1e227]: ◇
+              - generic [ref=f1e228]: Автомобили
+              - generic [ref=f1e229]: "11"
+          - listitem [ref=f1e230]:
+            - link "Заказ-наряды 6" [ref=f1e231] [cursor=pointer]:
+              - /url: "#/work-orders"
+              - generic [ref=f1e232]: ▤
+              - generic [ref=f1e233]: Заказ-наряды
+              - generic [ref=f1e234]: "6"
+          - listitem [ref=f1e235]:
+            - link "Платежи 9" [ref=f1e236] [cursor=pointer]:
+              - /url: "#/payments"
+              - generic [ref=f1e237]: ₽
+              - generic [ref=f1e238]: Платежи
+              - generic [ref=f1e239]: "9"
+          - listitem [ref=f1e240]:
+            - link "Расходы 5" [ref=f1e241] [cursor=pointer]:
+              - /url: "#/expenses"
+              - generic [ref=f1e242]: ↘
+              - generic [ref=f1e243]: Расходы
+              - generic [ref=f1e244]: "5"
+          - listitem [ref=f1e245]:
+            - link "Отчёты" [ref=f1e246] [cursor=pointer]:
+              - /url: "#/reports"
+              - generic [ref=f1e247]: ⌁
+          - listitem [ref=f1e250]:
+            - link "Справочники" [ref=f1e251] [cursor=pointer]:
+              - /url: "#/directories"
+              - generic [ref=f1e252]: ▥
+          - listitem [ref=f1e255]:
+            - link "Сотрудники 4" [ref=f1e256] [cursor=pointer]:
+              - /url: "#/employees"
+              - generic [ref=f1e257]: ♙
+              - generic [ref=f1e258]: Сотрудники
+              - generic [ref=f1e259]: "4"
+          - listitem [ref=f1e260]:
+            - link "Корзина и журнал 0" [ref=f1e261] [cursor=pointer]:
+              - /url: "#/trash"
+              - generic [ref=f1e262]: ♲
+              - generic [ref=f1e263]: Корзина и журнал
+              - generic [ref=f1e264]: "0"
+          - listitem [ref=f1e265]:
+            - link "Настройки" [ref=f1e266] [cursor=pointer]:
+              - /url: "#/settings"
+              - generic [ref=f1e267]: ⚙
+      - generic [ref=f1e14]:
+        - link "← Вернуться на сайт" [ref=f1e15] [cursor=pointer]:
+          - /url: index.html
+        - paragraph [ref=f1e16]: Данные сохраняются только в этом браузере.
+    - generic [ref=f1e17]:
+      - banner [ref=f1e18]:
+        - generic [ref=f1e19]:
+          - generic [ref=f1e20]: Рабочая область
+          - heading "Обзор" [level=1] [ref=f1e21]
+        - generic [ref=f1e22]:
+          - generic [ref=f1e23]: Поиск по панели
+          - searchbox "Поиск по панели Ctrl K" [ref=f1e26]
+          - generic [ref=f1e27]: Ctrl K
+        - button "Создать" [ref=f1e28] [cursor=pointer]:
+          - generic [ref=f1e29]: ＋
+          - text: Создать
+      - generic [ref=f1e30]:
+        - generic [ref=f1e31]: i
+        - paragraph [ref=f1e32]:
+          - strong [ref=f1e33]: "Локальная демонстрация:"
+          - text: изменения видны только на этом устройстве. Для переноса используйте резервную копию JSON.
+        - button "Резервная копия" [ref=f1e34] [cursor=pointer]
+      - main [active] [ref=f1e35]:
+        - generic [ref=f1e270]:
+          - generic [ref=f1e271]:
+            - generic [ref=f1e272]:
+              - generic [ref=f1e273]: Сегодня в сервисе
+              - heading "Рабочая картина без лишнего шума" [level=2] [ref=f1e274]
+              - paragraph [ref=f1e275]: Записи, активные заказы и финансовые показатели рассчитываются из локальной базы в реальном времени.
+            - generic [ref=f1e276]:
+              - button "Новый заказ" [ref=f1e277] [cursor=pointer]
+              - button "Новая запись" [ref=f1e278] [cursor=pointer]
+          - region "Ключевые показатели" [ref=f1e279]:
+            - article [ref=f1e280]:
+              - generic [ref=f1e281]: Записей сегодня
+              - strong [ref=f1e282]: "3"
+              - generic [ref=f1e283]: 2 на ближайшие 7 дней
+            - article [ref=f1e284]:
+              - generic [ref=f1e285]: Активных заказов
+              - strong [ref=f1e286]: "6"
+              - generic [ref=f1e287]: 1 ждут согласования
+            - article [ref=f1e288]:
+              - generic [ref=f1e289]: Начислено за месяц
+              - strong [ref=f1e290]: 0 ₽
+              - generic [ref=f1e291]: 0 реализованных заказов
+            - article [ref=f1e292]:
+              - generic [ref=f1e293]: Долг по открытым заказам
+              - strong [ref=f1e294]: 0 ₽
+              - generic [ref=f1e295]: Статус оплаты вычисляется автоматически
+          - generic [ref=f1e296]:
+            - generic [ref=f1e297]:
+              - generic [ref=f1e298]:
+                - generic [ref=f1e299]:
+                  - heading "Расписание на сегодня" [level=3] [ref=f1e300]
+                  - paragraph [ref=f1e301]: 17.07.2026
+                - button "Все записи" [ref=f1e302] [cursor=pointer]
+              - list [ref=f1e304]:
+                - listitem [ref=f1e305]:
+                  - strong [ref=f1e306]: 10:00
+                  - generic [ref=f1e307]:
+                    - strong [ref=f1e308]: "Демо: Ольга Ясная"
+                    - generic [ref=f1e309]: Nissan Qashqai, 2016 · Проверить торможение
+                  - generic [ref=f1e310]: Подтверждена
+                - listitem [ref=f1e311]:
+                  - strong [ref=f1e312]: 13:30
+                  - generic [ref=f1e313]:
+                    - strong [ref=f1e314]: "Демо: Алексей Северин"
+                    - generic [ref=f1e315]: Ford Focus, 2014 · Горит индикатор
+                  - generic [ref=f1e316]: Новая запись
+                - listitem [ref=f1e317]:
+                  - strong [ref=f1e318]: 17:00
+                  - generic [ref=f1e319]:
+                    - strong [ref=f1e320]: "Демо: Роман Полянский"
+                    - generic [ref=f1e321]: Mitsubishi Outlander, 2018 · Контроль после работ
+                  - generic [ref=f1e322]: Клиент приехал
+            - generic [ref=f1e323]:
+              - generic [ref=f1e325]:
+                - heading "Быстрые действия" [level=3] [ref=f1e326]
+                - paragraph [ref=f1e327]: Частые операции в один шаг
+              - generic [ref=f1e329]:
+                - button "＋ Клиент" [ref=f1e330] [cursor=pointer]:
+                  - generic [ref=f1e331]: ＋
+                  - strong [ref=f1e332]: Клиент
+                - button "◇ Автомобиль" [ref=f1e333] [cursor=pointer]:
+                  - generic [ref=f1e334]: ◇
+                  - strong [ref=f1e335]: Автомобиль
+                - button "▤ Заказ-наряд" [ref=f1e336] [cursor=pointer]:
+                  - generic [ref=f1e337]: ▤
+                  - strong [ref=f1e338]: Заказ-наряд
+                - button "₽ Принять оплату" [ref=f1e339] [cursor=pointer]:
+                  - generic [ref=f1e340]: ₽
+                  - strong [ref=f1e341]: Принять оплату
+          - generic [ref=f1e342]:
+            - generic [ref=f1e343]:
+              - generic [ref=f1e344]:
+                - generic [ref=f1e345]:
+                  - heading "Заказы в работе" [level=3] [ref=f1e346]
+                  - paragraph [ref=f1e347]: Сумма и оплата пересчитываются из строк и платежей
+                - button "Все заказы" [ref=f1e348] [cursor=pointer]
+              - list [ref=f1e350]:
+                - listitem [ref=f1e351]:
+                  - generic [ref=f1e352]:
+                    - button "DEMO-VN-003" [ref=f1e353] [cursor=pointer]
+                    - generic [ref=f1e354]: "Демо: Илья Берестов · Volkswagen Polo, 2019"
+                  - generic [ref=f1e355]:
+                    - strong [ref=f1e356]: 4 650 ₽
+                    - text: Частично оплачено
+                  - generic [ref=f1e357]: В работе
+                - listitem [ref=f1e358]:
+                  - generic [ref=f1e359]:
+                    - button "DEMO-VN-004" [ref=f1e360] [cursor=pointer]
+                    - generic [ref=f1e361]: "Демо: Ольга Ясная · Nissan Qashqai, 2016"
+                  - generic [ref=f1e362]:
+                    - strong [ref=f1e363]: 7 240 ₽
+                    - text: Не оплачено
+                  - generic [ref=f1e364]: Ожидает согласования
+                - listitem [ref=f1e365]:
+                  - generic [ref=f1e366]:
+                    - button "DEMO-VN-005" [ref=f1e367] [cursor=pointer]
+                    - generic [ref=f1e368]: "Демо: Тимофей Гранатов · Honda Civic, 2012"
+                  - generic [ref=f1e369]:
+                    - strong [ref=f1e370]: 5 860 ₽
+                    - text: Оплачено
+                  - generic [ref=f1e371]: Готов к выдаче
+                - listitem [ref=f1e372]:
+                  - generic [ref=f1e373]:
+                    - button "DEMO-VN-007" [ref=f1e374] [cursor=pointer]
+                    - generic [ref=f1e375]: "Демо: Роман Полянский · Mitsubishi Outlander, 2018"
+                  - generic [ref=f1e376]:
+                    - strong [ref=f1e377]: 3 400 ₽
+                    - text: Оплачено
+                  - generic [ref=f1e378]: Контроль качества
+                - listitem [ref=f1e379]:
+                  - generic [ref=f1e380]:
+                    - button "DEMO-VN-008" [ref=f1e381] [cursor=pointer]
+                    - generic [ref=f1e382]: "Демо: Вера Соколова · Opel Astra, 2013"
+                  - generic [ref=f1e383]:
+                    - strong [ref=f1e384]: 6 000 ₽
+                    - text: Не оплачено
+                  - generic [ref=f1e385]: Запланирован
+                - listitem [ref=f1e386]:
+                  - generic [ref=f1e387]:
+                    - button "DEMO-VN-009" [ref=f1e388] [cursor=pointer]
+                    - generic [ref=f1e389]: "Демо: Алексей Северин · Ford Focus, 2014"
+                  - generic [ref=f1e390]:
+                    - strong [ref=f1e391]: 2 100 ₽
+                    - text: Не оплачено
+                  - generic [ref=f1e392]: Ожидает диагностики
+            - generic [ref=f1e393]:
+              - generic [ref=f1e395]:
+                - heading "Денежный поток месяца" [level=3] [ref=f1e396]
+                - paragraph [ref=f1e397]: Не является бухгалтерской отчётностью
+              - generic [ref=f1e399]:
+                - generic [ref=f1e400]:
+                  - strong [ref=f1e402]: Получено оплат
+                  - strong [ref=f1e403]: 0 ₽
+                - generic [ref=f1e404]:
+                  - strong [ref=f1e406]: Прямые затраты заказов
+                  - strong [ref=f1e407]: 0 ₽
+                - generic [ref=f1e408]:
+                  - strong [ref=f1e410]: Операционные расходы
+                  - strong [ref=f1e411]: 10 490 ₽
+                - generic [ref=f1e412]:
+                  - strong [ref=f1e414]: Расчётный результат
+                  - strong [ref=f1e415]: "-10 490 ₽"
+  - status [ref=f1e417]:
+    - generic [ref=f1e418]: Вымышленная демонстрационная база загружена.
+    - button "Закрыть уведомление" [ref=f1e419] [cursor=pointer]: ×

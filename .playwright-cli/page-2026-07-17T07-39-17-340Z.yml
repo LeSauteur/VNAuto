@@ -1,0 +1,171 @@
+- generic [ref=f5e1]:
+  - link "К основному содержанию" [ref=f5e2] [cursor=pointer]:
+    - /url: "#admin-view"
+  - generic [ref=f5e3]:
+    - complementary "Разделы панели" [ref=f5e4]:
+      - link "VN-MASTERS — обзор" [ref=f5e5] [cursor=pointer]:
+        - /url: "#/dashboard"
+        - generic [ref=f5e6]:
+          - strong [ref=f5e7]: VN-MASTERS
+          - generic [ref=f5e8]: Демо-панель
+      - note [ref=f5e9]:
+        - generic [ref=f5e10]: ●
+        - strong [ref=f5e11]: Публичная демо-версия
+        - generic [ref=f5e12]: Без входа и облачного сервера
+      - navigation "Основная навигация" [ref=f5e13]:
+        - list [ref=f5e14]:
+          - listitem [ref=f5e15]:
+            - link "Обзор" [ref=f5e16] [cursor=pointer]:
+              - /url: "#/dashboard"
+              - generic [ref=f5e17]: ▦
+          - listitem [ref=f5e20]:
+            - link "Запись 5" [ref=f5e21] [cursor=pointer]:
+              - /url: "#/appointments"
+              - generic [ref=f5e22]: ◷
+              - generic [ref=f5e23]: Запись
+              - generic [ref=f5e24]: "5"
+          - listitem [ref=f5e25]:
+            - link "Клиенты 9" [ref=f5e26] [cursor=pointer]:
+              - /url: "#/clients"
+              - generic [ref=f5e27]: ◎
+              - generic [ref=f5e28]: Клиенты
+              - generic [ref=f5e29]: "9"
+          - listitem [ref=f5e30]:
+            - link "Автомобили 12" [ref=f5e31] [cursor=pointer]:
+              - /url: "#/vehicles"
+              - generic [ref=f5e32]: ◇
+              - generic [ref=f5e33]: Автомобили
+              - generic [ref=f5e34]: "12"
+          - listitem [ref=f5e35]:
+            - link "Заказ-наряды 7" [ref=f5e36] [cursor=pointer]:
+              - /url: "#/work-orders"
+              - generic [ref=f5e37]: ▤
+              - generic [ref=f5e38]: Заказ-наряды
+              - generic [ref=f5e39]: "7"
+          - listitem [ref=f5e40]:
+            - link "Платежи 11" [ref=f5e41] [cursor=pointer]:
+              - /url: "#/payments"
+              - generic [ref=f5e42]: ₽
+              - generic [ref=f5e43]: Платежи
+              - generic [ref=f5e44]: "11"
+          - listitem [ref=f5e45]:
+            - link "Расходы 5" [ref=f5e46] [cursor=pointer]:
+              - /url: "#/expenses"
+              - generic [ref=f5e47]: ↘
+              - generic [ref=f5e48]: Расходы
+              - generic [ref=f5e49]: "5"
+          - listitem [ref=f5e50]:
+            - link "Отчёты" [ref=f5e51] [cursor=pointer]:
+              - /url: "#/reports"
+              - generic [ref=f5e52]: ⌁
+          - listitem [ref=f5e55]:
+            - link "Справочники" [ref=f5e56] [cursor=pointer]:
+              - /url: "#/directories"
+              - generic [ref=f5e57]: ▥
+          - listitem [ref=f5e60]:
+            - link "Сотрудники 4" [ref=f5e61] [cursor=pointer]:
+              - /url: "#/employees"
+              - generic [ref=f5e62]: ♙
+              - generic [ref=f5e63]: Сотрудники
+              - generic [ref=f5e64]: "4"
+          - listitem [ref=f5e65]:
+            - link "Корзина и журнал 1" [ref=f5e66] [cursor=pointer]:
+              - /url: "#/trash"
+              - generic [ref=f5e67]: ♲
+              - generic [ref=f5e68]: Корзина и журнал
+              - generic [ref=f5e69]: "1"
+          - listitem [ref=f5e70]:
+            - link "Настройки" [ref=f5e71] [cursor=pointer]:
+              - /url: "#/settings"
+              - generic [ref=f5e72]: ⚙
+      - generic [ref=f5e75]:
+        - link "← Вернуться на сайт" [ref=f5e76] [cursor=pointer]:
+          - /url: index.html
+        - paragraph [ref=f5e77]: Данные сохраняются только в этом браузере.
+    - generic [ref=f5e78]:
+      - banner [ref=f5e79]:
+        - generic [ref=f5e80]:
+          - generic [ref=f5e81]: Системные записи
+          - heading "Корзина и журнал" [level=1] [ref=f5e218]
+        - generic [ref=f5e83]:
+          - generic [ref=f5e84]: Поиск по панели
+          - searchbox "Поиск по панели Ctrl K" [ref=f5e87]
+          - generic [ref=f5e88]: Ctrl K
+        - button "Создать" [ref=f5e89] [cursor=pointer]:
+          - generic [ref=f5e90]: ＋
+          - text: Создать
+      - generic [ref=f5e91]:
+        - generic [ref=f5e92]: i
+        - paragraph [ref=f5e93]:
+          - strong [ref=f5e94]: "Локальная демонстрация:"
+          - text: изменения видны только на этом устройстве. Для переноса используйте резервную копию JSON.
+        - button "Резервная копия" [ref=f5e95] [cursor=pointer]
+      - main [active] [ref=f5e96]:
+        - generic [ref=f5e219]:
+          - generic [ref=f5e220]:
+            - generic [ref=f5e221]:
+              - generic [ref=f5e222]: Безопасное удаление
+              - heading "Корзина и журнал" [level=2] [ref=f5e223]
+              - paragraph [ref=f5e224]: Обычное удаление можно отменить. Полная очистка корзины необратима в рамках текущей базы браузера.
+            - button "Очистить корзину" [ref=f5e226] [cursor=pointer]
+          - generic [ref=f5e227]:
+            - generic [ref=f5e228]:
+              - generic [ref=f5e230]:
+                - heading "Корзина" [level=3] [ref=f5e231]
+                - paragraph [ref=f5e232]: 1 записей
+              - table [ref=f5e235]:
+                - rowgroup [ref=f5e236]:
+                  - row [ref=f5e237]:
+                    - columnheader "Запись" [ref=f5e238]
+                    - columnheader "Удалена" [ref=f5e239]
+                    - columnheader [ref=f5e240]
+                - rowgroup [ref=f5e241]:
+                  - row [ref=f5e242]:
+                    - cell "ee12e908-56aa-4ead-beb5-59636534788e expenses" [ref=f5e243]:
+                      - generic [ref=f5e244]:
+                        - strong [ref=f5e245]: ee12e908-56aa-4ead-beb5-59636534788e
+                        - generic [ref=f5e246]: expenses
+                    - cell "17.07.2026, 10:37" [ref=f5e247]
+                    - cell [ref=f5e248]:
+                      - generic [ref=f5e249]:
+                        - button "Восстановить" [ref=f5e250] [cursor=pointer]
+                        - button "Навсегда" [ref=f5e251] [cursor=pointer]
+            - generic [ref=f5e252]:
+              - generic [ref=f5e254]:
+                - heading "Принцип хранения" [level=3] [ref=f5e255]
+                - paragraph [ref=f5e256]: Ограничение публичной демонстрации
+              - generic [ref=f5e258]:
+                - generic [ref=f5e259]: i
+                - paragraph [ref=f5e260]: "Это журнал действий одной локальной демо-установки. Он не является защищённым аудиторским журналом: пользователь этого браузера может очистить базу."
+          - generic [ref=f5e261]:
+            - generic [ref=f5e263]:
+              - heading "Журнал действий" [level=3] [ref=f5e264]
+              - paragraph [ref=f5e265]: 9 последних событий
+            - list [ref=f5e267]:
+              - listitem [ref=f5e268]:
+                - strong [ref=f5e269]: Запись перемещена в корзину · ee12e908-56aa-4ead-beb5-59636534788e
+                - generic [ref=f5e270]: 17.07.2026, 10:37 · expenses · ee12e908-56aa-4ead-beb5-59636534788e
+              - listitem [ref=f5e271]:
+                - strong [ref=f5e272]: Создана запись · Новый расход
+                - generic [ref=f5e273]: 17.07.2026, 10:36 · expenses · ee12e908-56aa-4ead-beb5-59636534788e
+              - listitem [ref=f5e274]:
+                - strong [ref=f5e275]: "Зарегистрирован возврат · refund: 500 ₽"
+                - generic [ref=f5e276]: 17.07.2026, 10:36 · payments · 17066c3a-a789-4235-9ff4-74859c1878fc
+              - listitem [ref=f5e277]:
+                - strong [ref=f5e278]: "Зарегистрирован платёж · payment: 2 000 ₽"
+                - generic [ref=f5e279]: 17.07.2026, 10:36 · payments · 482e584c-d0a9-4839-bd84-c43c1dc093b6
+              - listitem [ref=f5e280]:
+                - strong [ref=f5e281]: Обновлена запись · VN-20260717-6DD6
+                - generic [ref=f5e282]: 17.07.2026, 10:35 · workOrders · 1c9ad4cd-6907-41ca-b120-eb7dbac7414b
+              - listitem [ref=f5e283]:
+                - strong [ref=f5e284]: Создана запись · VN-20260717-6DD6
+                - generic [ref=f5e285]: 17.07.2026, 10:35 · workOrders · 1c9ad4cd-6907-41ca-b120-eb7dbac7414b
+              - listitem [ref=f5e286]:
+                - strong [ref=f5e287]: Создана запись · Новый автомобиль
+                - generic [ref=f5e288]: 17.07.2026, 10:32 · vehicles · 1e1f87fd-4d00-46ad-b0ee-b6a618d389c4
+              - listitem [ref=f5e289]:
+                - strong [ref=f5e290]: Создана запись · Новый клиент
+                - generic [ref=f5e291]: 17.07.2026, 10:31 · clients · 52452398-aa70-4c24-a184-0ee1edfe6043
+              - listitem [ref=f5e292]:
+                - strong [ref=f5e293]: Загружен пример базы · Загружена вымышленная демонстрационная база.
+                - generic [ref=f5e294]: 17.07.2026, 10:29 · settings · demo

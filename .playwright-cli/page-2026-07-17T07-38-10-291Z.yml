@@ -1,0 +1,213 @@
+- generic [ref=f4e1]:
+  - link "К основному содержанию" [ref=f4e2] [cursor=pointer]:
+    - /url: "#admin-view"
+  - generic [ref=f4e3]:
+    - complementary "Разделы панели" [ref=f4e4]:
+      - link "VN-MASTERS — обзор" [ref=f4e5] [cursor=pointer]:
+        - /url: "#/dashboard"
+        - generic [ref=f4e6]:
+          - strong [ref=f4e7]: VN-MASTERS
+          - generic [ref=f4e8]: Демо-панель
+      - note [ref=f4e9]:
+        - generic [ref=f4e10]: ●
+        - strong [ref=f4e11]: Публичная демо-версия
+        - generic [ref=f4e12]: Без входа и облачного сервера
+      - navigation "Основная навигация" [ref=f4e13]:
+        - list [ref=f4e14]:
+          - listitem [ref=f4e15]:
+            - link "Обзор" [ref=f4e16] [cursor=pointer]:
+              - /url: "#/dashboard"
+              - generic [ref=f4e17]: ▦
+          - listitem [ref=f4e20]:
+            - link "Запись 5" [ref=f4e21] [cursor=pointer]:
+              - /url: "#/appointments"
+              - generic [ref=f4e22]: ◷
+              - generic [ref=f4e23]: Запись
+              - generic [ref=f4e24]: "5"
+          - listitem [ref=f4e25]:
+            - link "Клиенты 9" [ref=f4e26] [cursor=pointer]:
+              - /url: "#/clients"
+              - generic [ref=f4e27]: ◎
+              - generic [ref=f4e28]: Клиенты
+              - generic [ref=f4e29]: "9"
+          - listitem [ref=f4e30]:
+            - link "Автомобили 12" [ref=f4e31] [cursor=pointer]:
+              - /url: "#/vehicles"
+              - generic [ref=f4e32]: ◇
+              - generic [ref=f4e33]: Автомобили
+              - generic [ref=f4e34]: "12"
+          - listitem [ref=f4e35]:
+            - link "Заказ-наряды 7" [ref=f4e607] [cursor=pointer]:
+              - /url: "#/work-orders"
+              - generic [ref=f4e37]: ▤
+              - generic [ref=f4e38]: Заказ-наряды
+              - generic [ref=f4e39]: "7"
+          - listitem [ref=f4e40]:
+            - link "Платежи 11" [ref=f4e1537] [cursor=pointer]:
+              - /url: "#/payments"
+              - generic [ref=f4e42]: ₽
+              - generic [ref=f4e43]: Платежи
+              - generic [ref=f4e44]: "11"
+          - listitem [ref=f4e45]:
+            - link "Расходы 5" [ref=f4e1908] [cursor=pointer]:
+              - /url: "#/expenses"
+              - generic [ref=f4e47]: ↘
+              - generic [ref=f4e48]: Расходы
+              - generic [ref=f4e49]: "5"
+          - listitem [ref=f4e50]:
+            - link "Отчёты" [ref=f4e51] [cursor=pointer]:
+              - /url: "#/reports"
+              - generic [ref=f4e52]: ⌁
+          - listitem [ref=f4e55]:
+            - link "Справочники" [ref=f4e56] [cursor=pointer]:
+              - /url: "#/directories"
+              - generic [ref=f4e57]: ▥
+          - listitem [ref=f4e60]:
+            - link "Сотрудники 4" [ref=f4e61] [cursor=pointer]:
+              - /url: "#/employees"
+              - generic [ref=f4e62]: ♙
+              - generic [ref=f4e63]: Сотрудники
+              - generic [ref=f4e64]: "4"
+          - listitem [ref=f4e65]:
+            - link "Корзина и журнал 0" [ref=f4e66] [cursor=pointer]:
+              - /url: "#/trash"
+              - generic [ref=f4e67]: ♲
+              - generic [ref=f4e68]: Корзина и журнал
+              - generic [ref=f4e69]: "0"
+          - listitem [ref=f4e70]:
+            - link "Настройки" [ref=f4e71] [cursor=pointer]:
+              - /url: "#/settings"
+              - generic [ref=f4e72]: ⚙
+      - generic [ref=f4e75]:
+        - link "← Вернуться на сайт" [ref=f4e76] [cursor=pointer]:
+          - /url: index.html
+        - paragraph [ref=f4e77]: Данные сохраняются только в этом браузере.
+    - generic [ref=f4e78]:
+      - banner [ref=f4e79]:
+        - generic [ref=f4e80]:
+          - generic [ref=f4e81]: Финансы
+          - heading "Расходы" [level=1] [ref=f4e2093]
+        - generic [ref=f4e83]:
+          - generic [ref=f4e84]: Поиск по панели
+          - searchbox "Поиск по панели Ctrl K" [ref=f4e87]
+          - generic [ref=f4e88]: Ctrl K
+        - button "Создать" [ref=f4e89] [cursor=pointer]:
+          - generic [ref=f4e90]: ＋
+          - text: Создать
+      - generic [ref=f4e91]:
+        - generic [ref=f4e92]: i
+        - paragraph [ref=f4e93]:
+          - strong [ref=f4e94]: "Локальная демонстрация:"
+          - text: изменения видны только на этом устройстве. Для переноса используйте резервную копию JSON.
+        - button "Резервная копия" [ref=f4e95] [cursor=pointer]
+      - main [active] [ref=f4e96]:
+        - generic [ref=f4e2094]:
+          - generic [ref=f4e2095]:
+            - generic [ref=f4e2096]:
+              - generic [ref=f4e2097]: Операционные затраты
+              - heading "Расходы" [level=2] [ref=f4e2098]
+              - paragraph [ref=f4e2099]: Расход, уже включённый в себестоимость строки заказа, отмечается отдельно и не вычитается из результата второй раз.
+            - button "＋ Новый расход" [ref=f4e2101] [cursor=pointer]
+          - generic [ref=f4e2102]:
+            - article [ref=f4e2103]:
+              - generic [ref=f4e2104]: Операционные расходы
+              - strong [ref=f4e2105]: 10 490 ₽
+              - generic [ref=f4e2106]: Учитываются в финансовом результате
+            - article [ref=f4e2107]:
+              - generic [ref=f4e2108]: Связано с заказами
+              - strong [ref=f4e2109]: 2 000 ₽
+              - generic [ref=f4e2110]: Справочно, без повторного вычитания
+            - article [ref=f4e2111]:
+              - generic [ref=f4e2112]: Операций
+              - strong [ref=f4e2113]: "5"
+              - generic [ref=f4e2114]: В текущей выборке
+            - article [ref=f4e2115]:
+              - generic [ref=f4e2116]: Регулярных
+              - strong [ref=f4e2117]: "2"
+              - generic [ref=f4e2118]: Помечены для контроля
+          - generic [ref=f4e2119]:
+            - generic [ref=f4e2121]:
+              - heading "Журнал расходов" [level=3] [ref=f4e2122]
+              - paragraph [ref=f4e2123]: 5 операций
+            - generic [ref=f4e2125]:
+              - generic [ref=f4e2126]:
+                - generic [ref=f4e2127]:
+                  - generic [ref=f4e2128]: ⌕
+                  - searchbox "Категория, получатель, документ" [ref=f4e2129]
+                - button "CSV" [ref=f4e2130] [cursor=pointer]
+              - table [ref=f4e2132]:
+                - rowgroup [ref=f4e2133]:
+                  - row [ref=f4e2134]:
+                    - columnheader "Дата" [ref=f4e2135]
+                    - columnheader "Категория" [ref=f4e2136]
+                    - columnheader "Получатель" [ref=f4e2137]
+                    - columnheader "Сумма" [ref=f4e2138]
+                    - columnheader "Заказ" [ref=f4e2139]
+                    - columnheader "Учёт" [ref=f4e2140]
+                    - columnheader [ref=f4e2141]
+                - rowgroup [ref=f4e2142]:
+                  - row [ref=f4e2143]:
+                    - cell "17.07.2026" [ref=f4e2144]
+                    - cell "Коммунальные услуги Регулярный" [ref=f4e2145]:
+                      - generic [ref=f4e2146]:
+                        - strong [ref=f4e2147]: Коммунальные услуги
+                        - generic [ref=f4e2148]: Регулярный
+                    - cell "Демо-получатель" [ref=f4e2149]
+                    - cell "940 ₽" [ref=f4e2150]
+                    - cell "—" [ref=f4e2151]
+                    - cell "Операционный" [ref=f4e2152]
+                    - cell [ref=f4e2154]:
+                      - generic [ref=f4e2155]:
+                        - button "Изменить" [ref=f4e2156] [cursor=pointer]
+                        - button "Удалить" [ref=f4e2157] [cursor=pointer]
+                  - row [ref=f4e2158]:
+                    - cell "15.07.2026" [ref=f4e2159]
+                    - cell [ref=f4e2160]:
+                      - strong [ref=f4e2162]: Расходные материалы
+                    - cell "Демо-поставщик Север" [ref=f4e2163]
+                    - cell "1 850 ₽" [ref=f4e2164]
+                    - cell "—" [ref=f4e2165]
+                    - cell "Операционный" [ref=f4e2166]
+                    - cell [ref=f4e2168]:
+                      - generic [ref=f4e2169]:
+                        - button "Изменить" [ref=f4e2170] [cursor=pointer]
+                        - button "Удалить" [ref=f4e2171] [cursor=pointer]
+                  - row [ref=f4e2172]:
+                    - cell "09.07.2026" [ref=f4e2173]
+                    - cell [ref=f4e2174]:
+                      - strong [ref=f4e2176]: Реклама
+                    - cell "Демо-площадка" [ref=f4e2177]
+                    - cell "1 200 ₽" [ref=f4e2178]
+                    - cell "—" [ref=f4e2179]
+                    - cell "Операционный" [ref=f4e2180]
+                    - cell [ref=f4e2182]:
+                      - generic [ref=f4e2183]:
+                        - button "Изменить" [ref=f4e2184] [cursor=pointer]
+                        - button "Удалить" [ref=f4e2185] [cursor=pointer]
+                  - row [ref=f4e2186]:
+                    - cell "05.07.2026" [ref=f4e2187]
+                    - cell [ref=f4e2188]:
+                      - strong [ref=f4e2190]: Закупка запчастей
+                    - cell "Демо-поставщик Север" [ref=f4e2191]
+                    - cell "2 000 ₽" [ref=f4e2192]
+                    - cell "DEMO-VN-001" [ref=f4e2193]
+                    - cell "В себестоимости заказа" [ref=f4e2194]
+                    - cell [ref=f4e2196]:
+                      - generic [ref=f4e2197]:
+                        - button "Изменить" [ref=f4e2198] [cursor=pointer]
+                        - button "Удалить" [ref=f4e2199] [cursor=pointer]
+                  - row [ref=f4e2200]:
+                    - cell "02.07.2026" [ref=f4e2201]
+                    - cell "Аренда Регулярный" [ref=f4e2202]:
+                      - generic [ref=f4e2203]:
+                        - strong [ref=f4e2204]: Аренда
+                        - generic [ref=f4e2205]: Регулярный
+                    - cell "Демо-арендодатель" [ref=f4e2206]
+                    - cell "6 500 ₽" [ref=f4e2207]
+                    - cell "—" [ref=f4e2208]
+                    - cell "Операционный" [ref=f4e2209]
+                    - cell [ref=f4e2211]:
+                      - generic [ref=f4e2212]:
+                        - button "Изменить" [ref=f4e2213] [cursor=pointer]
+                        - button "Удалить" [ref=f4e2214] [cursor=pointer]
+  - text: "* * *"

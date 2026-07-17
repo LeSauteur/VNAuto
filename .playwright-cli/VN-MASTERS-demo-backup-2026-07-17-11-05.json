@@ -1,0 +1,257 @@
+{
+  "product": "VN-MASTERS demo admin",
+  "schemaVersion": 2,
+  "exportedAt": "2026-07-17T08:05:11.649Z",
+  "demoOnly": true,
+  "data": {
+    "appointments": [],
+    "clients": [],
+    "vehicles": [],
+    "workOrders": [],
+    "workOrderItems": [],
+    "payments": [],
+    "expenses": [],
+    "employees": [],
+    "servicesCatalog": [],
+    "partsCatalog": [],
+    "suppliers": [],
+    "expenseCategories": [
+      {
+        "name": "Аренда",
+        "active": true,
+        "id": "00a56111-c64b-49e0-b621-0f962606561b",
+        "recordVersion": 1,
+        "localRevision": 1,
+        "createdAt": "2026-07-17T08:05:11.441Z",
+        "updatedAt": "2026-07-17T08:05:11.441Z",
+        "deletedAt": null
+      },
+      {
+        "name": "Закупка запчастей",
+        "active": true,
+        "id": "03de7dea-1e0e-4413-9374-d89e0194cfb7",
+        "recordVersion": 1,
+        "localRevision": 1,
+        "createdAt": "2026-07-17T08:05:11.441Z",
+        "updatedAt": "2026-07-17T08:05:11.441Z",
+        "deletedAt": null
+      },
+      {
+        "name": "Банковские комиссии",
+        "active": true,
+        "id": "29e19022-259b-4fb7-9347-e417fae52b08",
+        "recordVersion": 1,
+        "localRevision": 1,
+        "createdAt": "2026-07-17T08:05:11.441Z",
+        "updatedAt": "2026-07-17T08:05:11.441Z",
+        "deletedAt": null
+      },
+      {
+        "name": "Расходные материалы",
+        "active": true,
+        "id": "2bb5ee86-09f2-488d-9d12-2c2a5a55a35e",
+        "recordVersion": 1,
+        "localRevision": 1,
+        "createdAt": "2026-07-17T08:05:11.441Z",
+        "updatedAt": "2026-07-17T08:05:11.441Z",
+        "deletedAt": null
+      },
+      {
+        "name": "Оборудование",
+        "active": true,
+        "id": "2c8262fa-437c-40ca-9403-084492ffd6ae",
+        "recordVersion": 1,
+        "localRevision": 1,
+        "createdAt": "2026-07-17T08:05:11.441Z",
+        "updatedAt": "2026-07-17T08:05:11.441Z",
+        "deletedAt": null
+      },
+      {
+        "name": "Налоги",
+        "active": true,
+        "id": "31468dc7-48ae-4f58-9a07-1aa3f5703784",
+        "recordVersion": 1,
+        "localRevision": 1,
+        "createdAt": "2026-07-17T08:05:11.441Z",
+        "updatedAt": "2026-07-17T08:05:11.441Z",
+        "deletedAt": null
+      },
+      {
+        "name": "Ремонт помещения",
+        "active": true,
+        "id": "3298e345-80b2-49c9-ab53-184cc517430d",
+        "recordVersion": 1,
+        "localRevision": 1,
+        "createdAt": "2026-07-17T08:05:11.441Z",
+        "updatedAt": "2026-07-17T08:05:11.441Z",
+        "deletedAt": null
+      },
+      {
+        "name": "Коммунальные услуги",
+        "active": true,
+        "id": "417d3899-907e-4cfd-83cb-ebc2907cd19c",
+        "recordVersion": 1,
+        "localRevision": 1,
+        "createdAt": "2026-07-17T08:05:11.441Z",
+        "updatedAt": "2026-07-17T08:05:11.441Z",
+        "deletedAt": null
+      },
+      {
+        "name": "Возврат клиенту",
+        "active": true,
+        "id": "a739f8ad-bbd1-4cbf-a9bd-50a2f5c579f1",
+        "recordVersion": 1,
+        "localRevision": 1,
+        "createdAt": "2026-07-17T08:05:11.441Z",
+        "updatedAt": "2026-07-17T08:05:11.441Z",
+        "deletedAt": null
+      },
+      {
+        "name": "Прочее",
+        "active": true,
+        "id": "e5606084-5024-4603-a731-ba48b2f40aa1",
+        "recordVersion": 1,
+        "localRevision": 1,
+        "createdAt": "2026-07-17T08:05:11.441Z",
+        "updatedAt": "2026-07-17T08:05:11.441Z",
+        "deletedAt": null
+      },
+      {
+        "name": "Реклама",
+        "active": true,
+        "id": "ef5130f2-3011-4f42-b534-da1bb18b017b",
+        "recordVersion": 1,
+        "localRevision": 1,
+        "createdAt": "2026-07-17T08:05:11.441Z",
+        "updatedAt": "2026-07-17T08:05:11.441Z",
+        "deletedAt": null
+      },
+      {
+        "name": "Зарплата",
+        "active": true,
+        "id": "f5e6a172-9836-4940-9f1b-b85a3b6df548",
+        "recordVersion": 1,
+        "localRevision": 1,
+        "createdAt": "2026-07-17T08:05:11.441Z",
+        "updatedAt": "2026-07-17T08:05:11.441Z",
+        "deletedAt": null
+      }
+    ],
+    "paymentMethods": [
+      {
+        "name": "Перевод",
+        "active": true,
+        "id": "0a970348-790e-4f99-b300-dc138810e4c0",
+        "recordVersion": 1,
+        "localRevision": 1,
+        "createdAt": "2026-07-17T08:05:11.441Z",
+        "updatedAt": "2026-07-17T08:05:11.441Z",
+        "deletedAt": null
+      },
+      {
+        "name": "СБП",
+        "active": true,
+        "id": "8a59eef1-e874-4bf2-b75b-4713a0bf397d",
+        "recordVersion": 1,
+        "localRevision": 1,
+        "createdAt": "2026-07-17T08:05:11.441Z",
+        "updatedAt": "2026-07-17T08:05:11.441Z",
+        "deletedAt": null
+      },
+      {
+        "name": "Другое",
+        "active": true,
+        "id": "bd3f55ca-6d70-44b3-b6e6-9306d96fdf0b",
+        "recordVersion": 1,
+        "localRevision": 1,
+        "createdAt": "2026-07-17T08:05:11.441Z",
+        "updatedAt": "2026-07-17T08:05:11.441Z",
+        "deletedAt": null
+      },
+      {
+        "name": "Безналичный расчёт",
+        "active": true,
+        "id": "c6e469bd-b9ff-46c1-882e-500159941a4c",
+        "recordVersion": 1,
+        "localRevision": 1,
+        "createdAt": "2026-07-17T08:05:11.441Z",
+        "updatedAt": "2026-07-17T08:05:11.441Z",
+        "deletedAt": null
+      },
+      {
+        "name": "Банковская карта",
+        "active": true,
+        "id": "d6af3c09-d12c-4ab2-b5ff-c175e96a1737",
+        "recordVersion": 1,
+        "localRevision": 1,
+        "createdAt": "2026-07-17T08:05:11.441Z",
+        "updatedAt": "2026-07-17T08:05:11.441Z",
+        "deletedAt": null
+      },
+      {
+        "name": "Наличные",
+        "active": true,
+        "id": "d95cfaec-98c7-4462-a420-3c963ebe0505",
+        "recordVersion": 1,
+        "localRevision": 1,
+        "createdAt": "2026-07-17T08:05:11.441Z",
+        "updatedAt": "2026-07-17T08:05:11.441Z",
+        "deletedAt": null
+      }
+    ],
+    "auditLog": [],
+    "settings": [
+      {
+        "id": "databaseMode",
+        "value": "empty",
+        "recordVersion": 1,
+        "localRevision": 1,
+        "createdAt": "2026-07-17T08:05:11.441Z",
+        "updatedAt": "2026-07-17T08:05:11.441Z",
+        "deletedAt": null
+      },
+      {
+        "id": "installationId",
+        "value": "92160723-aaa2-4ee1-b922-91a22c1d8e83",
+        "recordVersion": 1,
+        "localRevision": 1,
+        "createdAt": "2026-07-17T08:05:11.447Z",
+        "updatedAt": "2026-07-17T08:05:11.447Z",
+        "deletedAt": null
+      },
+      {
+        "id": "onboardingComplete",
+        "value": true,
+        "recordVersion": 1,
+        "localRevision": 1,
+        "createdAt": "2026-07-17T08:05:11.441Z",
+        "updatedAt": "2026-07-17T08:05:11.441Z",
+        "deletedAt": null
+      }
+    ],
+    "trash": []
+  },
+  "settings": {
+    "databaseMode": "empty",
+    "installationId": "92160723-aaa2-4ee1-b922-91a22c1d8e83",
+    "onboardingComplete": true
+  },
+  "summary": {
+    "appointments": 0,
+    "clients": 0,
+    "vehicles": 0,
+    "workOrders": 0,
+    "workOrderItems": 0,
+    "payments": 0,
+    "expenses": 0,
+    "employees": 0,
+    "servicesCatalog": 0,
+    "partsCatalog": 0,
+    "suppliers": 0,
+    "expenseCategories": 12,
+    "paymentMethods": 6,
+    "auditLog": 0,
+    "settings": 3,
+    "trash": 0
+  }
+}

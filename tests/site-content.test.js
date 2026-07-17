@@ -60,7 +60,7 @@ test('реальные фотографии оптимизированы и ис
   assert.ok(fs.existsSync(path.join(root, 'favicon.ico')));
 });
 
-test('admin.html не изменён', () => {
-  const hash = crypto.createHash('sha256').update(fs.readFileSync(path.join(root, 'admin.html'))).digest('hex').toUpperCase();
+test('legacy admin сохранён в архиве без изменений', () => {
+  const hash = crypto.createHash('sha256').update(fs.readFileSync(path.join(root, 'archive/admin-legacy.html'))).digest('hex').toUpperCase();
   assert.equal(hash, '82817BD216C8B15A425AE6F5896DDEB1ABD16DA2088BA966D952FF1423C12581');
 });

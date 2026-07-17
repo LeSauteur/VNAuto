@@ -1,0 +1,201 @@
+- generic [ref=e1]:
+  - link "К основному содержанию" [ref=e2] [cursor=pointer]:
+    - /url: "#admin-view"
+  - generic [ref=e3]:
+    - complementary "Разделы панели" [ref=e4]:
+      - link "VN-MASTERS — обзор" [ref=e5] [cursor=pointer]:
+        - /url: "#/dashboard"
+        - generic [ref=e6]:
+          - strong [ref=e7]: VN-MASTERS
+          - generic [ref=e8]: Демо-панель
+      - note [ref=e9]:
+        - generic [ref=e10]: ●
+        - strong [ref=e11]: Публичная демо-версия
+        - generic [ref=e12]: Без входа и облачного сервера
+      - navigation "Основная навигация" [ref=e13]:
+        - list [ref=e14]:
+          - listitem [ref=e15]:
+            - link "Обзор" [ref=e16] [cursor=pointer]:
+              - /url: "#/dashboard"
+              - generic [ref=e17]: ▦
+          - listitem [ref=e20]:
+            - link "Запись 0" [ref=e21] [cursor=pointer]:
+              - /url: "#/appointments"
+              - generic [ref=e22]: ◷
+              - generic [ref=e23]: Запись
+              - generic [ref=e24]: "0"
+          - listitem [ref=e25]:
+            - link "Клиенты 0" [ref=e26] [cursor=pointer]:
+              - /url: "#/clients"
+              - generic [ref=e27]: ◎
+              - generic [ref=e28]: Клиенты
+              - generic [ref=e29]: "0"
+          - listitem [ref=e30]:
+            - link "Автомобили 0" [ref=e31] [cursor=pointer]:
+              - /url: "#/vehicles"
+              - generic [ref=e32]: ◇
+              - generic [ref=e33]: Автомобили
+              - generic [ref=e34]: "0"
+          - listitem [ref=e35]:
+            - link "Заказ-наряды 0" [ref=e36] [cursor=pointer]:
+              - /url: "#/work-orders"
+              - generic [ref=e37]: ▤
+              - generic [ref=e38]: Заказ-наряды
+              - generic [ref=e39]: "0"
+          - listitem [ref=e40]:
+            - link "Платежи 0" [ref=e41] [cursor=pointer]:
+              - /url: "#/payments"
+              - generic [ref=e42]: ₽
+              - generic [ref=e43]: Платежи
+              - generic [ref=e44]: "0"
+          - listitem [ref=e45]:
+            - link "Расходы 0" [ref=e46] [cursor=pointer]:
+              - /url: "#/expenses"
+              - generic [ref=e47]: ↘
+              - generic [ref=e48]: Расходы
+              - generic [ref=e49]: "0"
+          - listitem [ref=e50]:
+            - link "Отчёты" [ref=e51] [cursor=pointer]:
+              - /url: "#/reports"
+              - generic [ref=e52]: ⌁
+          - listitem [ref=e55]:
+            - link "Справочники" [ref=e56] [cursor=pointer]:
+              - /url: "#/directories"
+              - generic [ref=e57]: ▥
+          - listitem [ref=e60]:
+            - link "Сотрудники 0" [ref=e61] [cursor=pointer]:
+              - /url: "#/employees"
+              - generic [ref=e62]: ♙
+              - generic [ref=e63]: Сотрудники
+              - generic [ref=e64]: "0"
+          - listitem [ref=e65]:
+            - link "Корзина и журнал 0" [ref=e66] [cursor=pointer]:
+              - /url: "#/trash"
+              - generic [ref=e67]: ♲
+              - generic [ref=e68]: Корзина и журнал
+              - generic [ref=e69]: "0"
+          - listitem [ref=e70]:
+            - link "Настройки" [ref=e71] [cursor=pointer]:
+              - /url: "#/settings"
+              - generic [ref=e72]: ⚙
+      - generic [ref=e75]:
+        - link "← Вернуться на сайт" [ref=e76] [cursor=pointer]:
+          - /url: index.html
+        - paragraph [ref=e77]: Данные сохраняются только в этом браузере.
+    - generic [ref=e78]:
+      - banner [ref=e79]:
+        - generic [ref=e80]:
+          - generic [ref=e81]: Рабочая область
+          - heading "Обзор" [level=1] [ref=e82]
+        - generic [ref=e83]:
+          - generic [ref=e84]: Поиск по панели
+          - searchbox "Поиск по панели Ctrl K" [ref=e87]
+          - generic [ref=e88]: Ctrl K
+        - button "Создать" [ref=e89] [cursor=pointer]:
+          - generic [ref=e90]: ＋
+          - text: Создать
+      - generic [ref=e91]:
+        - generic [ref=e92]: i
+        - paragraph [ref=e93]:
+          - strong [ref=e94]: "Локальная демонстрация:"
+          - text: изменения видны только на этом устройстве. Для переноса используйте резервную копию JSON.
+        - button "Резервная копия" [ref=e95] [cursor=pointer]
+      - main [ref=e96]:
+        - generic [ref=e97]:
+          - generic [ref=e98]:
+            - generic [ref=e99]:
+              - generic [ref=e100]: Сегодня в сервисе
+              - heading "Рабочая картина без лишнего шума" [level=2] [ref=e101]
+              - paragraph [ref=e102]: Записи, активные заказы и финансовые показатели рассчитываются из локальной базы в реальном времени.
+            - generic [ref=e103]:
+              - button "Новый заказ" [ref=e104] [cursor=pointer]
+              - button "Новая запись" [ref=e105] [cursor=pointer]
+          - region "Ключевые показатели" [ref=e106]:
+            - article [ref=e107]:
+              - generic [ref=e108]: Записей сегодня
+              - strong [ref=e109]: "0"
+              - generic [ref=e110]: 0 на ближайшие 7 дней
+            - article [ref=e111]:
+              - generic [ref=e112]: Активных заказов
+              - strong [ref=e113]: "0"
+              - generic [ref=e114]: 0 ждут согласования
+            - article [ref=e115]:
+              - generic [ref=e116]: Начислено за месяц
+              - strong [ref=e117]: 0 ₽
+              - generic [ref=e118]: 0 реализованных заказов
+            - article [ref=e119]:
+              - generic [ref=e120]: Долг по открытым заказам
+              - strong [ref=e121]: 0 ₽
+              - generic [ref=e122]: Статус оплаты вычисляется автоматически
+          - generic [ref=e123]:
+            - generic [ref=e124]:
+              - generic [ref=e125]:
+                - generic [ref=e126]:
+                  - heading "Расписание на сегодня" [level=3] [ref=e127]
+                  - paragraph [ref=e128]: 17.07.2026
+                - button "Все записи" [ref=e129] [cursor=pointer]
+              - generic [ref=e131]:
+                - strong [ref=e132]: Сегодня свободно
+                - paragraph [ref=e133]: Записей на текущую дату пока нет.
+                - button "Добавить запись" [ref=e135] [cursor=pointer]
+            - generic [ref=e136]:
+              - generic [ref=e138]:
+                - heading "Быстрые действия" [level=3] [ref=e139]
+                - paragraph [ref=e140]: Частые операции в один шаг
+              - generic [ref=e142]:
+                - button "＋ Клиент" [ref=e143] [cursor=pointer]:
+                  - generic [ref=e144]: ＋
+                  - strong [ref=e145]: Клиент
+                - button "◇ Автомобиль" [ref=e146] [cursor=pointer]:
+                  - generic [ref=e147]: ◇
+                  - strong [ref=e148]: Автомобиль
+                - button "▤ Заказ-наряд" [ref=e149] [cursor=pointer]:
+                  - generic [ref=e150]: ▤
+                  - strong [ref=e151]: Заказ-наряд
+                - button "₽ Принять оплату" [ref=e152] [cursor=pointer]:
+                  - generic [ref=e153]: ₽
+                  - strong [ref=e154]: Принять оплату
+          - generic [ref=e155]:
+            - generic [ref=e156]:
+              - generic [ref=e157]:
+                - generic [ref=e158]:
+                  - heading "Заказы в работе" [level=3] [ref=e159]
+                  - paragraph [ref=e160]: Сумма и оплата пересчитываются из строк и платежей
+                - button "Все заказы" [ref=e161] [cursor=pointer]
+              - generic [ref=e163]:
+                - strong [ref=e164]: Нет активных заказов
+                - paragraph [ref=e165]: Создайте заказ-наряд, чтобы начать работу.
+            - generic [ref=e166]:
+              - generic [ref=e168]:
+                - heading "Денежный поток месяца" [level=3] [ref=e169]
+                - paragraph [ref=e170]: Не является бухгалтерской отчётностью
+              - generic [ref=e172]:
+                - generic [ref=e173]:
+                  - strong [ref=e175]: Получено оплат
+                  - strong [ref=e176]: 0 ₽
+                - generic [ref=e177]:
+                  - strong [ref=e179]: Прямые затраты заказов
+                  - strong [ref=e180]: 0 ₽
+                - generic [ref=e181]:
+                  - strong [ref=e183]: Операционные расходы
+                  - strong [ref=e184]: 0 ₽
+                - generic [ref=e185]:
+                  - strong [ref=e187]: Расчётный результат
+                  - strong [ref=e188]: 0 ₽
+  - dialog [ref=e189]:
+    - generic [ref=e190]:
+      - generic [ref=e191]: VN
+      - generic [ref=e192]: Демонстрационная рабочая среда
+      - heading "Как начать работу с панелью?" [level=2] [ref=e193]
+      - paragraph [ref=e194]: Панель работает без регистрации. Все записи хранятся в IndexedDB только в текущем браузере и не передаются на сервер.
+      - generic [ref=e195]:
+        - button "Открыть пример базы Вымышленные клиенты, автомобили, заказы и финансы для знакомства со всеми разделами. Рекомендуется" [active] [ref=e196] [cursor=pointer]:
+          - generic [ref=e197]: ◆
+          - strong [ref=e198]: Открыть пример базы
+          - generic [ref=e199]: Вымышленные клиенты, автомобили, заказы и финансы для знакомства со всеми разделами.
+          - emphasis [ref=e200]: Рекомендуется
+        - button "Начать с пустой базы Чистая локальная рабочая область со справочниками категорий и способов оплаты." [ref=e201] [cursor=pointer]:
+          - generic [ref=e202]: ＋
+          - strong [ref=e203]: Начать с пустой базы
+          - generic [ref=e204]: Чистая локальная рабочая область со справочниками категорий и способов оплаты.
+      - paragraph [ref=e205]: Демонстрационные данные полностью вымышлены. Не используйте публичный компьютер для реальных персональных данных.

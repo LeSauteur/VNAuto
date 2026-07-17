@@ -1,0 +1,40 @@
+- generic [active] [ref=f1e1]:
+  - link "К основному содержанию" [ref=f1e2] [cursor=pointer]:
+    - /url: "#admin-view"
+  - generic [ref=f1e3]:
+    - complementary "Разделы панели" [ref=f1e4]:
+      - link "VN-MASTERS — обзор" [ref=f1e5] [cursor=pointer]:
+        - /url: "#/dashboard"
+        - generic [ref=f1e6]:
+          - strong [ref=f1e7]: VN-MASTERS
+          - generic [ref=f1e8]: Демо-панель
+      - note [ref=f1e9]:
+        - generic [ref=f1e10]: ●
+        - strong [ref=f1e11]: Публичная демо-версия
+        - generic [ref=f1e12]: Без входа и облачного сервера
+      - navigation "Основная навигация" [ref=f1e13]
+      - generic [ref=f1e14]:
+        - link "← Вернуться на сайт" [ref=f1e15] [cursor=pointer]:
+          - /url: index.html
+        - paragraph [ref=f1e16]: Данные сохраняются только в этом браузере.
+    - generic [ref=f1e17]:
+      - banner [ref=f1e18]:
+        - generic [ref=f1e19]:
+          - generic [ref=f1e20]: Рабочая область
+          - heading "Обзор" [level=1] [ref=f1e21]
+        - generic [ref=f1e22]:
+          - generic [ref=f1e23]: Поиск по панели
+          - searchbox "Поиск по панели Ctrl K" [ref=f1e26]
+          - generic [ref=f1e27]: Ctrl K
+        - button "Создать" [ref=f1e28] [cursor=pointer]:
+          - generic [ref=f1e29]: ＋
+          - text: Создать
+      - generic [ref=f1e30]:
+        - generic [ref=f1e31]: i
+        - paragraph [ref=f1e32]:
+          - strong [ref=f1e33]: "Локальная демонстрация:"
+          - text: изменения видны только на этом устройстве. Для переноса используйте резервную копию JSON.
+        - button "Резервная копия" [ref=f1e34] [cursor=pointer]
+      - main [ref=f1e35]:
+        - status [ref=f1e36]:
+          - paragraph [ref=f1e38]: Открываем локальную базу…

@@ -1,0 +1,168 @@
+- generic [ref=f5e1]:
+  - link "К основному содержанию" [ref=f5e2] [cursor=pointer]:
+    - /url: "#admin-view"
+  - generic [ref=f5e3]:
+    - complementary "Разделы панели" [ref=f5e4]:
+      - link "VN-MASTERS — обзор" [ref=f5e5] [cursor=pointer]:
+        - /url: "#/dashboard"
+        - generic [ref=f5e6]:
+          - strong [ref=f5e7]: VN-MASTERS
+          - generic [ref=f5e8]: Демо-панель
+      - note [ref=f5e9]:
+        - generic [ref=f5e10]: ●
+        - strong [ref=f5e11]: Публичная демо-версия
+        - generic [ref=f5e12]: Без входа и облачного сервера
+      - navigation "Основная навигация" [ref=f5e13]:
+        - list [ref=f5e14]:
+          - listitem [ref=f5e15]:
+            - link "Обзор" [ref=f5e16] [cursor=pointer]:
+              - /url: "#/dashboard"
+              - generic [ref=f5e17]: ▦
+          - listitem [ref=f5e20]:
+            - link "Запись 5" [ref=f5e21] [cursor=pointer]:
+              - /url: "#/appointments"
+              - generic [ref=f5e22]: ◷
+              - generic [ref=f5e23]: Запись
+              - generic [ref=f5e24]: "5"
+          - listitem [ref=f5e25]:
+            - link "Клиенты 9" [ref=f5e26] [cursor=pointer]:
+              - /url: "#/clients"
+              - generic [ref=f5e27]: ◎
+              - generic [ref=f5e28]: Клиенты
+              - generic [ref=f5e29]: "9"
+          - listitem [ref=f5e30]:
+            - link "Автомобили 12" [ref=f5e31] [cursor=pointer]:
+              - /url: "#/vehicles"
+              - generic [ref=f5e32]: ◇
+              - generic [ref=f5e33]: Автомобили
+              - generic [ref=f5e34]: "12"
+          - listitem [ref=f5e35]:
+            - link "Заказ-наряды 7" [ref=f5e36] [cursor=pointer]:
+              - /url: "#/work-orders"
+              - generic [ref=f5e37]: ▤
+              - generic [ref=f5e38]: Заказ-наряды
+              - generic [ref=f5e39]: "7"
+          - listitem [ref=f5e40]:
+            - link "Платежи 11" [ref=f5e41] [cursor=pointer]:
+              - /url: "#/payments"
+              - generic [ref=f5e42]: ₽
+              - generic [ref=f5e43]: Платежи
+              - generic [ref=f5e44]: "11"
+          - listitem [ref=f5e45]:
+            - link "Расходы 6" [ref=f5e295] [cursor=pointer]:
+              - /url: "#/expenses"
+              - generic [ref=f5e47]: ↘
+              - generic [ref=f5e48]: Расходы
+              - generic [ref=f5e49]: "6"
+          - listitem [ref=f5e50]:
+            - link "Отчёты" [ref=f5e51] [cursor=pointer]:
+              - /url: "#/reports"
+              - generic [ref=f5e52]: ⌁
+          - listitem [ref=f5e55]:
+            - link "Справочники" [ref=f5e56] [cursor=pointer]:
+              - /url: "#/directories"
+              - generic [ref=f5e57]: ▥
+          - listitem [ref=f5e60]:
+            - link "Сотрудники 4" [ref=f5e61] [cursor=pointer]:
+              - /url: "#/employees"
+              - generic [ref=f5e62]: ♙
+              - generic [ref=f5e63]: Сотрудники
+              - generic [ref=f5e64]: "4"
+          - listitem [ref=f5e65]:
+            - link "Корзина и журнал 0" [ref=f5e296] [cursor=pointer]:
+              - /url: "#/trash"
+              - generic [ref=f5e67]: ♲
+              - generic [ref=f5e68]: Корзина и журнал
+              - generic [ref=f5e69]: "0"
+          - listitem [ref=f5e70]:
+            - link "Настройки" [ref=f5e71] [cursor=pointer]:
+              - /url: "#/settings"
+              - generic [ref=f5e72]: ⚙
+      - generic [ref=f5e75]:
+        - link "← Вернуться на сайт" [ref=f5e76] [cursor=pointer]:
+          - /url: index.html
+        - paragraph [ref=f5e77]: Данные сохраняются только в этом браузере.
+    - generic [ref=f5e78]:
+      - banner [ref=f5e79]:
+        - generic [ref=f5e80]:
+          - generic [ref=f5e81]: Локальная база
+          - heading "Настройки" [level=1] [ref=f5e440]
+        - generic [ref=f5e83]:
+          - generic [ref=f5e84]: Поиск по панели
+          - searchbox "Поиск по панели Ctrl K" [ref=f5e87]
+          - generic [ref=f5e88]: Ctrl K
+        - button "Создать" [ref=f5e89] [cursor=pointer]:
+          - generic [ref=f5e90]: ＋
+          - text: Создать
+      - generic [ref=f5e91]:
+        - generic [ref=f5e92]: i
+        - paragraph [ref=f5e93]:
+          - strong [ref=f5e94]: "Локальная демонстрация:"
+          - text: изменения видны только на этом устройстве. Для переноса используйте резервную копию JSON.
+        - button "Резервная копия" [ref=f5e95] [cursor=pointer]
+      - main [active] [ref=f5e96]:
+        - generic [ref=f5e441]:
+          - generic [ref=f5e442]:
+            - generic [ref=f5e443]:
+              - generic [ref=f5e444]: Локальная конфигурация
+              - heading "Настройки и резервные копии" [level=2] [ref=f5e445]
+              - paragraph [ref=f5e446]: Импорт и экспорт переносят рабочую демо-базу между браузерами. Перед импортом автоматически скачивается резервная копия текущего состояния.
+            - generic [ref=f5e447]:
+              - button "Экспорт JSON" [ref=f5e448] [cursor=pointer]
+              - button "Импорт JSON" [ref=f5e449] [cursor=pointer]
+          - generic [ref=f5e450]:
+            - generic [ref=f5e451]:
+              - generic [ref=f5e453]:
+                - heading "Состояние базы" [level=3] [ref=f5e454]
+                - paragraph [ref=f5e455]: Только текущий профиль браузера
+              - generic [ref=f5e457]:
+                - generic [ref=f5e458]:
+                  - strong [ref=f5e460]: Режим
+                  - generic [ref=f5e461]: Пример базы
+                - generic [ref=f5e462]:
+                  - strong [ref=f5e464]: Записей
+                  - generic [ref=f5e465]: "119"
+                - generic [ref=f5e466]:
+                  - strong [ref=f5e468]: Версия схемы
+                  - generic [ref=f5e469]: "2"
+                - generic [ref=f5e470]:
+                  - strong [ref=f5e472]: IndexedDB
+                  - generic [ref=f5e473]: vn-masters-demo · v2
+                - generic [ref=f5e474]:
+                  - strong [ref=f5e476]: ID установки
+                  - generic [ref=f5e477]: 917def1f-ff9a-4fa8-a4e3-16ab81e1ef9c
+            - generic [ref=f5e478]:
+              - generic [ref=f5e480]:
+                - heading "Перенос данных" [level=3] [ref=f5e481]
+                - paragraph [ref=f5e482]: Файлы сохраняются на устройстве пользователя
+              - generic [ref=f5e484]:
+                - generic [ref=f5e485]:
+                  - generic [ref=f5e486]:
+                    - heading "Скачать резервную копию" [level=3] [ref=f5e487]
+                    - paragraph [ref=f5e488]: JSON со всеми сущностями, версиями и настройками.
+                  - button "Экспорт JSON" [ref=f5e489] [cursor=pointer]
+                - generic [ref=f5e490]:
+                  - generic [ref=f5e491]:
+                    - heading "Импортировать копию" [level=3] [ref=f5e492]
+                    - paragraph [ref=f5e493]: Файл сначала проверяется и мигрируется. Текущая база сохраняется автоматически.
+                  - button "Выбрать JSON" [ref=f5e494] [cursor=pointer]
+                - generic [ref=f5e495]:
+                  - generic [ref=f5e496]:
+                    - heading "Экспортировать CSV" [level=3] [ref=f5e497]
+                    - paragraph [ref=f5e498]: Отдельные реестры доступны из разделов клиентов, заказов, платежей и расходов.
+                  - button "Открыть клиентов" [ref=f5e499] [cursor=pointer]
+          - generic [ref=f5e500]:
+            - generic [ref=f5e502]:
+              - heading "Ограничения демо-режима" [level=3] [ref=f5e503]
+              - paragraph [ref=f5e504]: Перед использованием реальных данных нужна серверная архитектура
+            - generic [ref=f5e506]:
+              - generic [ref=f5e507]: "!"
+              - paragraph [ref=f5e508]: Нет общей базы, синхронизации, серверной резервной копии, разграничения ролей и защищённой авторизации. Очистка данных браузера удалит рабочую базу, если ранее не сделан экспорт.
+          - generic [ref=f5e509]:
+            - heading "Опасная зона" [level=3] [ref=f5e512]
+            - generic [ref=f5e514]:
+              - generic [ref=f5e515]:
+                - heading "Очистить локальную базу" [level=3] [ref=f5e516]
+                - paragraph [ref=f5e517]: Все сущности, журнал и настройки будут удалены. После очистки снова откроется выбор примера или пустой базы.
+              - button "Очистить базу" [ref=f5e518] [cursor=pointer]
+  - text: "* * *"
